@@ -4,7 +4,7 @@ t4Sdk.pxWidget = {};
 t4Sdk.pxWidget.chart = {};
 //#endregion Add Namespace
 
-t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
+t4Sdk.pxWidget.chart.create = function (elementId, isLive, isogram, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
     $("#" + elementId).empty();
@@ -55,9 +55,10 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
             break;
     }
 
-    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    //var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    var config = JSON.parse(snippet);
     // var element = snippet.split(",")[1].trim().toString().replace(/'/g, "");
-    var isogram = snippet.split(/"/)[1];
+    //var isogram = snippet.split(/"/)[1];
 
     var toggleDimensionVariables = [];
     if (toggleDimension) {
