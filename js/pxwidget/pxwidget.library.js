@@ -90,6 +90,12 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
                 toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(elementId, true, matrix.trim(), toggleDimension.trim(), toggleVariables, defaultVariable)
             }
 
+            //failed to read metadata, abort from here
+            if (!toggleDimensionDetails.variables.length) {
+                console.log("Error getting metadata 2")
+                return;
+            }
+
             //draw toggle variables
             $.each(toggleDimensionDetails.variables, function (index, value) {
 
@@ -257,7 +263,7 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
 
         },
         "error": function (xhr) {
-
+            console.log("Error getting metadata")
             //Do Something to handle error
         }
     });
