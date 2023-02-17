@@ -4,7 +4,6 @@ t4Sdk.pxWidget = {};
 t4Sdk.pxWidget.chart = {};
 //#endregion Add Namespace
 
-//t4Sdk.pxWidget.chart.create = function (elementId, isLive, isogram, config, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
 t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
