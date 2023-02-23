@@ -245,7 +245,7 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
 
             if (toggleVariablesArrTrimmed.length) {
                 $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                    if ($.inArray(code, toggleVaritoggleVariablesArrTrimmedablesArr) >= 0) {
+                    if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
                         dimension.variables.push({
                             "code": code,
                             "label": jsonStat.Dimension(toggleDimension).Category(code).label
