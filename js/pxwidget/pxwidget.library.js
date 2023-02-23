@@ -9,7 +9,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
     defaultVariable = defaultVariable || null;
 
     //load specific widget library
-    jQuery.ajax({
+    $.ajax({
         "url": snippet.isogram,
         "dataType": "script",
         "async": false,
@@ -92,7 +92,8 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
 
             //failed to read metadata, abort from here
             if (!toggleDimensionDetails.variables.length) {
-                console.log("Error getting metadata 2")
+                $("#" + elementId).empty().text("Error retreiving data")
+                console.log("Error getting metadata ")
                 return;
             }
 
@@ -237,9 +238,14 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
                 toggleVariablesArr = toggleVariables.split(',');
             }
 
-            if (toggleVariablesArr.length) {
+            //trim all variables
+            var toggleVariablesArrTrimmed = arr.map(element => {
+                return element.trim();
+            });
+
+            if (toggleVariablesArrTrimmed.length) {
                 $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                    if ($.inArray(code, toggleVariablesArr) >= 0) {
+                    if ($.inArray(code, toggleVaritoggleVariablesArrTrimmedablesArr) >= 0) {
                         dimension.variables.push({
                             "code": code,
                             "label": jsonStat.Dimension(toggleDimension).Category(code).label
@@ -263,8 +269,8 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
 
         },
         "error": function (xhr) {
-            console.log("Error getting metadata")
-            //Do Something to handle error
+            $("#" + elementId).empty().text("Error retreiving data")
+            console.log("Error getting metadata ")
         }
     });
     return dimension;
