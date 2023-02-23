@@ -239,7 +239,7 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
             }
 
             //trim all variables
-            var toggleVariablesArrTrimmed = arr.map(element => {
+            var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
                 return element.trim();
             });
 
