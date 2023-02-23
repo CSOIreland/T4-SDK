@@ -165,7 +165,14 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
                     break;
                 case "buttons":
                     if (defaultVariable) {
-                        $("#" + elementId + "-button-wrapper").find("[value='" + defaultVariable + "']").trigger("click");
+                        //check that default variable is one of the variables
+                        if ($.inArray(defaultVariable, toggleDimensionDetails.variables) >= 0) {
+                            $("#" + elementId + "-button-wrapper").find("[value='" + defaultVariable + "']").trigger("click");
+                        }
+                        else {
+                            $("#" + elementId + "-button-wrapper").find("button").first().trigger("click")
+                        }
+
                     }
                     else {
                         $("#" + elementId + "-button-wrapper").find("button").first().trigger("click")
