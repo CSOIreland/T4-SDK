@@ -2,7 +2,11 @@
 t4Sdk = t4Sdk || {};
 t4Sdk.pxWidget = {};
 t4Sdk.pxWidget.chart = {};
+t4Sdk.pxWidget.latestValue = {};
+t4Sdk.pxWidget.utilities = {};
 //#endregion Add Namespace
+
+//#region create a chart with toggle variables
 
 t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
@@ -301,3 +305,153 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, t
         localConfig
     )
 };
+
+//#endregion create a chart with toggle variables
+
+//#region retreive the latest value for a query from PxStat 
+t4Sdk.pxWidget.latestValue.drawValue = function (matrix, query, valueElement, unitElement, timeLabelElement) {
+    unitElement = unitElement || null;
+    timeLabelElement = timeLabelElement || null;
+
+    var latestTimePoint = t4Sdk.pxWidget.latestValue.getLatestTimeVariable(matrix);
+    var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
+
+    $(valueElement).text(valueDetails.value);
+
+    if (unitElement) {
+        $(unitElement).text(valueDetails.unit);
+    };
+
+    if (timeLabelElement) {
+        $(timeLabelElement).text(valueDetails.timeLabel);
+    };
+};
+
+t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
+    var latestTimeVariable = {
+        "dimension": null,
+        "variableCode": null,
+        "variableLabel": null
+    };
+
+    $.ajax({
+        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": JSON.stringify({
+            "jsonrpc": "2.0",
+            "method": "PxStat.Data.Cube_API.ReadMetadata",
+            "params": {
+                "matrix": matrix,
+                "language": "en",
+                "format": {
+                    "type": "JSON-stat",
+                    "version": "2.0"
+                }
+            },
+            "version": "2.0",
+            "id": Math.floor(Math.random() * 999999999) + 1
+        }),
+        "success": function (response) {
+            var jsonStat = JSONstat(response.result);
+
+            var timeDimensionCode = null;
+            $.each(jsonStat.Dimension(), function (index, value) {
+                if (value.role == "time") {
+                    timeDimensionCode = jsonStat.id[index];
+                    return;
+                }
+            });
+
+            var time = jsonStat.Dimension({ role: "time" })[0].id;
+
+            latestTimeVariable = {
+                "dimension": timeDimensionCode,
+                "variableCode": time.slice(-1)[0],
+                "variableLabel": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
+            }
+
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
+    });
+    return latestTimeVariable;
+};
+
+t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimeVariable) {
+    //check that the query is for one value
+    query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.variableCode];
+    var valueDetails = {
+        "value": null,
+        "unit": null,
+        "timeLabel": latestTimeVariable.variableLabel
+    };
+
+    $.ajax({
+        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": JSON.stringify(query),
+        "success": function (response) {
+            var jsonStat = JSONstat(response.result);
+            //check that we only have one value back from the query
+            if (jsonStat.value.length > 1) {
+                console.log("Invalid query. Query should only return one value")
+            }
+            else {
+                var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
+                var statisticDetails = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
+                var statisticDecimal = statisticDetails.decimals;
+
+                valueDetails.value = t4Sdk.pxWidget.utilities.formatNumber(jsonStat.Data(0).value, statisticDecimal)
+                valueDetails.unit = statisticDetails.label;
+            }
+
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
+    });
+
+    return valueDetails;
+};
+//#endregion
+
+//#region utilities
+t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSeparator, thousandSeparator) { //create global function  
+    precision = precision !== undefined ? precision : undefined;
+    decimalSeparator = decimalSeparator || ".";
+    thousandSeparator = thousandSeparator || ",";
+
+    if ("number" !== typeof number && "string" !== typeof number)
+        return number;
+
+    floatNumber = parseFloat(number);
+    if (isNaN(floatNumber))
+        //output any non number as html
+        return "string" === typeof number ? number.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;") : number;
+
+    if (precision !== undefined) {
+        floatNumber = floatNumber.toFixed(precision);
+    }
+    else {
+        floatNumber = floatNumber.toString();
+    }
+
+    var parts = floatNumber.split(".");
+    var wholeNumber = parts[0].toString();
+    var decimalNumber = parts[1] !== undefined ? parts[1].toString() : undefined;
+    return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
+};
+//#endregion utilities
