@@ -328,7 +328,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (matrix, query, valueElement, un
 };
 
 t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
-    var latestTimeVariable = {
+    var latestTimePoint = {
         "dimension": null,
         "variableCode": null,
         "variableLabel": null
@@ -370,7 +370,7 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
 
             var time = jsonStat.Dimension({ role: "time" })[0].id;
 
-            latestTimeVariable = {
+            latestTimePoint = {
                 "dimension": timeDimensionCode,
                 "variableCode": time.slice(-1)[0],
                 "variableLabel": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
@@ -381,12 +381,12 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
             console.log("Error getting metadata ")
         }
     });
-    return latestTimeVariable;
+    return latestTimePoint;
 };
 
-t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimeVariable) {
+t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
     //check that the query is for one value
-    query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.variableCode];
+    query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.variableCode];
     var valueDetails = {
         "value": null,
         "unit": null
