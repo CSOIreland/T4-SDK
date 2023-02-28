@@ -323,7 +323,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (matrix, query, valueElement, un
     };
 
     if (timeLabelElement) {
-        $(timeLabelElement).text(valueDetails.timeLabel);
+        $(timeLabelElement).text(latestTimePoint.variableLabel);
     };
 };
 
@@ -389,8 +389,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimeVariable) {
     query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.variableCode];
     var valueDetails = {
         "value": null,
-        "unit": null,
-        "timeLabel": latestTimeVariable.variableLabel
+        "unit": null
     };
 
     $.ajax({
