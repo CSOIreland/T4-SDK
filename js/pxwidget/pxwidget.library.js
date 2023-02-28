@@ -323,15 +323,15 @@ t4Sdk.pxWidget.latestValue.drawValue = function (matrix, query, valueElement, un
     };
 
     if (timeLabelElement) {
-        $(timeLabelElement).text(latestTimePoint.variableLabel);
+        $(timeLabelElement).text(latestTimePoint.label);
     };
 };
 
 t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
     var latestTimePoint = {
         "dimension": null,
-        "variableCode": null,
-        "variableLabel": null
+        "code": null,
+        "label": null
     };
 
     $.ajax({
@@ -372,8 +372,8 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
 
             latestTimePoint = {
                 "dimension": timeDimensionCode,
-                "variableCode": time.slice(-1)[0],
-                "variableLabel": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
+                "code": time.slice(-1)[0],
+                "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
             }
 
         },
@@ -386,7 +386,7 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
 
 t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
     //check that the query is for one value
-    query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.variableCode];
+    query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.code];
     var valueDetails = {
         "value": null,
         "unit": null
@@ -406,7 +406,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
             var jsonStat = JSONstat(response.result);
             //check that we only have one value back from the query
             if (jsonStat.value.length > 1) {
-                console.log("Invalid query. Query should only return one value")
+                console.log("Invalid query. Query should only return one value.")
             }
             else {
                 var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
