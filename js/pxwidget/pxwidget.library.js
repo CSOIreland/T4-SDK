@@ -347,7 +347,7 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
             "jsonrpc": "2.0",
             "method": "PxStat.Data.Cube_API.ReadMetadata",
             "params": {
-                "matrix": matrix,
+                "matrix": matrix.trim(),
                 "language": "en",
                 "format": {
                     "type": "JSON-stat",
