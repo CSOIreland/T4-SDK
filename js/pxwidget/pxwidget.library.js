@@ -187,97 +187,49 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
 t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, matrixRelease, toggleDimension, toggleVariables) {
     toggleVariables = toggleVariables || null;
 
+
     var dimension = {
         "label": "",
         "variables": []
     };
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
+    var toggleVariablesArr = [];
+    if (toggleVariables) {
+        //put variables into array
+        toggleVariablesArr = toggleVariables.split(',');
+    }
 
-    var paramsMatrix = {
-        "jsonrpc": "2.0",
-        "method": "PxStat.Data.Cube_API.ReadMetadata",
-        "params": {
-            "matrix": matrixRelease,
-            "language": "en",
-            "format": {
-                "type": "JSON-stat",
-                "version": "2.0"
-            }
-        },
-        "version": "2.0",
-        "id": Math.floor(Math.random() * 999999999) + 1
-    };
+    //trim all variables
+    var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
+        return element.trim();
+    });
 
-    var paramsRelease = {
-        "jsonrpc": "2.0",
-        "method": "PxStat.Data.Cube_API.ReadPreMetadata",
-        "params": {
-            "release": matrixRelease,
-            "language": "en",
-            "format": {
-                "type": "JSON-stat",
-                "version": "2.0"
-            }
-        },
-        "version": "2.0",
-        "id": Math.floor(Math.random() * 999999999) + 1
-    };
-
-
-    $.ajax({
-        "url": isLive ? "https://dev-ws.cso.ie/public/api.jsonrpc" : "https://dev-ws.cso.ie/private/api.jsonrpc",
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "async": false,
-        "dataType": "json",
-        "method": "POST",
-        "jsonp": false,
-        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
-        "success": function (response) {
-
-            var jsonStat = JSONstat(response.result);
-            var toggleVariablesArr = [];
-            if (toggleVariables) {
-                //put variables into array
-                toggleVariablesArr = toggleVariables.split(',');
+    if (toggleVariablesArrTrimmed.length) {
+        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+            if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                dimension.variables.push({
+                    "code": code,
+                    "label": jsonStat.Dimension(toggleDimension).Category(code).label
+                });
             }
 
-            //trim all variables
-            var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
-                return element.trim();
+        });
+    }
+    else {
+        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+            dimension.variables.push({
+                "code": code,
+                "label": jsonStat.Dimension(toggleDimension).Category(code).label
             });
 
-            if (toggleVariablesArrTrimmed.length) {
-                $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                    if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
-                        dimension.variables.push({
-                            "code": code,
-                            "label": jsonStat.Dimension(toggleDimension).Category(code).label
-                        });
-                    }
+        });
+    }
+    //populate toggle variable label
+    dimension.label = jsonStat.Dimension(toggleDimension).label;
+    $("#" + elementId).find("[name=toggle-select-label]").text(jsonStat.Dimension(toggleDimension).label + ": ");
 
-                });
-            }
-            else {
-                $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                    dimension.variables.push({
-                        "code": code,
-                        "label": jsonStat.Dimension(toggleDimension).Category(code).label
-                    });
-
-                });
-            }
-            //populate toggle variable label
-            dimension.label = jsonStat.Dimension(toggleDimension).label;
-            $("#" + elementId).find("[name=toggle-select-label]").text(jsonStat.Dimension(toggleDimension).label + ": ");
-
-        },
-        "error": function (xhr) {
-            $("#" + elementId).empty().text("Error retreiving data")
-            console.log("Error getting metadata ")
-        }
-    });
     return dimension;
+
 };
 
 t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, toggleVariable, varriableLabel) {
@@ -445,5 +397,62 @@ t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSepa
     var wholeNumber = parts[0].toString();
     var decimalNumber = parts[1] !== undefined ? parts[1].toString() : undefined;
     return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
+};
+
+t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
+    isLive = isLive || true;
+    var metadata = null;
+
+    var paramsMatrix = {
+        "jsonrpc": "2.0",
+        "method": "PxStat.Data.Cube_API.ReadMetadata",
+        "params": {
+            "matrix": matrixRelease.trim(),
+            "language": "en",
+            "format": {
+                "type": "JSON-stat",
+                "version": "2.0"
+            }
+        },
+        "version": "2.0",
+        "id": Math.floor(Math.random() * 999999999) + 1
+    };
+
+    var paramsRelease = {
+        "jsonrpc": "2.0",
+        "method": "PxStat.Data.Cube_API.ReadPreMetadata",
+        "params": {
+            "release": matrixRelease.trim(),
+            "language": "en",
+            "format": {
+                "type": "JSON-stat",
+                "version": "2.0"
+            }
+        },
+        "version": "2.0",
+        "id": Math.floor(Math.random() * 999999999) + 1
+    };
+
+
+    $.ajax({
+        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
+        "success": function (response) {
+            metadata = JSONstat(response.result);
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
+    });
+
+    return metadata;
+
 };
 //#endregion utilities
