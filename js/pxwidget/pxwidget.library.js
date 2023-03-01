@@ -279,53 +279,24 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
         "label": null
     };
 
-    $.ajax({
-        "url": "https://ws.cso.ie/public/api.jsonrpc",
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "async": false,
-        "dataType": "json",
-        "method": "POST",
-        "jsonp": false,
-        "data": JSON.stringify({
-            "jsonrpc": "2.0",
-            "method": "PxStat.Data.Cube_API.ReadMetadata",
-            "params": {
-                "matrix": matrix.trim(),
-                "language": "en",
-                "format": {
-                    "type": "JSON-stat",
-                    "version": "2.0"
-                }
-            },
-            "version": "2.0",
-            "id": Math.floor(Math.random() * 999999999) + 1
-        }),
-        "success": function (response) {
-            var jsonStat = JSONstat(response.result);
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrix);
 
-            var timeDimensionCode = null;
-            $.each(jsonStat.Dimension(), function (index, value) {
-                if (value.role == "time") {
-                    timeDimensionCode = jsonStat.id[index];
-                    return;
-                }
-            });
-
-            var time = jsonStat.Dimension({ role: "time" })[0].id;
-
-            latestTimePoint = {
-                "dimension": timeDimensionCode,
-                "code": time.slice(-1)[0],
-                "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
-            }
-
-        },
-        "error": function (xhr) {
-            console.log("Error getting metadata ")
+    var timeDimensionCode = null;
+    $.each(jsonStat.Dimension(), function (index, value) {
+        if (value.role == "time") {
+            timeDimensionCode = jsonStat.id[index];
+            return;
         }
     });
+
+    var time = jsonStat.Dimension({ role: "time" })[0].id;
+
+    latestTimePoint = {
+        "dimension": timeDimensionCode,
+        "code": time.slice(-1)[0],
+        "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
+    }
+
     return latestTimePoint;
 };
 
