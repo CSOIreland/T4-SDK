@@ -184,14 +184,14 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
     });
 };
 
-t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, matrixRelease, toggleDimension, toggleVariables) {
+t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (isLive, matrixRelease, toggleDimension, toggleVariables) {
     toggleVariables = toggleVariables || null;
-
 
     var dimension = {
         "label": "",
         "variables": []
     };
+
     var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
     var toggleVariablesArr = [];
     if (toggleVariables) {
@@ -226,8 +226,6 @@ t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (elementId, isLive, 
     }
     //populate toggle variable label
     dimension.label = jsonStat.Dimension(toggleDimension).label;
-    $("#" + elementId).find("[name=toggle-select-label]").text(jsonStat.Dimension(toggleDimension).label + ": ");
-
     return dimension;
 
 };
