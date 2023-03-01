@@ -308,36 +308,19 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
         "unit": null
     };
 
-    $.ajax({
-        "url": "https://ws.cso.ie/public/api.jsonrpc",
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "async": false,
-        "dataType": "json",
-        "method": "POST",
-        "jsonp": false,
-        "data": JSON.stringify(query),
-        "success": function (response) {
-            var jsonStat = JSONstat(response.result);
-            //check that we only have one value back from the query
-            if (jsonStat.value.length > 1) {
-                console.log("Invalid query. Query should only return one value.")
-            }
-            else {
-                var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
-                var statisticDetails = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
-                var statisticDecimal = statisticDetails.decimals;
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatData(query);
+    //check that we only have one value back from the query
+    if (jsonStat.value.length > 1) {
+        console.log("Invalid query. Query should only return one value.")
+    }
+    else {
+        var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
+        var statisticDetails = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
+        var statisticDecimal = statisticDetails.decimals;
 
-                valueDetails.value = t4Sdk.pxWidget.utilities.formatNumber(jsonStat.Data(0).value, statisticDecimal)
-                valueDetails.unit = statisticDetails.label;
-            }
-
-        },
-        "error": function (xhr) {
-            console.log("Error getting metadata ")
-        }
-    });
+        valueDetails.value = t4Sdk.pxWidget.utilities.formatNumber(jsonStat.Data(0).value, statisticDecimal)
+        valueDetails.unit = statisticDetails.label;
+    }
 
     return valueDetails;
 };
@@ -406,7 +389,7 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
 
     $.ajax({
-        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "url": isLive ? "https://ws.cso.ie/public/api.jsonrpc" : "https://ws.cso.ie/private/api.jsonrpc",
         "xhrFields": {
             "withCredentials": true
         },
@@ -425,5 +408,28 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
     return metadata;
 
+};
+
+t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
+    var data = null;
+
+    $.ajax({
+        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": JSON.stringify(query),
+        "success": function (response) {
+            data = JSONstat(response.result);
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
+    });
+    return data;
 };
 //#endregion utilities
