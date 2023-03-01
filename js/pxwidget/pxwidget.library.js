@@ -88,10 +88,10 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
             if (!isLive) {
                 //get release id from query
                 var releaseId = snippet.config.metadata.api.query.data.params.release;
-                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(elementId, false, releaseId, toggleDimension.trim(), toggleVariables, defaultVariable)
+                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(false, releaseId, toggleDimension.trim(), toggleVariables, defaultVariable)
             }
             else {
-                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(elementId, true, matrix.trim(), toggleDimension.trim(), toggleVariables, defaultVariable)
+                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(true, matrix.trim(), toggleDimension.trim(), toggleVariables, defaultVariable)
             }
 
             //failed to read metadata, abort from here
