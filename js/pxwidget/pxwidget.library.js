@@ -74,7 +74,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
                             "class": "toggle-buttons",
                             "name": "toggle-button-wrapper",
                             "id": elementId + "-button-wrapper",
-                            "style": "display: flex; justify-content: space-around"
+                            "style": "display: flex; justify-content: space-around; flex-wrap: wrap;"
                         })
                     );
                     break;
@@ -121,7 +121,8 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
                             "value": value.code,
                             "name": "toggle-button",
                             "text": value.label,
-                            "dimension": toggleDimension
+                            "dimension": toggleDimension,
+                            "style": "margin: 0.25rem"
                         });
                         $("#" + elementId + "-button-wrapper").append(button);
                         break;
@@ -425,7 +426,7 @@ t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
             data = JSONstat(response.result);
         },
         "error": function (xhr) {
-            console.log("Error getting metadata ")
+            console.log("Error getting data ")
         }
     });
     return data;
