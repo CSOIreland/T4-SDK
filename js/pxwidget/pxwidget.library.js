@@ -6,7 +6,13 @@ t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utilities = {};
 //#endregion Add Namespace
 
-const T4SDK_PXWIDGET_ = "XXX"
+const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
+const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
+const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
+const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://dev-ws.cso.ie/private/api.jsonrpc";
+const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc";
+
+
 
 //#region create a chart with toggle variables
 
@@ -26,7 +32,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
 
     //check config to see if it's from a live snippet code
-    if (config.metadata.api.query.data.method == "PxStat.Data.Cube_API.ReadMetadata") {
+    if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
         isLive = true;
     }
 
@@ -41,13 +47,13 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
         "success": function () {
             //update query depending on status
             if (isLive) {
-                config.metadata.api.query.data.method = "PxStat.Data.Cube_API.ReadMetadata";
-                config.metadata.api.query.url = "https://dev-ws.cso.ie/public/api.jsonrpc";
+                config.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+                config.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
                 config.metadata.api.query.data.params.matrix = matrix;
                 delete config.metadata.api.query.data.params.release
 
                 $.each(config.data.datasets, function (index, value) {
-                    value.api.query.data.method = "PxStat.Data.Cube_API.ReadDataset";
+                    value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
                     value.api.query.data.params.extension.matrix = matrix;
                     delete value.api.query.data.params.extension.release
                 });
@@ -376,7 +382,7 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
     var paramsMatrix = {
         "jsonrpc": "2.0",
-        "method": "PxStat.Data.Cube_API.ReadMetadata",
+        "method": T4SDK_PXWIDGET_READ_METADATA,
         "params": {
             "matrix": matrixRelease.trim(),
             "language": "en",
@@ -391,7 +397,7 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
     var paramsRelease = {
         "jsonrpc": "2.0",
-        "method": "PxStat.Data.Cube_API.ReadPreMetadata",
+        "method": T4SDK_PXWIDGET_READ_PRE_METADATA,
         "params": {
             "release": matrixRelease.trim(),
             "language": "en",
@@ -406,7 +412,7 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
 
     $.ajax({
-        "url": isLive ? "https://ws.cso.ie/public/api.jsonrpc" : "https://ws.cso.ie/private/api.jsonrpc",
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
