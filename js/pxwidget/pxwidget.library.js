@@ -377,7 +377,7 @@ t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSepa
 };
 
 t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
-    isLive = isLive || true;
+    // isLive = isLive || true;
     var metadata = null;
 
     var paramsMatrix = {
