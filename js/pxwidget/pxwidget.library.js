@@ -12,9 +12,20 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
+    //get isogram url
+    var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
+
+    var isogramUrl = isogramScript.substring(
+        isogramScript.indexOf('"') + 1,
+        isogramScript.lastIndexOf('"')
+    );
+
+    //get config object from snippet
+    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+
     //load specific widget library
     $.ajax({
-        "url": snippet.isogram,
+        "url": isogramUrl,
         "dataType": "script",
         "async": false,
         "error": function (jqXHR, textStatus, errorThrown) {
@@ -23,12 +34,12 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
         "success": function () {
             //update query depending on status
             if (isLive) {
-                snippet.config.metadata.api.query.data.method = "PxStat.Data.Cube_API.ReadMetadata";
-                snippet.config.metadata.api.query.url = "https://dev-ws.cso.ie/public/api.jsonrpc";
-                snippet.config.metadata.api.query.data.params.matrix = matrix;
-                delete snippet.config.metadata.api.query.data.params.release
+                config.metadata.api.query.data.method = "PxStat.Data.Cube_API.ReadMetadata";
+                config.metadata.api.query.url = "https://dev-ws.cso.ie/public/api.jsonrpc";
+                config.metadata.api.query.data.params.matrix = matrix;
+                delete config.metadata.api.query.data.params.release
 
-                $.each(snippet.config.data.datasets, function (index, value) {
+                $.each(config.data.datasets, function (index, value) {
                     value.api.query.data.method = "PxStat.Data.Cube_API.ReadDataset";
                     value.api.query.data.params.extension.matrix = matrix;
                     delete value.api.query.data.params.extension.release
@@ -87,7 +98,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
             //get metadata for toggle
             if (!isLive) {
                 //get release id from query
-                var releaseId = snippet.config.metadata.api.query.data.params.release;
+                var releaseId = config.metadata.api.query.data.params.release;
                 toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(false, releaseId, toggleDimension.trim(), toggleVariables, defaultVariable)
             }
             else {
@@ -148,14 +159,14 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
             switch (toggleType) {
                 case "dropdown":
                     $("#" + elementId + "-toggle-select").change(function () {
-                        t4Sdk.pxWidget.chart.drawChart(elementId, snippet.config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                        t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
                     });
                     break;
                 case "buttons":
                     $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").click(function () {
                         $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").removeClass("active");
                         $(this).addClass("active")
-                        t4Sdk.pxWidget.chart.drawChart(elementId, snippet.config, $(this).attr("dimension"), $(this).val(), $(this).text());
+                        t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).text());
                     });
                     break;
 
