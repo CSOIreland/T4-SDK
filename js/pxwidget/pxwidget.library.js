@@ -6,6 +6,8 @@ t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utilities = {};
 //#endregion Add Namespace
 
+const T4SDK_PXWIDGET_ = "XXX"
+
 //#region create a chart with toggle variables
 
 t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
@@ -22,6 +24,11 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+
+    //check config to see if it's from a live snippet code
+    if (config.metadata.api.query.data.method == "PxStat.Data.Cube_API.ReadMetadata") {
+        isLive = true;
+    }
 
     //load specific widget library
     $.ajax({
