@@ -306,7 +306,7 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
         }
     });
 
-    var time = jsonStat.Dimension({ role: "time" })[0].id;
+    var time = jsonStat.Dimension(timeDimensionCode).id;
 
     return {
         "dimension": timeDimensionCode,
