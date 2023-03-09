@@ -277,9 +277,11 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, t
 //#endregion create a chart with toggle variables
 
 //#region retreive the latest value for a query from PxStat 
-t4Sdk.pxWidget.latestValue.drawValue = function (matrix, query, valueElement, unitElement, timeLabelElement) {
+t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElement, timeLabelElement) {
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
+
+    var matrix = query.params.extension.matrix;
 
     var latestTimePoint = t4Sdk.pxWidget.latestValue.getLatestTimeVariable(matrix);
     var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
