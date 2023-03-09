@@ -296,12 +296,6 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
 };
 
 t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
-    var latestTimePoint = {
-        "dimension": null,
-        "code": null,
-        "label": null
-    };
-
     var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrix);
 
     var timeDimensionCode = null;
@@ -314,13 +308,11 @@ t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
 
     var time = jsonStat.Dimension({ role: "time" })[0].id;
 
-    latestTimePoint = {
+    return {
         "dimension": timeDimensionCode,
         "code": time.slice(-1)[0],
         "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
-    }
-
-    return latestTimePoint;
+    };
 };
 
 t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
