@@ -1,0 +1,23 @@
+.html2pdf_container {
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+}
+
+.custom_dd {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    margin-left: 6px;
+    background-color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom_dd:hover {
+    background-color: gray;
+}
+
+.custom_list {
+    border: solid;
+}
