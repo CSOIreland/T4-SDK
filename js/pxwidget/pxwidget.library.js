@@ -376,8 +376,7 @@ t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSepa
     return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
 };
 
-t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
-    // isLive = isLive || true;
+t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive = true) {
     var metadata = null;
 
     var paramsMatrix = {
