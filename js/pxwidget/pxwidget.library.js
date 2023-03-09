@@ -281,9 +281,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    var matrix = query.params.extension.matrix;
-
-    var latestTimePoint = t4Sdk.pxWidget.latestValue.getLatestTimeVariable(matrix);
+    var latestTimePoint = t4Sdk.pxWidget.latestValue.getLatestTimeVariable(query.params.extension.matrix);
     var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
 
     $(valueElement).text(valueDetails.value);
