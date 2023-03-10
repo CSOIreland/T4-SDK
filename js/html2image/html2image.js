@@ -213,7 +213,7 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         t4Sdk.html2image.fnContextMenu();
         t4Sdk.html2image.contextMenuList.style.display = "none";
         t4Sdk.html2image.i_div.addEventListener("click", t4Sdk.html2image.showContextMenu);
-        $('[data-toggle="tooltip"]').tooltip();
+      //  $('[data-toggle="tooltip"]').tooltip();
     }
 };
 
