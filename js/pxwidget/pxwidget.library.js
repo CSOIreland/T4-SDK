@@ -71,13 +71,13 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
 
             switch (toggleType) {
                 case "dropdown":
-                    $("#" + elementId + " .panel").append(
+                    $("#" + elementId + " .widget-toggle-panel").append(
                         $("<label>", {
                             "name": "toggle-select-label",
                             "for": "#" + elementId + "-toggle-select"
                         }).get(0).outerHTML
                     );
-                    $("#" + elementId + " .panel").append(
+                    $("#" + elementId + " .widget-toggle-panel").append(
                         $("<select>", {
                             "name": "toggle-select",
                             "dimension": toggleDimension.trim(),
@@ -93,7 +93,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
                     );
                     break;
                 case "buttons":
-                    $("#" + elementId + " .panel").append(
+                    $("#" + elementId + " .widget-toggle-panel").append(
                         $("<div>", {
                             "class": "toggle-buttons",
                             "name": "toggle-button-wrapper",
