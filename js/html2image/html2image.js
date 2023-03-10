@@ -14,10 +14,12 @@ var lastTgt;
 t4Sdk.html2image.download = function(e) {
     var exp = e.target.parentElement.parentElement.children[1];
     exp = t4Sdk.html2image.i_div_el.export_div;
+    /*
     if (exp.className != "dashboard-snapshot") {
         alert("please, try again!");
         return
     }
+*/
     lastTgt = exp;
     // var exp = e.target.parentElement.parentElement.children[1]; // html2image.tgt;
     t4Sdk.html2image.fnExport(exp, e.target.innerHTML);
