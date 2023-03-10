@@ -16,7 +16,7 @@ const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc"
 
 //#region create a chart with toggle variables
 
-t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, toggleType, toggleDimension, toggleVariables, defaultVariable) {
+t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
@@ -30,6 +30,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, matrix, togg
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    var matrix = config.matrix;
 
     //check config to see if it's from a live snippet code
     if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
