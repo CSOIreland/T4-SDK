@@ -30,7 +30,7 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
-    var matrix = config.matrix;
+    var matrix = config.matrix || config.metadata.api.query.data.params.matrix;
 
     //check config to see if it's from a live snippet code
     if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
