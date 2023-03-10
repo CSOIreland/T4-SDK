@@ -62,6 +62,8 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
 
             $("#" + elementId).empty();
             //set up html elements needed
+
+
             switch (toggleType) {
                 case "dropdown":
                     $("#" + elementId).append(
@@ -86,14 +88,6 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
                     );
                     break;
                 case "buttons":
-                    //buttons under chart
-                    $("#" + elementId).append(
-                        $("<div>", {
-                            "id": elementId + "-chart-container",
-                            "class": "pxwidget"
-                        }).get(0).outerHTML
-                    );
-
                     $("#" + elementId).append(
                         $("<div>", {
                             "class": "toggle-buttons",
@@ -101,6 +95,13 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
                             "id": elementId + "-button-wrapper",
                             "style": "display: flex; justify-content: space-around; flex-wrap: wrap;"
                         })
+                    );
+
+                    $("#" + elementId).append(
+                        $("<div>", {
+                            "id": elementId + "-chart-container",
+                            "class": "pxwidget"
+                        }).get(0).outerHTML
                     );
                     break;
                 default:
