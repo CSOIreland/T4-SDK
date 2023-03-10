@@ -63,6 +63,14 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
             $("#" + elementId).empty();
             //set up html elements needed
 
+            $("#" + elementId).append(
+                $("<div>", {
+                    "class": "widget-toggle-wrapper",
+                    "html": $("<div>", {
+                        "class": "widget-toggle-panel"
+                    }).get(0).outerHTML
+                }).get(0).outerHTML
+            );
 
             switch (toggleType) {
                 case "dropdown":
