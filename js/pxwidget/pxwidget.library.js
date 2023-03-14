@@ -288,7 +288,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    var latestTimePoint = t4Sdk.pxWidget.latestValue.getLatestTimeVariable(query.params.extension.matrix);
+    var latestTimePoint = t4Sdk.pxWidget.utilities.getLatestTimeVariable(query.params.extension.matrix, true);
     var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
 
     $(valueElement).text(valueDetails.value);
@@ -299,26 +299,6 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
 
     if (timeLabelElement) {
         $(timeLabelElement).text(latestTimePoint.label);
-    };
-};
-
-t4Sdk.pxWidget.latestValue.getLatestTimeVariable = function (matrix) {
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrix);
-
-    var timeDimensionCode = null;
-    $.each(jsonStat.Dimension(), function (index, value) {
-        if (value.role == "time") {
-            timeDimensionCode = jsonStat.id[index];
-            return;
-        }
-    });
-
-    var time = jsonStat.Dimension(timeDimensionCode).id;
-
-    return {
-        "dimension": timeDimensionCode,
-        "code": time.slice(-1)[0],
-        "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
     };
 };
 
@@ -375,7 +355,7 @@ t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSepa
     return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
 };
 
-t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive = true) {
+t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
     var metadata = null;
 
     var paramsMatrix = {
@@ -452,5 +432,25 @@ t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
         }
     });
     return data;
+};
+
+t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrix, isLive) {
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrix, isLive);
+
+    var timeDimensionCode = null;
+    $.each(jsonStat.Dimension(), function (index, value) {
+        if (value.role == "time") {
+            timeDimensionCode = jsonStat.id[index];
+            return;
+        }
+    });
+
+    var time = jsonStat.Dimension(timeDimensionCode).id;
+
+    return {
+        "dimension": timeDimensionCode,
+        "code": time.slice(-1)[0],
+        "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
+    };
 };
 //#endregion utilities
