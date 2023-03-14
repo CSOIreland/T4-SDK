@@ -1,0 +1,101 @@
+.pressReleaseTitle h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h1.pressStatement,
+h2.pressStatement,
+.pressReleaseDate,
+.pressReleaseTitle h1 {
+    text-align: center;
+    color: #07101a;
+    clear: both;
+}
+
+.pressReleaseTitle {
+    margin-top: 50px;
+}
+
+.pressReleaseBulletPoints {
+    margin-top: 2rem;
+}
+
+div.pdfLinks {
+    padding: 5px;
+    border: 1px solid #CCCDCD;
+    border-radius: 5px;
+    clear: both;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    float: right;
+}
+
+.pdf_button {
+    text-decoration: none;
+    color: #384350 !important;
+    padding: 2px 6px 2px 6px;
+}
+
+.pdf_button:hover {
+    color: #384350 !important;
+    text-decoration: underline;
+}
+
+.pdf_button:visited {
+    color: #384350 !important;
+}
+
+i.fa.fa-file-pdf-o {
+    color: #E50B0A;
+}
+
+i.fa.fa-download,
+i.fa.fa-exclamation-triangle {
+    border-right: 1px solid #CCCCCC;
+    padding-right: 5px;
+}
+
+.pressReleaseBulletPoints h5 {
+    margin-top: 50px;
+    text-transform: none;
+    font-size: 18px;
+}
+
+.editorsNote h5,
+.contactDetails h5 {
+    text-transform: none;
+    font-size: 18px;
+}
+
+.allPressreleases .moduleHeader h2,
+.allPressreleases .moduleBody ul,
+.allPressreleases .moduleBody ul li,
+.allPressreleases .moduleBody h3 {
+    margin: 0px;
+}
+
+.allPressreleases .moduleBody h3 {
+    font-weight: 300;
+    color: #07101a;
+    font-size: 18px;
+}
+
+.editorsNote,
+.contactDetails {
+    margin-top: 40px;
+}
+
+p.pressReleaseEnds {
+    text-align: center;
+    font-weight: bold;
+}
+
+div#downloadPDF {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.pressReleaseBulletPoints ul li {
+    font-weight: bold;
+}

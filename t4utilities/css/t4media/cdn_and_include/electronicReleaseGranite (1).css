@@ -1,0 +1,565 @@
+.electronicRelease ul li {
+    line-height: 1.4em;
+}
+
+.row {
+    /*margin-top: 10px;*/
+}
+
+.lhs_column ul {
+    list-style: inherit;
+}
+
+#rhs_column {
+    background: #E7FBF8;
+    float: right;
+    /*min-width: 250px;*/
+    /*width: 20%;*/
+    width: 20%;
+    padding-left: 0px;
+    padding-bottom: 8px;
+    padding-top: 20px;
+    border-top: 1px solid #CCCDCD;
+    border-left: 1px solid #CCCDCD;
+    border-right: 1px solid #CCCDCD;
+    border-bottom: 1px solid #CCCDCD;
+    border-bottom-left-radius: 25px 25px;
+    border-top-left-radius: 25px 25px;
+    border-bottom-right-radius: 25px 25px;
+    border-top-right-radius: 25px 25px;
+    min-height: 70px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 2;
+    position: static;
+    font-size: 13px;
+}
+
+.lhs_column {
+    padding: 0px 0px 5px 8px;
+    max-width: 800px;
+    background-color: #FFFFFF;
+    margin-top: 0px;
+}
+
+.er_date {
+    font-size: 16px;
+    margin: 5px 5px 10px 0px;
+    padding-top: 5px;
+}
+
+.lhs_column p {
+    /*text-align: justify !important;*/
+    max-width: 800px;
+}
+
+.ERtable {
+    padding-left: 8px;
+    margin-bottom: 5px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+}
+
+.ERtable table {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.ERtable table td {
+    padding: 0px 2px 0px 0px;
+}
+
+#toggleText {
+    display: none;
+}
+
+#contentstart {
+    font-size: 14px;
+}
+
+.relatedLinks {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.statbankLinks {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.wrapImage {
+    display: block;
+}
+
+.generalContentImages {
+    float: left;
+}
+
+.wrapImage img,
+.headlineImage img {
+    margin: 0px 25px 10px 0px;
+    float: left;
+}
+
+.noWrapImage img {
+    margin: 0px 25px 10px 0px;
+}
+
+.er_headlineTable {
+    padding: 10px 10px 10px 0px;
+    /* max-width: 750px;*/
+    margin: 0px 20px 10px 0px;
+    /*background-color: #E7FBF8;     border-bottom-left-radius: 25px 25px;     border-top-left-radius: 25px 25px;     border-bottom-right-radius: 25px 25px;     border-top-right-radius: 25px 25px;     border-top: 1px solid #CCCDCD;     border-left: 1px solid #CCCDCD;     border-bottom: 1px solid #CCCDCD;     border-right: 1px solid #CCCDCD;*/
+    /* z-index: 1;   position: static;   max-width: 800px;*/
+}
+
+.er_headlineTable td {
+    padding: 5px;
+}
+
+.er_headline {
+    margin-bottom: 15px;
+}
+
+.er_title h1 {
+    color: #024972;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 0px 2px 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    margin: 10px 15px 0px 0px;
+}
+
+.er_headline h2 {
+    color: #024972;
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    padding: 5px 0px 2px 0px;
+    margin: 0px 15px 0px 0px;
+    font-weight: bold;
+}
+
+.er_instance h3 {
+    color: #024972;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+.rhsList {
+    display: block;
+    /* margin: 10px 0px 10px 20px; /*background: url('<t4 type="media" id="762" />') no-repeat scroll left 5px;*/
+    /*padding-left: 10px;
+    padding-right: 10px;*/
+    padding: 0 0 5px 8px;
+    vertical-align: top;
+}
+
+.rhsListNoindent {
+    display: block;
+    margin: 10px 0px 10px 8px;
+    /*background: url('<t4 type="media" id="762" />') no-repeat scroll left 5px;*/
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+.rhsList_noArrow {
+    display: block;
+    margin: 0 0 0 20px;
+    padding-right: 10px;
+}
+
+#print {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#print a {
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#rhs_column h5 {
+    padding: 5px 0 0 8px;
+    /* color: #FFFFFF;     background: #0473B5;*/
+    font-size: 11px;
+    margin: 5px 0px 4px 0px;
+}
+
+#topMenu {
+    /*min-width: 250px;     max-width: 700px;*/
+    width: 100%;
+    padding-left: 0px;
+    padding-bottom: 8px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#topMenu h5 {
+    padding: 5px 0px 5px 8px;
+    color: #FFFFFF;
+    background: #0473B5;
+    border-bottom-left-radius: 10px 10px;
+    border-top-left-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+}
+
+#RHStoggle {
+    display: block;
+}
+
+#RHStoggleMobile {
+    display: none;
+}
+
+.statbankButton {
+    border: thin solid #000000;
+    background-color: #CCCCCC;
+    margin-bottom: 5px;
+}
+
+.statbankButton2 img {
+    width: 100px !important;
+    height: 36px !important;
+}
+
+#open {
+    display: none;
+}
+
+#close {
+    display: none;
+}
+
+#statbankLink1,
+#statbankLink2,
+#statbankLink3 {
+    display: block;
+    padding: 0 0 5px 8px;
+    vertical-align: top;
+}
+
+.excelTable {
+    display: none;
+}
+
+#openingParagraph ul li:before {
+    position: static !important;
+    padding-right: 15px !important;
+}
+
+#openingParagraph ul {
+    /*list-style-image: url('<t4 type="media" id="86230" />');*/
+    padding: 0px;
+}
+
+#openingParagraph ul li {
+    background: none !important;
+    padding: 0px;
+}
+
+#socialMediaMobile {
+    display: none;
+}
+
+.viewInStatbank {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.OpenInExcel {
+    margin-top: 10px;
+}
+
+.HideTable {
+    margin: 5px 5px 5px 0px;
+}
+
+.BackgroundNotes {
+    display: none;
+}
+
+#socialMedia {
+    float: right;
+}
+
+.excelTable table tr:hover {
+    background: #EDEDED;
+}
+
+#printContact {
+    display: none;
+}
+
+#noLink {
+    display: none;
+}
+
+
+/*Highcharts styles*/
+
+.highchartTable {
+    display: none;
+    width: 500px;
+}
+
+.highchartTable table td,
+.highchartTable table th {
+    padding: 8px;
+}
+
+.highchartTable table {
+    border-collapse: collapse;
+}
+
+.highchartTable table thead {
+    background: #EEEEEE;
+    border-bottom: 1px solid #006699;
+    border-top: 2px solid #006699;
+    font-weight: bold;
+}
+
+.highchartTable table tbody th {
+    background: #EEEEEE;
+}
+
+.highchartTable table tbody tr:hover {
+    background: #E7FBF8;
+}
+
+.highchartBox {
+    /*width: 400px;
+    height: 348px;
+    float: left;
+    position: relative;
+    z-index: 2;
+    margin-right: 10px;*/
+    min-width: 310px;
+    /*height: 400px; */
+    margin: 0 auto
+}
+
+.button {
+    border: 1px solid #96d1f8;
+    background: #E7FBF8;
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+    background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+    background: -o-linear-gradient(top, #3e779d, #65a9d7);*/
+    padding: 6px 12px;
+    border-radius: 8px;
+    /* -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
+    color: #02395F;
+    font-size: 14px;
+    /*font-family: Georgia, serif;*/
+    text-decoration: none;
+    vertical-align: middle;
+    width: 120px;
+    height: 10px;
+    text-align: center;
+}
+
+.button:hover {
+    /*border-top-color: #28597a;*/
+    text-decoration: underline;
+    background: #E7FBF8;
+    color: #02395F;
+}
+
+
+/*.button:active
+{
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+    */
+
+.highchart {
+    display: inline-block;
+    /*border: 1px solid #CCCDCD;*/
+    margin: 10px;
+    padding: 10px;
+    max-width: 1000px;
+}
+
+.outerHighchart {
+    width: 100%;
+    text-align: center
+}
+
+.pieChart1 {
+    float: left;
+}
+
+
+/*.pieChart2
+{
+  float: right
+}
+*/
+
+.pieDataTable {
+    display: none
+}
+
+.greenbackground {
+    background-color: #E7FBF8;
+    padding: 5px;
+}
+
+#statbankTextMobile {
+    display: none;
+}
+
+#openingParagraph h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0 10px;
+    color: #07101a;
+}
+
+#openingParagraph p {
+    font-size: 16px;
+    line-height: 1.4em;
+    margin: 0px 15px 0px 0px;
+    padding-bottom: 12px;
+}
+
+
+/*Start HTMl to PDF
+
+
+  #print {
+    display: none;
+  }
+  
+ 
+  
+  #breadcrumbs {
+  margin-top: 10px
+  
+  }
+  
+  /* .pdf_button {
+  
+  text-decoration: none;
+  background-color: #e6f2ff;
+  color: #384350;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  font-size: 16px;
+  border-radius: 3px;
+}
+  
+  .pdf_button:hover {
+  color: #384350 !important;
+  background-color: #E0FFFF;
+  
+  
+  }
+  
+  .pdf_button:visited {
+  color: #384350 !important;
+  
+  }
+  
+ .col.span12.downloadPDF {
+    
+    text-align: right;
+    
+    padding-right: 30px;
+}
+  
+  i.fa.fa-file-pdf-o {
+    color: #E50B0A;
+}
+  i.fa.fa-download {
+    border-right: 1px solid #CCCCCC;
+    padding-right: 5px;
+  }*/
+
+div.pdfLinks {
+    float: right;
+    background: #E7FBF8;
+    padding: 5px;
+    border: 1px solid #CCCDCD;
+    border-radius: 5px;
+    width: 20%;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.pdf_button {
+    text-decoration: none;
+    color: #384350 !important;
+    padding: 2px 6px 2px 6px;
+}
+
+.pdf_button:hover {
+    color: #384350 !important;
+    text-decoration: underline;
+}
+
+.pdf_button:visited {
+    color: #384350 !important;
+}
+
+i.fa.fa-file-pdf-o {
+    color: #E50B0A;
+}
+
+i.fa.fa-download,
+i.fa.fa-exclamation-triangle {
+    border-right: 1px solid #CCCCCC;
+    padding-right: 5px;
+}
+
+.erRow {
+    margin-top: 40px;
+}
+
+#fullRelease {
+    display: none;
+}
+
+@media all and (max-width: 1200px) {
+    div.pdfLinks {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 1023px) {
+    div.pdfLinks {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 767px) {
+    div.pdfLinks {
+        width: 100%;
+    }
+}
+
+
+/*End HTMl to PDF
