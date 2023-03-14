@@ -4,7 +4,7 @@ t4Sdk.pxWidget = {};
 t4Sdk.pxWidget.chart = {};
 t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.latestValue = {};
-t4Sdk.pxWidget.utilities = {};
+t4Sdk.pxWidget.utility = {};
 //#endregion Add Namespace
 
 const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
@@ -38,8 +38,9 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
         isLive = true;
     }
 
-    if (t4Sdk.pxWidget.utilities.loadIsogram(isogramUrl)) {
 
+
+    $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
         //update query depending on status
         if (isLive) {
             config.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
@@ -113,10 +114,10 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
         if (!isLive) {
             //get release id from query
             var releaseId = config.metadata.api.query.data.params.release;
-            toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
+            toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
         }
         else {
-            toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
+            toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
         }
 
         //failed to read metadata, abort from here
@@ -207,10 +208,8 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
         }
 
 
-    }
-    else {
-        console.log("api-ajax-exception");
-    }
+
+    });
 
     //load specific widget library
     /*  $.ajax({
@@ -294,10 +293,10 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
              if (!isLive) {
                  //get release id from query
                  var releaseId = config.metadata.api.query.data.params.release;
-                 toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
+                 toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
              }
              else {
-                 toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
+                 toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
              }
  
              //failed to read metadata, abort from here
@@ -423,7 +422,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    var latestTimePoint = t4Sdk.pxWidget.utilities.getLatestTimeVariable(query.params.extension.matrix, true);
+    var latestTimePoint = t4Sdk.pxWidget.utility.getLatestTimeVariable(query.params.extension.matrix, true);
     var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
 
     $(valueElement).text(valueDetails.value);
@@ -445,7 +444,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
         "unit": null
     };
 
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatData(query);
+    var jsonStat = t4Sdk.pxWidget.utility.getPxStatData(query);
     //check that we only have one value back from the query
     if (jsonStat.value.length > 1) {
         console.log("Invalid query. Query should only return one value.")
@@ -455,7 +454,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
         var statisticDetails = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
         var statisticDecimal = statisticDetails.decimals;
 
-        valueDetails.value = t4Sdk.pxWidget.utilities.formatNumber(jsonStat.Data(0).value, statisticDecimal)
+        valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.Data(0).value, statisticDecimal)
         valueDetails.unit = statisticDetails.label;
     }
 
@@ -464,7 +463,15 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
 //#endregion
 
 //#region utilities
-t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSeparator, thousandSeparator) { //create global function  
+/**
+ * Describe the function
+ * @param {*} number 
+ * @param {*} precision 
+ * @param {*} decimalSeparator 
+ * @param {*} thousandSeparator 
+ * @returns 
+ */
+t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSeparator, thousandSeparator) { //create global function  
     precision = precision !== undefined ? precision : undefined;
     decimalSeparator = decimalSeparator || ".";
     thousandSeparator = thousandSeparator || ",";
@@ -490,7 +497,7 @@ t4Sdk.pxWidget.utilities.formatNumber = function (number, precision, decimalSepa
     return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
 };
 
-t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
+t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
     var metadata = null;
 
     var paramsMatrix = {
@@ -546,7 +553,7 @@ t4Sdk.pxWidget.utilities.getPxStatMetadata = function (matrixRelease, isLive) {
 
 };
 
-t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
+t4Sdk.pxWidget.utility.getPxStatData = function (query) {
     var data = null;
 
     $.ajax({
@@ -569,8 +576,8 @@ t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
     return data;
 };
 
-t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrixRelease, isLive) {
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
+t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) {
+    var jsonStat = t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive);
 
     var timeDimensionCode = null;
     $.each(jsonStat.Dimension(), function (index, value) {
@@ -589,7 +596,7 @@ t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrixRelease, isLive
     };
 };
 
-t4Sdk.pxWidget.utilities.getToggleDimensionVariables = function (matrixRelease, isLive, toggleDimension, toggleVariables) {
+t4Sdk.pxWidget.utility.getToggleDimensionVariables = function (matrixRelease, isLive, toggleDimension, toggleVariables) {
     toggleVariables = toggleVariables || null;
 
     var toggleVariablesDetails = {
@@ -597,7 +604,7 @@ t4Sdk.pxWidget.utilities.getToggleDimensionVariables = function (matrixRelease, 
         "variables": []
     };
 
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
+    var jsonStat = t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive);
     var toggleVariablesArr = [];
     if (toggleVariables) {
         //put variables into array
@@ -635,19 +642,14 @@ t4Sdk.pxWidget.utilities.getToggleDimensionVariables = function (matrixRelease, 
 
 };
 
-t4Sdk.pxWidget.utilities.loadIsogram = function (url) {
-    var loaded = false;
-    $.ajax({
+t4Sdk.pxWidget.utility.loadIsogram = function (url) {
+    return $.ajax({
         "url": url,
         "dataType": "script",
         "async": false,
         "error": function (jqXHR, textStatus, errorThrown) {
             console.log("api-ajax-exception");
-        },
-        "success": function () {
-            loaded = true;
         }
     });
-    return loaded;
 };
 //#endregion utilities
