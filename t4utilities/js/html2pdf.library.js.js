@@ -1,1 +1,0 @@
-var t4Sdk = this || {}; 
