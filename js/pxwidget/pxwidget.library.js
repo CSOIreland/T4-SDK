@@ -119,10 +119,10 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
             if (!isLive) {
                 //get release id from query
                 var releaseId = config.metadata.api.query.data.params.release;
-                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(false, releaseId, toggleDimension.trim(), toggleVariables, defaultVariable)
+                toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
             }
             else {
-                toggleDimensionDetails = t4Sdk.pxWidget.chart.getToggleDimensionVariables(true, matrix.trim(), toggleDimension.trim(), toggleVariables, defaultVariable)
+                toggleDimensionDetails = t4Sdk.pxWidget.utilities.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
             }
 
             //failed to read metadata, abort from here
@@ -214,52 +214,6 @@ t4Sdk.pxWidget.chart.create = function (elementId, isLive, snippet, toggleType, 
 
         }
     });
-};
-
-t4Sdk.pxWidget.chart.getToggleDimensionVariables = function (isLive, matrixRelease, toggleDimension, toggleVariables) {
-    toggleVariables = toggleVariables || null;
-
-    var dimension = {
-        "label": "",
-        "variables": []
-    };
-
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
-    var toggleVariablesArr = [];
-    if (toggleVariables) {
-        //put variables into array
-        toggleVariablesArr = toggleVariables.split(',');
-    }
-
-    //trim all variables
-    var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
-        return element.trim();
-    });
-
-    if (toggleVariablesArrTrimmed.length) {
-        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-            if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
-                dimension.variables.push({
-                    "code": code,
-                    "label": jsonStat.Dimension(toggleDimension).Category(code).label
-                });
-            }
-
-        });
-    }
-    else {
-        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-            dimension.variables.push({
-                "code": code,
-                "label": jsonStat.Dimension(toggleDimension).Category(code).label
-            });
-
-        });
-    }
-    //populate toggle variable label
-    dimension.label = jsonStat.Dimension(toggleDimension).label;
-    return dimension;
-
 };
 
 t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, toggleVariable, varriableLabel) {
@@ -434,8 +388,8 @@ t4Sdk.pxWidget.utilities.getPxStatData = function (query) {
     return data;
 };
 
-t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrix, isLive) {
-    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrix, isLive);
+t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrixRelease, isLive) {
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
 
     var timeDimensionCode = null;
     $.each(jsonStat.Dimension(), function (index, value) {
@@ -452,5 +406,51 @@ t4Sdk.pxWidget.utilities.getLatestTimeVariable = function (matrix, isLive) {
         "code": time.slice(-1)[0],
         "label": jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label
     };
+};
+
+t4Sdk.pxWidget.utilities.getToggleDimensionVariables = function (matrixRelease, isLive, toggleDimension, toggleVariables) {
+    toggleVariables = toggleVariables || null;
+
+    var toggleVariablesDetails = {
+        "label": "",
+        "variables": []
+    };
+
+    var jsonStat = t4Sdk.pxWidget.utilities.getPxStatMetadata(matrixRelease, isLive);
+    var toggleVariablesArr = [];
+    if (toggleVariables) {
+        //put variables into array
+        toggleVariablesArr = toggleVariables.split(',');
+    }
+
+    //trim all variables
+    var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
+        return element.trim();
+    });
+
+    if (toggleVariablesArrTrimmed.length) {
+        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+            if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                toggleVariablesDetails.variables.push({
+                    "code": code,
+                    "label": jsonStat.Dimension(toggleDimension).Category(code).label
+                });
+            }
+
+        });
+    }
+    else {
+        $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+            toggleVariablesDetails.variables.push({
+                "code": code,
+                "label": jsonStat.Dimension(toggleDimension).Category(code).label
+            });
+
+        });
+    }
+    //populate toggle variable label
+    toggleVariablesDetails.label = jsonStat.Dimension(toggleDimension).label;
+    return toggleVariablesDetails;
+
 };
 //#endregion utilities
