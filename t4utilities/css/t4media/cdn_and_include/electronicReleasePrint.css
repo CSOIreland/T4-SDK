@@ -1,0 +1,210 @@
+#header,
+#outer_nav,
+#breadcrumbs,
+#mobileHeader,
+#outer-nav-mobile,
+#HidePrint,
+#ShowHide,
+#footer,
+#cse-search-form,
+#statbankTextMobile,
+.OpenInExcel,
+.HideTable,
+.OpenInExcel,
+.HideTable,
+.viewInStatbank,
+#socialMedia,
+#socialMediaMobile,
+#rhs_column,
+.btn,
+.navMobile,
+.mainNav,
+.highcharts-button,
+.socialNavList,
+.footerNavList,
+.downloadPDF,
+#headerSocial,
+.headerSearch {
+    display: none;
+}
+
+#st-2 {
+    display: none !important;
+}
+
+body {
+    color: #000000;
+}
+
+p,
+ul {
+    font-size: 17px !important;
+}
+
+#cookie-info {
+    display: none !important;
+}
+
+.excelTable,
+.BackgroundNotes,
+#contactDetails,
+#statbankLink,
+#printContact {
+    display: block;
+}
+
+#printContact {
+    margin-bottom: 60px;
+}
+
+.excelTable {
+    margin-top: 10px;
+}
+
+h5 {
+    font-size: 14px;
+    margin: 5px 0 4px;
+    padding: 5px 0 0 8px;
+}
+
+.rhsList_noArrow {
+    display: block;
+    margin: 0 0 0 20px;
+    padding-right: 10px;
+}
+
+.rhsListNoindent {
+    display: block;
+    margin: 10px 0 10px 8px;
+    padding-left: 0;
+    padding-right: 10px;
+    vertical-align: top;
+}
+
+.highmap,
+.highchartBox {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.ERtable table td {
+    font-size: 9px;
+    color: black;
+}
+
+.ERtable table tr {
+    height: 13px
+}
+
+.BackgroundNotes {
+    page-break-before: always;
+    break-before: always;
+}
+
+.highchartTable,
+.pieDataTable {
+    display: none;
+}
+
+.outerHighchart {
+    width: 90%;
+    text-align: left;
+}
+
+.highchart {
+    max-width: 800px;
+}
+
+.wrapImage img,
+.headlineImage img {
+    margin: 0px 25px 10px 0px;
+    float: left;
+}
+
+.er_headline h2 {
+    color: #024972;
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    padding: 5px 0px 2px 0px;
+    margin: 20px 15px 20px 0px;
+    font-weight: bold;
+}
+
+.er_headlineTable table {
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.ERtable table,
+.BackgroundNotes table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+
+/*
+    
+    @-moz-document url-prefix() {
+    
+        .ERtable table, .BackgroundNotes table { page-break-before: always; }
+    }
+    */
+
+.BackgroundNotes {
+    page-break-before: always;
+    break-before: always;
+}
+
+.er_title h1 {
+    color: #024972;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 0px 2px 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    margin: 10px 15px 0px 0px;
+    width: 50%;
+}
+
+.er_date {
+    font-size: 16px;
+    margin: 5px 5px 10px 0px;
+    padding-top: 5px;
+}
+
+.er_instance h3 {
+    color: #024972;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
+}
+
+ul {
+    page-break-inside: avoid;
+    page-break-before: avoid;
+    page-break-after: avoid;
+}
+
+.row {
+    margin-top: 20px
+}
+
+#rhs_column h5,
+.rhsList_noArrow {
+    padding: 0px;
+    margin: 0px;
+}
+
+#QRcode,
+img {
+    page-break-inside: avoid;
+}
+
+#QRcode img {
+    width: 150px;
+    height: 150px;
+}
