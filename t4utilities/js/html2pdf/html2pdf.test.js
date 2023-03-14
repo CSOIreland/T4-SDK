@@ -1,1 +1,1 @@
-var f=5;
+var t4Sdks = this || {}; 
