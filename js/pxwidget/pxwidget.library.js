@@ -17,7 +17,7 @@ const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc"
 
 //#region create a chart with toggle variables
 
-t4Sdk.pxWidget.create = function (elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
+t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
@@ -174,14 +174,30 @@ t4Sdk.pxWidget.create = function (elementId, isLive, snippet, toggleType, toggle
         switch (toggleType) {
             case "dropdown":
                 $("#" + elementId + "-toggle-select").change(function () {
-                    t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                    switch (type) {
+                        case "chart":
+                            t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            break;
+
+                        default:
+                            break;
+                    }
                 });
                 break;
             case "buttons":
                 $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").click(function () {
                     $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").removeClass("active");
-                    $(this).addClass("active")
-                    t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).text());
+                    $(this).addClass("active");
+
+                    switch (type) {
+                        case "chart":
+                            t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).text());
+                            break;
+
+                        default:
+                            break;
+                    }
+
                 });
                 break;
 
