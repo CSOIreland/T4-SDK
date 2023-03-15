@@ -148,7 +148,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //draw toggle variables
     $.each(toggleDimensionDetails.variables, function (index, value) {
 
-
         switch (toggleType) {
             case "dropdown":
                 var option = $("<option>", {
@@ -315,6 +314,14 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     localConfig.data.api.query.data.params.dimension[toggleDimension] = {};
     localConfig.data.api.query.data.params.dimension[toggleDimension].category = {};
     localConfig.data.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
+
+    //update query to make sure all dimensions are now included in id array
+    localConfig.data.api.query.data.params.id = [];
+
+    $.each(localConfig.data.api.query.data.params.dimension, function (key, value) {
+        localConfig.data.api.query.data.params.id.push(key);
+    });
+
 
     //remove toggle dimension from hidden columns if there
     var toggleDimensionHiddenPosition = localConfig.hideColumns.indexOf(toggleDimension);
