@@ -117,7 +117,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
     }
     else {
-        toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrix.trim(), true, toggleDimension.trim(), toggleVariables, defaultVariable)
+        toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(config.matrix, true, toggleDimension.trim(), toggleVariables, defaultVariable)
     }
 
     //failed to read metadata, abort from here
