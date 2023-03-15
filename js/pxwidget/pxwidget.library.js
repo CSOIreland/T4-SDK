@@ -33,17 +33,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
 
     //check config to see if it's from a live snippet code
-    switch (type) {
-        case "chart":
-            if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
-                isLive = true;
-            }
-            break;
-
-        default:
-            break;
+    //if matrix at root level is null, it must be live
+    if (config.matrix === null) {
+        isLive = true;
     }
-
 
     $("#" + elementId).empty();
     //set up html elements needed
@@ -240,8 +233,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             default:
                 break;
         }
-
-
 
     });
 };
