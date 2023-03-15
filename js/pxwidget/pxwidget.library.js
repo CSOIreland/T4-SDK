@@ -287,18 +287,20 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
     if (isLive) {
+        localConfig.data.api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+
         localConfig.data.api.query.data.params.extension.matrix = matrix;
         localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
-        localConfig.data.api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+
         localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
         localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
         localConfig.metadata.api.query.data.params.matrix = matrix;
         delete localConfig.metadata.api.query.data.params.release;
     }
     //update query for selected variable
-    localConfig.metadata.api.query.data.params.dimension[toggleDimension] = {};
-    localConfig.metadata.api.query.data.params.dimension[toggleDimension].category = {};
-    localConfig.metadata.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
+    localConfig.data.api.query.data.params.dimension[toggleDimension] = {};
+    localConfig.data.api.query.data.params.dimension[toggleDimension].category = {};
+    localConfig.data.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
 
     //remove toggle dimension from hidden columns if there
     localConfig.hideColumns.splice(hideColumns.indexOf(toggleDimension), 1);
