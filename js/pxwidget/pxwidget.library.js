@@ -302,7 +302,14 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     localConfig.data.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
 
     //remove toggle dimension from hidden columns if there
-    localConfig.hideColumns.splice(localConfig.hideColumns.indexOf(toggleDimension), 1);
+    var toggleDimensionHiddenPosition = localConfig.hideColumns.indexOf(toggleDimension);
+    if (toggleDimensionHiddenPosition != -1) {
+        debugger
+    }
+
+
+
+    //localConfig.hideColumns.splice(localConfig.hideColumns.indexOf(toggleDimension), 1);
 
 
     $("#" + elementId + "-widget-container").empty();
