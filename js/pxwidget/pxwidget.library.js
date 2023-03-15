@@ -296,8 +296,9 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
         delete localConfig.metadata.api.query.data.params.release;
     }
     //update query for selected variable
+    localConfig.metadata.api.query.data.params.dimension[toggleDimension] = {};
+    localConfig.metadata.api.query.data.params.dimension[toggleDimension].category = {};
     localConfig.metadata.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
-
 
     //remove toggle dimension from hidden columns if there
     localConfig.hideColumns.splice(hideColumns.indexOf(toggleDimension), 1);
