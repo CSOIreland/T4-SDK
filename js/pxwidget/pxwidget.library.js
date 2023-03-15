@@ -142,9 +142,12 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         console.log("Error getting metadata ")
         return;
     }
-
+    if (toggleIsTime) {
+        toggleDimensionDetails.variables.reverse();
+    }
     //draw toggle variables
     $.each(toggleDimensionDetails.variables, function (index, value) {
+
 
         switch (toggleType) {
             case "dropdown":
