@@ -168,8 +168,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
-
-
         //listener events to draw chart
         switch (toggleType) {
             case "dropdown":
@@ -177,6 +175,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     switch (type) {
                         case "chart":
                             t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            break;
+
+                        case "table":
+                            t4Sdk.pxWidget.chart.drawTable(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
                             break;
 
                         default:
@@ -245,6 +247,26 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, t
         elementId + "-chart-container",
         localConfig
     )
+};
+
+t4Sdk.pxWidget.chart.drawTable = function (elementId, config, toggleDimension, toggleVariable, varriableLabel) {
+    debugger
+    /* var localConfig = $.extend(true, {}, config);
+    //update config with toggle variable
+    localConfig.options.title.display = true;
+    localConfig.options.title.text = [varriableLabel];
+
+    $.each(localConfig.data.datasets, function (index, value) {
+        value.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
+    });
+
+    $("#" + elementId + "-chart-container").empty();
+
+    pxWidget.draw.init(
+        'chart',
+        elementId + "-chart-container",
+        localConfig
+    ) */
 };
 
 //#endregion create a chart with toggle variables
