@@ -103,6 +103,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 releaseId = config.metadata.api.query.data.params.release;
                 break;
 
+            case "table":
+                releaseId = config.data.api.query.data.params.extension.release;
+                break;
+
             default:
                 break;
         }
@@ -117,6 +121,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         switch (type) {
             case "chart":
                 matrix = config.metadata.api.query.data.params.matrix;
+                break;
+
+            case "table":
+                matrix = config.data.api.query.data.params.extension.matrix;
                 break;
 
             default:
