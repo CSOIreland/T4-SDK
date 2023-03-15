@@ -182,8 +182,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         var toggleIsTime = false;
 
         t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-            debugger
-        })
+            if (response.Dimension(toggleDimension).role == "time") {
+                toggleIsTime = true;
+            }
+        });
 
 
         //listener events to draw chart
@@ -228,7 +230,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         //load default chart
         switch (toggleType) {
             case "dropdown":
-                $("#" + elementId + "-toggle-select").trigger("change");
+                $("#" + elementId + "-toggle-select").trigger("change"); "async": false,
                 break;
             case "buttons":
                 if (defaultVariable) {
@@ -247,6 +249,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 };
 
 t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+    debugger
     var localConfig = $.extend(true, {}, config);
 
     var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
@@ -284,6 +287,7 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
 };
 
 t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
+    debugger
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
