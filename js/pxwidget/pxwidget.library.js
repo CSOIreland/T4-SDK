@@ -65,7 +65,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
             $("#" + elementId).append(
                 $("<div>", {
-                    "id": elementId + "-chart-container",
+                    "id": elementId + "-widget-container",
                     "class": "pxwidget"
                 }).get(0).outerHTML
             );
@@ -82,7 +82,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
             $("#" + elementId).append(
                 $("<div>", {
-                    "id": elementId + "-chart-container",
+                    "id": elementId + "-widget-container",
                     "class": "pxwidget"
                 }).get(0).outerHTML
             );
@@ -195,7 +195,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             break;
 
                         case "table":
-                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val());
                             break;
 
                         default:
@@ -273,33 +273,43 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
         value.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
     });
 
-    $("#" + elementId + "-chart-container").empty();
+    $("#" + elementId + "-widget-container").empty();
 
     pxWidget.draw.init(
         'chart',
-        elementId + "-chart-container",
+        elementId + "-widget-container",
         localConfig
     )
 };
 
-t4Sdk.pxWidget.chart.drawTable = function (elementId, config, toggleDimension, toggleVariable, varriableLabel) {
-    debugger
-    /* var localConfig = $.extend(true, {}, config);
-    //update config with toggle variable
-    localConfig.options.title.display = true;
-    localConfig.options.title.text = [varriableLabel];
+t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
+    var localConfig = $.extend(true, {}, config);
+    var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
-    $.each(localConfig.data.datasets, function (index, value) {
-        value.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
-    });
+    if (isLive) {
+        localConfig.data.api.query.data.params.extension.matrix = matrix;
+        localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+        localConfig.data.api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+        localConfig.metadata.api.query.data.params.matrix = matrix;
+        delete localConfig.metadata.api.query.data.params.release;
+    }
+    //update query for selected variable
+    localConfig.metadata.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
 
-    $("#" + elementId + "-chart-container").empty();
+
+    //remove toggle dimension from hidden columns if there
+    localConfig.hideColumns.splice(hideColumns.indexOf(toggleDimension), 1);
+
+
+    $("#" + elementId + "-widget-container").empty();
 
     pxWidget.draw.init(
         'chart',
-        elementId + "-chart-container",
+        elementId + "-widget-container",
         localConfig
-    ) */
+    )
 };
 
 //#endregion create a chart with toggle variables
