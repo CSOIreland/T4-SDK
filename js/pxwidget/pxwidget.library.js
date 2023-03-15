@@ -38,6 +38,40 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         isLive = true;
     }
 
+    var matrixRelease = null;
+
+    if (!isLive) {
+        //get release id from query
+        var releaseId = null;
+
+        switch (type) {
+            case "chart":
+                matrixRelease = config.metadata.api.query.data.params.release;
+                break;
+
+            case "table":
+                matrixRelease = config.data.api.query.data.params.extension.release;
+                break;
+
+            default:
+                break;
+        }
+    }
+    else {
+        switch (type) {
+            case "chart":
+                matrixRelease = config.metadata.api.query.data.params.matrix;
+                break;
+
+            case "table":
+                matrixRelease = config.data.api.query.data.params.extension.matrix;
+                break;
+
+            default:
+                break;
+        }
+    }
+
     $("#" + elementId).empty();
     //set up html elements needed
 
@@ -92,47 +126,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     //get variables to toggle on
-    var toggleDimensionDetails = {};
-    //get metadata for toggle
-    if (!isLive) {
-        //get release id from query
-        var releaseId = null;
-
-        switch (type) {
-            case "chart":
-                releaseId = config.metadata.api.query.data.params.release;
-                break;
-
-            case "table":
-                releaseId = config.data.api.query.data.params.extension.release;
-                break;
-
-            default:
-                break;
-        }
-
-        toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
-    }
-    else {
-
-        //get release id from query
-        var matrix = null;
-
-        switch (type) {
-            case "chart":
-                matrix = config.metadata.api.query.data.params.matrix;
-                break;
-
-            case "table":
-                matrix = config.data.api.query.data.params.extension.matrix;
-                break;
-
-            default:
-                break;
-        }
-
-        toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrix, true, toggleDimension.trim(), toggleVariables, defaultVariable)
-    }
+    var toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrixRelease, isLive, toggleDimension.trim(), toggleVariables, defaultVariable)
 
     //failed to read metadata, abort from here
     if (!toggleDimensionDetails.variables.length) {
@@ -185,6 +179,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+        //var toggleIsTime = false;
+
+        // t4Sdk.pxWidget.utility.getPxStatMetadata()
+
+
         //listener events to draw chart
         switch (toggleType) {
             case "dropdown":
@@ -245,7 +244,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     });
 };
 
-t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel) {
+t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
 
     var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
