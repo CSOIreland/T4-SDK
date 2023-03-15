@@ -179,9 +179,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
-        //var toggleIsTime = false;
+        var toggleIsTime = false;
 
-        // t4Sdk.pxWidget.utility.getPxStatMetadata()
+        t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
+            debugger
+        })
 
 
         //listener events to draw chart
@@ -190,11 +192,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 $("#" + elementId + "-toggle-select").change(function () {
                     switch (type) {
                         case "chart":
-                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                             break;
 
                         case "table":
-                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val());
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
                             break;
 
                         default:
