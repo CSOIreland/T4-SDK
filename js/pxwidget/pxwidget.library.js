@@ -110,7 +110,17 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //get metadata for toggle
     if (!isLive) {
         //get release id from query
-        var releaseId = config.metadata.api.query.data.params.release;
+        var releaseId = null;
+
+        switch (type) {
+            case "chart":
+                releaseId = config.metadata.api.query.data.params.release;
+                break;
+
+            default:
+                break;
+        }
+
         toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(releaseId, false, toggleDimension.trim(), toggleVariables, defaultVariable)
     }
     else {
