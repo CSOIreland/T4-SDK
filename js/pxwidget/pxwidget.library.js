@@ -31,26 +31,19 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
-    var matrix = config.matrix || config.metadata.api.query.data.params.matrix;
 
     //check config to see if it's from a live snippet code
-    if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
-        isLive = true;
+    switch (type) {
+        case "chart":
+            if (config.metadata.api.query.data.method == T4SDK_PXWIDGET_READ_METADATA) {
+                isLive = true;
+            }
+            break;
+
+        default:
+            break;
     }
 
-    //update query depending on status
-    if (isLive) {
-        config.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-        config.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
-        config.metadata.api.query.data.params.matrix = matrix;
-        delete config.metadata.api.query.data.params.release
-
-        $.each(config.data.datasets, function (index, value) {
-            value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
-            value.api.query.data.params.extension.matrix = matrix;
-            delete value.api.query.data.params.extension.release
-        });
-    };
 
     $("#" + elementId).empty();
     //set up html elements needed
@@ -184,11 +177,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 $("#" + elementId + "-toggle-select").change(function () {
                     switch (type) {
                         case "chart":
-                            t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
                             break;
 
                         case "table":
-                            t4Sdk.pxWidget.chart.drawTable(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text());
                             break;
 
                         default:
@@ -203,7 +196,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
                     switch (type) {
                         case "chart":
-                            t4Sdk.pxWidget.chart.drawChart(elementId, config, $(this).attr("dimension"), $(this).val(), $(this).text());
+                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text());
                             break;
 
                         default:
@@ -240,8 +233,26 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     });
 };
 
-t4Sdk.pxWidget.chart.drawChart = function (elementId, config, toggleDimension, toggleVariable, varriableLabel) {
+t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel) {
     var localConfig = $.extend(true, {}, config);
+
+    var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
+    //update query depending on status
+    if (isLive) {
+        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+        localConfig.metadata.api.query.data.params.matrix = matrix;
+        delete localConfig.metadata.api.query.data.params.release
+
+        $.each(localConfig.data.datasets, function (index, value) {
+            value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+            value.api.query.data.params.extension.matrix = matrix;
+            delete value.api.query.data.params.extension.release
+        });
+    };
+
+
+
     //update config with toggle variable
     localConfig.options.title.display = true;
     localConfig.options.title.text = [varriableLabel];
