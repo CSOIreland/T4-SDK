@@ -1,0 +1,596 @@
+.row {
+    margin-top: 0px;
+}
+
+.footer .row {
+    margin-top: 70px;
+}
+
+.copy h2 {
+    font-weight: 500;
+}
+
+#container {
+    width: 100%;
+}
+
+#content p,
+#content ul {
+    max-width: 800px;
+}
+
+.header h1 {
+    border-bottom-style: none;
+}
+
+h1 {
+    margin-bottom: 15px !important;
+}
+
+.IndicatorText p,
+.IndicatorText ul {
+    max-width: 100% !important;
+}
+
+.indicator ul {
+    list-style: square;
+}
+
+.indicator li a {
+    display: inline;
+    padding: 0px;
+    color: #006bb6;
+}
+
+.indicator li a:hover {
+    background: #ffffff;
+    text-decoration: underline;
+}
+
+.indicator li a:before {
+    content: none;
+}
+
+#hmenu ul {
+    max-width: 100%;
+}
+
+.inner-rightcol .contentBlock {
+    border-right: 0px;
+    margin-right: 0px;
+    padding: 1px 20px 1px 1px;
+}
+
+.contentBlock {
+    background: #ffffff;
+    padding: 15px !important;
+    font-size: 14px;
+}
+
+#content ul {}
+
+.publicationListing {
+    font-size: 16px;
+}
+
+.contentBlock p,
+contentBlock ul {}
+
+.indicatorList {
+    display: none;
+}
+
+.publicationIndexLinks {
+    margin: 20px 0px 20px 20px;
+}
+
+.pubOpenCloseTable {
+    border: 2px solid #399A9A;
+    border-radius: 5px;
+    color: #545353;
+    /*width: 800px;*/
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.pubOpenCloseTableTitle:hover {
+    cursor: pointer;
+}
+
+#sectionbar-two {
+    height: 30px;
+}
+
+.mipGraph {
+    display: none;
+}
+
+.mipmap {
+    display: none;
+}
+
+.graphDiv,
+.mapDiv {
+    float: left;
+    margin-right: 20px;
+}
+
+.printIndicator img {
+    margin-left: 10px;
+}
+
+.ERtable {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    padding: 5px;
+    width: 60%;
+}
+
+.OpenInExcel {
+    margin: 10px;
+}
+
+.indicator {
+    margin-bottom: 20px;
+    border: 1px solid #384350;
+    max-width: 900px;
+}
+
+.indicator .moduleBody {
+    background: #ffffff;
+}
+
+.indicator .moduleHeader {
+    background: #E2E2E2;
+    color: #384350;
+}
+
+.indicator .moduleHeader h2 a {
+    color: #384350;
+}
+
+.indicatorHeading {
+    margin-bottom: 10px;
+}
+
+#headlineGraphs {
+    width: 400px;
+    margin: 0px 0px 0px 20px;
+    float: left;
+}
+
+#headlineGraphs img {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#mobileHeader,
+#navigation-mobile,
+#socialMediaMobile {
+    display: none;
+}
+
+h1 {
+    color: #024972;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 0px 2px 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    margin: 0px 15px 0px 0px;
+    max-width: 800px;
+}
+
+#sectionTitle h2 {
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #CCCDCD;
+    padding: 5px 0px 2px 0px;
+    margin: 0px 15px 0px 0px;
+}
+
+#publicationDate p {
+    font-size: 14px;
+    margin: 5px 5px 10px 0px;
+    padding-top: 5px;
+}
+
+#content {
+    margin: 0px;
+    padding: 10px;
+}
+
+.highchart {
+    height: 200px;
+    width: 250px;
+    margin: 10px;
+    float: left;
+}
+
+.highcharts-container {
+    /*border: 2px solid #366291;
+  border-radius: 8px;*/
+}
+
+#AllHighcharts {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    text-align: center;
+}
+
+.indicatorHeadlineTable table td {
+    /*color: #02395F !important;
+  white-space: nowrap;*/
+}
+
+.ERtable table tr:hover,
+.indicatorHeadlineTable table tr:hover {
+    /*background: #EDEDED;*/
+    background: #CCCCCC;
+}
+
+.ERtable table {
+    width: 100%;
+}
+
+.mip_rhs {
+    float: right;
+    text-align: center;
+    /*width: 40%;*/
+}
+
+.publication_rhs {
+    float: right;
+    text-align: center;
+    margin-right: 10%;
+    margin-top: 40px;
+}
+
+.mipListingImage {
+    border: 5px solid black !important;
+    max-width: 400px;
+    height: auto;
+}
+
+.yearbookListingImage {
+    max-width: 400px;
+    height: auto;
+}
+
+.square {
+    margin: 5px 20px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    zoom: 1;
+    /*display: inline;*/
+    margin-top: 20px;
+}
+
+.pubHomePageSquare {
+    margin: 5px 20px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    width: 200px;
+    height: 220px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    zoom: 1;
+    /*display: inline;*/
+    margin-top: 20px;
+}
+
+.outerContainer {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+.HomeBoxText p {}
+
+#homeImage {
+    margin: 10px 10px 40px 10px;
+    text-align: center;
+}
+
+#homeImage img {
+    border: 1px solid;
+}
+
+div#hmenu {
+    margin-right: 0;
+    margin-top: 10px;
+    padding: 20px;
+    background: #E8F4FC;
+    text-align: center;
+    border-radius: 10px;
+}
+
+div#hmenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#hmenu ul li {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    color: #ffffff;
+}
+
+div#hmenu ul li a {
+    display: inline-block;
+}
+
+div#hmenu ul a:link {
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    font-size: medium;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+div#hmenu ul a:visited {
+    margin: 0;
+    /*padding: .3em .4em .3em .4em; */
+    padding: 10px;
+    text-decoration: none;
+    font-size: medium;
+    color: #ffffff;
+}
+
+div#hmenu ul a:hover {
+    margin: 0;
+    text-decoration: underline;
+    font-size: medium;
+    color: #ffffff;
+}
+
+.mipListing,
+{
+    float: left;
+    width: 50%
+}
+
+#sectionTitle {
+    margin-top: 20px;
+}
+
+#sectionTitle h2,
+#sectionTitle h2 a,
+#sectionTitle h2 a:hover,
+#sectionTitle h2 a:visited {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.square a:link {
+    color: #660000 !important;
+    text-decoration: none !important;
+    font-size: 14px;
+}
+
+.square a:visited {
+    color: #660000 !important;
+    text-decoration: none;
+}
+
+.square a:active,
+.square a:hover {
+    color: #660000 !important;
+    text-decoration: underline !important;
+}
+
+.icons {
+    padding: 10px;
+    max-width: 260px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#content ul li {
+    padding: 0 0 4px 5px;
+    margin: 2px 0 8px 20px;
+}
+
+#socialMedia {
+    float: right;
+}
+
+#breadcrumbs {
+    padding: 8px 19px 10px 10px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+#breadcrumb {
+    float: left;
+}
+
+.IndicatorText {
+    float: left;
+    width: 35%;
+}
+
+.pieGeneralText {
+    margin-top: 15px;
+}
+
+.responsiveImage {
+    text-align: center;
+}
+
+.PublicationIndicatorText ul li {
+    font-size: 15px;
+    color: #5b6774;
+    font-weight: 400;
+}
+
+
+/*@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 800px) */
+
+@media only screen and (max-width: 800px),
+only screen and (max-device-width: 800px) {
+    body {
+        background-color: #ffffff;
+    }
+    #header {
+        border-bottom: 1px solid #CCCDCD;
+    }
+    #container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #header-search {
+        background: none;
+        position: static;
+        float: left;
+        height: auto;
+        width: auto;
+        padding: 0;
+    }
+    #header-links {
+        position: static;
+        background: none;
+        border: none;
+        padding: 5px 0px 5px 0px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #CCCDCD;
+        width: 100%;
+    }
+    #navigation-main {
+        display: none;
+    }
+    #breadcrumb {
+        display: none;
+    }
+    #breadcrumbs {
+        background-color: #FFFFFF;
+        border-bottom: 0px;
+    }
+    #navigation-mobile {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    #mobileMenu {
+        display: none;
+    }
+    .menuLink,
+    #menuToggle {
+        border: 1px solid #ffffff;
+        padding: 5px;
+        color: #ffffff;
+        background-color: #0473B5;
+        border-radius: 10px 10px;
+    }
+    .menuLink {
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #ffffff;
+        padding: 5px;
+        color: #ffffff;
+        background-color: #0473B5;
+    }
+    .menuLink a {
+        color: #ffffff;
+    }
+    #socialMediaMobile {
+        display: block;
+        float: left;
+    }
+    #outer-nav-mobile {
+        float: left;
+        width: 50%;
+    }
+    #sectionbar-one h1 {
+        margin-right: 0px;
+    }
+    #sectionbar-one {
+        border-top: 1px solid #CCCDCD;
+        min-height: 50px;
+    }
+    #navigation-section ul li {
+        margin: 5px;
+    }
+    .IndicatorText {
+        float: left;
+    }
+    .ERtable {
+        width: 100%;
+    }
+    #tabContainer {
+        width: 100%;
+        padding: 0px;
+    }
+    #tabs {
+        display: none;
+    }
+    #content {
+        margin: 5px;
+    }
+    #homeImage img {
+        max-width: 100%;
+        height: auto;
+    }
+    div#hmenu ul li {
+        display: inline-block;
+    }
+    div#hmenu ul li {
+        margin: 15px;
+    }
+    .outerContainer {
+        width: 100%;
+    }
+    .mip_rhs {
+        float: left;
+    }
+    .publication_rhs {
+        float: left;
+    }
+    #hmenu {
+        padding: 0px;
+        margin: 0px;
+    }
+    .mipListing,
+    .publicationListing {
+        float: left;
+        width: 100%
+    }
+    .outerHighchart {
+        text-align: left
+    }
+    #homeImage {
+        width: auto;
+        height: 170px;
+    }
+    #socialMedia {
+        float: left;
+    }
+    .mipListingImage {
+        max-width: 100%;
+    }
+    .yearbookListingImage {
+        max-width: 100%;
+    }
+    .IndicatorText {
+        float: left;
+        width: 100%;
+    }
+}

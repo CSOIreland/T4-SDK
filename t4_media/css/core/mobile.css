@@ -1,0 +1,198 @@
+@media only screen and (max-width: 1000px),
+only screen and (max-device-width: 1000px) {
+    body {
+        background-color: #ffffff;
+    }
+    #content {
+        margin-left: 10px;
+    }
+    #outer_nav,
+    #breadcrumbs,
+    #socialMedia {
+        display: none;
+    }
+    #header {
+        border-bottom: 1px solid #CCCDCD;
+    }
+    #header-search {
+        background: none;
+        position: static;
+        float: left;
+        height: auto;
+        width: auto;
+        padding: 0;
+    }
+    #header-links {
+        position: static;
+        background: none;
+        border: none;
+        padding: 5px 0px 5px 0px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #CCCDCD;
+        width: 100%;
+    }
+    #outer-nav-mobile {
+        float: left;
+        margin-right: 30px;
+        display: block;
+        width: 50%;
+        background-color: #ffffff;
+        border: none;
+    }
+    #navigation-mobile {
+        float: left;
+        width: 100%;
+        padding: 0px;
+    }
+    #mobileMenu {
+        display: none;
+    }
+    #socialMediaMobile {
+        display: block;
+        padding: 5px;
+        float: left;
+    }
+    .menuLink,
+    #menuToggle {
+        border: 1px solid #ffffff;
+        padding: 5px;
+        color: #ffffff;
+        background-color: #0473B5;
+        border-radius: 10px 10px;
+    }
+    .menuLink {
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #ffffff;
+        padding: 5px;
+        color: #ffffff;
+        background-color: #0473B5;
+    }
+    .menuLink a {
+        color: #ffffff;
+    }
+    #outer-nav-mobile {
+        float: left;
+        margin-right: 30px;
+        display: block;
+        width: 50%;
+    }
+    #navigation-mobile {
+        float: left;
+        width: 100%;
+    }
+    #container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #statbankTextMobile {
+        background: #E7FBF8;
+        padding: 5px;
+        width: 94%;
+        border: 1px solid #CCCDCD;
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+    #rhs_column {
+        background: #E7FBF8;
+        float: none;
+        /*min-width: 250px;*/
+        /*width: 20%;*/
+        width: 95%;
+        padding-left: 0px;
+        padding-bottom: 8px;
+        padding-top: 20px;
+        /* border-top: 0px solid #CCCDCD;         border-left: 0px solid #CCCDCD;         border-right: 0px solid #CCCDCD;         border-bottom: 0px solid #CCCDCD;         border-bottom-left-radius: 0px 0px;         border-top-left-radius: 0px 0px;         border-bottom-right-radius: 0px 0px;         border-top-right-radius: 0px 0px;*/
+        border-top: 1px solid #CCCDCD;
+        border-left: 1px solid #CCCDCD;
+        border-right: 1px solid #CCCDCD;
+        border-bottom: 1px solid #CCCDCD;
+        border-bottom-left-radius: 25px 25px;
+        border-top-left-radius: 25px 25px;
+        border-bottom-right-radius: 25px 25px;
+        border-top-right-radius: 25px 25px;
+        min-height: 0px;
+        margin-right: 5px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        z-index: 2;
+        position: static;
+    }
+    .lhs_column {
+        padding: 0px 0px 0px 0px;
+        max-width: auto;
+        width: 100%;
+        background-color: #FFFFFF;
+        margin-top: 0px;
+    }
+    .er_headlineTable {
+        max-width: 100%;
+    }
+    #header-links-mobile {
+        /* margin-left: 50%;     font-size: 12px;     padding-top: 5px;*/
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #3186B6;
+        border-left: 1px solid #3186B6;
+        padding: 0px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+    #print {
+        display: none;
+    }
+    #open {
+        display: block;
+    }
+    #rhs_column h5 {
+        padding: 5px 0px 5px 8px;
+        color: #FFFFFF;
+        background: #0473B5;
+        border-bottom-left-radius: 10px 10px;
+        border-top-left-radius: 10px 10px;
+        border-bottom-right-radius: 10px 10px;
+        border-top-right-radius: 10px 10px;
+    }
+    #RHStoggle {
+        display: none;
+    }
+    #statbankTextMobile {
+        display: block;
+    }
+    #statbankTextMobile h5 {
+        color: #02395F;
+        display: block;
+        margin-top: 5px;
+    }
+    #statbankTextDesktop {
+        display: none;
+    }
+    .wrapImage img {
+        /* width:100% !important;*/
+        float: none;
+        clear: both;
+    }
+    #mobileBreak {
+        clear: both;
+    }
+    .generalContentImages {
+        float: none;
+    }
+    .lhs_column p {
+        max-width: 100%;
+    }
+    .ERtable {
+        padding-left: 0px;
+    }
+    #hide {
+        display: none;
+    }
+    #RHStoggle {
+        display: none;
+    }
+    .pieGeneralText {
+        float: left;
+    }
+}

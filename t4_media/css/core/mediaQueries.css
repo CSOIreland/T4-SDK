@@ -1,0 +1,752 @@
+/* Get rid of weird looking buttons on iphone */
+
+input[type="button"],
+input[type="submit"],
+input[type="text"],
+input[type="password"] {
+    -webkit-appearance: none!important;
+}
+
+
+/*hide main nav toggle on normal screens*/
+
+a.toggleMainNav,
+a.toggleQuickStats,
+a.toggleQuickStatsGa,
+a.togglelogos {
+    display: none;
+}
+
+
+/*MEDIA QUERIES
+***************************************************/
+
+@media all and (max-width: 1200px) {
+    #headerSocial {
+        clear: both;
+    }
+    /*general*/
+    .btn,
+    .btn:visited {
+        padding: 6px 8px;
+        margin: 10px 0 0 0;
+        font-size: 14px;
+    }
+    /*main nav*/
+    .mainNavList>li>a,
+    .mainNavList>li>span {
+        font-size: 18px;
+        padding: 12px 20px 7px;
+        height: 50px;
+    }
+    /*carousel*/
+    .carousel i {
+        font-size: 54px;
+        line-height: 60px;
+    }
+    .carousel .slides li h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .carousel .slides li p {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 0 0 4px 0;
+    }
+    /*image slider*/
+    .imageSlider h2 {
+        font-size: 15px;
+        line-height: 18px;
+    }
+    .imageSlider h2 span {
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    /*modules*/
+    .moduleBody,
+    .moduleFooter {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+    .open .moduleBody,
+    .open .moduleFooter {
+        max-height: 100%;
+    }
+    .open .moduleFooter {
+        padding: 0 20px 20px;
+    }
+    .moduleHeader h2 {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .moduleHeader h2 a {
+        cursor: pointer;
+    }
+    .moduleHeader h2 a:before {
+        content: "\f055";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        color: #fff;
+        font-size: 18px;
+        padding-right: 0.5em;
+        opacity: .5;
+    }
+    .open .moduleHeader h2 a:before {
+        content: "\f056";
+    }
+    .moduleBody h3 {
+        font-size: 15px;
+    }
+    /*accordion*/
+    .accordion h3 a {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+    .accordion>div li {
+        width: 100%;
+        float: none;
+    }
+    /*sideitems*/
+    .sideitem h3 {
+        font-weight: 300;
+        font-size: 20px;
+        padding: 20px 20px 10px;
+    }
+    /*footer*/
+    .footer {
+        font-size: 13px;
+    }
+    .footer .contact {
+        margin-top: 10px;
+    }
+    /*publication menu*/
+    div#hmenu ul li {
+        display: block;
+        text-align: left;
+        margin: 5px;
+    }
+    div#hmenu ul a {
+        width: 100%;
+    }
+    #infographicSlider {
+        width: 100%;
+    }
+    .epContactDetails {
+        width: 100%;
+    }
+    .sapsThemes ul li {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 1023px) {
+    /*general*/
+    .row {
+        width: 100%;
+        padding: 0 2%;
+        margin: 20px auto 0;
+    }
+    /*.container.content {
+		background: #fff;
+	}*/
+    /*header*/
+    .header h1 img {
+        max-width: 320px;
+    }
+    .headerSearch {
+        max-width: 280px;
+        margin-top: 15px;
+    }
+    .headerSearch form.gsc-search-box {
+        margin-bottom: 0 !important;
+        border: 1px solid #00ada8;
+        height: 36px;
+    }
+    .headerSearch input.gsc-input {
+        padding: 1px 10px !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: 36px;
+    }
+    .headerSearch input.gsc-search-button {
+        width: 18px;
+        height: 18px;
+        background-size: cover;
+    }
+    /*main nav*/
+    a.toggleMainNav {
+        display: block;
+        height: 50px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 12px 2% 0;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    a.toggleMainNav i,
+    a.toggleMainNav em {
+        float: right;
+        font-size: 28px;
+    }
+    .mainNav .row,
+    .mainNav .col {
+        padding: 0;
+    }
+    .mainNavList {
+        height: 0;
+        overflow: hidden;
+    }
+    .open .mainNavList {
+        height: auto;
+    }
+    .mainNavList>li {
+        float: none;
+        margin: 0;
+    }
+    .mainNavList>li>a,
+    .mainNavList>li>span {
+        font-size: 16px;
+        padding: 10px 2% 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        height: auto;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .mainNavList>li:first-child>a,
+    .mainNavList>li:first-child>span {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .mainNavList>li:hover>a,
+    .mainNavList>li:hover>span {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .mainNavList>li>span {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .mainNavList>li>span:after {
+        display: none;
+        border: 0;
+    }
+    /*.mainNavList .ddBox {
+		display: none;
+	}*/
+    /*mega menu*/
+    .mainNavList li.open .ddBox {
+        border-top: 5px solid #00ada8;
+        border-bottom: 5px solid #00ada8;
+        position: relative;
+        margin-top: 0;
+        background: #f0f4f7;
+        top: auto;
+        left: auto;
+        right: auto;
+        opacity: auto;
+        transition: 0;
+        padding: 20px 2% 0;
+    }
+    .mainNavList .ddBox>ul>li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .mainNavList .ddBox a.close {
+        display: none;
+    }
+    /*navigation-section*/
+    .navigation-section li {
+        width: 50%;
+    }
+    /*carousels*/
+    .flex-direction-nav a {
+        top: 15%;
+    }
+    .flex-direction-nav a.flex-prev {
+        left: 0;
+    }
+    .flex-direction-nav a.flex-next {
+        right: 0;
+    }
+    .carousel {
+        padding: 0 40px;
+    }
+    .carousel .slides li img {
+        max-width: 95px;
+    }
+    .carousel .slides li h3 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .carousel .slides li p {
+        display: none;
+    }
+    /*quickStats*/
+    .quickStats .carousel {
+        padding: 0;
+    }
+    .quickStats ul.slides {
+        width: auto !important;
+    }
+    .quickStats .flex-direction-nav {
+        display: none;
+    }
+    .quickStats ul.slides li {
+        width: 25% !important;
+        height: 220px;
+        overflow: hidden;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+    .quickStats ul.slides li:nth-child(n+5) {
+        display: none !important;
+    }
+    .quickStats.all ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .quickStats .slides li h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .quickStats .slides li p {
+        display: block;
+    }
+    a.toggleQuickStats,
+    a.toggleQuickStatsGa,
+    a.toggleLogos {
+        display: block;
+        text-align: center;
+        color: #5b6774;
+        font-size: 18px;
+        text-decoration: none;
+        background: #e4eaf0;
+        padding: 8px 0;
+        font-weight: 300;
+        position: relative;
+        top: -10px;
+        opacity: 0.8;
+    }
+    /*.all a.toggleQuickStats {
+		display: none;
+	}*/
+    /*logos*/
+    .logos .carousel {
+        padding: 0;
+    }
+    .logos ul.slides {
+        width: auto !important;
+    }
+    .logos .flex-direction-nav {
+        display: none;
+    }
+    .logos ul.slides li {
+        width: 25% !important;
+        height: 160px;
+        overflow: hidden;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+    .logos ul.slides li:nth-child(n+5) {
+        display: none !important;
+    }
+    .logos.all ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .logos .slides li h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .logos .slides li p {
+        display: block;
+    }
+    a.togglelogos,
+    a.toggleLogos {
+        display: block;
+        text-align: center;
+        color: #5b6774;
+        font-size: 18px;
+        text-decoration: none;
+        background: #e4eaf0;
+        padding: 8px 0;
+        font-weight: 300;
+        position: relative;
+        top: -10px;
+        opacity: 0.8;
+    }
+    /*.all a.togglelogos {
+		display: none;
+	}*/
+    /*modules*/
+    .modules {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .modules .col {
+        width: 100%;
+        float: none;
+    }
+    .modules .col:nth-child(2) {
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        -ms-flex-order: 1;
+        -webkit-order: 1;
+        order: 1;
+    }
+    .modules .col:nth-child(1) {
+        -webkit-box-ordinal-group: 2;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 2;
+        -webkit-order: 2;
+        order: 2;
+    }
+    .modules .col:nth-child(3) {
+        -webkit-box-ordinal-group: 3;
+        -moz-box-ordinal-group: 3;
+        -ms-flex-order: 3;
+        -webkit-order: 3;
+        order: 3;
+    }
+    .censusHomeModules .col:nth-child(1) {
+        -webkit-box-ordinal-group: 2 !important;
+        -moz-box-ordinal-group: 2 !important;
+        -ms-flex-order: 2 !important;
+        -webkit-order: 2 !important;
+        order: 2 !important;
+    }
+    .censusHomeModules .col:nth-child(2) {
+        -webkit-box-ordinal-group: 1 !important;
+        -moz-box-ordinal-group: 1 !important;
+        -ms-flex-order: 1 !important;
+        -webkit-order: 1 !important;
+        order: 1 !important;
+    }
+    .mainContent,
+    .mainContentSideNav {
+        display: flex;
+        /*changed from flex on 29/03/17 to fix printing issue on firefox*/
+        flex-direction: column;
+    }
+    .mainContent .col:nth-child(1) {
+        -webkit-box-ordinal-group: 2;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 2;
+        -webkit-order: 2;
+        order: 2;
+    }
+    .mainContent .col:nth-child(2) {
+        -webkit-box-ordinal-group: 3;
+        -moz-box-ordinal-group: 3;
+        -ms-flex-order: 3;
+        -webkit-order: 3;
+        order: 3;
+    }
+    .mainContent .col:nth-child(3) {
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        -ms-flex-order: 1;
+        -webkit-order: 1;
+        order: 1;
+        margin-bottom: 20px;
+    }
+    .mainContentSideNav .col:nth-child(1) {
+        -webkit-box-ordinal-group: 2;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 2;
+        -webkit-order: 2;
+        order: 2;
+        margin-bottom: 20px;
+    }
+    .mainContentSideNav .col:nth-child(2) {
+        -webkit-box-ordinal-group: 1;
+        -moz-box-ordinal-group: 1;
+        -ms-flex-order: 1;
+        -webkit-order: 1;
+        order: 1;
+        margin-bottom: 20px;
+    }
+    /*page content*/
+    #breadcrumbs {
+        font-size: 13px;
+        text-transform: none;
+    }
+    .content .col,
+    .footer .col {
+        width: 100%;
+        border-right: 0px;
+    }
+    .pageHeader form {
+        padding-top: 15px;
+        text-align: left;
+    }
+    /*forms*/
+    form.general .col {
+        width: 100%;
+        float: none;
+        margin-bottom: 5px;
+    }
+    form.general label.inline {
+        display: block;
+        padding-bottom: 5px;
+    }
+    /*publication menu*/
+    div#hmenu ul li {
+        display: block;
+        text-align: left;
+        margin: 5px;
+    }
+    div#hmenu ul a {
+        width: 100%;
+    }
+    #infographicSlider {
+        width: 100%;
+    }
+    .epContactDetails {
+        width: 100%;
+    }
+    /*students corner home page logos at bottom*/
+    .flexsliderSC i {
+        font-size: 54px;
+        line-height: 60px;
+    }
+    .flexsliderSC .slides li h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .flexsliderSC .slides li p {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 0 0 4px 0;
+    }
+    /*logos*/
+    .logosSC .carousel {
+        padding: 0;
+    }
+    .logosSC ul.slides {
+        width: auto !important;
+    }
+    .logosSC .flex-direction-nav {
+        display: none;
+    }
+    .logosSC ul.slides li {
+        width: 25% !important;
+        height: 300px;
+        overflow: hidden;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+    .logosSC ul.slides li:nth-child(n+5) {
+        display: none !important;
+    }
+    .logosSC.all ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .logosSC .slides li h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .logosSC .slides li p {
+        display: block;
+    }
+    a.togglelogos,
+    a.toggleLogos {
+        display: block;
+        text-align: center;
+        color: #5b6774;
+        font-size: 18px;
+        text-decoration: none;
+        background: #e4eaf0;
+        padding: 8px 0;
+        font-weight: 300;
+        position: relative;
+        top: -10px;
+        opacity: 0.8;
+    }
+    /*end students corner home page logos at bottom*/
+}
+
+@media all and (max-width: 767px) {
+    /*header*/
+    .header h1 img {
+        width: 100%;
+        max-width: 100%;
+    }
+    /*quickStats*/
+    .quickStats ul.slides li {
+        width: 50% !important;
+        height: 220px;
+    }
+    .quickStats ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .quickStats ul.slides li:nth-child(n+3) {
+        display: none !important;
+    }
+    .quickStats.all ul.slides li:nth-child(n+3) {
+        display: block !important;
+    }
+    /*logos*/
+    .logos ul.slides li {
+        width: 50% !important;
+        height: 180px;
+    }
+    .logos ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .logos ul.slides li:nth-child(n+3) {
+        display: none !important;
+    }
+    .logos.all ul.slides li:nth-child(n+3) {
+        display: block !important;
+    }
+    /*navigation-section*/
+    .navigation-section li {
+        width: 100%;
+    }
+    /*publication menu*/
+    div#hmenu ul li {
+        display: block;
+        text-align: left;
+        margin: 5px;
+    }
+    div#hmenu ul a {
+        width: 100%;
+    }
+    #infographicSlider {
+        width: 100%;
+    }
+    /*students corner home page logos at bottom*/
+    .logosSC ul.slides li {
+        width: 50% !important;
+        height: 220px;
+    }
+    .logosSC ul.slides li:nth-child(n+5) {
+        display: block !important;
+    }
+    .logosSC ul.slides li:nth-child(n+3) {
+        display: none !important;
+    }
+    .logosSC.all ul.slides li:nth-child(n+3) {
+        display: block !important;
+    }
+    /*end students corner home page logos at bottom*/
+}
+
+
+/*Local Nav*/
+
+@media all and (max-width: 767px) {
+    #localNav ul {
+        display: table;
+    }
+    #localNav li {
+        width: 50%;
+        height: 30%;
+        vertical-align: top;
+    }
+    .container.content {
+        padding-top: 0px !important;
+    }
+}
+
+@media all and (max-width: 1023px) {
+    #localNav u {
+        display: table;
+    }
+    #localNav li {
+        width: 50%;
+        height: 30%;
+        vertical-align: top;
+    }
+    .container.content {
+        padding-top: 0px !important;
+    }
+}
+
+@media all and (max-width: 1200px) {
+    #localNav u {
+        display: table;
+    }
+    #localNav li {
+        width: 50%;
+        height: 30%;
+        vertical-align: top;
+    }
+    .container.content {
+        padding-top: 0px !important;
+    }
+}
+
+@media print {
+    /*  @page { size: a4; }	*/
+    .mainContent {
+        display: inline;
+        /*changed from flex on 29/03/17 to fix printing issue on firefox*/
+        flex-direction: column;
+    }
+    .mainNav,
+    .headerSocial,
+    .header .btn,
+    #breadcrumbs,
+    .footerLinks,
+    .footerSocial,
+    .headerSearch,
+    .columnRightinner-rightcol,
+    .moduleFooter,
+    .moduleHeader h2 a:before,
+    .open .moduleHeader h2 a:before {
+        display: none;
+    }
+    #st-2,
+    .back-to-top {
+        display: none !important;
+    }
+    .footer {
+        background: #fff;
+    }
+    .footer p,
+    .divFooterTable a,
+    .divFooterTable {
+        color: #384350;
+    }
+    .moduleBody {
+        max-height: 100%;
+    }
+    .moduleHeader h2 a {
+        color: #384350;
+    }
+    .copy table {
+        page-break-inside: avoid
+    }
+    .copy p,
+    .copy h3,
+    .copy h4,
+    .copy h5 {
+        orphans: 3;
+        widows: 4;
+    }
+    /*  
+	.copy { 
+      width: 840px;
+      overflow: hidden;
+  	}
+    
+	.highchartBox {
+    	max-width: 840px;
+}
+*/
+    /*  fix issue with multiple blank pages when widget is on the page	
+  https://stackoverflow.com/questions/74820718/chart-js-printing-a-webpage-containing-chart-js-canvas-prints-out-hundreds-of
+  backward compatibility for old widgets 
+  */
+    .pxwidget .chartjs-size-monitor {
+        position: fixed;
+    }
+}

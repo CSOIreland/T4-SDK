@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - Quality Information System</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+         
+<!-- navigation object : QIS Header code --><t4 type="navigation" id="291158"/>
+          
+          <!-- ********** CONTENT ********** -->
+		<!--<div class="container content">-->
+          <!-- end header -->
+
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+  
+             $("#homeTab").addClass("currentbranch0");
+  
+  //script to set module body same height on rows
+  
+  
+  var screenWidth = $( window ).width();
+  
+  
+  if(screenWidth >= 1000) { //only do on desktop
+  //alert(screenWidth);
+	var a1 = [];
+  var a2 = [];
+  
+  
+  a1.push($("#row2_1").height());
+  a1.push($("#row2_2").height());
+  
+  
+  var biggestDiv2 = Math.max.apply(Math, a1);
+  
+  a2.push($("#row3_1").height());
+  a2.push($("#row3_2").height());
+  
+  
+  var biggestDiv3 = Math.max.apply(Math, a2);
+  
+  
+  //get number of items in news box to add on 1 px for each to make sure height is equal accross all module boxes
+  
+  var extraPixels = $('#newsItems').children().length;
+  
+  //alert(extraPixels);
+  
+  
+   $(".row2").css('height', biggestDiv2);
+  
+  
+  
+  
+  $(".row3").css('height', biggestDiv3);
+} 
+else {
+	// do nothing
+}
+  
+  
+  
+  
+    });
+
+    //end main nav JS DR
+  
+  
+  
+</script>
+          
+  <div class="row">
+          
+           <div class="row modules">
+            
+             <div class="col span6">
+					
+               <h2 class="welcome">Welcome to the Quality Management, Support & Assurance Homepagee</h2>
+              
+               <div class="copy">
+               <!-- navigation object : QIS Homepage Intro --><t4 type="navigation" id="731"/>
+               </div><!--close copy-->
+               </div><!--close col-->
+             
+             <div class="col span6">
+					<div class="homeModule module yellow open">
+						<div class="moduleHeader">
+							<h2><a href="#">Progress Status</a></h2><i class="fa fa-line-chart fa-2x"></i>
+                      </div><!--close module header-->
+                      <div id="row3_1" class="moduleBody">
+                        
+                        <!-- navigation object : QIS Homepage Intro --><t4 type="navigation" id="736"/>
+                        
+                        
+                      </div><!--close module body-->
+                      </div><!--close module-->
+               </div><!--close col-->
+             
+             
+            </div><!--end row modules--> 
+             
+              <div class="row modules">
+            
+            <div class="col span6">
+					<div class="homeModule module orange open">
+						<div class="moduleHeader">
+							<h2><a href="#">Process Mapping</a></h2><i class="fa fa-map fa-2x"></i>
+                      </div><!--close module header-->
+                      <div id="row2_1" class="moduleBody row2">
+                        
+                        <!-- navigation object : QIS Homepage Intro --><t4 type="navigation" id="733"/>
+                        
+                      </div><!--close module body-->
+                      
+                      <div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="728"/>">go to process maps <i class="fa fa-angle-right"></i></a>
+						</div>
+                      
+                      
+                      </div><!--close module-->
+               </div><!--close col-->
+             
+                <div class="col span6">
+					<div class="homeModule module blue open">
+						<div class="moduleHeader">
+							<h2><a href="#">Documentation</a></h2><i class="fa fa-book fa-2x"></i>
+                      </div><!--close module header-->
+                      <div id="row2_2" class="moduleBody row2">
+                        
+                        <!-- navigation object : QIS Homepage Intro --><t4 type="navigation" id="732"/>
+                        
+                      </div><!--close module body-->
+                      
+                      <div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="729"/>">go to survey documentation <i class="fa fa-angle-right"></i></a>
+						</div>
+                      
+                      </div><!--close module-->
+               </div><!--close col-->
+             
+                
+             
+             
+             
+            </div><!--end row modules--> 
+          
+           <div class="row modules">
+            
+            <div class="col span6">
+					<div class="module pink open">
+						<div class="moduleHeader">
+							<h2><a href="#">News and Events</a></h2><i class="fa fa-newspaper-o fa-2x"></i>
+                      </div><!--close module header-->
+                      <div id="row3_1" class="moduleBody row3">
+                        
+                        <!-- navigation object : QIS Homepage Intro --><t4 type="navigation" id="742"/>
+                       
+                      </div><!--close module body-->
+                      
+                      <div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="738"/>">go to news and events <i class="fa fa-angle-right"></i></a>
+						</div>
+                      
+                      </div><!--close module-->
+               </div><!--close col-->
+             
+                
+                <div class="col span6">
+					<div class="contactModule module green open">
+	<div class="moduleHeader">
+		<h2>
+          <a href="#">Contact the QMSA Team </a> 
+		</h2><i class="fa fa-phone fa-2x"></i>
+	</div>
+	<!--close module header-->
+	<div id="row3_2" class="moduleBody contactModuleBody row3">
+		<p>Location: 
+			<i class="fa fa-map-marker"></i> Room GE5
+		</p>
+		<p>
+			<i class="fa fa-envelope"></i>
+			<a href="mailto:qualityunit@cso.ie">qualityunit@cso.ie</a>
+		</p>
+		<h2>Team Members 
+			<i class="fa fa-group"></i>
+		</h2>
+		<div class="contactList">
+<div class="contactList">
+	<p>Ken Moore</p>
+	<p>Kevin Phelan</p>
+	<p>Susana Portillo</p>
+	<p>Orla Maguire</p>
+	<p>Don Forde</p>
+	<p>Michelle  Nagle</p>
+	<p>Aoife Elders</p>
+	<p>Ellen Purcell</p>
+	<p>Eileen  Philpot</p>
+	<p>Christina Feeney</p>
+  <p>Sarah Grimes</p>
+  <p>Kevin Curtin</p>
+	<p>Carlena Kearney</p>
+	<p>Michael Quinlan</p>
+	<p>Mairead O'Regan</p>
+	<p>Jennifer Grimes</p>
+	<p>Mary Duggan</p>
+	<p>Deirdre Cleary</p>
+		</div>
+	</div>
+	<!--close module body-->
+	<div class="moduleFooter">
+		<p>Please feel free to contact the QMSA team at any time.</p>
+	</div>
+</div>
+<!--close module-->
+               </div><!--close col-->
+             
+             
+             
+            </div><!--end row modules--> 
+     </div><!--end row --> 
+          _hdr.html

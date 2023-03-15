@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    
+      
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title>NSB - <t4 type="title" /> - National Statistics Board</title>
+          <t4 type="meta" id="1"/>
+          <!-- start css -->  
+          
+		<!--include main stylesheet - all other stylesheets are embeded within this-->
+          <!--flexslider.css--><t4 type="media" id="95625" formatter="css/*"/>
+		<!--main.css--><t4 type="media" id="95628" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="95624" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="95627" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="95623" formatter="css/*"/>
+        
+        <!--jquery.fancybox.css--><t4 type="media" id="95626" formatter="css/*"/>
+        <!--mediaQueries.css--><t4 type="media" id="95629" formatter="css/*"/>
+		
+          
+        <!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="95630" formatter="javascript/*"/>
+		
+        
+        <!--include Flexslider - used for carousels and image slders-->
+		<!--jquery.flexslider-min.js--><t4 type="media" id="95632" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="95631" formatter="javascript/*"/>
+          
+          <!--site.js--><t4 type="media" id="95633" formatter="javascript/*"/>
+      
+          <!-- end css -->
+      
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+  // alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Publications' ) {
+
+            $("#publicationsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Membership') {
+
+            $("#membershipTab").addClass("currentbranch0");
+
+        }
+
+
+         else if (theme == 'Meetings') {
+
+            $("#meetingsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Statistics Act') {
+
+            $("#statisticsActTab").addClass("currentbranch0");
+
+        }
+  
+   else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+  
+  else if (theme == 'Contact Us') {
+
+            $("#contactUsTab").addClass("currentbranch0");
+
+        }
+  
+  else if (theme == 'Freedom of Information') {
+
+            $("#foiTab").addClass("currentbranch0");
+
+        }
+  
+   else if (theme == 'Links') {
+
+            $("#linksTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+   <!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="627"/>	
+      <!--/mainNav-->  
+          
+<!-- ********** CONTENT ********** -->
+		<div class="container content">
+                    
+          <div class="row">
+             <div class="col span6">
+               
+              <h2>Welcome to the website of the National Statistics Board (Ireland)</h2>
+              <!-- navigation object : Home page text --><t4 type="navigation" id="631"/>
+              <div class="module blue open">
+						<div class="moduleHeader">
+							<h2><a href="#">News Corner</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+								<!-- navigation object : News Corner Box --><t4 type="navigation" id="630"/>
+							</ul>
+						</div>
+						<div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="189"/>">view more news <i class="fa fa-angle-right"></i></a>
+						</div>
+					</div><!--/module-->
+               </div> <!--end col-->
+            <div class="col span6">
+              <div class="module imageSlider">
+						<ul class="slides">
+							<!-- navigation object : Home: Image Sliders --><t4 type="navigation" id="629"/>
+						</ul>
+					</div><!--/slider-->    
+               </div><!--/col-->
+              
+               
+</div><!--/row-->
+          
+<!--          
+<div class="row logos all">
+
+  <ul class="homePageLogos">
+  
+  <li>
+<a href="https://www.isscop.ie/" target="_blank">
+<t4 type="media" id="319717" formatter="image/*"/>
+<h3>ISSCoP</h3>
+<p>Irish Statistical System Code of Practice</p>
+</a>
+</li>
+  
+  <li>
+<a href="https://ec.europa.eu/eurostat/web/ess" target="_blank">
+<t4 type="media" id="95635" formatter="image/*"/>
+<h3>ESS</h3>
+<p>European Statistical System</p>
+</a>
+</li>
+  
+</ul> 
+</div>
+        --> 
+
+<div class="row HomeFlexLogos">
+  <div class="HomeLogo">
+    <a href="https://www.isscop.ie/" target="_blank">
+    <t4 type="media" id="319717" formatter="image/*"/>
+    <h3>ISSCoP</h3>
+    <p>Irish Statistical System Code of Practice</p>
+    </a>
+  </div> <!-- /HomeLogo -->
+ 	<div class="HomeLogo">
+    <a href="https://ec.europa.eu/eurostat/web/ess" target="_blank">
+    <t4 type="media" id="95635" formatter="image/*"/>
+    <h3>ESS</h3>
+    <p>European Statistical System</p>
+    </a>
+  </div> <!-- /HomeLogo -->
+
+      </div> <!-- /row -->
+          
+</div><!--/content-->
+            _hdr.html
