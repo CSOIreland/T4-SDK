@@ -311,6 +311,11 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
         localConfig.hideColumns.splice(toggleDimensionHiddenPosition, 1)
     }
 
+    if (toggleIsTime) {
+        //can't have fluid time on time toggle
+        localConfig.fluidTime = [];
+    }
+
     $("#" + elementId + "-widget-container").empty();
 
     pxWidget.draw.init(
