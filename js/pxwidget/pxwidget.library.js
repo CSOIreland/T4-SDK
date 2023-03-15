@@ -395,7 +395,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
         "params": {
-            "matrix": matrixRelease.trim(),
+            "matrix": matrixRelease,
             "language": "en",
             "format": {
                 "type": "JSON-stat",
@@ -410,7 +410,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_PRE_METADATA,
         "params": {
-            "release": matrixRelease.trim(),
+            "release": matrixRelease,
             "language": "en",
             "format": {
                 "type": "JSON-stat",
