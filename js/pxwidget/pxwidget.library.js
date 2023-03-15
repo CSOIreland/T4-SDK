@@ -309,19 +309,13 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     $("#" + elementId + "-widget-container").empty();
 
     pxWidget.draw.init(
-        'chart',
+        'table',
         elementId + "-widget-container",
         localConfig
     )
 };
 
 //#endregion create a chart with toggle variables
-
-//#region create a table with toggle variables
-t4Sdk.pxWidget.table.create = function (elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
-};
-//#endregion create a table with toggle variables
-
 
 //#region retreive the latest value for a query from PxStat 
 t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElement, timeLabelElement) {
