@@ -303,7 +303,7 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     localConfig.data.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
 
     //remove toggle dimension from hidden columns if there
-    localConfig.hideColumns.splice(hideColumns.indexOf(toggleDimension), 1);
+    localConfig.hideColumns.splice(localConfig.hideColumns.indexOf(toggleDimension), 1);
 
 
     $("#" + elementId + "-widget-container").empty();
