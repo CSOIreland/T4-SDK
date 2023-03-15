@@ -1,9 +1,12 @@
 
 /* styles an image in the sidebar of the release template */
 .sidebar-featured-image {
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   padding: 1rem;
   background-color: #F2F7Fa;
+}
+.sidebar-featured-image:first-child {
+  margin-top: 0;
 }
 .sidebar-featured-image h4 {
   font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
