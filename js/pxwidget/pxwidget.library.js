@@ -125,6 +125,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             break;
     }
 
+    var toggleIsTime = false;
+
+    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
+        if (response.Dimension(toggleDimension).role == "time") {
+            toggleIsTime = true;
+        }
+    });
+
     //get variables to toggle on
     var toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrixRelease, isLive, toggleDimension.trim(), toggleVariables, defaultVariable)
 
@@ -179,14 +187,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
-        var toggleIsTime = false;
-
-        t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-            if (response.Dimension(toggleDimension).role == "time") {
-                toggleIsTime = true;
-            }
-        });
-
 
         //listener events to draw chart
         switch (toggleType) {
@@ -266,17 +266,25 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
         });
     };
 
-
-
     //update config with toggle variable
     localConfig.options.title.display = true;
     localConfig.options.title.text = [varriableLabel];
 
     $.each(localConfig.data.datasets, function (index, value) {
         value.api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
+        if (toggleIsTime) {
+            //can't have fluid time on time toggle
+            value.fluidTime = [];
+        }
+
     });
 
     $("#" + elementId + "-widget-container").empty();
+
+    if (toggleIsTime) {
+        //can't have fluid time on time toggle
+        localConfig.metadata.fluidTime = [];
+    }
 
     pxWidget.draw.init(
         'chart',
