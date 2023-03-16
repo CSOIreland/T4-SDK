@@ -361,7 +361,44 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
 };
 
 t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
-    debugger
+    var localConfig = $.extend(true, {}, config);
+    var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
+
+    if (isLive) {
+        localConfig.data.datasets[0].api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+
+        localConfig.data.datasets[0].api.query.data.params.extension.matrix = matrix;
+        localConfig.data.datasets[0].api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+
+        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+        localConfig.metadata.api.query.data.params.matrix = matrix;
+        delete localConfig.metadata.api.query.data.params.release;
+    }
+    //update query for selected variable
+    localConfig.data.datasets[0].api.query.data.params.dimension[toggleDimension] = {};
+    localConfig.data.datasets[0].api.query.data.params.dimension[toggleDimension].category = {};
+    localConfig.data.datasets[0].api.query.data.params.dimension[toggleDimension].category.index = [toggleVariable];
+
+    //update query to make sure all dimensions are now included in id array
+    localConfig.data.datasets[0].api.query.data.params.id = [];
+
+    $.each(localConfig.data.datasets[0].api.query.data.params.dimension, function (key, value) {
+        localConfig.data.datasets[0].api.query.data.params.id.push(key);
+    });
+
+    if (toggleIsTime) {
+        //can't have fluid time on time toggle
+        localConfig.data.datasets[0].fluidTime = [];
+    }
+
+    $("#" + elementId + "-widget-container").empty();
+
+    pxWidget.draw.init(
+        'map',
+        elementId + "-widget-container",
+        localConfig
+    )
 };
 
 //#endregion create a chart with toggle variables
