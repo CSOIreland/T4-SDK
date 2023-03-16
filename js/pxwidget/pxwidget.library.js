@@ -123,12 +123,12 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     $("#" + elementId).append(
         $("<div>", {
             "name": "table-title-wrapper",
-            "class": "widget-toggle-table-title",
-            "html": $("<h5>", {
+            "html": $("<span>", {
                 "text": "",
+                "class": "widget-toggle-table-title",
                 "name": "table-title"
             }).get(0).outerHTML,
-            "style": "display:none"
+            "style": "display:none; text-align: center;"
         }).get(0).outerHTML
     );
 
