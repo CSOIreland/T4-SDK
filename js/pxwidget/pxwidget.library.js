@@ -213,7 +213,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
                             break;
                         case "map":
-                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                             break;
 
                         default:
@@ -234,7 +234,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
                             break;
                         case "table":
-                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text, toggleIsTime);
                             break;
                         default:
                             break;
@@ -360,9 +360,10 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     )
 };
 
-t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
+t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
+    localConfig.tooltipTitle = varriableLabel;
 
     if (isLive) {
         localConfig.data.datasets[0].api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
