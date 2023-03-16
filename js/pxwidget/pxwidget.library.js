@@ -135,6 +135,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             break;
     }
 
+    $("#" + elementId).append(
+        $("<div>", {
+            "name": "table-title",
+            "class": "widget-toggle-table-title",
+            "style": "display:none"
+        }).get(0).outerHTML
+    );
+
     var toggleIsTime = false;
 
     t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
@@ -210,7 +218,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             break;
 
                         case "table":
-                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                             break;
                         case "map":
                             t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
@@ -231,7 +239,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                             break;
                         case "table":
-                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                             break;
                         case "map":
                             t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
@@ -312,7 +320,8 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
     )
 };
 
-t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
+t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+    $("#" + elementId).find("[name=table-title]").text(varriableLabel).show();
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
@@ -341,10 +350,10 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
 
 
     //remove toggle dimension from hidden columns if there
-    var toggleDimensionHiddenPosition = localConfig.hideColumns.indexOf(toggleDimension);
+    /* var toggleDimensionHiddenPosition = localConfig.hideColumns.indexOf(toggleDimension);
     if (toggleDimensionHiddenPosition != -1) {
         localConfig.hideColumns.splice(toggleDimensionHiddenPosition, 1)
-    }
+    } */
 
     if (toggleIsTime) {
         //can't have fluid time on time toggle
