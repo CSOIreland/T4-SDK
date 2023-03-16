@@ -106,14 +106,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "id": elementId + "-toggle-select"
                 }).get(0).outerHTML
             );
-
-            $("#" + elementId).append(
-                $("<div>", {
-                    "id": elementId + "-widget-container",
-                    "class": "pxwidget"
-                }).get(0).outerHTML
-            );
-            break;
         case "buttons":
             $("#" + elementId + " .widget-toggle-panel").append(
                 $("<div>", {
@@ -123,23 +115,23 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "style": "display: flex; justify-content: space-around; flex-wrap: wrap;"
                 })
             );
-
-            $("#" + elementId).append(
-                $("<div>", {
-                    "id": elementId + "-widget-container",
-                    "class": "pxwidget"
-                }).get(0).outerHTML
-            );
             break;
         default:
             break;
-    }
+    };
 
     $("#" + elementId).append(
         $("<div>", {
             "name": "table-title",
             "class": "widget-toggle-table-title",
             "style": "display:none"
+        }).get(0).outerHTML
+    );
+
+    $("#" + elementId).append(
+        $("<div>", {
+            "id": elementId + "-widget-container",
+            "class": "pxwidget"
         }).get(0).outerHTML
     );
 
