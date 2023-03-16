@@ -57,8 +57,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 matrixRelease = config.metadata.api.query.data.params.release;
                 break;
             case "table":
-            case "map":
                 matrixRelease = config.data.api.query.data.params.extension.release;
+                break;
+            case "map":
+                matrixRelease = config.data.datasets[0].api.query.data.params.extension.release;
                 break;
             default:
                 break;
@@ -69,12 +71,12 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.matrix;
                 break;
-
             case "table":
-            case "map":
                 matrixRelease = config.data.api.query.data.params.extension.matrix;
                 break;
-
+            case "map":
+                matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix;
+                break;
             default:
                 break;
         }
@@ -237,7 +239,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         default:
                             break;
                     }
-
                 });
                 break;
 
