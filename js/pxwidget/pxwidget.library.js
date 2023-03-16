@@ -233,7 +233,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         case "table":
                             t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
                             break;
-                        case "table":
+                        case "map":
                             t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text, toggleIsTime);
                             break;
                         default:
