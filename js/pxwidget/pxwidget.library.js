@@ -122,8 +122,12 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     $("#" + elementId).append(
         $("<div>", {
-            "name": "table-title",
+            "name": "table-title-wrapper",
             "class": "widget-toggle-table-title",
+            "html": $("<h5>", {
+                "text": "",
+                "name": "table-title"
+            }).get(0).outerHTML,
             "style": "display:none"
         }).get(0).outerHTML
     );
@@ -313,7 +317,8 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
 };
 
 t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
-    $("#" + elementId).find("[name=table-title]").text(varriableLabel).show();
+    $("#" + elementId).find("[name=table-title]").text(varriableLabel);
+    $("#" + elementId).find("[name=table-title-wrapper]").show();
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
