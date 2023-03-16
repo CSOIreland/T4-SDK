@@ -16,7 +16,18 @@ const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc"
 
 
 //#region create a chart with toggle variables
-
+/**
+ * 
+ * @param {*} type 
+ * @param {*} elementId 
+ * @param {*} isLive 
+ * @param {*} snippet 
+ * @param {*} toggleType 
+ * @param {*} toggleDimension 
+ * @param {*} toggleVariables 
+ * @param {*} defaultVariable 
+ * @returns 
+ */
 t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
@@ -41,18 +52,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     var matrixRelease = null;
 
     if (!isLive) {
-        //get release id from query
-        var releaseId = null;
-
         switch (type) {
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.release;
                 break;
-
             case "table":
+            case "map":
                 matrixRelease = config.data.api.query.data.params.extension.release;
                 break;
-
             default:
                 break;
         }
@@ -64,6 +71,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
 
             case "table":
+            case "map":
                 matrixRelease = config.data.api.query.data.params.extension.matrix;
                 break;
 
@@ -202,6 +210,9 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         case "table":
                             t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
                             break;
+                        case "map":
+                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            break;
 
                         default:
                             break;
@@ -215,9 +226,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
                     switch (type) {
                         case "chart":
-                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text());
+                            t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text, toggleIsTime);
                             break;
-
+                        case "table":
+                            t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            break;
+                        case "table":
+                            t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), toggleIsTime);
+                            break;
                         default:
                             break;
                     }
@@ -343,6 +359,10 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     )
 };
 
+t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, toggleIsTime) {
+    debugger
+};
+
 //#endregion create a chart with toggle variables
 
 //#region retreive the latest value for a query from PxStat 
@@ -390,7 +410,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
 };
 //#endregion
 
-//#region utilities
+//#region utility
 /**
  * Format 
  * @param {*} number 
