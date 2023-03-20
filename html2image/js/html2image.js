@@ -203,7 +203,7 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         i_meta_mode.className = "fa fa-solid fa-download";
         i_meta_mode.style.position = "absolute";
         i_meta_mode.style.backgroundColor = "#e6edf2";
-        i_meta_mode.style.fontSize = "#140%";
+        i_meta_mode.style.fontSize = "140%";
         //i_meta_mode.style.opacity = "0.8";
         i_meta_mode.style.borderRadius = "3px 3px 0 0";
         i_meta_mode.style.padding = "5px 8px";
@@ -236,8 +236,8 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         parent.insertBefore(t4Sdk.html2image.i_div, el);
 
         var rct = t4Sdk.html2image.i_div.getBoundingClientRect();
-        var lsty = rct.y + rct.height + 10;
-        var lstx = rct.x + rct.width - 138;
+        var lsty = rct.y + rct.height;
+        var lstx = rct.x + rct.width - 142;
         t4Sdk.list_left = lstx + "px";
         t4Sdk.list_top = lsty + "px";
         t4Sdk.lst = lst;
