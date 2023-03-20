@@ -1,3 +1,4 @@
+//version 1.0, date, 20/03/2023
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -12,24 +13,24 @@ t4Sdk.html2image.loadEventAttached = t4Sdk.html2image.loadEventAttached || null;
 
 var lastTgt;
 t4Sdk.html2image.download = function(e) {
-    var exp = e.target.parentElement.parentElement.children[1];
-    exp = t4Sdk.html2image.i_div_el.export_div;
+    var exp = t4Sdk.element2export;
+    e.target.parentElement.parentElement.children[1];
+    // exp = t4Sdk.html2image.i_div_el.export_div;
     lastTgt = exp;
     t4Sdk.html2image.fnExport(exp, e.target.innerHTML);
 }
 
 t4Sdk.html2image.fnExport = function(tgt, type) {
-    var holder = document.createElement("div");
-    holder.style.backgroundColor = "white";
+    var holder; // = document.createElement("div");
+    // holder.style.backgroundColor = "white";
     if (tgt && t4Sdk.html2image.active_mode) {
         t4Sdk.html2image.active_mode = false;
-        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-spinner fa-pulse fa-2x";
-        var parent = tgt.parentElement;
-        holder.appendChild(tgt);
-        parent.appendChild(holder);
+        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-spinner fa-pulse";
+        holder = tgt;
+        var opt = { "bgcolor": "white" };
         switch (type) {
             case t4Sdk.html2image.png:
-                domtoimage.toPng(holder)
+                domtoimage.toPng(holder, opt)
                     .then(function(dataUrl) {
                         const link = document.createElement('a');
                         link.href = dataUrl;
@@ -38,17 +39,15 @@ t4Sdk.html2image.fnExport = function(tgt, type) {
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
-                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download fa-2x";
+                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download";
                         t4Sdk.html2image.active_mode = true;
-                        parent.appendChild(tgt);
-                        tgt.parentElement.removeChild(holder);
                     })
                     .catch(function(error) {
                         console.error('oops, something went wrong!', error);
                     });
                 break;
             case t4Sdk.html2image.svg:
-                domtoimage.toSvg(holder)
+                domtoimage.toSvg(holder, opt)
                     .then(function(dataUrl) {
                         const link = document.createElement('a');
                         link.href = dataUrl;
@@ -57,17 +56,16 @@ t4Sdk.html2image.fnExport = function(tgt, type) {
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
-                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download fa-2x";
+                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download";
                         t4Sdk.html2image.active_mode = true;
-                        parent.appendChild(tgt);
-                        tgt.parentElement.removeChild(holder);
                     })
                     .catch(function(error) {
                         console.error('oops, something went wrong!', error);
                     });
                 break;
             case t4Sdk.html2image.jpg:
-                domtoimage.toJpeg(holder)
+
+                domtoimage.toJpeg(holder, opt)
                     .then(function(dataUrl) {
                         const link = document.createElement('a');
                         link.href = dataUrl;
@@ -76,10 +74,8 @@ t4Sdk.html2image.fnExport = function(tgt, type) {
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
-                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download fa-2x";
+                        t4Sdk.html2image.i_meta_mode.className = "fa fa-solid fa-download";
                         t4Sdk.html2image.active_mode = true;
-                        parent.appendChild(tgt);
-                        tgt.parentElement.removeChild(holder);
                     })
                     .catch(function(error) {
                         console.error('oops, something went wrong!', error);
@@ -145,8 +141,13 @@ t4Sdk.html2image.showContextMenu = function(e) {
     var y = e.clientY;
     if (t4Sdk.html2image.contextMenuVisible)
         t4Sdk.html2image.contextMenuList.style.display = "none";
-    else
+    else {
+        t4Sdk.lst.style.position = "absolute";
+        t4Sdk.lst.style.left = t4Sdk.list_left;
+        t4Sdk.lst.style.top = t4Sdk.list_top;
         t4Sdk.html2image.contextMenuList.style.display = "block";
+    }
+
 
     t4Sdk.html2image.contextMenuVisible = !t4Sdk.html2image.contextMenuVisible;
 }
@@ -154,13 +155,14 @@ t4Sdk.html2image.jpg = "Download JPG";
 t4Sdk.html2image.png = "Download PNG";
 t4Sdk.html2image.svg = "Download SVG";
 t4Sdk.html2image.fnContextMenu = function() {
-   
+
     var listContainer = document.createElement("div");
     var list = document.createElement("div");
     list.style.position = "absolute";
     t4Sdk.html2image.contextMenuList = list;
     list.className = "custom_list";
-    list.style.top = "44px";
+    //list.style.top = "44px";
+    list.style.width = "130px";
     // list.style.left = "100px";
     list.style.background = "white";
 
@@ -168,29 +170,37 @@ t4Sdk.html2image.fnContextMenu = function() {
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.png);
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.svg);
 
-    list.style.width = "130px";
+
     var rect = t4Sdk.html2image.i_meta_mode.getBoundingClientRect();
-    var lft = (rect.left - 168) + "px";
+    // var lft = (rect.left - 168) + "px";
 
-    t4Sdk.html2image.contextMenuList.style.left = lft;
-
+    // t4Sdk.html2image.contextMenuList.style.left = lft;
     listContainer.appendChild(list);
-    t4Sdk.html2image.i_div_el.export_div = t4Sdk.html2image.i_div_el.children[0].parentElement.children[1];
+    // b.appendChild(list);
+    //
 
-    t4Sdk.html2image.i_div_el.insertBefore(list, t4Sdk.html2image.i_div_el.children[0]);
+    t4Sdk.html2image.i_div_el.export_div = t4Sdk.html2image.i_div_el.children[0].parentElement.children[1];
+    return listContainer;
+    //  t4Sdk.html2image.i_div_el.insertBefore(list, a);
+    //t4Sdk.html2image.i_div_el.insertBefore(list, t4Sdk.html2image.i_div_el.children[0]);
 }
 
 t4Sdk.html2image.enumSaveAsImage = function(e) {
     var children = document.getElementsByClassName("html2image_container");
+    // alert(children.length)
+
     for (var i = 0; i < children.length; i++) {
         var el = children[i];
+        t4Sdk.element2export = el;
+        var parent = el.parentElement;
         t4Sdk.html2image.i_div = document.createElement("div");
-        t4Sdk.html2image.i_div.style.width = "60px"; 
+        t4Sdk.html2image.i_div.style.width = "100%";
+        t4Sdk.html2image.i_div.style.height = "20px";
         t4Sdk.html2image.i_div.style.margin = "6px";
         t4Sdk.html2image.i_meta_mode = document.createElement("i");
         var i_meta_mode = t4Sdk.html2image.i_meta_mode;
-        i_meta_mode.className = "fa fa-solid fa-download fa-2x";
-        i_meta_mode.style.position = "absolute";
+        i_meta_mode.className = "fa fa-solid fa-download";
+        // i_meta_mode.style.position = "absolute";
         i_meta_mode.style.backgroundColor = "white";
         i_meta_mode.style.opacity = "0.8";
         i_meta_mode.style.borderRadius = "6px";
@@ -198,15 +208,46 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         i_meta_mode.style.right = "6px";
         i_meta_mode.style.top = "6px";
         i_meta_mode.style.cursor = "pointer";
+        i_meta_mode.style.float = "right";
         i_meta_mode["data-toggle"] = "tooltip";
         i_meta_mode["title"] = "download image";
+        //  var tmpr = el;
+        //  parent.removeChild(el);
+        // parent.appendChild(t4Sdk.html2image.i_div);
+        //  var d = document.createElement("div");
+        //d.innerHTML = "ec115";
+        //  parent.appendChild(d);
+        // parent.appendChild(el);
+        // debugger;
+
+        t4Sdk.html2image.i_div.appendChild(i_meta_mode);
+        t4Sdk.html2image.i_div_el = el;
+        var lst = t4Sdk.html2image.fnContextMenu();
+        t4Sdk.html2image.contextMenuList.style.display = "none";
+        t4Sdk.html2image.i_div.addEventListener("click", t4Sdk.html2image.showContextMenu);
+
+        //  lst.appendChild(t4Sdk.html2image.i_div)
+        // parent.insertBefore(lst, el);
+        document.body.appendChild(lst);
+
+        // parent.appendChild(t4Sdk.html2image.i_div)
+        parent.insertBefore(t4Sdk.html2image.i_div, el);
+
+        var rct = t4Sdk.html2image.i_div.getBoundingClientRect();
+        var lsty = rct.y + rct.height;
+        var lstx = rct.x + rct.width - 140;
+        t4Sdk.list_left = lstx + "px";
+        t4Sdk.list_top = lsty + "px";
+        t4Sdk.lst = lst;
+        /*
         t4Sdk.html2image.i_div.appendChild(i_meta_mode);
         t4Sdk.html2image.i_div_el = el;
         el.insertBefore(t4Sdk.html2image.i_div, el.children[0]);
         t4Sdk.html2image.fnContextMenu();
         t4Sdk.html2image.contextMenuList.style.display = "none";
         t4Sdk.html2image.i_div.addEventListener("click", t4Sdk.html2image.showContextMenu);
-      //  $('[data-toggle="tooltip"]').tooltip();
+        */
+        //  $('[data-toggle="tooltip"]').tooltip();
     }
 };
 
