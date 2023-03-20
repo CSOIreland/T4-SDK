@@ -5,19 +5,18 @@
 }
 
 .custom_dd {
-    margin-top: 6px;
-    margin-bottom: 6px;
-    margin-right: 6px;
-    margin-left: 6px;
+    padding: 4px;
     background-color: white;
+    border-bottom: 1px solid #ededed;
     cursor: pointer;
     user-select: none;
 }
 
 .custom_dd:hover {
-    background-color: gray;
+    background-color: #ededed;
+    text-decoration: underline;
 }
 
 .custom_list {
-    border: solid;
+    border: 1px solid #000;
 }

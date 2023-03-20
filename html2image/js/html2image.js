@@ -1,4 +1,4 @@
-//version 1.0, date, 20/03/2023
+//version 1.1, date, 20/03/2023
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -195,22 +195,24 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         var parent = el.parentElement;
         t4Sdk.html2image.i_div = document.createElement("div");
         t4Sdk.html2image.i_div.style.width = "100%";
-        t4Sdk.html2image.i_div.style.height = "20px";
-        t4Sdk.html2image.i_div.style.margin = "6px";
+        t4Sdk.html2image.i_div.style.height = "32px";
+        //t4Sdk.html2image.i_div.style.margin = "6px";
+        t4Sdk.html2image.i_div.style.position = "relative";
         t4Sdk.html2image.i_meta_mode = document.createElement("i");
         var i_meta_mode = t4Sdk.html2image.i_meta_mode;
         i_meta_mode.className = "fa fa-solid fa-download";
-        // i_meta_mode.style.position = "absolute";
-        i_meta_mode.style.backgroundColor = "white";
-        i_meta_mode.style.opacity = "0.8";
-        i_meta_mode.style.borderRadius = "6px";
-        i_meta_mode.style.padding = "3px";
-        i_meta_mode.style.right = "6px";
-        i_meta_mode.style.top = "6px";
+        i_meta_mode.style.position = "absolute";
+        i_meta_mode.style.backgroundColor = "#e6edf2";
+        i_meta_mode.style.fontSize = "#140%";
+        //i_meta_mode.style.opacity = "0.8";
+        i_meta_mode.style.borderRadius = "3px 3px 0 0";
+        i_meta_mode.style.padding = "5px 8px";
+        i_meta_mode.style.right = "0";
+        i_meta_mode.style.top = "0";
         i_meta_mode.style.cursor = "pointer";
-        i_meta_mode.style.float = "right";
+        //i_meta_mode.style.float = "right";
         i_meta_mode["data-toggle"] = "tooltip";
-        i_meta_mode["title"] = "download image";
+        i_meta_mode["title"] = "Download image";
         //  var tmpr = el;
         //  parent.removeChild(el);
         // parent.appendChild(t4Sdk.html2image.i_div);
@@ -234,8 +236,8 @@ t4Sdk.html2image.enumSaveAsImage = function(e) {
         parent.insertBefore(t4Sdk.html2image.i_div, el);
 
         var rct = t4Sdk.html2image.i_div.getBoundingClientRect();
-        var lsty = rct.y + rct.height;
-        var lstx = rct.x + rct.width - 140;
+        var lsty = rct.y + rct.height + 10;
+        var lstx = rct.x + rct.width - 138;
         t4Sdk.list_left = lstx + "px";
         t4Sdk.list_top = lsty + "px";
         t4Sdk.lst = lst;
