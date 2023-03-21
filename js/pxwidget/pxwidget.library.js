@@ -97,9 +97,12 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     switch (toggleType) {
         case "dropdown":
             $("#" + elementId + " .widget-toggle-input-group").append(
-                $("<label>", {
-                    "name": "toggle-select-label",
-                    "for": "#" + elementId + "-toggle-select"
+                $("<div>", {
+                    "class": "widget-toggle-input-group-prepend",
+                    "html": $("<label>", {
+                        "name": "toggle-select-label",
+                        "for": "#" + elementId + "-toggle-select"
+                    }).get(0).outerHTML
                 }).get(0).outerHTML
             );
             $("#" + elementId + " .widget-toggle-input-group").append(
