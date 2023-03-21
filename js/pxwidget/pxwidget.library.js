@@ -310,8 +310,6 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
 
     });
 
-    $("#" + elementId + "-widget-container").empty();
-
     if (toggleIsTime) {
         //can't have fluid time on time toggle
         localConfig.metadata.fluidTime = [];
@@ -364,8 +362,6 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
         //can't have fluid time on time toggle
         localConfig.fluidTime = [];
     }
-
-    $("#" + elementId + "-widget-container").empty();
 
     pxWidget.draw.init(
         'table',
