@@ -108,7 +108,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<select>", {
                     "name": "toggle-select",
-                    "class": "widget-toggle-select",
+                    "class": "widget-toggle-select widget-toggle-custom-select",
                     "dimension": toggleDimension.trim(),
                     "id": elementId + "-toggle-select"
                 }).get(0).outerHTML
