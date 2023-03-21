@@ -87,19 +87,22 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     $("#" + elementId).append(
         $("<div>", {
-            "class": "widget-toggle-panel"
+            "class": "widget-toggle-panel",
+            "html": $("<div>", {
+                "class": "widget-toggle-input-group"
+            }).get(0).outerHTML
         }).get(0).outerHTML
     );
 
     switch (toggleType) {
         case "dropdown":
-            $("#" + elementId + " .widget-toggle-panel").append(
+            $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<label>", {
                     "name": "toggle-select-label",
                     "for": "#" + elementId + "-toggle-select"
                 }).get(0).outerHTML
             );
-            $("#" + elementId + " .widget-toggle-panel").append(
+            $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<select>", {
                     "name": "toggle-select",
                     "class": "widget-toggle-select",
@@ -108,7 +111,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 }).get(0).outerHTML
             );
         case "buttons":
-            $("#" + elementId + " .widget-toggle-panel").append(
+            $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<div>", {
                     "class": "toggle-buttons",
                     "name": "toggle-button-wrapper",
