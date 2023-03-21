@@ -375,6 +375,10 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
 };
 
 t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+
+    //get the height of the container div for a smooth rendering
+    var height = $("#" + elementId + "-widget-container").height();
+    debugger
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
     localConfig.tooltipTitle = varriableLabel;
