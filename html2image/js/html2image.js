@@ -1,4 +1,4 @@
-//version 1.2, date, 21/03/2023
+//version 1.3, date, 21/03/2023
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -187,10 +187,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
         var el = children[i];
         t4Sdk.html2image.i_div = document.createElement("div");
         var el_rct;
-        //t4Sdk.html2image.i_div.style.width 
         var ex_el;
-        // debugger
-        console.log("el.children.length>" + el.children.length);
         if (el.children.length >= 1)
             ex_el = el.children[0];
         else
