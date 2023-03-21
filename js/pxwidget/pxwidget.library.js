@@ -142,7 +142,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     $("#" + elementId).append(
         $("<div>", {
-            "id": elementId + "-widget-container",
+            "id": "pxwidget" + elementId,
             "class": "pxwidget"
         }).get(0).outerHTML
     );
@@ -317,7 +317,7 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
 
     pxWidget.draw.init(
         'chart',
-        elementId + "-widget-container",
+        "pxwidget" + elementId,
         localConfig
     )
 };
@@ -365,17 +365,12 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
 
     pxWidget.draw.init(
         'table',
-        elementId + "-widget-container",
+        "pxwidget" + elementId,
         localConfig
     )
 };
 
 t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
-
-    //get the height of the container div for a smooth rendering
-
-    // var height = $("#" + elementId + "-widget-container").height();
-    // $("#" + elementId + "-widget-container").height(height);
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
     localConfig.tooltipTitle = varriableLabel;
@@ -408,12 +403,9 @@ t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimens
         localConfig.data.datasets[0].fluidTime = [];
     }
 
-    //  $("#" + elementId + "-widget-container").empty();
-    //  $("#" + elementId + "-widget-container").height(0);
-
     pxWidget.draw.init(
         'map',
-        elementId + "-widget-container",
+        "pxwidget" + elementId,
         localConfig
     )
 };
