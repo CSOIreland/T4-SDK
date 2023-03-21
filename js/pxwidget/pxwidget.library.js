@@ -101,6 +101,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "class": "widget-toggle-input-group-prepend",
                     "html": $("<label>", {
                         "name": "toggle-select-label",
+                        "class": "widget-toggle-input-group-text",
                         "for": "#" + elementId + "-toggle-select"
                     }).get(0).outerHTML
                 }).get(0).outerHTML
