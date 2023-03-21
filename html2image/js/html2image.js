@@ -13,21 +13,25 @@ t4Sdk.html2image.openedList = null;
 //Executes export to image on user click
 
 var lastTgt;
+t4Sdk.html2image.clonedElement = null;
 t4Sdk.html2image.download = function (e) {
     var list = e.target.parentElement;
     if (list.div2export) {
         e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
         t4Sdk.html2image.active_mode = false;
+        t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
+        t4Sdk.html2image.clonedElement.style.margin = "0";
+        t4Sdk.html2image.clonedElement.style.padding = "0";
+        document.body.appendChild(t4Sdk.html2image.clonedElement);
+        t4Sdk.html2image.fnExport(t4Sdk.html2image.clonedElement, e.target.innerHTML, e.target.parentElement.icon);
 
-        t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
 
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
 }
 
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
-
-
+    // var tgt = t4Sdk.html2image.clonedElement;
     var opt = { "bgcolor": "white" };
     switch (type) {
         case t4Sdk.html2image.png:
@@ -42,6 +46,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    //  document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -59,6 +64,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -77,6 +83,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -174,16 +181,29 @@ t4Sdk.html2image.fnContextMenu = function (iDiv, el, icon) {
 
 t4Sdk.html2image.enumSaveAsImage = function (e) {
     var children = document.getElementsByClassName("html2image_container");
+    //alert(56746)
+
     for (var i = 0; i < children.length; i++) {
         var el = children[i];
-        var parent = el.parentElement;
         t4Sdk.html2image.i_div = document.createElement("div");
-        // el.style.width = "800px";
-        // el.style.height = "184px";
-        t4Sdk.html2image.i_div.style.width = el.getBoundingClientRect().width + "px";
-        //   alert("a:"+)
+        var el_rct;
+        //t4Sdk.html2image.i_div.style.width 
+        var ex_el;
+        // debugger
+        console.log("el.children.length>" + el.children.length);
+        if (el.children.length >= 1)
+            ex_el = el.children[0];
+        else
+            ex_el = el;
+        el_rct = ex_el.getBoundingClientRect();
         t4Sdk.html2image.i_div.style.height = "16px";
-        t4Sdk.html2image.i_div.style.position = "relative";
+        t4Sdk.html2image.i_div.style.position = "absolute";
+
+        t4Sdk.html2image.i_div.style.top = (2 + el_rct.top + window.scrollY) + "px";
+        t4Sdk.html2image.i_div.style.left = (el_rct.left + el_rct.width - 34) + "px";
+        t4Sdk.html2image.i_div.style.width = "32px";
+        document.body.appendChild(t4Sdk.html2image.i_div);
+
         t4Sdk.html2image.i_meta_mode = document.createElement("i");
         var i_meta_mode = t4Sdk.html2image.i_meta_mode;
         i_meta_mode.className = "fa fa-solid fa-download";
@@ -198,8 +218,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
         i_meta_mode["data-toggle"] = "tooltip";
         i_meta_mode["title"] = "Download image";
         t4Sdk.html2image.i_div.appendChild(i_meta_mode);
-        parent.insertBefore(t4Sdk.html2image.i_div, el);
-        t4Sdk.html2image.fnContextMenu(t4Sdk.html2image.i_div, el, t4Sdk.html2image.i_meta_mode);
+        t4Sdk.html2image.fnContextMenu(t4Sdk.html2image.i_div, ex_el, t4Sdk.html2image.i_meta_mode);
     }
 };
 
