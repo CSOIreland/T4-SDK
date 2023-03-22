@@ -1,4 +1,6 @@
 //version 1.3, date, 21/03/2023
+
+alert(887);
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
