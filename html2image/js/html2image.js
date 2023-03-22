@@ -1,6 +1,6 @@
 //version 1.3, date, 21/03/2023
 
-alert(8872);
+alert(8873);
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -22,17 +22,23 @@ t4Sdk.html2image.download = function (e) {
         e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
         t4Sdk.html2image.active_mode = false;
         t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
-        t4Sdk.html2image.clonedElement.style.margin = "0";
-        t4Sdk.html2image.clonedElement.style.padding = "0";
+
+        var myParent = list.div2export.parentElement;
+        list.div2export.style.margin = "0";
+        list.div2export.style.padding = "0";
+
+        //  t4Sdk.html2image.clonedElement.style.margin = "0";
+        //  t4Sdk.html2image.clonedElement.style.padding = "0";
         document.body.appendChild(t4Sdk.html2image.clonedElement);
-        window.addEventListener("load", t4Sdk.html2image.loadedDiv);
-        setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
+        // window.addEventListener("load", t4Sdk.html2image.loadedDiv);
+        // setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
+        t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
+
+        myParent.removeChild(list.div2export);
+        myParent.appendChild(t4Sdk.html2image.clonedElement);
+
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
-}
-t4Sdk.html2image.loadedDiv = function (e) {
-    t4Sdk.html2image.fnExport(t4Sdk.html2image.clonedElement, e.target.innerHTML, e.target.parentElement.icon);
-
 }
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
     // var tgt = t4Sdk.html2image.clonedElement;
