@@ -14,8 +14,8 @@ t4Sdk.html2image.openedList = null;
 //Executes export to image on user click
 
 var lastTgt;
-t4Sdk.html2image.clonedElement = null;
-t4Sdk.html2image.clonedElementParent = null;
+t4Sdk.html2image.div2export_className = null;
+
 t4Sdk.html2image.download = function (e) {
     var list = e.target.parentElement;
     if (list.div2export) {
@@ -30,7 +30,8 @@ t4Sdk.html2image.download = function (e) {
         t4Sdk.html2image.clonedElement.style.margin = "0";
         t4Sdk.html2image.clonedElement.style.padding = "0";
          */
-        console.log("margin" + list.div2export.style.margin)
+        t4Sdk.html2image.div2export_className = t4Sdk.html2image.div2export_className;
+        console.log("margin" + list.div2export.className)
         list.div2export.style.margin = "0";
         list.div2export.style.padding = "0";
 
@@ -64,6 +65,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    tgt.className = t4Sdk.html2image.div2export_className;
                     /*
                                         t4Sdk.html2image.clonedElementParent.removeChild(tgt);
                                         t4Sdk.html2image.clonedElementParent.appendChild(t4Sdk.html2image.clonedElement);
@@ -86,6 +88,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    tgt.className = t4Sdk.html2image.div2export_className;
                     //document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
@@ -105,6 +108,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+                    tgt.className = t4Sdk.html2image.div2export_className;
                     // document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
