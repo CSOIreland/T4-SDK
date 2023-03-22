@@ -1,6 +1,6 @@
 //version 1.3, date, 21/03/2023
 
-alert(887);
+alert(8871);
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -25,13 +25,17 @@ t4Sdk.html2image.download = function (e) {
         t4Sdk.html2image.clonedElement.style.margin = "0";
         t4Sdk.html2image.clonedElement.style.padding = "0";
         document.body.appendChild(t4Sdk.html2image.clonedElement);
-        t4Sdk.html2image.fnExport(t4Sdk.html2image.clonedElement, e.target.innerHTML, e.target.parentElement.icon);
+        window.addEventListener("load", t4Sdk.html2image.loadedDiv);
+      //  t4Sdk.html2image.fnExport(t4Sdk.html2image.clonedElement, e.target.innerHTML, e.target.parentElement.icon);
 
 
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
 }
-
+t4Sdk.html2image.loadedDiv = function (e) {
+    alert(1198787);
+    window.removeEventListener("load", t4Sdk.html2image.loadedDiv)
+}
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
     // var tgt = t4Sdk.html2image.clonedElement;
     var opt = { "bgcolor": "white" };
