@@ -1,6 +1,6 @@
 //version 1.3, date, 21/03/2023
 
-alert(8873);
+alert(8874);
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -16,6 +16,7 @@ t4Sdk.html2image.openedList = null;
 
 var lastTgt;
 t4Sdk.html2image.clonedElement = null;
+t4Sdk.html2image.clonedElementParent = null;
 t4Sdk.html2image.download = function (e) {
     var list = e.target.parentElement;
     if (list.div2export) {
@@ -23,19 +24,17 @@ t4Sdk.html2image.download = function (e) {
         t4Sdk.html2image.active_mode = false;
         t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
 
-        var myParent = list.div2export.parentElement;
+        t4Sdk.html2image.clonedElementParent = list.div2export.parentElement;
         list.div2export.style.margin = "0";
         list.div2export.style.padding = "0";
 
         //  t4Sdk.html2image.clonedElement.style.margin = "0";
         //  t4Sdk.html2image.clonedElement.style.padding = "0";
-        document.body.appendChild(t4Sdk.html2image.clonedElement);
+
         // window.addEventListener("load", t4Sdk.html2image.loadedDiv);
         // setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
         t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
 
-        myParent.removeChild(list.div2export);
-        myParent.appendChild(t4Sdk.html2image.clonedElement);
 
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
@@ -56,6 +55,10 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
+
+                    t4Sdk.html2image.clonedElementParent.removeChild(tgt);
+                    t4Sdk.html2image.clonedElementParent.appendChild(t4Sdk.html2image.clonedElement);
+
                     //  document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
