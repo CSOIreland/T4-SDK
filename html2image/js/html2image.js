@@ -21,7 +21,7 @@ t4Sdk.html2image.download = function (e) {
     if (list.div2export) {
         e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
         t4Sdk.html2image.active_mode = false;
-        t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
+        //  t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
         /*
                 t4Sdk.html2image.clonedElementParent = list.div2export.parentElement;
                 list.div2export.style.margin = "0";
@@ -64,7 +64,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                                         t4Sdk.html2image.clonedElementParent.removeChild(tgt);
                                         t4Sdk.html2image.clonedElementParent.appendChild(t4Sdk.html2image.clonedElement);
                     */
-                    document.body.removeChild(tgt)
+                    //   document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -82,7 +82,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
-                    document.body.removeChild(tgt)
+                    //document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -101,7 +101,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
-                    document.body.removeChild(tgt)
+                    // document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
