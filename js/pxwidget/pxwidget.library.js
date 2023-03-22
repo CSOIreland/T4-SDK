@@ -120,7 +120,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "class": "toggle-buttons",
                     "name": "toggle-button-wrapper",
                     "id": elementId + "-button-wrapper",
-                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap;"
+                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%"
                 })
             );
             break;
@@ -279,6 +279,16 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     });
 };
 
+/**Call the pxWidget function that draws the chart 
+ * 
+ * @param {*} elementId 
+ * @param {*} isLive 
+ * @param {*} config 
+ * @param {*} toggleDimension 
+ * @param {*} toggleVariable 
+ * @param {*} varriableLabel 
+ * @param {*} toggleIsTime 
+ */
 t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
 
@@ -322,6 +332,16 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
     )
 };
 
+/**
+ * Call the pxWidget function that draws the table 
+ * @param {*} elementId 
+ * @param {*} isLive 
+ * @param {*} config 
+ * @param {*} toggleDimension 
+ * @param {*} toggleVariable 
+ * @param {*} varriableLabel 
+ * @param {*} toggleIsTime 
+ */
 t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     $("#" + elementId).find("[name=table-title]").text(varriableLabel);
     $("#" + elementId).find("[name=table-title-wrapper]").show();
@@ -351,13 +371,6 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
         localConfig.data.api.query.data.params.id.push(key);
     });
 
-
-    //remove toggle dimension from hidden columns if there
-    /* var toggleDimensionHiddenPosition = localConfig.hideColumns.indexOf(toggleDimension);
-    if (toggleDimensionHiddenPosition != -1) {
-        localConfig.hideColumns.splice(toggleDimensionHiddenPosition, 1)
-    } */
-
     if (toggleIsTime) {
         //can't have fluid time on time toggle
         localConfig.fluidTime = [];
@@ -370,6 +383,16 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
     )
 };
 
+/**
+ * Call the pxWidget function that draws the map 
+ * @param {*} elementId 
+ * @param {*} isLive 
+ * @param {*} config 
+ * @param {*} toggleDimension 
+ * @param {*} toggleVariable 
+ * @param {*} varriableLabel 
+ * @param {*} toggleIsTime 
+ */
 t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
@@ -413,6 +436,13 @@ t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimens
 //#endregion create a chart with toggle variables
 
 //#region retreive the latest value for a query from PxStat 
+/**
+ * Draws a value from PxStat
+ * @param {*} query 
+ * @param {*} valueElement 
+ * @param {*} unitElement 
+ * @param {*} timeLabelElement 
+ */
 t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElement, timeLabelElement) {
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
@@ -431,6 +461,12 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     };
 };
 
+/**
+ * Gets a single value from PxStat
+ * @param {*} query 
+ * @param {*} latestTimePoint 
+ * @returns 
+ */
 t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
     //check that the query is for one value
     query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.code];
@@ -459,7 +495,7 @@ t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
 
 //#region utility
 /**
- * Format 
+ * Format a number
  * @param {*} number 
  * @param {*} precision 
  * @param {*} decimalSeparator 
@@ -492,6 +528,12 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
     return (thousandSeparator ? wholeNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) : wholeNumber) + (decimalNumber !== undefined ? decimalSeparator + decimalNumber : "");
 };
 
+/**
+ * Get metadata from a table in PxStat
+ * @param {*} matrixRelease 
+ * @param {*} isLive 
+ * @param {*} callback 
+ */
 t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, callback) {
     var paramsMatrix = {
         "jsonrpc": "2.0",
@@ -543,6 +585,11 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
 
 };
 
+/**
+ * Get data from PxStat
+ * @param {*} query 
+ * @returns 
+ */
 t4Sdk.pxWidget.utility.getPxStatData = function (query) {
     var data = null;
 
@@ -566,6 +613,12 @@ t4Sdk.pxWidget.utility.getPxStatData = function (query) {
     return data;
 };
 
+/**
+ * Het the latest time variable code from a table in PxStat
+ * @param {*} matrixRelease 
+ * @param {*} isLive 
+ * @returns 
+ */
 t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) {
     var latestTimeVariable = {
         "dimension": null,
@@ -594,6 +647,14 @@ t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) 
     return latestTimeVariable;
 };
 
+/**
+ * Get variables to build toggle
+ * @param {*} matrixRelease 
+ * @param {*} isLive 
+ * @param {*} toggleDimension 
+ * @param {*} toggleVariables 
+ * @returns 
+ */
 t4Sdk.pxWidget.utility.getToggleDimensionVariables = function (matrixRelease, isLive, toggleDimension, toggleVariables) {
     toggleVariables = toggleVariables || null;
 
@@ -642,6 +703,11 @@ t4Sdk.pxWidget.utility.getToggleDimensionVariables = function (matrixRelease, is
 
 };
 
+/**
+ * Load isogram
+ * @param {} url 
+ * @returns 
+ */
 t4Sdk.pxWidget.utility.loadIsogram = function (url) {
     return $.ajax({
         "url": url,
