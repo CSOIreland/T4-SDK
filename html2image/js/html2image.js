@@ -30,6 +30,10 @@ t4Sdk.html2image.download = function (e) {
         t4Sdk.html2image.clonedElement.style.margin = "0";
         t4Sdk.html2image.clonedElement.style.padding = "0";
          */
+        console.log("margin" + list.div2export.style.margin)
+        list.div2export.style.margin = "0";
+        list.div2export.style.padding = "0";
+
         t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
         // window.addEventListener("load", t4Sdk.html2image.loadedDiv);
         // setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
