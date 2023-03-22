@@ -26,16 +26,18 @@ t4Sdk.html2image.download = function (e) {
                 t4Sdk.html2image.clonedElementParent = list.div2export.parentElement;
                 list.div2export.style.margin = "0";
                 list.div2export.style.padding = "0";
-        */
+       
         t4Sdk.html2image.clonedElement.style.margin = "0";
         t4Sdk.html2image.clonedElement.style.padding = "0";
-
+         */
+        t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
         // window.addEventListener("load", t4Sdk.html2image.loadedDiv);
         // setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
-
-        setTimeout((e) => {
-            t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
-        }, 500);
+        /*
+                setTimeout((e) => {
+                    t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
+                }, 500);
+                */
 
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
