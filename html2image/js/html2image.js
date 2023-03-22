@@ -1,6 +1,5 @@
 //version 1.3, date, 21/03/2023
 
-alert(8874);
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -23,22 +22,26 @@ t4Sdk.html2image.download = function (e) {
         e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
         t4Sdk.html2image.active_mode = false;
         t4Sdk.html2image.clonedElement = list.div2export.cloneNode(true);
-
-        t4Sdk.html2image.clonedElementParent = list.div2export.parentElement;
-        list.div2export.style.margin = "0";
-        list.div2export.style.padding = "0";
-
-        //  t4Sdk.html2image.clonedElement.style.margin = "0";
-        //  t4Sdk.html2image.clonedElement.style.padding = "0";
+        /*
+                t4Sdk.html2image.clonedElementParent = list.div2export.parentElement;
+                list.div2export.style.margin = "0";
+                list.div2export.style.padding = "0";
+        */
+        t4Sdk.html2image.clonedElement.style.margin = "0";
+        t4Sdk.html2image.clonedElement.style.padding = "0";
 
         // window.addEventListener("load", t4Sdk.html2image.loadedDiv);
         // setTimeout(t4Sdk.html2image.loadedDiv, 3000, e);
-        t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
 
+        setTimeout((e) => {
+            t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
+        }, 500);
 
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
 }
+
+
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
     // var tgt = t4Sdk.html2image.clonedElement;
     var opt = { "bgcolor": "white" };
@@ -55,11 +58,11 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     document.body.removeChild(link);
                     icon.className = "fa fa-solid fa-download";
                     t4Sdk.html2image.active_mode = true;
-
-                    t4Sdk.html2image.clonedElementParent.removeChild(tgt);
-                    t4Sdk.html2image.clonedElementParent.appendChild(t4Sdk.html2image.clonedElement);
-
-                    //  document.body.removeChild(tgt)
+                    /*
+                                        t4Sdk.html2image.clonedElementParent.removeChild(tgt);
+                                        t4Sdk.html2image.clonedElementParent.appendChild(t4Sdk.html2image.clonedElement);
+                    */
+                    document.body.removeChild(tgt)
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
