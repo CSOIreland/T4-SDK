@@ -191,7 +191,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
         var el_rct;
         var ex_el;
 
-        if (el.children.length = 1) {
+        if (el.children.length == 1) {
             ex_el = el.children[0];
         }
         else {
