@@ -195,7 +195,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
             ex_el = el.children[0];
         }
         else {
-            alert("The object must have only one child!");
+            alert("The object number:" + (i + 1) + ", must have only one child!");
             throw new Error("The object must have only one child!");
         }
         el_rct = ex_el.getBoundingClientRect();
