@@ -31,7 +31,7 @@ t4Sdk.html2image.download = function (e) {
 
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
     // var tgt = t4Sdk.html2image.clonedElement;
-    var opt = { "bgcolor": "white" };
+    var opt = { "bgcolor": tgt.style.backgroundColor };
     switch (type) {
         case t4Sdk.html2image.png:
             domtoimage.toPng(tgt, opt)
