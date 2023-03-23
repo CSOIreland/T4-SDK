@@ -190,6 +190,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
         t4Sdk.html2image.i_div = document.createElement("div");
         var el_rct;
         var ex_el;
+        /*
         if (el.children.length == 2) {
             ex_el = el;
         }
@@ -199,6 +200,8 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
             else
                 ex_el = el;
         }
+        */
+        ex_el = el;
         el_rct = ex_el.getBoundingClientRect();
         t4Sdk.html2image.i_div.style.height = "16px";
         t4Sdk.html2image.i_div.style.position = "absolute";
