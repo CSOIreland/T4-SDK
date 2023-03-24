@@ -28,7 +28,7 @@ const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc"
  * @param {*} defaultVariable 
  * @returns 
  */
-t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
+t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable, select2) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
@@ -114,6 +114,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "id": elementId + "-toggle-select"
                 }).get(0).outerHTML
             );
+            $("#" + elementId + " .widget-toggle-input-group [name=toggle-select]").select2();
         case "buttons":
             $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<div>", {
@@ -127,6 +128,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         default:
             break;
     };
+
+
 
     $("#" + elementId).append(
         $("<div>", {
