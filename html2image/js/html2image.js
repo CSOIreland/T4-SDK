@@ -198,6 +198,9 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
             alert("The object number:" + (i + 1) + ", must have only one child!");
             throw new Error("The object must have only one child!");
         }
+        if (ex_el.classList.length == 0) {
+            ex_el.className = "html2image_div";
+        }
         el_rct = ex_el.getBoundingClientRect();
         t4Sdk.html2image.i_div.style.height = "16px";
         t4Sdk.html2image.i_div.style.position = "absolute";
