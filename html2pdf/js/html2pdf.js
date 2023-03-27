@@ -100,4 +100,41 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
     t4Sdk.html2pdf.callApiRead(inp2, t4Sdk.html2pdf.callApiReadCallback, url);
 }
 
+t4Sdk.html2pdf.fnT4Reverse = function (e) {
+    if (t4Sdk.html2pdf.selectAll)
+        t4Sdk.html2pdf.btnReverse.innerHTML = "Select all";
+    else
+        t4Sdk.html2pdf.btnReverse.innerHTML = "Unselect all";
+    t4Sdk.html2pdf.selectAll = !t4Sdk.html2pdf.selectAll;
+    var ch = t4Sdk.html2pdf.downloadSelectionUL;
+    for (var i = 0; i < ch.children.length; i++) {
+        var cbox = ch.children[i].children[0];
+        cbox.checked = t4Sdk.html2pdf.selectAll; //!cbox.checked;
+    }
+
+}
+
+t4Sdk.html2pdf.fnT4Download = function (e) {
+    if (t4Sdk.html2pdf.processing) {
+        alert("processing mode!")
+    } else {
+        t4Sdk.html2pdf.downloadPDF.style.disabled = true;
+        t4Sdk.html2pdf.processing = true;
+        var inp = [];
+        var ch = t4Sdk.html2pdf.downloadSelectionUL; //t4Sdk.html2pdf.downloadPDF.classList.add("btn_disabled");
+        t4Sdk.html2pdf.downloadPDF.style.backgroundColor = "#45C1C0"; // "#384350";
+        t4Sdk.html2pdf.downloadPDF.disabled = true;
+        t4Sdk.html2pdf.downloadPDF.innerHTML = "Processing...";
+        t4Sdk.html2pdf.downloadPDF.style.cursor = "wait";
+        for (var i = 0; i < ch.children.length; i++) {
+            if (ch.children[i].children[0].checked) {
+                var cbox = ch.children[i];
+                inp[inp.length] = cbox.children[1].href + "/";
+            }
+        }
+        t4Sdk.html2pdf.fnExportPDF(inp);
+    } // alert(JSON.stringify(inp));
+}
+t4Sdk.html2pdf.processing = false;
+
 window.addEventListener("load", t4Sdk.html2pdf.disableHrefs);
