@@ -1,8 +1,7 @@
 t4Sdk.html2pdf = t4Sdk.html2pdf || {};
 
 t4Sdk.html2pdf.disableHrefs = function (e) {
-
-    var ch = t4Sdk.html2pdf.downloadSelectionUL;
+    var ch = document.getElementById('download-selection-list-4-pdf');
     if (ch) {
         ch.classList.add("moduleBody");
         ch.style.backgroundColor = "white";
