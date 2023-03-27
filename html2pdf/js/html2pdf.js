@@ -15,7 +15,7 @@ t4Sdk.html2pdf.disableHrefs = function (e) {
             sp.innerHTML = cbox.children[1].innerHTML;
             cbox.appendChild(sp);
         }
-        ch.children[t4Sdk.html2pdf.downloadSelectionUL.children.length - 1].style.display = "none";
+        ch.children[ch.children.length - 1].style.display = "none";
         t4Sdk.html2pdf.downloadSelectionParentDIV = ch.parentElement;
 
         t4Sdk.html2pdf.btnReverse = document.createElement("a");
