@@ -100,3 +100,5 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
     var inp2 = { "jsonrpc": "2.0", "method": "PDFapi.Data.Convert_API.Create", "params": toSend };
     t4Sdk.html2pdf.callApiRead(inp2, t4Sdk.html2pdf.callApiReadCallback, url);
 }
+
+window.addEventListener("load", t4Sdk.html2pdf.disableHrefs());
