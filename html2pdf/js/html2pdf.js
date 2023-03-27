@@ -101,4 +101,4 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
     t4Sdk.html2pdf.callApiRead(inp2, t4Sdk.html2pdf.callApiReadCallback, url);
 }
 
-window.addEventListener("load", t4Sdk.html2pdf.disableHrefs());
+window.addEventListener("load", t4Sdk.html2pdf.disableHrefs);
