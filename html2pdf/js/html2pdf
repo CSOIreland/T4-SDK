@@ -1,0 +1,57 @@
+t4Sdk.html2pdf = t4Sdk.html2pdf || {};
+t4Sdk.html2pdf.dataURItoBlob = function (dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+        int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'application/pdf' });
+    return blob;
+}
+t4Sdk.html2pdf.callApiRead = function (input, callback = t4Sdk.html2pdf.callApiReadCallback, server = "https://pdf.cso.ie/api.jsonrpc") {
+    var xObj = new XMLHttpRequest();
+    xObj.overrideMimeType("application/json");
+    xObj.open('POST', server, true);
+    xObj.onreadystatechange = function () {
+        if (xObj.readyState === 4 && xObj.status === 200) {
+            t4Sdk.html2pdf.downloadPDF.style.backgroundColor = "#006168";
+            t4Sdk.html2pdf.downloadPDF.disabled = false;
+            t4Sdk.html2pdf.downloadPDF.style.cursor = "pointer";
+            t4Sdk.html2pdf.processing = false;
+            t4Sdk.html2pdf.downloadPDF.innerHTML = "Download PDF";
+            const downloadLink = window.document.createElement('a');
+            var res = JSON.parse(this.response)
+            if (res["error"]) {
+                alert(this.response);
+                return
+            }
+            var data = res["result"];
+            const blob = t4Sdk.html2pdf.dataURItoBlob(data.substring(28, data.length - 28));
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+        }
+    };
+    xObj.send(
+        JSON.stringify(input));
+}
+t4Sdk.html2pdf.fnExportPDF = function (inp) {
+    var toSend = {
+        "urls": inp,
+        "chromeCommandLineOptions": [
+            "headless",
+            "disable-gpu",
+            "run-all-compositor-stages-before-draw"
+        ],
+        "printOptions": {
+            "paperWidth": 8.3,
+            "paperHeight": 11.7,
+            "scale": 1.0,
+            "pageRanges": ""
+        },
+        "returnType": "base64String"
+    };
+    var url = "https://pdf.cso.ie/api.jsonrpc";
+    var inp2 = { "jsonrpc": "2.0", "method": "PDFapi.Data.Convert_API.Create", "params": toSend };
+    t4Sdk.html2pdf.callApiRead(inp2, t4Sdk.html2pdf.callApiReadCallback, url);
+}
