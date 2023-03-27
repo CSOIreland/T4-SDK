@@ -1,4 +1,49 @@
 t4Sdk.html2pdf = t4Sdk.html2pdf || {};
+
+t4Sdk.html2pdf.disableHrefs = function (e) {
+
+    var ch = t4Sdk.html2pdf.downloadSelectionUL;
+    if (ch) {
+        ch.classList.add("moduleBody");
+        ch.style.backgroundColor = "white";
+        ch.style.listStyleType = "none";
+        ch.style.lineHeight = "180%";
+        for (var i = 0; i < ch.children.length; i++) {
+            var cbox = ch.children[i];
+            cbox.children[1].style.display = "none";
+            var sp = document.createElement("span");
+            sp.style.margin = "8px";
+            sp.innerHTML = cbox.children[1].innerHTML;
+            cbox.appendChild(sp);
+        }
+        t4Sdk.html2pdf.downloadSelectionUL.children[t4Sdk.html2pdf.downloadSelectionUL.children.length - 1].style.display = "none";
+        t4Sdk.html2pdf.downloadSelectionParentDIV = t4Sdk.html2pdf.downloadSelectionUL.parentElement;
+
+        t4Sdk.html2pdf.btnReverse = document.createElement("a");
+        t4Sdk.html2pdf.btnReverse.style.display = "block";
+        t4Sdk.html2pdf.btnReverse.setAttribute("href", "");
+        t4Sdk.html2pdf.downloadPDF = document.createElement("button");
+        t4Sdk.html2pdf.btnReverse.innerHTML = "Select all";
+        t4Sdk.html2pdf.downloadPDF.className = "btn";
+        t4Sdk.html2pdf.downloadPDF.style.border = "none";
+        t4Sdk.html2pdf.downloadPDF.innerHTML = "Download PDF";
+        t4Sdk.html2pdf.downloadPDF.style.cursor = "pointer";
+        ch.parentElement.appendChild(t4Sdk.html2pdf.btnReverse);
+
+        t4Sdk.html2pdf.btnReverse.style.marginLeft = "10px";
+
+        t4Sdk.html2pdf.downloadSelectionParentDIV.appendChild(t4Sdk.html2pdf.downloadPDF);
+
+        t4Sdk.html2pdf.btnReverse.addEventListener("click", t4Sdk.html2pdf.fnT4Reverse);
+        t4Sdk.html2pdf.downloadPDF.addEventListener("click", t4Sdk.html2pdf.fnT4Download);
+
+    }
+
+    //   t4Sdk.html2pdf.fnExportPDF(inp);
+    //JSON.stringify(inp)
+    // alert();
+}
+
 t4Sdk.html2pdf.dataURItoBlob = function (dataURI) {
     const byteString = window.atob(dataURI);
     const arrayBuffer = new ArrayBuffer(byteString.length);
