@@ -1,0 +1,54 @@
+.megamenu:hover {
+    background-color: #00ada8;
+}
+
+.t4-sdk-navbar .t4-sdk-megamenu {
+    padding: 1rem;
+
+}
+
+.t4-sdk-nav-link {
+    margin: 10px;
+}
+
+
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+
+    .media-related {
+        background-color: rgb(217, 255, 0);
+    }
+
+    .t4-sdk-navbar .t4-sdk-has-megamenu {
+        position: static !important;
+    }
+
+    .t4-sdk-navbar .t4-sdk-megamenu {
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 0;
+    }
+
+}
+
+/* ============ desktop view .end// ============ */
+
+
+/* ============ mobile view ============ */
+@media(max-width: 991px) {
+
+    .media-related {
+        background-color: rgb(0, 140, 255);
+    }
+
+    .t4-sdk-navbar.fixed-top .t4-sdk-navbar-collapse,
+    .t4-sdk-navbar.sticky-top .t4-sdk-navbar-collapse {
+        overflow-y: auto;
+        max-height: 90vh;
+        margin-top: 10px;
+    }
+}
+
+/* ============ mobile view .end// ============ */
