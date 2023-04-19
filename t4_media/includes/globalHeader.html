@@ -1,0 +1,321 @@
+<!--test 3-->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+<link rel="icon" type="image/png" href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-57x57.png">
+
+<link rel="apple-touch-icon" type="image/png" sizes="57x57"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" type="image/png" sizes="72x72"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="114x114"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="144x144"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" type="image/png" sizes="152x152"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/apple-icon-180x180.png">
+
+<link rel="icon" type="image/png" sizes="192x192"
+    href="https://cdn.cso.ie/client/1.0.2/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.cso.ie/client/1.0.2/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://cdn.cso.ie/client/1.0.2/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn.cso.ie/client/1.0.2/favicon/favicon-16x16.png">
+
+<link rel="manifest" href="/favicons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+
+</script>
+
+<!-- Begin Cookie Consent plugin by Silktide - https://cookieconsent.insites.com/ -->
+<link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+<style>
+    .cc-message a:visited {
+        color: rgb(255, 255, 255)
+    }
+</style>
+<script>
+
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#35456B",
+                    "text": "#ffffff"
+                },
+                "button": {
+                    "background": "#FBAA34",
+                    "text": "#ffffff"
+                }
+            },
+            position: "bottom",
+            "static": false,
+            "type": "opt-in",
+            "revokable": false,
+            "content": {
+                "message": "<h2 style='margin-bottom: 10px'>Cookies</h2>This website uses cookies to improve your experience and to monitor the site traffic. Non-essential cookies are not set by default and you can choose to accept them by clicking on the 'Accept' button. To manage your cookie choices and find out more about how we use cookies visit our ",
+                "allow": "<span style='padding: 20px;font-size: 18px;'>Accept</span>",
+                "deny": "<span style='display: none'>Reject</span>",
+                "link": "<span style='font-size: 20px;font-weight: bold'>Privacy Statement</span>",
+                "href": "#",
+                "policy": "Cookie Policy"
+            },
+            "onInitialise": function (e) {
+                if (e == "allow") {
+                    window['ga-disable-UA-4963963-4'] = false;
+                } else {
+                    window['ga-disable-UA-4963963-4'] = true;
+                }
+
+                ga('create', 'UA-4963963-4', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            },
+            "onStatusChange": function (e, t) {
+                if (e == "allow") {
+                    window['ga-disable-UA-4963963-4'] = false;
+                    window.location.href = window.location.pathname;
+                    $("#cookie-consent-status-toggle").prop("checked", true)
+                } else {
+                    $("#cookie-consent-status-toggle").prop("checked", false)
+                    window.location.href = window.location.pathname;
+
+                }
+
+
+
+                window['ga-disable-UA-4963963-4'] = true;
+            }
+        });
+
+        $(".cc-message").append(
+
+        );
+
+        $(".cc-message").append(
+            $("<br>").get(0).outerHTML +
+            $("<br>").get(0).outerHTML +
+            $("<a>", {
+                "html": "Dismiss this message",
+                "href": "#",
+                "name": "dismiss-cookie-banner",
+                "style": "color: #ffffff"
+            }).get(0).outerHTML
+
+        );
+
+        $("[name=dismiss-cookie-banner]").click(function (e) {
+            e.preventDefault();
+            $(".cc-window").hide();
+        });
+
+
+
+
+        $(".cc-link, #cookie-banner-privacy-statement-link").click(function (e) {
+            e.preventDefault()
+            setCookie("cookieconsent_status", "deny", 365);
+            window.location.href = "/en/aboutus/lgdp/dataprotectionprivacytransparency/websiteprivacystatement/index.html#cookie-toggle-anchor"
+        });
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+
+        ga('create', 'UA-4963963-4', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+    });
+
+
+
+
+
+
+</script>
+<!-- End Cookie Consent plugin -->
+
+<!-- JQuery UI -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- JS-Cookie - https://github.com/js-cookie/js-cookie -->
+<script src="https://cdn.jsdelivr.net/gh/js-cookie/js-cookie@v2.2.1/src/js.cookie.min.js"></script>
+<!-- Datatables - https://datatables.net/ powered by ClooudFlare -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<!-- PapaParse CSV - https://github.com/mholt/PapaParse/ -->
+<script src="https://cdn.jsdelivr.net/gh/mholt/PapaParse@5.1.0/papaparse.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6398KM" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+
+
+
+    <a href="#" class="back-to-top">Back to Top</a>
+
+
+    <a id="top"></a>
+
+    <t4 type="navigation" name="Topline Banner" id="1335" /><!-- banner to appear at top of page when enabled -->
+
+    <div class="container header">
+        <div class="row">
+            <div class="col span12">
+                <h1><a href="<t4 type=" navigation" id="93" />"><img src="<t4 type=" media" id="86231"
+                        formatter="path/*" />" alt="Central Statistics Office" ></a></h1>
+
+                <div id="headerSocial">
+
+                    <a class="btn blue" href="<t4 type=" navigation" id="180" />" title="Gaeilge">Gaeilge</a>
+
+
+                    <div class="headerSocial">
+
+                        <ul>
+                            <li class="youtube">
+                                <a href="https://www.youtube.com/user/CSOIrelandMedia" title="Follow us on YouTube"
+                                    target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a>
+                            </li>
+                            <li class="twitter">
+                                <a href="https://twitter.com/csoIreland" title="Follow us on Twitter" target="_blank"><i
+                                        class="fa fa-twitter fa-2x"></i></a>
+                            </li>
+                            <li class="facebook">
+                                <a href="https://www.facebook.com/CSOIreland" title="Like us on Facebook"
+                                    target="_blank"><i class="fa fa-facebook-official fa-2x"></i></a>
+                            </li>
+                            <!--
+             <li class="rss">
+               <a href="/rss/en/latestreleasesandpublications/index.xml" title="Subscribe to RSS feeds" target="_blank"><i class="fa fa-rss fa-2x"></i></a>
+            </li>
+-->
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+                <div class="headerSearch">
+                    <!-- Form's action must be the results page's URL -->
+                    <form method="get" action="https://www.cso.ie/en/search/">
+                        <!-- Search field's name must be addsearch -->
+                        <input type="text" name="addsearch" placeholder="Search our site" autocomplete="off" />
+                    </form>
+                </div>
+
+
+
+
+
+
+                <!--/col-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/header-->
+    </div>
+    <p class="hide">&nbsp;<a accesskey="s" href="#content">Skip navigation</a></p>
+    <div class="container mainNav">
+        <div class="row">
+            <div class="col span12"><a class="toggleMainNav navMobile" href="javascript:" title="show menu">Show Menu
+                    <em class="fa fa-navicon">&nbsp;</em></a>
+                <ul class="mainNavList">
+                    <li><span id="homeTab"><a title="Home" href='<t4 type="navigation"' id="93" />">Home</a></span></li>
+                    <li><span id="statisticsTab">Statistics</span>
+                        <div class="ddBox"><a class="pageLink" href='<t4 type="navigation"' id="63" />">Explore
+                            Statistics</a>
+                            <ul class="statisticsList">
+                                <li><a href='<t4 type="navigation"' id="63" />">People and Society</a>
+                                    <!-- navigation object : People and society box -->
+                                    <t4 type="navigation" id="556" />
+                                </li>
+                                <li><a href='"<t4 type="navigation"' id="63" />">Labour Market and Earnings</a>
+                                    <!-- navigation object : Labour Market & Earnings -->
+                                    <t4 type="navigation" id="557" />
+                                </li>
+                                <li><a href='"<t4 type="navigation"' id="63" />">Business Sectors</a>
+                                    <!-- navigation object : Business Sectors -->
+                                    <t4 type="navigation" id="558" />
+                                </li>
+                                <li><a href='"<t4 type="navigation"' id="63" />">Economy</a>
+                                    <!-- navigation object : Economy -->
+                                    <t4 type="navigation" id="559" />
+                                </li>
+                                <li><a href='"<t4 type="navigation"' id="63" />">Environment</a>
+                                    <!-- navigation object : Environment and Climate -->
+                                    <t4 type="navigation" id="580" />
+                                </li>
+                                <li><a href='"<t4 type="navigation"' id="1338" />">General Statistical
+                                    Publications</a><br><br>
+                                    <a href='"<t4 type="navigation"' id="454" />">A-Z of Releases and Publications</a>
+                                </li>
+                            </ul>
+                            <a class="close" href="javascript:">close <em class="fa fa-arrow-circle-up">&nbsp;</em></a>
+                        </div>
+                        <!--/ddBox-->
+                    </li>
+                    <li><span id="databasesTab"><a title="Databases"
+                                href='<t4 type="navigation" id="64"/>'>Databases</a></span></li>
+                    <li><span id="methodsTab"><a title="Methods" href='"<t4 type="navigation"'
+                                id="67" />">Methods</a></span></li>
+                    <li><span id="surveysTab"><a title="Surveys" href='"<t4 type="navigation"'
+                                id="1125" />">Surveys</a></span></li>
+                    <li><span id="aboutUsTab"><a title="About Us" href='"<t4 type="navigation"' id="51" />">About
+                            Us</a></span></li>
+                    <li><span id="censusTab"><a title="Census" href='"<t4 type="navigation"'
+                                id="66" />">Census</a></span></li>
+                    <!--<li><a href="#onlineSurvey" class="fancySurvey">Show Survey</a></li>-->
+                </ul>
+            </div>
+            <!--/col-->
+        </div>
+        <!--/row-->
+    </div>

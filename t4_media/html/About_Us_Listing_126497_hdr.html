@@ -1,225 +1,245 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
-	<head>
-		<!--scale the layout to work correctly on moble decives-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
-         
-		<!--define the character encoding for the page-->
-		<meta charset="UTF-8">
-		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
-          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
-          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
-          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
-          
-          <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-          
-		<!--include main stylesheet - all other stylesheets are embeded within this-->  
-		<!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
-        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
-        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
-        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
-        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
-        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
-        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
-          
-		<!--include jQuery-->
-		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
-          
-		<!--include Flexslider - used for carousels and image slders-->
-		<!--flexslider-min..js--><t4 type="media" id="86226" formatter="javascript/*"/>
-          
-		<!--include Fancyboc - used for modal windows-->
-		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
-          
-		<!--include High Charts-->
-          <!-- removed jc 13/02/14  
+<head>
+	<!--scale the layout to work correctly on moble decives-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<!-- navigation object :  Last modified -->
+	<t4 type="navigation" id="74" />
+
+	<!--define the character encoding for the page-->
+	<meta charset="UTF-8">
+	<title>
+		<t4 type="title" /> - CSO - Central Statistics Office
+	</title>
+	<!-- navigation object :  Key words -->
+	<t4 type="navigation" id="625" />
+	<!-- navigation object :  Last modified -->
+	<t4 type="navigation" id="74" />
+	<meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+
+	<!-- IE compatibility mode fix-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+	<!--include main stylesheet - all other stylesheets are embeded within this-->
+	<!--main.css-->
+	<t4 type="media" id="86004" formatter="css/*" />
+	<!--earthworm.css-->
+	<t4 type="media" id="86000" formatter="css/*" />
+	<!--layout.css-->
+	<t4 type="media" id="86002" formatter="css/*" />
+	<!--colours.css-->
+	<t4 type="media" id="85996" formatter="css/*" />
+	<!--flexslider.css-->
+	<t4 type="media" id="86001" formatter="css/*" />
+	<!--jquery.fancybox.css-->
+	<t4 type="media" id="86018" formatter="css/*" />
+	<!--mediaQueries.css-->
+	<t4 type="media" id="86005" formatter="css/*" />
+
+	<!--include jQuery-->
+	<!--jquery-1.11.1.min.js-->
+	<t4 type="media" id="86225" formatter="javascript/*" />
+
+	<!--include Flexslider - used for carousels and image slders-->
+	<!--flexslider-min..js-->
+	<t4 type="media" id="86226" formatter="javascript/*" />
+
+	<!--include Fancyboc - used for modal windows-->
+	<!--jquery.fancybox.js-->
+	<t4 type="media" id="86223" formatter="javascript/*" />
+
+	<!--include High Charts-->
+	<!-- removed jc 13/02/14  
 		<script src="assets/highcharts/js/highcharts.js"></script>
 		<script src="assets/highcharts/js/highcharts-3d.js"></script>
 		<script src="assets/highcharts/js/modules/exporting.js"></script>-->
-          
-		<!--include sitewide JavaScript for cso.ie-->
-		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
-          
-      
-<script> 
-//js to set current tab to active on main nav DR
 
-    $(document).ready(function () {
+	<!--include sitewide JavaScript for cso.ie-->
+	<!--site.js-->
+	<t4 type="media" id="86227" formatter="javascript/*" />
 
 
-        var theme = '<t4 type="navigation" id="70"/>';
+	<script>
+		//js to set current tab to active on main nav DR
 
-        //alert(theme);
-
-        if (theme.length == '0') {
-            $("#homeTab").addClass("currentbranch0");
-            // alert('I am here');
-        }
-
-        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
-
-            $("#statisticsTab").addClass("currentbranch0");
-
-        }
-
-        else if (theme == 'Databases') {
-
-            $("#databasesTab").addClass("currentbranch0");
-
-        }
+		$(document).ready(function () {
 
 
-        else if (theme == 'Surveys and Methodology') {
+			var theme = '<t4 type="navigation" id="70"/>';
 
-            $("#methodsTab").addClass("currentbranch0");
+			//alert(theme);
 
-        }
+			if (theme.length == '0') {
+				$("#homeTab").addClass("currentbranch0");
+				// alert('I am here');
+			}
 
-        else if (theme == 'About Us') {
+			else if (theme == 'Statistics' || theme == 'Releases and Publications') {
 
-            $("#aboutUsTab").addClass("currentbranch0");
+				$("#statisticsTab").addClass("currentbranch0");
 
-        }
+			}
+
+			else if (theme == 'Databases') {
+
+				$("#databasesTab").addClass("currentbranch0");
+
+			}
 
 
-        else {
-            //do nothing
-        }
+			else if (theme == 'Surveys and Methodology') {
+
+				$("#methodsTab").addClass("currentbranch0");
+
+			}
+
+			else if (theme == 'About Us') {
+
+				$("#aboutUsTab").addClass("currentbranch0");
+
+			}
 
 
-    });
+			else {
+				//do nothing
+			}
+
+
+		});
 
     //end main nav JS DR
-</script>
-
- 
-<!-- ********** HEADER ********** -->
-		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
-      <!--/mainNav-->
-      
-		<!-- ********** CONTENT ********** -->
-		<div class="container content">
-			<div class="row pageHeader">
-				<div class="col span12">
-					<div id="breadcrumbs">
-						<span class="youarehere">You are here: </span> &gt;
-						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
-					</div><!--/breadcrumb-->
-				</div><!--/col-->
-				<div class="col span12">
-					<h1>About Us</h1>
-				</div><!--/col-->				
-			</div><!--/row-->
-
-			<div class="row">
-				<div class="col span6">
-					<div class="module orange">
-						<div class="moduleHeader">
-							<h2><a href="#">About Us</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                              <!-- navigation object : Path: About Us Who we are -->
-                              <li><a href="<t4 type="navigation" id="789"/>">Who we are/What we do</a></li>
-                              <!-- navigation object : Path: About Us Our data -->
-								<li><a href="<t4 type="navigation" id="790"/>">Our data</a></li>  
-                              <!-- navigation object : Path: About Us Organisation Structure -->
-								<li><a href="<t4 type="navigation" id="791"/>">Organisation structure</a></li>
-                              
-							</ul>
-						</div>
-					</div><!--/module-->
-					<div class="module yellow">
-						<div class="moduleHeader">
-							<h2><a href="#">Taking Part in a Survey</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                              <!-- navigation object : Path: About Us Introduction -->
-								<li><a href="<t4 type="navigation" id="792"/>">Introduction</a></li>
-                              <!-- navigation object : Path: About Us Households -->
-								<li><a href="<t4 type="navigation" id="793"/>">Households</a></li>
-                              <!-- navigation object : Path: About Us Business -->
-								<li><a href="<t4 type="navigation" id="794"/>">Business</a></li>
-							</ul>
-						</div>
-					</div><!--/module-->
-					<div class="module blue">
-						<div class="moduleHeader">
-							<h2><a href="#">Careers</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                              <!-- navigation object : Path: About Us Register Interest -->
-								<li><a href="<t4 type="navigation" id="796"/>">Register an interest</a></li>
-                              <!-- navigation object : Path: About Us Current Campaign -->
-								<li><a href="<t4 type="navigation" id="798"/>">Current campaign</a></li> 
-							</ul>
-						</div>
-					</div><!--/module-->
-				</div><!--/col-->
-				<div class="col span6">
-					<div class="module green">
-						<div class="moduleHeader">
-							<h2><a href="#">Policies and Procedures</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                                <!-- navigation object : Path: About Us Data Protection -->
-								<li><a href="<t4 type="navigation" id="799"/>">Data protection</a></li>
-                              <!-- navigation object : Path: About Us Governance -->
-								<li><a href="<t4 type="navigation" id="800"/>">Governance </a></li>
-                              <!-- navigation object : Path: About Us Disabilities -->
-								<li><a href="<t4 type="navigation" id="801"/>">Disabilites </a></li>
-                              <!-- navigation object : Path: About Us Social Media -->
-								<li><a href="<t4 type="navigation" id="802"/>">Social Media </a></li> 
-                              <!-- navigation object : Path: About Us Customer Charter -->
-								<li><a href="<t4 type="navigation" id="803"/>">Customer Charter </a></li>
-                              <!-- navigation object : Path: About Us Memorandums of Understanding -->
-								<li><a href="<t4 type="navigation" id="804"/>">Memorandums of Understanding </a></li>
-							</ul>
-						</div>
-					</div><!--/module-->
-					<div class="module pink">
-						<div class="moduleHeader">
-							<h2><a href="#">Corporate Publications</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                              <!-- Path: About Us Listing -->
-								<li><a href="<t4 type="navigation" id="805"/>">Corporate Publications Listings </a></li>
-                              
-							</ul>
-						</div>
-					</div><!--/module-->
-					<div class="module blue">
-						<div class="moduleHeader">
-							<h2><a href="#">Get in Touch</a></h2>
-						</div>
-						<div class="moduleBody">
-							<ul>
-                              <!-- navigation object : Path: About Us Statistical Enquiries -->
-                                <li><a href="<t4 type="navigation" id="806"/>">Statistical Enquiries</a></li>
-                              <!-- navigation object : Path: About Us Press Office -->
-								<li><a href="<t4 type="navigation" id="807"/>">Press Office</a></li> 
-                              <!-- navigation object : Path: About Us Information -->
-                                <li><a href="<t4 type="navigation" id="808"/>">Information</a></li>
-                              <!-- navigation object : Path: About Us HR -->
-                                <li><a href="<t4 type="navigation" id="809"/>">Human Resources</a></li>
-                              <!-- navigation object : Path: About Us Links -->
-                                <li><a href="<t4 type="navigation" id="810"/>">Links</a></li>
-                              
-							</ul>
-						</div>
-					</div><!--/module-->                  
-				</div><!--/col-->
-			</div><!--/row-->
-
-           
-        </div><!--/content-->
+	</script>
 
 
+	<!-- ********** HEADER ********** -->
+	<!-- navigation object : Header code -->
+	<t4 type="navigation" id="496" />
+	<!--/mainNav-->
 
-_hdr.html
+	<!-- ********** CONTENT ********** -->
+	<div class="container content">
+		<div class="row pageHeader">
+			<div class="col span12">
+				<div id="breadcrumbs">
+					<span class="youarehere">You are here: </span> &gt;
+					<!-- navigation object : Breadcrumb -->
+					<t4 type="navigation" id="69" />
+				</div><!--/breadcrumb-->
+			</div><!--/col-->
+			<div class="col span12">
+				<h1>About Us</h1>
+			</div><!--/col-->
+		</div><!--/row-->
+
+		<div class="row">
+			<div class="col span6">
+				<div class="module orange">
+					<div class="moduleHeader">
+						<h2><a href="#">About Us</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- navigation object : Path: About Us Who we are -->
+							<li><a href="<t4 type=" navigation" id="789" />">Who we are/What we do</a></li>
+							<!-- navigation object : Path: About Us Our data -->
+							<li><a href="<t4 type=" navigation" id="790" />">Our data</a></li>
+							<!-- navigation object : Path: About Us Organisation Structure -->
+							<li><a href="<t4 type=" navigation" id="791" />">Organisation structure</a></li>
+
+						</ul>
+					</div>
+				</div><!--/module-->
+				<div class="module yellow">
+					<div class="moduleHeader">
+						<h2><a href="#">Taking Part in a Survey</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- navigation object : Path: About Us Introduction -->
+							<li><a href="<t4 type=" navigation" id="792" />">Introduction</a></li>
+							<!-- navigation object : Path: About Us Households -->
+							<li><a href="<t4 type=" navigation" id="793" />">Households</a></li>
+							<!-- navigation object : Path: About Us Business -->
+							<li><a href="<t4 type=" navigation" id="794" />">Business</a></li>
+						</ul>
+					</div>
+				</div><!--/module-->
+				<div class="module blue">
+					<div class="moduleHeader">
+						<h2><a href="#">Careers</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- navigation object : Path: About Us Register Interest -->
+							<li><a href="<t4 type=" navigation" id="796" />">Register an interest</a></li>
+							<!-- navigation object : Path: About Us Current Campaign -->
+							<li><a href="<t4 type=" navigation" id="798" />">Current campaign</a></li>
+						</ul>
+					</div>
+				</div><!--/module-->
+			</div><!--/col-->
+			<div class="col span6">
+				<div class="module green">
+					<div class="moduleHeader">
+						<h2><a href="#">Policies and Procedures</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- navigation object : Path: About Us Data Protection -->
+							<li><a href="<t4 type=" navigation" id="799" />">Data protection</a></li>
+							<!-- navigation object : Path: About Us Governance -->
+							<li><a href="<t4 type=" navigation" id="800" />">Governance </a></li>
+							<!-- navigation object : Path: About Us Disabilities -->
+							<li><a href="<t4 type=" navigation" id="801" />">Disabilites </a></li>
+							<!-- navigation object : Path: About Us Social Media -->
+							<li><a href="<t4 type=" navigation" id="802" />">Social Media </a></li>
+							<!-- navigation object : Path: About Us Customer Charter -->
+							<li><a href="<t4 type=" navigation" id="803" />">Customer Charter </a></li>
+							<!-- navigation object : Path: About Us Memorandums of Understanding -->
+							<li><a href="<t4 type=" navigation" id="804" />">Memorandums of Understanding </a></li>
+						</ul>
+					</div>
+				</div><!--/module-->
+				<div class="module pink">
+					<div class="moduleHeader">
+						<h2><a href="#">Corporate Publications</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- Path: About Us Listing -->
+							<li><a href="<t4 type=" navigation" id="805" />">Corporate Publications Listings </a></li>
+
+						</ul>
+					</div>
+				</div><!--/module-->
+				<div class="module blue">
+					<div class="moduleHeader">
+						<h2><a href="#">Get in Touch</a></h2>
+					</div>
+					<div class="moduleBody">
+						<ul>
+							<!-- navigation object : Path: About Us Statistical Enquiries -->
+							<li><a href="<t4 type=" navigation" id="806" />">Statistical Enquiries</a></li>
+							<!-- navigation object : Path: About Us Press Office -->
+							<li><a href="<t4 type=" navigation" id="807" />">Press Office</a></li>
+							<!-- navigation object : Path: About Us Information -->
+							<li><a href="<t4 type=" navigation" id="808" />">Information</a></li>
+							<!-- navigation object : Path: About Us HR -->
+							<li><a href="<t4 type=" navigation" id="809" />">Human Resources</a></li>
+							<!-- navigation object : Path: About Us Links -->
+							<li><a href="<t4 type=" navigation" id="810" />">Links</a></li>
+
+						</ul>
+					</div>
+				</div><!--/module-->
+			</div><!--/col-->
+		</div><!--/row-->
+
+
+	</div><!--/content-->
+
+
+
+	_hdr.html
