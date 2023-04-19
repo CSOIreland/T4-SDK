@@ -10,8 +10,8 @@ t4Sdk.pxWidget.utility = {};
 const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
 const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
 const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
-const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://dev-ws.cso.ie/private/api.jsonrpc";
-const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc";
+const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://ws.cso.ie/private/api.jsonrpc";
+const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://ws.cso.ie/public/api.jsonrpc";
 
 
 
@@ -28,7 +28,7 @@ const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://dev-ws.cso.ie/public/api.jsonrpc"
  * @param {*} defaultVariable 
  * @returns 
  */
-t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable, select2) {
+t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
