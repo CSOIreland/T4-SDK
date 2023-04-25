@@ -298,10 +298,13 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
     var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
     //update query depending on status
     if (isLive) {
-        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
-        localConfig.metadata.api.query.data.params.matrix = matrix;
-        delete localConfig.metadata.api.query.data.params.release
+        if (!$.isEmptyObject(localConfig.metadata.api.query)) {
+            localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+            localConfig.metadata.api.query.data.params.matrix = matrix;
+            delete localConfig.metadata.api.query.data.params.release
+        }
+
 
         $.each(localConfig.data.datasets, function (index, value) {
             value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
@@ -357,10 +360,14 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
         localConfig.data.api.query.data.params.extension.matrix = matrix;
         localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
 
-        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
-        localConfig.metadata.api.query.data.params.matrix = matrix;
-        delete localConfig.metadata.api.query.data.params.release;
+        if (!$.isEmptyObject(localConfig.metadata.api.query)) {
+            localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+            localConfig.metadata.api.query.data.params.matrix = matrix;
+            delete localConfig.metadata.api.query.data.params.release;
+        }
+
+
     }
     //update query for selected variable
     localConfig.data.api.query.data.params.dimension[toggleDimension] = {};
