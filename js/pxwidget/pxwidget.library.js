@@ -407,10 +407,12 @@ t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimens
         localConfig.data.datasets[0].api.query.data.params.extension.matrix = matrix;
         localConfig.data.datasets[0].api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
 
-        localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-        localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
-        localConfig.metadata.api.query.data.params.matrix = matrix;
-        delete localConfig.metadata.api.query.data.params.release;
+        if (!$.isEmptyObject(localConfig.metadata.api.query)) {
+            localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
+            localConfig.metadata.api.query.data.params.matrix = matrix;
+            delete localConfig.metadata.api.query.data.params.release;
+        }
     }
     //update query for selected variable
     localConfig.data.datasets[0].api.query.data.params.dimension[toggleDimension] = {};
