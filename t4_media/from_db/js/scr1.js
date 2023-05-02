@@ -1,49 +1,49 @@
- 
+
 //js to set current tab to active on main nav dr
 
-    $(document).ready(function () {
+$(document).ready(function () {
 
 
-        var theme = '<t4 type="navigation" id="70"/>';
+    //  var t4Sdk.theme = '<t4 type="navigation" id="70"/>';
 
-        //alert(theme);
+    //alert(t4Sdk.theme);
 
-        if (theme.length == '0') {
-            $("#hometab").addclass("currentbranch0");
-            // alert('i am here');
-        }
+    if (t4Sdk.theme.length == '0') {
+        $("#hometab").addclass("currentbranch0");
+        // alert('i am here');
+    }
 
-        else if (theme == 'statistics' || theme == 'releases and publications') {
+    else if (t4Sdk.theme == 'statistics' || t4Sdk.theme == 'releases and publications') {
 
-            $("#statisticstab").addclass("currentbranch0");
+        $("#statisticstab").addclass("currentbranch0");
 
-        }
+    }
 
-        else if (theme == 'databases') {
+    else if (t4Sdk.theme == 'databases') {
 
-            $("#databasestab").addclass("currentbranch0");
+        $("#databasestab").addclass("currentbranch0");
 
-        }
-
-
-        else if (theme == 'surveys and methodology') {
-
-            $("#methodstab").addclass("currentbranch0");
-
-        }
-
-        else if (theme == 'about us') {
-
-            $("#aboutustab").addclass("currentbranch0");
-
-        }
+    }
 
 
-        else {
-            //do nothing
-        }
+    else if (t4Sdk.theme == 'surveys and methodology') {
+
+        $("#methodstab").addclass("currentbranch0");
+
+    }
+
+    else if (t4Sdk.theme == 'about us') {
+
+        $("#aboutustab").addclass("currentbranch0");
+
+    }
 
 
-    });
+    else {
+        //do nothing
+    }
+
+
+});
 
     //end main nav js dr
