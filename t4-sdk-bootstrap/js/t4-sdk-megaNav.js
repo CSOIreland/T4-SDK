@@ -2,78 +2,50 @@ var t4Sdk = t4Sdk || {};
 t4Sdk.megaNav = {};
 t4Sdk.megaNav.openedMenu = null;
 t4Sdk.megaNav.mainNav = null;
-t4Sdk.megaNav.displayNavs = function () {
-    t4Sdk.megaNav.mainNav.style.display = "block";
-}
-t4Sdk.megaNav.setMegaMenu = function (dd) {
-    // megaMenu.style.display = "block";
-
-    // nav-link dropdown-toggle
-
-    //var arr_toggle = document.querySelectorAll(".dropdown-toggle");
-    var arr_toggle = document.querySelectorAll(".t4-sdk-nav-link");
-    var arr_megamenus = document.querySelectorAll(".t4-sdk-megamenu");
-    var toggle_iccon = document.getElementsByClassName("t4-sdk-navbar-toggler-icon");
-    if (toggle_iccon) {
-        t4Sdk.megaNav.mainNav = document.getElementsByClassName("t4-sdk-navbar-collapse")[0];
-        toggle_iccon[0].addEventListener("click", t4Sdk.megaNav.displayNavs);
-    }
-    if (arr_toggle.length > 0) {
-        for (var i = 0; i < arr_toggle.length; i++) {
-            var toggle = arr_toggle[i];
-            var megaMenu = arr_megamenus[i];
-            toggle["mega_menu"] = megaMenu;
-            toggle.addEventListener("click", t4Sdk.megaNav.openMegaMenu);
-            var btn = document.createElement("button");
-            btn.megaMenu = toggle["mega_menu"];
-            btn.innerHTML = "close";
-            btn.style.float = "right";
-            // megaMenu.marginBottom = "0px";
-            megaMenu.style.paddingBottom = "0px";
-            btn.style.backgroundColor = "#006F74";
-            btn.style.border = "none";
-            btn.addEventListener("click", t4Sdk.megaNav.closeMegaMenu);
-            megaMenu.addEventListener("click", t4Sdk.openMegaMenu);
-            megaMenu.appendChild(btn)
-        }
-    }
-}
+t4Sdk.megaNav.closeButton = document.createElement("button");
 t4Sdk.megaNav.closeMegaMenu = function () {
-    var btn = this;
-    btn.megaMenu.style.display = "none";
+    t4Sdk.megaNav.openedMenu["panel"].style.display = "none";
 }
-
+t4Sdk.megaNav.addCloseButton = function (panel) {
+    t4Sdk.megaNav.closeButton.innerHTML = "close";
+    t4Sdk.megaNav.closeButton.style.float = "right";
+    t4Sdk.megaNav.closeButton.style.backgroundColor = "#006F74";
+    t4Sdk.megaNav.closeButton.style.border = "none";
+    t4Sdk.megaNav.closeButton.style.cursor = "pointer";
+    t4Sdk.megaNav.closeButton.addEventListener("click", t4Sdk.megaNav.closeMegaMenu);
+}
 t4Sdk.megaNav.openMegaMenu = function () {
-    var toggle = this;
     if (t4Sdk.megaNav.openedMenu)
-        t4Sdk.megaNav.openedMenu["mega_menu"].style.display = "none";
-    t4Sdk.megaNav.openedMenu = toggle;
-    toggle["mega_menu"].style.display = "block";
-    // megaMenu
+        t4Sdk.megaNav.openedMenu["panel"].style.display = "none";
+    t4Sdk.megaNav.openedMenu = this;
+    t4Sdk.megaNav.moveCloseButton();
 }
-
-//document.addEventListener("DOMContentLoaded", 
-/*
-function () {
-
-    //	return;
-    /////// Prevent closing from click inside dropdown
-    document.querySelectorAll('.dropdown-menu').forEach(function (element) {
-        element.addEventListener('click', function (e) {
-            console.log("clicked")
-            e.stopPropagation();
-        });
-    })
-});
-*/
-
+t4Sdk.megaNav.moveCloseButton = function () {
+    t4Sdk.megaNav.openedMenu["panel"].style.display = "block";
+    t4Sdk.megaNav.openedMenu["panel"].appendChild(t4Sdk.megaNav.closeButton);
+}
+t4Sdk.megaNav.setMegaMenu = function () {
+    var containers = document.querySelectorAll(".t4-sdk-nav-item");
+    t4Sdk.megaNav.addCloseButton();
+    if (containers.length > 0) {
+        for (var i = 0; i < containers.length; i++) {
+            var container = containers[i];
+            var link = container.getElementsByClassName("t4-sdk-nav-link")[0];
+            link["holder"] = container;
+            if (i == 0) t4Sdk.megaNav.openedMenu = link;
+            var panel = container.getElementsByClassName("t4-sdk-megamenu")[0];
+            panel.style.paddingBottom = "2px";
+            link["panel"] = panel;
+            link.addEventListener("click", t4Sdk.megaNav.openMegaMenu);
+        }
+        t4Sdk.megaNav.moveCloseButton();
+    }
+}
 t4Sdk.megaNav.load = function () {
-    // const megamenus = document.querySelectorAll(".megamenu");
     const dropDown = document.querySelectorAll(".t4-sdk-dropdown");
 
     if (dropDown.length > 0)
-        t4Sdk.megaNav.setMegaMenu(dropDown[0]);
+        t4Sdk.megaNav.setMegaMenu();
 
 }
-
 window.addEventListener("load", t4Sdk.megaNav.load);

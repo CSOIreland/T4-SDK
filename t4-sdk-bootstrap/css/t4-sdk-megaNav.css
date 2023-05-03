@@ -2,6 +2,124 @@
     background-color: #00ada8;
 }
 
+.meganav-bg-color {
+    background-color: rgb(240, 244, 247);
+}
+
+.cso-bg-color-1 {
+    background-color: rgb(251, 142, 3);
+}
+
+.cso-bg-color-1 {
+    background-color: rgb(251, 142, 3);
+}
+
+.cso-bg-color-2 {
+    background-color: rgb(83, 182, 147);
+}
+
+.cso-bg-color-3 {
+
+    background-color: rgb(35, 54, 89);
+}
+
+.cso-bg-color-4 {
+    background-color: rgb(71, 132, 135)
+}
+
+.cso-bg-color-5 {
+    background-color: rgb(60, 182, 179)
+}
+
+
+.cso-font-color-1 {
+    color: rgb(251, 142, 3);
+}
+
+.cso-font-color-2 {
+    color: rgb(83, 182, 147);
+}
+
+.cso-font-color-3 {
+
+    color: rgb(35, 54, 89);
+}
+
+.cso-font-color-4 {
+    color: rgb(71, 132, 135)
+}
+
+.cso-font-color-5 {
+    color: rgb(60, 182, 179)
+}
+
+
+.cso-border-left-1 {
+    border-left: 5px solid rgb(251, 142, 3);
+    ;
+    padding-left: 5px;
+}
+
+.cso-border-left-2 {
+    border-left: 5px solid rgb(83, 182, 147);
+    ;
+    padding-left: 5px;
+}
+
+.cso-border-left-3 {
+
+    border-left: 5px solid rgb(35, 54, 89);
+    ;
+    padding-left: 5px;
+}
+
+.cso-border-left-4 {
+    border-left: 5px solid rgb(71, 132, 135);
+    padding-left: 5px;
+}
+
+.cso-border-left-5 {
+    border-left: 5px solid rgb(60, 182, 179);
+    padding-left: 5px;
+}
+
+.cso-border-bottom-5 {
+    border-bottom: 5px solid rgb(60, 182, 179);
+    padding-bottom: 5px;
+}
+
+.meganav-button {
+    background-color: white;
+    margin: 5px;
+    color: #00ada8;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+
+    /* Add some left padding to make room for the bar */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.meganav-fore-color {
+    color: #00ada8;
+    cursor: pointer;
+}
+
+
 .t4-sdk-navbar .t4-sdk-megamenu {
     padding: 1rem;
 
@@ -10,8 +128,6 @@
 .t4-sdk-nav-link {
     margin: 10px;
 }
-
-
 
 
 
