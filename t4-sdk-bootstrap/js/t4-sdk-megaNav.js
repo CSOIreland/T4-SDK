@@ -1,5 +1,5 @@
 var t4Sdk = t4Sdk || {};
-t4Sdk.megaNav = {};
+t4Sdk.megaNav = {};//fixed
 t4Sdk.megaNav.openedMenu = null;
 t4Sdk.megaNav.closeButton = document.createElement("button");
 t4Sdk.megaNav.closeMegaMenu = function () {
