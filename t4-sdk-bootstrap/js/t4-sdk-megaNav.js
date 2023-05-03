@@ -1,6 +1,6 @@
 var t4Sdk = t4Sdk || {};
 var testInt = {};
-testInt.obj = true;
+testInt.obj = t4Sdk;
 t4Sdk.megaNav = {};//fixed
 t4Sdk.megaNav.openedMenu = null;
 t4Sdk.megaNav.closeButton = document.createElement("button");
@@ -45,8 +45,11 @@ t4Sdk.megaNav.setMegaMenu = function () {
 t4Sdk.megaNav.load = function () {
     const dropDown = document.querySelectorAll(".t4-sdk-dropdown");
 
-    if (dropDown.length > 0)
+    if (dropDown.length > 0) {
+        t4Sdk = testInt.obj;
         t4Sdk.megaNav.setMegaMenu();
+    }
+
 
 }
 window.addEventListener("load", t4Sdk.megaNav.load);
