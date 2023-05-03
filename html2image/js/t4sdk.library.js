@@ -1,1 +1,1 @@
-var t4Sdk = this || {}; 
+var t4Sdk = t4Sdk || {}; 
