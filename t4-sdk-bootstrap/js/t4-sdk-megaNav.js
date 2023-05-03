@@ -1,4 +1,6 @@
 var t4Sdk = t4Sdk || {};
+var testInt = {};
+testInt.obj = true;
 t4Sdk.megaNav = {};//fixed
 t4Sdk.megaNav.openedMenu = null;
 t4Sdk.megaNav.closeButton = document.createElement("button");
