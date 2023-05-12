@@ -15,3 +15,7 @@
   color: #4463AA;
   margin: 0 0 1rem;
 }
+
+.sidebar-featured-image img {
+  width: auto;
+}
