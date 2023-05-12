@@ -682,7 +682,10 @@
                     try {
                         util.asArray(sheet.cssRules || []).forEach(cssRules.push.bind(cssRules));
                     } catch (e) {
-                        console.log('Error while reading CSS rules from ' + sheet.href, e.toString());
+                        console.log('try new func.. ' + sheet.href, e.toString());
+                        // t4Sdk.html2image.loadAndParseStylesheets();
+                        //console.log('ok1: ' + sheet.href, e.toString());
+                        // console.log('Error while reading CSS rules from ' + sheet.href, e.toString());
                     }
                 });
                 return cssRules;
