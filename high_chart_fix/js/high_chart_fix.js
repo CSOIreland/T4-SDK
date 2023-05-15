@@ -36,7 +36,7 @@ t4Sdk.high_chart_fix.callback = function () {
     }
     window.print();
 }
-t4Sdk.high_chart_fix.fixSVG = function () {
+t4Sdk.high_chart_fix.fixSVG4Export = function () {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
     t4Sdk.high_chart_fix.converted[0].lastElement = true;
@@ -162,7 +162,7 @@ t4Sdk.high_chart_fix.gcs = function (element) {
 }
 
 
-t4Sdk.high_chart_fix.fixSVG_ok = function () {
+t4Sdk.high_chart_fix.fixSVG = function () {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.populateElements("highchartBox");
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
