@@ -130,7 +130,7 @@ t4Sdk.html2pdf.fnT4Download = function (e) {
         for (var i = 0; i < ch.children.length; i++) {
             if (ch.children[i].children[0].checked) {
                 var cbox = ch.children[i];
-                inp[inp.length] = cbox.children[1].href + "/export2pdf";
+                inp[inp.length] = cbox.children[1].href + "?export2pdf";
             }
         }
         t4Sdk.html2pdf.fnExportPDF(inp);
