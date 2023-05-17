@@ -35,8 +35,8 @@ t4Sdk.high_chart_fix.callback = function () {
         c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
         c.originalDiv.parentElement.removeChild(c.originalDiv);
     }
-    t4Sdk.high_chart_fix.originalPrint();
-    //window.print();
+    window.print();
+    t4Sdk.high_chart_fix.revert2Original();
 }
 t4Sdk.high_chart_fix.fixSVG4Export = function () {
     t4Sdk.high_chart_fix.converted = new Array();
@@ -170,8 +170,7 @@ t4Sdk.high_chart_fix.fixSVG = function () {
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
     if (t4Sdk.high_chart_fix.converted.length == 0) {
         t4Sdk.high_chart_fix.noSVGs = true;
-        t4Sdk.high_chart_fix.originalPrint();
-        // window.print();
+        window.print();
         return;
     }
     t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length - 1].lastElement = true;
@@ -197,18 +196,11 @@ t4Sdk.high_chart_fix.revert2Original = function () {
 
 //document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
 window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf);
-const mediaQueryList = window.matchMedia('print');
+//const mediaQueryList = window.matchMedia('print');
 
 
-t4Sdk.high_chart_fix.originalPrint = window.print;
-t4Sdk.high_chart_fix.overridePrint = function () {
-    console.log("print overriden!")
-    t4Sdk.high_chart_fix.fixSVG();
-    //  t4Sdk.high_chart_fix.originalPrint();
-    t4Sdk.high_chart_fix.revert2Original();
-}
-window.print = t4Sdk.high_chart_fix.overridePrint;
 
+/*
 mediaQueryList.addEventListener('change', (event) => {
     if (event.matches) {
         //  event.preventDefault();
@@ -222,7 +214,7 @@ mediaQueryList.addEventListener('change', (event) => {
         // return;        window.location.reload();
     }
 });
-
+*/
 
 t4Sdk.high_chart_fix.truncatedText = document.createElement("span");
 t4Sdk.high_chart_fix.truncatedText.innerHTML = "";// "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
@@ -262,7 +254,6 @@ t4Sdk.high_chart_fix.checkZoomLevel_old = function () {
         alert("Please, set zoom level to 100%!");
     return res;
 }
-/*
 window.addEventListener('keydown', function (event) {
     if ((event.key === 'P' || event.key === 'p') && event.ctrlKey) {
         event.preventDefault();
@@ -270,5 +261,4 @@ window.addEventListener('keydown', function (event) {
         t4Sdk.high_chart_fix.fixSVG();
     }
 }
-
-);*/
+); 
