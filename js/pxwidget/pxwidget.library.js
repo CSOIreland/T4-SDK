@@ -518,7 +518,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
 
 
         //check that the query is for one value
-        query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.code];
+        query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
 
         debugger
 
