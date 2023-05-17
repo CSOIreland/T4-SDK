@@ -546,7 +546,6 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} callback 
  */
 t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, callback) {
-    debugger
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
@@ -579,7 +578,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
 
 
 
-    $($.ajax({
+    /* $($.ajax({
         "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
@@ -597,29 +596,29 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         }
     })).promise().done(function () {
         debugger
+    }); */
+
+
+
+
+
+    $.ajax({
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
+        "success": function (response) {
+            callback(JSONstat(response.result))
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
     });
-
-
-
-
-
-    /* $.ajax({
-       "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
-       "xhrFields": {
-           "withCredentials": true
-       },
-       // "async": false,
-       "dataType": "json",
-       "method": "POST",
-       "jsonp": false,
-       "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
-       "success": function (response) {
-           callback(JSONstat(response.result))
-       },
-       "error": function (xhr) {
-           console.log("Error getting metadata ")
-       }
-   });  */
 
 
 
@@ -703,42 +702,90 @@ t4Sdk.pxWidget.utility.getToggleDimensionVariables = function (matrixRelease, is
         "variables": []
     };
 
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-        var jsonStat = response;
-        var toggleVariablesArr = [];
-        if (toggleVariables) {
-            //put variables into array
-            toggleVariablesArr = toggleVariables.split(',');
-        }
 
-        //trim all variables
-        var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
-            return element.trim();
-        });
+    $.when(
+        t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
+            var jsonStat = response;
+            var toggleVariablesArr = [];
+            if (toggleVariables) {
+                //put variables into array
+                toggleVariablesArr = toggleVariables.split(',');
+            }
 
-        if (toggleVariablesArrTrimmed.length) {
-            $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+            //trim all variables
+            var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
+                return element.trim();
+            });
+
+            if (toggleVariablesArrTrimmed.length) {
+                $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+                    if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                        toggleVariablesDetails.variables.push({
+                            "code": code,
+                            "label": jsonStat.Dimension(toggleDimension).Category(code).label
+                        });
+                    }
+
+                });
+            }
+            else {
+                $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
                     toggleVariablesDetails.variables.push({
                         "code": code,
                         "label": jsonStat.Dimension(toggleDimension).Category(code).label
                     });
-                }
 
-            });
-        }
-        else {
-            $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                toggleVariablesDetails.variables.push({
-                    "code": code,
-                    "label": jsonStat.Dimension(toggleDimension).Category(code).label
                 });
+            }
+            //populate toggle variable label
+            toggleVariablesDetails.label = jsonStat.Dimension(toggleDimension).label;
+        })
 
-            });
-        }
-        //populate toggle variable label
-        toggleVariablesDetails.label = jsonStat.Dimension(toggleDimension).label;
+    ).done(function (a1) {
+        debugger
     });
+
+
+
+
+
+    /*  t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
+         var jsonStat = response;
+         var toggleVariablesArr = [];
+         if (toggleVariables) {
+             //put variables into array
+             toggleVariablesArr = toggleVariables.split(',');
+         }
+ 
+         //trim all variables
+         var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
+             return element.trim();
+         });
+ 
+         if (toggleVariablesArrTrimmed.length) {
+             $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+                 if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                     toggleVariablesDetails.variables.push({
+                         "code": code,
+                         "label": jsonStat.Dimension(toggleDimension).Category(code).label
+                     });
+                 }
+ 
+             });
+         }
+         else {
+             $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
+                 toggleVariablesDetails.variables.push({
+                     "code": code,
+                     "label": jsonStat.Dimension(toggleDimension).Category(code).label
+                 });
+ 
+             });
+         }
+         //populate toggle variable label
+         toggleVariablesDetails.label = jsonStat.Dimension(toggleDimension).label;
+     }); */
+    debugger
     return toggleVariablesDetails;
 
 };
