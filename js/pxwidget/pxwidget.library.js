@@ -3,21 +3,14 @@ t4Sdk = t4Sdk || {};
 t4Sdk.pxWidget = {};
 t4Sdk.pxWidget.chart = {};
 t4Sdk.pxWidget.table = {};
+t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
 //#endregion Add Namespace
 
-const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
-const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
-const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
-const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://ws.cso.ie/private/api.jsonrpc";
-const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://ws.cso.ie/public/api.jsonrpc";
-
-
-
 //#region create a chart with toggle variables
 /**
- * 
+ * Entry method to initialise the widget
  * @param {*} type 
  * @param {*} elementId 
  * @param {*} isLive 
@@ -282,8 +275,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     });
 };
 
-/**Call the pxWidget function that draws the chart 
- * 
+/** 
+ * Call the pxWidget function that draws the chart
  * @param {*} elementId 
  * @param {*} isLive 
  * @param {*} config 
@@ -577,12 +570,12 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "id": Math.floor(Math.random() * 999999999) + 1
     };
 
-    $.ajax({
+    /* $.ajax({
         "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
-        "async": false,
+        // "async": false,
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
@@ -593,6 +586,28 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "error": function (xhr) {
             console.log("Error getting metadata ")
         }
+    }); */
+
+    $.when($.ajax({
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
+        "xhrFields": {
+            "withCredentials": true
+        },
+        // "async": false,
+        "dataType": "json",
+        "method": "POST",
+        "jsonp": false,
+        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
+        "success": function (response) {
+            debugger
+            //callback(JSONstat(response.result))
+        },
+        "error": function (xhr) {
+            console.log("Error getting metadata ")
+        }
+    })).then(function (data, textStatus, jqXHR) {
+        debugger
+        // alert(jqXHR.status); // Alerts 200
     });
 
 };
