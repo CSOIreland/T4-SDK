@@ -151,7 +151,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     var toggleIsTime = false;
 
-    var promise = t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive);
+    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).success(function (realData) {
+        debugger
+    });
+
     debugger
 
     t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
