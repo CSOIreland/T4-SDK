@@ -158,7 +158,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     });
 
     //get variables to toggle on
-    var toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrixRelease, isLive, toggleDimension.trim(), toggleVariables, defaultVariable)
+    var toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrixRelease, isLive, toggleDimension.trim(), toggleVariables, defaultVariable);
 
     //failed to read metadata, abort from here
     if (!toggleDimensionDetails.variables.length) {
@@ -546,6 +546,7 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} callback 
  */
 t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, callback) {
+    debugger
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
@@ -576,7 +577,9 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "id": Math.floor(Math.random() * 999999999) + 1
     };
 
-    /* $.ajax({
+
+
+    $($.ajax({
         "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
@@ -587,34 +590,38 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "jsonp": false,
         "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
         "success": function (response) {
-            callback(JSONstat(response.result))
-        },
-        "error": function (xhr) {
-            console.log("Error getting metadata ")
-        }
-    }); */
-
-    $.when($.ajax({
-        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "async": false,
-        "dataType": "json",
-        "method": "POST",
-        "jsonp": false,
-        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
-        "success": function (response) {
-            debugger
             //callback(JSONstat(response.result))
         },
         "error": function (xhr) {
             console.log("Error getting metadata ")
         }
-    })).done(function (data, textStatus, jqXHR) {
+    })).promise().done(function () {
         debugger
-        // alert(jqXHR.status); // Alerts 200
     });
+
+
+
+
+
+    /* $.ajax({
+       "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
+       "xhrFields": {
+           "withCredentials": true
+       },
+       // "async": false,
+       "dataType": "json",
+       "method": "POST",
+       "jsonp": false,
+       "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
+       "success": function (response) {
+           callback(JSONstat(response.result))
+       },
+       "error": function (xhr) {
+           console.log("Error getting metadata ")
+       }
+   });  */
+
+
 
 };
 
