@@ -205,7 +205,7 @@ t4Sdk.high_chart_fix.overridePrint = function () {
     t4Sdk.high_chart_fix.originalPrint();
     t4Sdk.high_chart_fix.revert2Original();
 }
-//window.print=
+window.print = t4Sdk.high_chart_fix.overridePrint;
 
 mediaQueryList.addEventListener('change', (event) => {
     if (event.matches) {
