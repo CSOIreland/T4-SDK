@@ -495,14 +495,13 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, isLive).done(function (response) {
+    t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, true).done(function (response) {
+        var data = JSONstat(response.result);
         var latestTimeVariable = {
             "dimension": null,
             "code": null,
             "label": null
         };
-        var data = JSONstat(response.result);
-
         var timeDimensionCode = null;
         $.each(data.Dimension(), function (index, value) {
             if (value.role == "time") {
