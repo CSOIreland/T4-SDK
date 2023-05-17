@@ -35,7 +35,8 @@ t4Sdk.high_chart_fix.callback = function () {
         c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
         c.originalDiv.parentElement.removeChild(c.originalDiv);
     }
-    window.print();
+    t4Sdk.high_chart_fix.originalPrint();
+    //window.print();
 }
 t4Sdk.high_chart_fix.fixSVG4Export = function () {
     t4Sdk.high_chart_fix.converted = new Array();
@@ -169,7 +170,8 @@ t4Sdk.high_chart_fix.fixSVG = function () {
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
     if (t4Sdk.high_chart_fix.converted.length == 0) {
         t4Sdk.high_chart_fix.noSVGs = true;
-        window.print();
+        t4Sdk.high_chart_fix.originalPrint();
+        // window.print();
         return;
     }
     t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length - 1].lastElement = true;
@@ -202,7 +204,7 @@ t4Sdk.high_chart_fix.originalPrint = window.print;
 t4Sdk.high_chart_fix.overridePrint = function () {
     console.log("print overriden!")
     t4Sdk.high_chart_fix.fixSVG();
-    t4Sdk.high_chart_fix.originalPrint();
+    //  t4Sdk.high_chart_fix.originalPrint();
     t4Sdk.high_chart_fix.revert2Original();
 }
 window.print = t4Sdk.high_chart_fix.overridePrint;
