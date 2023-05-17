@@ -193,11 +193,16 @@ t4Sdk.high_chart_fix.revert2Original = function () {
     }
 }
 
-document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
+//document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
 window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf);
 const mediaQueryList = window.matchMedia('print');
 mediaQueryList.addEventListener('change', (event) => {
     if (event.matches) {
+        event.preventDefault();
+        t4Sdk.high_chart_fix.fixSVG();
+        // alert("v3")
+        // document.body.innerHTML = "hello from js!"
+        //  window.print();
         // Entered print preview
     } else {
         t4Sdk.high_chart_fix.revert2Original();
@@ -242,10 +247,13 @@ t4Sdk.high_chart_fix.checkZoomLevel_old = function () {
         alert("Please, set zoom level to 100%!");
     return res;
 }
+/*
 window.addEventListener('keydown', function (event) {
     if ((event.key === 'P' || event.key === 'p') && event.ctrlKey) {
         event.preventDefault();
         // Call your custom function
         t4Sdk.high_chart_fix.fixSVG();
     }
-});
+}
+
+);*/
