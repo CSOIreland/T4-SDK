@@ -196,19 +196,32 @@ t4Sdk.high_chart_fix.revert2Original = function () {
 //document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
 window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf);
 const mediaQueryList = window.matchMedia('print');
+
+
+t4Sdk.high_chart_fix.originalPrint = window.print;
+t4Sdk.high_chart_fix.overridePrint = function () {
+    console.log("print overriden!")
+    t4Sdk.high_chart_fix.fixSVG();
+    t4Sdk.high_chart_fix.originalPrint();
+    t4Sdk.high_chart_fix.revert2Original();
+}
+//window.print=
+
 mediaQueryList.addEventListener('change', (event) => {
     if (event.matches) {
-        event.preventDefault();
-        t4Sdk.high_chart_fix.fixSVG();
+        //  event.preventDefault();
+        //t4Sdk.high_chart_fix.fixSVG();
         // alert("v3")
         // document.body.innerHTML = "hello from js!"
-        //  window.print();
+        // window.print();
         // Entered print preview
     } else {
-        t4Sdk.high_chart_fix.revert2Original();
+        // t4Sdk.high_chart_fix.revert2Original();
         // return;        window.location.reload();
     }
 });
+
+
 t4Sdk.high_chart_fix.truncatedText = document.createElement("span");
 t4Sdk.high_chart_fix.truncatedText.innerHTML = "";// "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
 t4Sdk.high_chart_fix.checkZoomLevel = function () {
