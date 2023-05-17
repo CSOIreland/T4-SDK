@@ -613,7 +613,6 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
         "xhrFields": {
             "withCredentials": true
         },
-        "async": false,
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
