@@ -520,71 +520,41 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
         //check that the query is for one value
         query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
 
-        debugger
+        t4Sdk.pxWidget.utility.getPxStatData(query).done(function (responseValue) {
 
-        /* var valueDetails = {
-            "value": null,
-            "unit": null
-        };
+            var valueDetails = {
+                "value": null,
+                "unit": null
+            };
+            var data = JSONstat(responseValue.result);
 
+            if (data.value.length > 1) {
+                console.log("Invalid query. Query should only return one value.")
+            }
+            else {
+                var statisticCode = data.Dimension({ role: "metric" })[0].id[0];
+                var statisticDetails = data.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
+                var statisticDecimal = statisticDetails.decimals;
 
+                valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(data.Data(0).value, statisticDecimal)
+                valueDetails.unit = statisticDetails.label;
+            }
 
+            $(valueElement).text(valueDetails.value);
 
-        t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (responseValue) {
+            if (unitElement) {
+                $(unitElement).text(valueDetails.unit);
+            };
+
+            if (timeLabelElement) {
+                $(timeLabelElement).text(latestTimeVariable.label);
+            };
 
         });
-
-
-
-
-
-
-
-
-
-
-
-        var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimeVariable);
-
-        $(valueElement).text(valueDetails.value);
-
-        if (unitElement) {
-            $(unitElement).text(valueDetails.unit);
-        };
-
-        if (timeLabelElement) {
-            $(timeLabelElement).text(latestTimeVariable.label);
-        }; */
-
     });
 
 };
 
-/**
- * Gets a single value from PxStat
- * @param {*} query 
- * @param {*} latestTimePoint 
- * @returns 
- */
-t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
-
-
-    var jsonStat = t4Sdk.pxWidget.utility.getPxStatData(query);
-    //check that we only have one value back from the query
-    if (jsonStat.value.length > 1) {
-        console.log("Invalid query. Query should only return one value.")
-    }
-    else {
-        var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
-        var statisticDetails = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
-        var statisticDecimal = statisticDetails.decimals;
-
-        valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.Data(0).value, statisticDecimal)
-        valueDetails.unit = statisticDetails.label;
-    }
-
-    return valueDetails;
-};
 //#endregion
 
 //#region utility
