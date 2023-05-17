@@ -611,7 +611,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive, call
         "error": function (xhr) {
             console.log("Error getting metadata ")
         }
-    })).then(function (data, textStatus, jqXHR) {
+    })).done(function (data, textStatus, jqXHR) {
         debugger
         // alert(jqXHR.status); // Alerts 200
     });
