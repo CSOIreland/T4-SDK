@@ -495,7 +495,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
+    t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, isLive).done(function (response) {
         var latestTimeVariable = {
             "dimension": null,
             "code": null,
