@@ -8,6 +8,12 @@ t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
 //#endregion Add Namespace
 
+const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
+const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
+const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
+const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://ws.cso.ie/private/api.jsonrpc";
+const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://ws.cso.ie/public/api.jsonrpc";
+
 //#region create a chart with toggle variables
 /**
  * Entry method to initialise the widget
