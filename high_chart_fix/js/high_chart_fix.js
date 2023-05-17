@@ -167,7 +167,10 @@ t4Sdk.high_chart_fix.fixSVG = function () {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.populateElements("highchartBox");
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
-    if (t4Sdk.high_chart_fix.converted.length == 0) return;
+    if (t4Sdk.high_chart_fix.converted.length == 0) {
+        window.print();
+        return;
+    }
     t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length - 1].lastElement = true;
     var icn = document.createElement("span");
     if (t4Sdk.high_chart_fix.checkZoomLevel()) {
