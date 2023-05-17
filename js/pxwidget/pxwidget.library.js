@@ -151,14 +151,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     var toggleIsTime = false;
 
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).success(function (realData) {
+    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
         debugger
-    });
-
-    debugger
-
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-        if (response.Dimension(toggleDimension).role == "time") {
+        var data = JSONstat(response.result)
+        if (data.Dimension(toggleDimension).role == "time") {
             toggleIsTime = true;
         }
     });
@@ -669,6 +665,39 @@ t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) 
         "code": null,
         "label": null
     };
+
+
+
+    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).success(function (response) {
+        var data = JSONstat(response.result);
+
+        var timeDimensionCode = null;
+        $.each(data.Dimension(), function (index, value) {
+            if (value.role == "time") {
+                timeDimensionCode = data.id[index];
+                return;
+            }
+        });
+
+        var time = data.Dimension(timeDimensionCode).id;
+
+        latestTimeVariable.dimension = timeDimensionCode;
+        latestTimeVariable.code = time.slice(-1)[0];
+        latestTimeVariable.label = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
         var jsonStat = response;
