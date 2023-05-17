@@ -8,12 +8,6 @@ t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
 //#endregion Add Namespace
 
-const T4SDK_PXWIDGET_READ_METADATA = "PxStat.Data.Cube_API.ReadMetadata";
-const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
-const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
-const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://ws.cso.ie/private/api.jsonrpc";
-const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://ws.cso.ie/public/api.jsonrpc";
-
 //#region create a chart with toggle variables
 /**
  * Entry method to initialise the widget
@@ -256,14 +250,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     $("#" + elementId + "-toggle-select").change(function () {
                         switch (type) {
                             case "chart":
-                                t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                 break;
 
                             case "table":
-                                t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                 break;
                             case "map":
-                                t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                 break;
 
                             default:
@@ -278,13 +272,13 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
                         switch (type) {
                             case "chart":
-                                t4Sdk.pxWidget.chart.drawChart(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                 break;
                             case "table":
-                                t4Sdk.pxWidget.chart.drawTable(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                 break;
                             case "map":
-                                t4Sdk.pxWidget.chart.drawMap(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                 break;
                             default:
                                 break;
@@ -328,7 +322,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
 
     var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
@@ -384,7 +378,7 @@ t4Sdk.pxWidget.chart.drawChart = function (elementId, isLive, config, toggleDime
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     $("#" + elementId).find("[name=table-title]").text(varriableLabel);
     $("#" + elementId).find("[name=table-title-wrapper]").show();
     var localConfig = $.extend(true, {}, config);
@@ -439,7 +433,7 @@ t4Sdk.pxWidget.chart.drawTable = function (elementId, isLive, config, toggleDime
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.chart.drawMap = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
     localConfig.tooltipTitle = varriableLabel;
@@ -495,6 +489,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
+    //get latest time variable first from metadata
     t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, true).done(function (response) {
         var data = JSONstat(response.result);
         var latestTimeVariable = {
@@ -671,34 +666,6 @@ t4Sdk.pxWidget.utility.getPxStatData = function (query) {
  * @param {*} isLive 
  * @returns 
  */
-t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) {
-    var latestTimeVariable = {
-        "dimension": null,
-        "code": null,
-        "label": null
-    };
-
-
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-        var jsonStat = response;
-
-        var timeDimensionCode = null;
-        $.each(jsonStat.Dimension(), function (index, value) {
-            if (value.role == "time") {
-                timeDimensionCode = jsonStat.id[index];
-                return;
-            }
-        });
-
-        var time = jsonStat.Dimension(timeDimensionCode).id;
-
-        latestTimeVariable.dimension = timeDimensionCode;
-        latestTimeVariable.code = time.slice(-1)[0];
-        latestTimeVariable.label = jsonStat.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
-
-    });
-    return latestTimeVariable;
-};
 
 /**
  * Load isogram
