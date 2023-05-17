@@ -152,7 +152,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     var toggleIsTime = false;
 
     t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
-        var data = JSONstat(response.result)
+        var data = JSONstat(response.result);
         if (data.Dimension(toggleDimension).role == "time") {
             toggleIsTime = true;
         }
@@ -162,9 +162,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             "label": "",
             "variables": []
         };
-
-
-
         var toggleVariablesArr = [];
         if (toggleVariables) {
             //put variables into array
@@ -196,32 +193,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
             });
         }
-        //populate toggle variable label
-        toggleVariablesDetails.label = data.Dimension(toggleDimension).label;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //get variables to toggle on
-        //  var toggleDimensionDetails = t4Sdk.pxWidget.utility.getToggleDimensionVariables(matrixRelease, isLive, toggleDimension.trim(), toggleVariables, defaultVariable);
+        toggleVariablesDetails.label = data.Dimension(toggleDimension).label;
 
         //failed to read metadata, abort from here
         if (!toggleVariablesDetails.variables.length) {
@@ -342,11 +315,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             }
 
         });
-
-
     });
-
-
 };
 
 /** 
@@ -526,18 +495,70 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
-    var latestTimePoint = t4Sdk.pxWidget.utility.getLatestTimeVariable(query.params.extension.matrix, true);
-    var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimePoint);
+    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
+        var latestTimeVariable = {
+            "dimension": null,
+            "code": null,
+            "label": null
+        };
+        var data = JSONstat(response.result);
 
-    $(valueElement).text(valueDetails.value);
+        var timeDimensionCode = null;
+        $.each(data.Dimension(), function (index, value) {
+            if (value.role == "time") {
+                timeDimensionCode = data.id[index];
+                return;
+            }
+        });
 
-    if (unitElement) {
-        $(unitElement).text(valueDetails.unit);
-    };
+        var time = data.Dimension(timeDimensionCode).id;
 
-    if (timeLabelElement) {
-        $(timeLabelElement).text(latestTimePoint.label);
-    };
+        latestTimeVariable.dimension = timeDimensionCode;
+        latestTimeVariable.code = time.slice(-1)[0];
+        latestTimeVariable.label = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
+
+
+        //check that the query is for one value
+        query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.code];
+
+        debugger
+
+        /* var valueDetails = {
+            "value": null,
+            "unit": null
+        };
+
+
+
+
+        t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (responseValue) {
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+        var valueDetails = t4Sdk.pxWidget.latestValue.getValue(query, latestTimeVariable);
+
+        $(valueElement).text(valueDetails.value);
+
+        if (unitElement) {
+            $(unitElement).text(valueDetails.unit);
+        };
+
+        if (timeLabelElement) {
+            $(timeLabelElement).text(latestTimeVariable.label);
+        }; */
+
+    });
+
 };
 
 /**
@@ -547,12 +568,7 @@ t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElemen
  * @returns 
  */
 t4Sdk.pxWidget.latestValue.getValue = function (query, latestTimePoint) {
-    //check that the query is for one value
-    query.params.dimension[latestTimePoint.dimension].category.index = [latestTimePoint.code];
-    var valueDetails = {
-        "value": null,
-        "unit": null
-    };
+
 
     var jsonStat = t4Sdk.pxWidget.utility.getPxStatData(query);
     //check that we only have one value back from the query
@@ -665,26 +681,19 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
  * @returns 
  */
 t4Sdk.pxWidget.utility.getPxStatData = function (query) {
-    var data = null;
-
-    $.ajax({
+    return $.ajax({
         "url": "https://ws.cso.ie/public/api.jsonrpc",
         "xhrFields": {
             "withCredentials": true
         },
-        "async": false,
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
         "data": JSON.stringify(query),
-        "success": function (response) {
-            data = JSONstat(response.result);
-        },
         "error": function (xhr) {
             console.log("Error getting data ")
         }
     });
-    return data;
 };
 
 /**
@@ -720,76 +729,6 @@ t4Sdk.pxWidget.utility.getLatestTimeVariable = function (matrixRelease, isLive) 
 
     });
     return latestTimeVariable;
-};
-
-/**
- * Get variables to build toggle
- * @param {*} matrixRelease 
- * @param {*} isLive 
- * @param {*} toggleDimension 
- * @param {*} toggleVariables 
- * @returns 
- */
-t4Sdk.pxWidget.utility.getToggleDimensionVariables = function (matrixRelease, isLive, toggleDimension, toggleVariables) {
-    toggleVariables = toggleVariables || null;
-
-    var toggleVariablesDetails = {
-        "label": "",
-        "variables": []
-    };
-
-
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
-
-    });
-
-
-
-
-
-
-
-
-
-
-
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive, function (response) {
-        var jsonStat = response;
-        var toggleVariablesArr = [];
-        if (toggleVariables) {
-            //put variables into array
-            toggleVariablesArr = toggleVariables.split(',');
-        }
-
-        //trim all variables
-        var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
-            return element.trim();
-        });
-
-        if (toggleVariablesArrTrimmed.length) {
-            $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
-                    toggleVariablesDetails.variables.push({
-                        "code": code,
-                        "label": jsonStat.Dimension(toggleDimension).Category(code).label
-                    });
-                }
-
-            });
-        }
-        else {
-            $.each(jsonStat.Dimension(toggleDimension).id, function (index, code) {
-                toggleVariablesDetails.variables.push({
-                    "code": code,
-                    "label": jsonStat.Dimension(toggleDimension).Category(code).label
-                });
-
-            });
-        }
-        //populate toggle variable label
-        toggleVariablesDetails.label = jsonStat.Dimension(toggleDimension).label;
-    });
-
 };
 
 /**
