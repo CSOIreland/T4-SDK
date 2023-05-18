@@ -20,10 +20,12 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
     var div = document.createElement("div");
     div.setAttribute("id", "export2pdf_completed");
     div.style.display = "none";
-    document.body.appendChild(div);
+    t4Sdk.high_chart_fix.body.appendChild(div);
+    //document.body.appendChild(div);
 }
 t4Sdk.high_chart_fix.fixSVG4pdf = function () {
     if (window.location.href.split('?')[1] == "export2pdf") {
+        t4Sdk.high_chart_fix.body = document.body;
         t4Sdk.high_chart_fix.converted = new Array();
         t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
         t4Sdk.high_chart_fix.converted[0].lastElement = true;
