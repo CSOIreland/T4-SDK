@@ -314,9 +314,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             toggleIsTime = true;
         };
     }).fail(function (error) {
-        debugger
-        console.log()
-    });;
+        console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting metadata")
+    });
 };
 
 /** 
