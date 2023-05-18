@@ -17,6 +17,10 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
         c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
         c.originalDiv.parentElement.removeChild(c.originalDiv);
     }
+    var div = document.createElement("div");
+    div.setAttribute("id", "export2pdf_completed");
+    div.style.display = "none";
+    document.body.appendChild(div);
 }
 t4Sdk.high_chart_fix.fixSVG4pdf = function () {
     if (window.location.href.split('?')[1] == "export2pdf") {
