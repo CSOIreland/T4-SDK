@@ -145,7 +145,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
 
     //get metadata to build toggles
-    t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
+    t4Sdk.pxWidget.utility.getJsonStatMetadata(matrixRelease, isLive).done(function (response) {
         var toggleIsTime = false;
         var data = JSONstat(response.result);
         if (data.length) {
@@ -313,9 +313,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         if (data.Dimension(toggleDimension).role == "time") {
             toggleIsTime = true;
         };
-
-
-    });
+    }).fail(function (error) {
+        debugger
+        console.log()
+    });;
 };
 
 /** 
@@ -496,7 +497,7 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
     timeLabelElement = timeLabelElement || null;
 
     //get latest time variable first from metadata
-    t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, true).done(function (response) {
+    t4Sdk.pxWidget.utility.getJsonStatMetadata(query.params.extension.matrix, true).done(function (response) {
         var data = JSONstat(response.result);
         if (data.length) {
             var latestTimeVariable = {
@@ -522,7 +523,7 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
             //check that the query is for one value
             query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
 
-            t4Sdk.pxWidget.utility.getPxStatData(query).done(function (responseValue) {
+            t4Sdk.pxWidget.utility.getJsonStatData(query).done(function (responseValue) {
 
                 var valueDetails = {
                     "value": null,
@@ -530,16 +531,16 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
                 };
                 var data = JSONstat(responseValue.result);
                 if (data.length) {
-                    if (data.value.length > 1) {
-                        console.log("Invalid query. Query should only return one value.")
-                    }
-                    else {
+                    if (data.value.length == 1) {
                         var statisticCode = data.Dimension({ role: "metric" })[0].id[0];
                         var statisticDetails = data.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
                         var statisticDecimal = statisticDetails.decimals;
 
                         valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(data.Data(0).value, statisticDecimal)
                         valueDetails.unit = statisticDetails.label;
+                    }
+                    else {
+                        console.log("Invalid query. Query should only return one value.");
                     }
 
                     $(valueElement).text(valueDetails.value);
@@ -607,7 +608,7 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} isLive 
  * @param {*} callback 
  */
-t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
+t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
@@ -639,17 +640,14 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
     };
 
     return $.ajax({
-        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLICa : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
-        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
-        "error": function (xhr) {
-            console.log("Error getting metadata")
-        }
+        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease)
     });
 };
 
@@ -658,7 +656,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
  * @param {*} query 
  * @returns 
  */
-t4Sdk.pxWidget.utility.getPxStatData = function (query) {
+t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
     return $.ajax({
         "url": "https://ws.cso.ie/public/api.jsonrpc",
         "xhrFields": {
@@ -667,10 +665,7 @@ t4Sdk.pxWidget.utility.getPxStatData = function (query) {
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
-        "data": JSON.stringify(query),
-        "error": function (xhr) {
-            console.log("Error getting data ")
-        }
+        "data": JSON.stringify(query)
     });
 };
 
