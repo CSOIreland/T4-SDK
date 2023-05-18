@@ -143,172 +143,178 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }).get(0).outerHTML
     );
 
-    var toggleIsTime = false;
 
+    //get metadata to build toggles
     t4Sdk.pxWidget.utility.getPxStatMetadata(matrixRelease, isLive).done(function (response) {
+        var toggleIsTime = false;
         var data = JSONstat(response.result);
-        if (data.Dimension(toggleDimension).role == "time") {
-            toggleIsTime = true;
-        }
+        if (data.length) {
+            var toggleVariablesDetails = {
+                "label": "",
+                "variables": []
+            };
+            var toggleVariablesArr = [];
+            if (toggleVariables) {
+                //put variables into array
+                toggleVariablesArr = toggleVariables.split(',');
+            }
 
+            //trim all variables
+            var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
+                return element.trim();
+            });
 
-        var toggleVariablesDetails = {
-            "label": "",
-            "variables": []
-        };
-        var toggleVariablesArr = [];
-        if (toggleVariables) {
-            //put variables into array
-            toggleVariablesArr = toggleVariables.split(',');
-        }
+            if (toggleVariablesArrTrimmed.length) {
+                $.each(data.Dimension(toggleDimension).id, function (index, code) {
+                    if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                        toggleVariablesDetails.variables.push({
+                            "code": code,
+                            "label": data.Dimension(toggleDimension).Category(code).label
+                        });
+                    }
 
-        //trim all variables
-        var toggleVariablesArrTrimmed = toggleVariablesArr.map(element => {
-            return element.trim();
-        });
-
-        if (toggleVariablesArrTrimmed.length) {
-            $.each(data.Dimension(toggleDimension).id, function (index, code) {
-                if ($.inArray(code, toggleVariablesArrTrimmed) >= 0) {
+                });
+            }
+            else {
+                $.each(data.Dimension(toggleDimension).id, function (index, code) {
                     toggleVariablesDetails.variables.push({
                         "code": code,
                         "label": data.Dimension(toggleDimension).Category(code).label
                     });
+
+                });
+            }
+            //get variables to toggle on
+            toggleVariablesDetails.label = data.Dimension(toggleDimension).label;
+
+            //failed to read metadata, abort from here
+            if (!toggleVariablesDetails.variables.length) {
+                $("#" + elementId).empty().text("Error retreiving data")
+                console.log("Error getting metadata ")
+                return;
+            }
+            if (toggleIsTime) {
+                toggleVariablesDetails.variables.reverse();
+            }
+            //draw toggle variables
+            $.each(toggleVariablesDetails.variables, function (index, value) {
+
+                switch (toggleType) {
+                    case "dropdown":
+                        var option = $("<option>", {
+                            "value": value.code,
+                            "text": value.label
+                        });
+
+                        if (value.code == defaultVariable) {
+                            option.attr('selected', 'selected')
+                        }
+                        $("#" + elementId + "-toggle-select").append(option);
+                        break;
+                    case "buttons":
+                        var button = $("<button>", {
+                            "value": value.code,
+                            "name": "toggle-button",
+                            "text": value.label,
+                            "dimension": toggleDimension,
+                            "style": "margin: 0.25rem"
+                        });
+                        $("#" + elementId + "-button-wrapper").append(button);
+                        break;
+
+                    default:
+                        break;
                 }
 
             });
-        }
-        else {
-            $.each(data.Dimension(toggleDimension).id, function (index, code) {
-                toggleVariablesDetails.variables.push({
-                    "code": code,
-                    "label": data.Dimension(toggleDimension).Category(code).label
-                });
+
+            //set toggle dimension label
+            switch (toggleType) {
+                case "dropdown":
+                    $("#" + elementId).find("[name=toggle-select-label]").text(toggleVariablesDetails.label + ": ");
+                case "buttons":
+                    //no label required
+                    break;
+                default:
+                    break;
+            }
+
+            $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+
+                //listener events to draw chart
+                switch (toggleType) {
+                    case "dropdown":
+                        $("#" + elementId + "-toggle-select").change(function () {
+                            switch (type) {
+                                case "chart":
+                                    t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    break;
+
+                                case "table":
+                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    break;
+                                case "map":
+                                    t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        });
+                        break;
+                    case "buttons":
+                        $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").click(function () {
+                            $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").removeClass("active");
+                            $(this).addClass("active");
+
+                            switch (type) {
+                                case "chart":
+                                    t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                    break;
+                                case "table":
+                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                    break;
+                                case "map":
+                                    t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        });
+                        break;
+
+                    default:
+                        break;
+                }
+
+                //load default chart
+                switch (toggleType) {
+                    case "dropdown":
+                        $("#" + elementId + "-toggle-select").trigger("change");
+                        break;
+                    case "buttons":
+                        if (defaultVariable) {
+                            $("#" + elementId + "-button-wrapper").find("[value='" + defaultVariable + "']").trigger("click");
+                        }
+                        else {
+                            $("#" + elementId + "-button-wrapper").find("button").first().trigger("click")
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
 
             });
-        }
-        //get variables to toggle on
-        toggleVariablesDetails.label = data.Dimension(toggleDimension).label;
-
-        //failed to read metadata, abort from here
-        if (!toggleVariablesDetails.variables.length) {
-            $("#" + elementId).empty().text("Error retreiving data")
-            console.log("Error getting metadata ")
-            return;
-        }
-        if (toggleIsTime) {
-            toggleVariablesDetails.variables.reverse();
-        }
-        //draw toggle variables
-        $.each(toggleVariablesDetails.variables, function (index, value) {
-
-            switch (toggleType) {
-                case "dropdown":
-                    var option = $("<option>", {
-                        "value": value.code,
-                        "text": value.label
-                    });
-
-                    if (value.code == defaultVariable) {
-                        option.attr('selected', 'selected')
-                    }
-                    $("#" + elementId + "-toggle-select").append(option);
-                    break;
-                case "buttons":
-                    var button = $("<button>", {
-                        "value": value.code,
-                        "name": "toggle-button",
-                        "text": value.label,
-                        "dimension": toggleDimension,
-                        "style": "margin: 0.25rem"
-                    });
-                    $("#" + elementId + "-button-wrapper").append(button);
-                    break;
-
-                default:
-                    break;
-            }
-
-        });
-
-        //set toggle dimension label
-        switch (toggleType) {
-            case "dropdown":
-                $("#" + elementId).find("[name=toggle-select-label]").text(toggleVariablesDetails.label + ": ");
-            case "buttons":
-                //no label required
-                break;
-            default:
-                break;
+        } else {
+            console.log("Error getting metadata")
         }
 
-        $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+        if (data.Dimension(toggleDimension).role == "time") {
+            toggleIsTime = true;
+        };
 
-            //listener events to draw chart
-            switch (toggleType) {
-                case "dropdown":
-                    $("#" + elementId + "-toggle-select").change(function () {
-                        switch (type) {
-                            case "chart":
-                                t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
-                                break;
 
-                            case "table":
-                                t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
-                                break;
-                            case "map":
-                                t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
-                                break;
-
-                            default:
-                                break;
-                        }
-                    });
-                    break;
-                case "buttons":
-                    $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").click(function () {
-                        $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").removeClass("active");
-                        $(this).addClass("active");
-
-                        switch (type) {
-                            case "chart":
-                                t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
-                                break;
-                            case "table":
-                                t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
-                                break;
-                            case "map":
-                                t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
-                                break;
-                            default:
-                                break;
-                        }
-                    });
-                    break;
-
-                default:
-                    break;
-            }
-
-            //load default chart
-            switch (toggleType) {
-                case "dropdown":
-                    $("#" + elementId + "-toggle-select").trigger("change");
-                    break;
-                case "buttons":
-                    if (defaultVariable) {
-                        $("#" + elementId + "-button-wrapper").find("[value='" + defaultVariable + "']").trigger("click");
-                    }
-                    else {
-                        $("#" + elementId + "-button-wrapper").find("button").first().trigger("click")
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-        });
     });
 };
 
@@ -485,67 +491,75 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
  * @param {*} unitElement 
  * @param {*} timeLabelElement 
  */
-t4Sdk.pxWidget.latestValue.drawValue = function (query, valueElement, unitElement, timeLabelElement) {
+t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, timeLabelElement) {
     unitElement = unitElement || null;
     timeLabelElement = timeLabelElement || null;
 
     //get latest time variable first from metadata
     t4Sdk.pxWidget.utility.getPxStatMetadata(query.params.extension.matrix, true).done(function (response) {
         var data = JSONstat(response.result);
-        var latestTimeVariable = {
-            "dimension": null,
-            "code": null,
-            "label": null
-        };
-        var timeDimensionCode = null;
-        $.each(data.Dimension(), function (index, value) {
-            if (value.role == "time") {
-                timeDimensionCode = data.id[index];
-                return;
-            }
-        });
-
-        var time = data.Dimension(timeDimensionCode).id;
-
-        latestTimeVariable.dimension = timeDimensionCode;
-        latestTimeVariable.code = time.slice(-1)[0];
-        latestTimeVariable.label = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
-
-
-        //check that the query is for one value
-        query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
-
-        t4Sdk.pxWidget.utility.getPxStatData(query).done(function (responseValue) {
-
-            var valueDetails = {
-                "value": null,
-                "unit": null
+        if (data.length) {
+            var latestTimeVariable = {
+                "dimension": null,
+                "code": null,
+                "label": null
             };
-            var data = JSONstat(responseValue.result);
+            var timeDimensionCode = null;
+            $.each(data.Dimension(), function (index, value) {
+                if (value.role == "time") {
+                    timeDimensionCode = data.id[index];
+                    return;
+                }
+            });
 
-            if (data.value.length > 1) {
-                console.log("Invalid query. Query should only return one value.")
-            }
-            else {
-                var statisticCode = data.Dimension({ role: "metric" })[0].id[0];
-                var statisticDetails = data.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
-                var statisticDecimal = statisticDetails.decimals;
+            var time = data.Dimension(timeDimensionCode).id;
 
-                valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(data.Data(0).value, statisticDecimal)
-                valueDetails.unit = statisticDetails.label;
-            }
+            latestTimeVariable.dimension = timeDimensionCode;
+            latestTimeVariable.code = time.slice(-1)[0];
+            latestTimeVariable.label = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
 
-            $(valueElement).text(valueDetails.value);
 
-            if (unitElement) {
-                $(unitElement).text(valueDetails.unit);
-            };
+            //check that the query is for one value
+            query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
 
-            if (timeLabelElement) {
-                $(timeLabelElement).text(latestTimeVariable.label);
-            };
+            t4Sdk.pxWidget.utility.getPxStatData(query).done(function (responseValue) {
 
-        });
+                var valueDetails = {
+                    "value": null,
+                    "unit": null
+                };
+                var data = JSONstat(responseValue.result);
+                if (data.length) {
+                    if (data.value.length > 1) {
+                        console.log("Invalid query. Query should only return one value.")
+                    }
+                    else {
+                        var statisticCode = data.Dimension({ role: "metric" })[0].id[0];
+                        var statisticDetails = data.Dimension({ role: "metric" })[0].Category(statisticCode).unit;
+                        var statisticDecimal = statisticDetails.decimals;
+
+                        valueDetails.value = t4Sdk.pxWidget.utility.formatNumber(data.Data(0).value, statisticDecimal)
+                        valueDetails.unit = statisticDetails.label;
+                    }
+
+                    $(valueElement).text(valueDetails.value);
+
+                    if (unitElement) {
+                        $(unitElement).text(valueDetails.unit);
+                    };
+
+                    if (timeLabelElement) {
+                        $(timeLabelElement).text(latestTimeVariable.label);
+                    };
+                }
+                else {
+                    console.log("Error getting data")
+                }
+            });
+        }
+        else {
+            console.log("Error getting metadata")
+        }
     });
 
 };
@@ -634,7 +648,7 @@ t4Sdk.pxWidget.utility.getPxStatMetadata = function (matrixRelease, isLive) {
         "jsonp": false,
         "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease),
         "error": function (xhr) {
-            console.log("Error getting metadata ")
+            console.log("Error getting metadata")
         }
     });
 };
