@@ -162,11 +162,14 @@ t4Sdk.high_chart_fix.gcs = function (element) {
     // element.setAttribute("0_gcc", true);
 }
 t4Sdk.high_chart_fix.noSVGs = false;
-
-t4Sdk.high_chart_fix.fixSVG = function () {
+t4Sdk.high_chart_fix.enumerateElements = function () {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.populateElements("highchartBox");
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
+    t4Sdk.high_chart_fix.populateElements("pieChart1");
+}
+t4Sdk.high_chart_fix.fixSVG = function () {
+    t4Sdk.high_chart_fix.enumerateElements();
     if (t4Sdk.high_chart_fix.converted.length == 0) {
         t4Sdk.high_chart_fix.noSVGs = true;
         window.print();
@@ -184,9 +187,7 @@ t4Sdk.high_chart_fix.fixSVG = function () {
 t4Sdk.high_chart_fix.fixSVG4pdf = function () {
     if (window.location.href.split('?')[1] == "export2pdf") {
         t4Sdk.high_chart_fix.body = document.body;
-        t4Sdk.high_chart_fix.converted = new Array();
-        t4Sdk.high_chart_fix.populateElements("highchartBox");
-        t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
+        t4Sdk.high_chart_fix.enumerateElements();
         if (t4Sdk.high_chart_fix.converted.length == 0) {
             t4Sdk.high_chart_fix.noSVGs = true;
             //window.print();
