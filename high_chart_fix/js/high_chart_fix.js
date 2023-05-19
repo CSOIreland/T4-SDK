@@ -21,6 +21,7 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
     div.setAttribute("id", "export2pdf_completed");
     div.style.display = "none";
     t4Sdk.high_chart_fix.body.appendChild(div);
+    console.log('export2pdf_completed');
     //document.body.appendChild(div);
 }
 
@@ -227,7 +228,7 @@ t4Sdk.high_chart_fix.revert2Original = function () {
 t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
     setTimeout(() => {
         t4Sdk.high_chart_fix.fixSVG4pdf();
-        console.log('This is a delayed message.');
+        console.log('export2pdf_started');
     }, 5000);
 
 };
