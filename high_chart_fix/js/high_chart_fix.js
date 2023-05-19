@@ -200,8 +200,16 @@ t4Sdk.high_chart_fix.revert2Original = function () {
     }
 }
 
+t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
+    setTimeout(() => {
+
+        t4Sdk.high_chart_fix.fixSVG4pdf
+        console.log('This is a delayed message.');
+    }, 5000);
+
+};
 //document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
-window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf);
+window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf_delay);
 //const mediaQueryList = window.matchMedia('print');
 
 
