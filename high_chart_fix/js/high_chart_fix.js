@@ -184,7 +184,6 @@ t4Sdk.high_chart_fix.fixSVG = function () {
 t4Sdk.high_chart_fix.fixSVG4pdf = function () {
     if (window.location.href.split('?')[1] == "export2pdf") {
         t4Sdk.high_chart_fix.body = document.body;
-
         t4Sdk.high_chart_fix.converted = new Array();
         t4Sdk.high_chart_fix.populateElements("highchartBox");
         t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
@@ -197,7 +196,7 @@ t4Sdk.high_chart_fix.fixSVG4pdf = function () {
         var icn = document.createElement("span");
         if (t4Sdk.high_chart_fix.checkZoomLevel()) {
             for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-                t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback);
+                t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
             }
         }
         /*
