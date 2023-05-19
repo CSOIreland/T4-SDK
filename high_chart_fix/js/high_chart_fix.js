@@ -202,8 +202,7 @@ t4Sdk.high_chart_fix.revert2Original = function () {
 
 t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
     setTimeout(() => {
-
-        t4Sdk.high_chart_fix.fixSVG4pdf
+        t4Sdk.high_chart_fix.fixSVG4pdf();
         console.log('This is a delayed message.');
     }, 5000);
 
