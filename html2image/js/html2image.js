@@ -204,6 +204,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
             ex_el.className = "html2image_div";
         }
         el_rct = ex_el.getBoundingClientRect();
+        t4Sdk.html2image.i_div.className = "html2image-download-icon"
         t4Sdk.html2image.i_div.style.height = "16px";
         t4Sdk.html2image.i_div.style.position = "absolute";
 
