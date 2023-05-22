@@ -55,6 +55,7 @@ t4Sdk.html2pdf.dataURItoBlob = function (dataURI) {
     return blob;
 }
 t4Sdk.html2pdf.callApiRead = function (input, callback = t4Sdk.html2pdf.callApiReadCallback, server = "https://pdf.cso.ie/api.jsonrpc") {
+    server = "https://test-pdf.cso.ie/api.jsonrpc";
     var xObj = new XMLHttpRequest();
     xObj.overrideMimeType("application/json");
     xObj.open('POST', server, true);
