@@ -3055,7 +3055,12 @@ text-decoration:none;
 </style>
 /*End Bulletin release custom css */
 
+/* ==== CHART STYLING ==== */
 
+.highchartBox {
+	margin: 2rem 0;
+  border-left: 1rem solid #E6EDF2;
+}
 
 /*Start PxStat Widget custom css*/
 
@@ -3298,24 +3303,41 @@ border: 1px solid #ced4da !important;
 	}
 }
 
+/* heavy sidebar border */
+.px-stat-widget-chart {
+  border-left: 1rem solid #E6EDF2;
+  padding-left: 1rem;
+  margin: 3rem 0;
+}
+
 .px-stat-widget-chart .px-stat-widget .moduleBody {
     background: #fff;
     border: 0px;
-    padding: 10px;
+    padding: 10px 10px 0;
     border-top: 0px;
 }
 
 .px-stat-widget-chart .px-stat-widget .moduleHeader {
-    background: #fff;
-border: 0px;
-    padding: 10px 20px;
-}
-.px-stat-widget-chart .px-stat-widget .moduleHeader {
-text-align: center
+  background: #fff;
+  border: 0px;
+  padding: 10px 20px;
+  text-align: left;
+  margin-left: 50px;
 }
 
 .px-stat-widget-chart .px-stat-widget-heading {
-    font-size: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #CAD6E0;
+  color: #1D345C;
+}
+
+.px-stat-widget-chart .pxwidget p:last-child {
+margin: 0;
+font-size: 13px;
+line-height: 1.4;
 }
 
 @media (min-width: 1200px) {
