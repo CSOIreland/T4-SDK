@@ -55,6 +55,7 @@ t4Sdk.html2pdf.dataURItoBlob = function (dataURI) {
     return blob;
 }
 t4Sdk.html2pdf.callApiRead = function (input, callback = t4Sdk.html2pdf.callApiReadCallback, server = "https://pdf.cso.ie/api.jsonrpc") {
+    server = "https://test-pdf.cso.ie/api.jsonrpc";
     var xObj = new XMLHttpRequest();
     xObj.overrideMimeType("application/json");
     xObj.open('POST', server, true);
@@ -130,7 +131,7 @@ t4Sdk.html2pdf.fnT4Download = function (e) {
         for (var i = 0; i < ch.children.length; i++) {
             if (ch.children[i].children[0].checked) {
                 var cbox = ch.children[i];
-                inp[inp.length] = cbox.children[1].href + "/";
+                inp[inp.length] = cbox.children[1].href + "?export2pdf";
             }
         }
         t4Sdk.html2pdf.fnExportPDF(inp);

@@ -1,0 +1,32 @@
+.custom_menu {
+    background-color: rgb(206, 202, 223);
+}
+
+@media print {
+
+
+    svg {
+
+        width: 100%;
+        height: 100%;
+
+
+    }
+}
+
+
+.highcharts-legend-item {
+    background-color: red !important;
+}
+
+.highcharts-column-series {
+    background-color: red !important;
+}
+
+.highcharts-color-undefined {
+    background-color: red !important;
+}
+
+.highcharts-series-7 {
+    background-color: red !important;
+}

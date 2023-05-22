@@ -1,5 +1,5 @@
 //version 1.3, date, 21/03/2023
-
+var t4Sdk = t4Sdk || {};
 //#region Add Namespace
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
@@ -29,8 +29,10 @@ t4Sdk.html2image.download = function (e) {
 }
 
 
+
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
     // var tgt = t4Sdk.html2image.clonedElement;
+    tgt.style.backgroundColor = "white";
     var opt = { "bgcolor": tgt.style.backgroundColor };
     switch (type) {
         case t4Sdk.html2image.png:
@@ -202,6 +204,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
             ex_el.className = "html2image_div";
         }
         el_rct = ex_el.getBoundingClientRect();
+        t4Sdk.html2image.i_div.className = "html2image-download-icon"
         t4Sdk.html2image.i_div.style.height = "16px";
         t4Sdk.html2image.i_div.style.position = "absolute";
 
