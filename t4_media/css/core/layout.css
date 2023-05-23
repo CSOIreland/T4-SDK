@@ -24,7 +24,6 @@ border:solid 1px #CCCDCD;
 }
 
 
-
 .internalTable .tableHeading
 
 {
@@ -2738,7 +2737,7 @@ margin-bottom: 20px;
 
 
 
-/*Start Bulletin release custom css */
+/*Start Bulletin release custom css
 .ERtable table tr:hover, .indicatorHeadlineTable table tr:hover
 {
 
@@ -2782,14 +2781,8 @@ div.pdfLinks {
     color: #283f73;
     margin-top: 0;
 }
-.pubOpenCloseTable {
-border: 2px solid #399A9A;
-border-radius: 5px;
-color: #545353;
-width: 800px;
-padding: 10px;
-margin-top: 10px;
-}
+
+
 @media only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
 {
     .br_container {
@@ -2810,14 +2803,6 @@ margin-top: 10px;
     min-height: 70px;
     margin: 0 10px 10px;
     font-size: 13px;
-}
-
-.pubOpenCloseTable {
-    border: 2px solid #399A9A;
-    border-radius: 5px;
-    color: #545353;
-    padding: 10px;
-    margin-top: 10px;
 }
 
 @media only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
@@ -3055,13 +3040,24 @@ text-decoration:none;
 
 /* ==== CHART STYLING ==== */
 
-.highchartBox, .pieChart {
+.highchartBox, .highchart-pie-wrapper {
 	margin: 2rem 0;
-  border-left: 1rem solid #E6EDF2;
+  	border-left: 1rem solid #E6EDF2;
 }
-.pieChart2 {
-  border-left: none; 
+
+/* Excel 2 HTML OpenClose Tables (old style tables) */
+
+.pubOpenCloseTable {
+    margin-top: 10px;
+    border: 1px solid #006F74;
+    padding: 10px 20px;
 }
+
+.pubOpenCloseTableTitle:hover
+{
+	cursor: pointer; 
+}
+
 
 /*Start PxStat Widget custom css*/
 
@@ -3344,6 +3340,7 @@ border: 1px solid #ced4da !important;
 }
 .px-stat-widget-chart.new-widget-style .px-stat-widget-heading {
   font-size: 18px;
+  line-height: 1.5;
   font-weight: bold;
   font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
   padding-bottom: 0.25rem;
@@ -3423,6 +3420,14 @@ font-family: "FontAwesome" !important;
     width: auto;
   }
 /* end sidebar module */
+
+
+
+
+
+
+
+
 
 
 
