@@ -167,7 +167,7 @@ t4Sdk.high_chart_fix.enumerateElements = function () {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.populateElements("highchartBox");
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
-    t4Sdk.high_chart_fix.populateElements("pieChart1");
+    t4Sdk.high_chart_fix.populateElements("highchart-pie-wrapper");
 }
 t4Sdk.high_chart_fix.fixSVG = function () {
     t4Sdk.high_chart_fix.enumerateElements();
