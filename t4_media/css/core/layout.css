@@ -2738,8 +2738,7 @@ margin-bottom: 20px;
 
 
 
-/*Start Bulletin release custom css
-<style>
+/*Start Bulletin release custom css */
 .ERtable table tr:hover, .indicatorHeadlineTable table tr:hover
 {
 
@@ -2783,8 +2782,8 @@ div.pdfLinks {
     color: #283f73;
     margin-top: 0;
 }
-.pubOpenCloseTable {
-border: 2px solid #399A9A;
+.pubOpenCloseTable {
+border: 2px solid #399A9A;
 border-radius: 5px;
 color: #545353;
 width: 800px;
@@ -3052,14 +3051,16 @@ text-decoration:none;
     	font-size: 18px;
     }
 }
-</style>
 /*End Bulletin release custom css */
 
 /* ==== CHART STYLING ==== */
 
-.highchartBox {
+.highchartBox, .pieChart {
 	margin: 2rem 0;
   border-left: 1rem solid #E6EDF2;
+}
+.pieChart2 {
+  border-left: none; 
 }
 
 /*Start PxStat Widget custom css*/
@@ -3304,7 +3305,7 @@ border: 1px solid #ced4da !important;
 }
 
 /* heavy sidebar border */
-.px-stat-widget-chart {
+.px-stat-widget-chart.new-widget-style {
   border-left: 1rem solid #E6EDF2;
   padding-left: 1rem;
   margin: 3rem 0;
@@ -3313,11 +3314,23 @@ border: 1px solid #ced4da !important;
 .px-stat-widget-chart .px-stat-widget .moduleBody {
     background: #fff;
     border: 0px;
-    padding: 10px 10px 0;
+    padding: 10px 0;
     border-top: 0px;
+}
+.px-stat-widget-chart.new-widget-style .px-stat-widget .moduleBody {
+  background: #fff;
+  border: 0px;
+  padding: 10px 10px 0;
+  border-top: 0px;
 }
 
 .px-stat-widget-chart .px-stat-widget .moduleHeader {
+  background: #fff;
+  border: 0px;
+  padding: 10px 20px;
+  text-align: center;
+}
+.px-stat-widget-chart.new-widget-style .px-stat-widget .moduleHeader {
   background: #fff;
   border: 0px;
   padding: 10px 20px;
@@ -3326,6 +3339,10 @@ border: 1px solid #ced4da !important;
 }
 
 .px-stat-widget-chart .px-stat-widget-heading {
+  font-size: 18px;
+
+}
+.px-stat-widget-chart.new-widget-style .px-stat-widget-heading {
   font-size: 18px;
   font-weight: bold;
   font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
@@ -3406,6 +3423,7 @@ font-family: "FontAwesome" !important;
     width: auto;
   }
 /* end sidebar module */
+
 
 
 
