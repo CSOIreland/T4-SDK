@@ -185,6 +185,8 @@ t4Sdk.high_chart_fix.fixSVG = function () {
     }
 }
 
+
+
 t4Sdk.high_chart_fix.fixSVG4pdf = function () {
     if (window.location.href.split('?')[1] == "export2pdf") {
         t4Sdk.high_chart_fix.body = document.body;
@@ -201,14 +203,6 @@ t4Sdk.high_chart_fix.fixSVG4pdf = function () {
                 t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
             }
         }
-        /*
-        t4Sdk.high_chart_fix.converted = new Array();
-        t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
-        t4Sdk.high_chart_fix.converted[0].lastElement = true;
-        var icn = document.createElement("span");
-        if (t4Sdk.high_chart_fix.converted.length == 0) return;
-        t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[0], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
-        */
     }
 }
 
@@ -225,6 +219,7 @@ t4Sdk.high_chart_fix.revert2Original = function () {
     }
 }
 
+
 t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
     setTimeout(() => {
         t4Sdk.high_chart_fix.fixSVG4pdf();
@@ -232,30 +227,12 @@ t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
     }, 5000);
 
 };
-//document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
+
 window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf_delay);
 //const mediaQueryList = window.matchMedia('print');
 
-
-
-/*
-mediaQueryList.addEventListener('change', (event) => {
-    if (event.matches) {
-        //  event.preventDefault();
-        //t4Sdk.high_chart_fix.fixSVG();
-        // alert("v3")
-        // document.body.innerHTML = "hello from js!"
-        // window.print();
-        // Entered print preview
-    } else {
-        // t4Sdk.high_chart_fix.revert2Original();
-        // return;        window.location.reload();
-    }
-});
-*/
-
 t4Sdk.high_chart_fix.truncatedText = document.createElement("span");
-t4Sdk.high_chart_fix.truncatedText.innerHTML = "";// "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
+t4Sdk.high_chart_fix.truncatedText.innerHTML = ""; // "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
 t4Sdk.high_chart_fix.checkZoomLevel = function () {
 
     document.body.appendChild(t4Sdk.high_chart_fix.truncatedText);
@@ -267,36 +244,34 @@ t4Sdk.high_chart_fix.checkZoomLevel = function () {
     return true;
 
 }
-t4Sdk.high_chart_fix.checkZoomLevel_old = function () {
 
-
-    if (window.visualViewport.scale !== 1) {
-        alert("If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.");
-    }
-
-
-    var stg = `[window.visualViewport.scale vs devicePixelRatio]:${window.visualViewport.scale}vs${window.devicePixelRatio}
-        Please, check this with zoom:100% and zoom:90%!`;
-    alert(stg);
-    // }
-
-    return true;
-
-    console.log("t4Sdk.high_chart_fix.checkZoomLevel-> ignored!")
-    return;
-    var res = true;
-    const targetZoomLevel = 1; // 100% zoom
-    const zoomTolerance = 0.01; const zoomFactor = window.devicePixelRatio;
-    res = !(Math.abs(zoomFactor - targetZoomLevel) > zoomTolerance);
-    if (!res)
-        alert("Please, set zoom level to 100%!");
-    return res;
-}
 window.addEventListener('keydown', function (event) {
     if ((event.key === 'P' || event.key === 'p') && event.ctrlKey) {
         event.preventDefault();
         // Call your custom function
         t4Sdk.high_chart_fix.fixSVG();
     }
+});
+
+t4Sdk.high_chart_fix.fixSVG4pdf2 = function () {
+    t4Sdk.high_chart_fix.body = document.body;
+    t4Sdk.high_chart_fix.enumerateElements();
+    if (t4Sdk.high_chart_fix.converted.length == 0) {
+        t4Sdk.high_chart_fix.noSVGs = true;
+        return;
+    }
+    t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length - 1].lastElement = true;
+    var icn = document.createElement("span");
+    if (t4Sdk.high_chart_fix.checkZoomLevel()) {
+        for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+            t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
+        }
+    }
 }
-); 
+//call from .pdf backend
+t4Sdk.high_chart_fix.fixSVG4pdf_delay2 = function () {
+    setTimeout(() => {
+        t4Sdk.high_chart_fix.fixSVG4pdf2();
+        console.log('export2pdf_started');
+    }, 5000);
+};
