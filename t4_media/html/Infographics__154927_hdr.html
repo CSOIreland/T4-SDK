@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+	<head>
+      
+     <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      
+      
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+         <!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+          <!-- start css -->
+          <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
+        
+        <!--jquery.fancybox.css--><link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.css" rel="stylesheet">
+        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
+		
+        <!--include jQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        
+        <!--include Flexslider - used for carousels and image slders-->
+		<!--jquery.flexslider-min.js--><t4 type="media" id="86226" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+          
+          
+          
+          <!--include High Charts-->
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/maps/modules/map.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+          
+          <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.3/src/loadingoverlay.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.3/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>
+
+          <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+
+          
+          
+          
+          <!--JQUERY UI-->
+          <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+            
+            
+            <!-- Infographic CSS -->
+        <t4 type="media" id="154931" formatter="css/*"/>
+            
+             <!--jquery.fancybox.css--><link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.css" rel="stylesheet">
+            
+            
+            <!--JSON Stat-->
+            
+            <t4 type="media" id="113854" formatter="javascript/*"/>
+          
+          
+          
+          
+
+          <!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+        
+            
+         <!-- end css --> 
+          
+           <!-- Excel styles -->
+
+		          
+          
+          
+           <style type="text/css">
+<t4 type="exceltohtml" name="Insert Excel Table" default-font="font-family:arial;font-size:10pt;" />
+             <t4 type="exceltohtml" name="Insert Excel Headline Table" default-font="font-family:arial;font-size:12pt;color: #02395F;" />
+             <t4 type="exceltohtml" name="Select Excel File" default-font="font-family:arial;font-size:12pt;color: #02395F;" />
+             
+</style>
+           
+           
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+  //alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
+
+            $("#statisticsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Databases') {
+
+            $("#databasesTab").addClass("currentbranch0");
+
+        }
+
+
+        else if (theme == 'Surveys and Methodology') {
+
+            $("#methodsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+
+      <!-- start header --> 
+
+		<!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
+      <!--/mainNav-->
+         <!-- end header -->   
+            <!-- ********** CONTENT ********** -->
+		<div class="container content">
+			<div class="row pageHeader">
+				<div class="col span12">
+					<div id="breadcrumbs">
+						<span class="youarehere">You are here: </span> 
+						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
+					</div><!--/breadcrumb-->
+				</div><!--/col-->
+                 
+          
+              
+                           
+				<div class="col span12">
+					<h1 id="pageTitle"><t4 type="title" /></h1>
+				</div><!--/col-->
+
+			</div><!--/row-->
+			<div class="row mainContent">
+				<div id="columnLeft" class="col columnLeft<t4 type="navigation" id="84"/>">
+					<div class="copy">_hdr.html

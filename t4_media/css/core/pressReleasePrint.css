@@ -1,0 +1,118 @@
+/* body {
+    font-size: 18px;
+}
+
+.copy p {
+    font-size: 18px;
+} */
+@page {
+    size: auto;
+    margin: 1cm;
+}
+
+@media print {
+
+    .col {
+        padding: 0 20px;
+    }
+    .header {
+        float:left;
+    }
+    .header .row {
+        padding:0;
+        margin: 0;
+    }
+    .header h1 {
+        margin:0 !important;
+        padding:0;
+    }
+    .header h1 img {
+        height: 40px;
+        /*filter: grayscale(100%);*/
+    }
+    
+    .header .btn,
+    .mainNav,
+    #breadcrumbs,
+    #downloadPDF,
+    .columnRightinner-rightcol,
+    .footer {
+        display: none;
+    }
+
+    /*make the content column full width*/
+    .columnLeftinner-rightcol {
+        width: 100%;
+        border-right: none;
+    }
+
+    #st-2 {
+        display: none !important;
+    }
+
+    table {
+        page-break-inside: avoid;
+    }
+
+    .pressReleaseTitle h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h1.pressStatement,
+    h2.pressStatement,
+    .pressReleaseDate,
+    .pressReleaseTitle h1 {
+        text-align: center;
+        color: #07101a;
+        clear: both;
+    }
+
+    .pressReleaseTitle {
+        margin-top: 50px;
+    }
+
+    div.pdfLinks {
+        padding: 5px;
+        border: 1px solid #CCCDCD;
+        border-radius: 5px;
+        width: 200px;
+        clear: both;
+        margin-bottom: 5px;
+        float: right;
+    }
+
+    .pressReleaseBulletPoints h5 {
+        margin-top: 50px;
+        text-transform: none;
+        font-size: 18px;
+    }
+
+    .editorsNote h5,
+    .contactDetails h5 {
+        text-transform: none;
+        font-size: 18px;
+    }
+
+    . .editorsNote,
+    .contactDetails {
+        margin-top: 40px;
+    }
+
+    p.pressReleaseEnds {
+        text-align: center;
+        font-weight: bold;
+    }
+
+
+    .row {
+        margin-top: 0px;
+    }
+
+    .pressReleaseBulletPoints ul li {
+        font-weight: bold;
+    }
+    
+
+}

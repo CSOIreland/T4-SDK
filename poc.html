@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+    <script src="html2image/js/dom-to-image.js"></script>
+    <script src="html2image/js/html2image.js"></script>
+    <script src="high_chart_fix/js/high_chart_fix.js"></script>
+
+
+    <!--
+
+        This is simualation of  the zoom issue
+        12/5/2023
+ -->
+</head>
+
+<body>
+
+
+    <div class="html2image_container" style="background-color: red;">
+        <div class="highchartBox">
+            <div>
+                <div>
+                    <span data-z-index="2"
+                        style="font-size: 12px;position: absolute;text-overflow: ellipsis;overflow: hidden;height: 20px;">
+                        Manufacturing: Foreign Sectors</span></span>
+
+                </div>
+                <br>
+                <button onclick="t4Sdk.high_chart_fix.fixSVG()">
+                    print
+                </button>
+                <div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title><t4 type="lang-var" default-language="en" en="Census Pilot - " ga="Suirbhé Píolótach Daonáirimh - "  /><t4 type="title" />
+    </title>
+
+    <!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <t4 type="media" id="163753" formatter="javascript/*" />
+      
+      <!--Google reCAPTCHA-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+      
+      
+      <!-- CSO Library -->
+    <script src="https://cdn.cso.ie/client/1.0.0/js/cso-library.js"></script>
+
+   
+
+      
+      
+      
+      
+      
+
+    <t4 type="media" id="163056" formatter="css/*" />
+    <t4 type="media" id="163058" formatter="css/*" />
+
+    <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
+
+    <!--highcharts-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/maps/modules/map.js"></script>
+      
+   
+      
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121880309-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+
+        gtag('config', 'UA-121880309-1');
+    </script>
+      <script>
+        <!--constants-->
+        
+        const language = '<t4 type="lang-var"  en="en" ga="ga" />';
+        
+      </script>
+
+    <!--Script to toggle language switcher-->
+    <script>
+        $(function() {
+
+            
+
+
+            //add class to language switcher link
+
+
+
+        $("#switch-en-mobile a").addClass("text-decoration-none btn btn-light");
+
+        $("#switch-ga-mobile a").addClass("text-decoration-none btn btn-light");
+
+
+
+
+        if (language == 'en') {
+
+            $("#switch-ga-desktop a").addClass("text-right text-decoration-none btn btn-light");
+            $("#switch-en-desktop a").addClass("text-right text-decoration-none btn btn-outline-light disabled");
+
+            $("#switch-ga-mobile").show();
+            $("#switch-en-mobile").hide();
+
+
+        }
+
+        if (language == 'ga') {
+
+            $("#switch-ga-desktop a").addClass("text-right text-decoration-none btn btn-outline-light disabled");
+            $("#switch-en-desktop a").addClass("text-right text-decoration-none btn btn-light");
+
+            $("#switch-en-mobile").show();
+            $("#switch-ga-mobile").hide();
+
+
+            }
+
+        });
+    </script>
+
+    <!-- Begin Cookie Consent plugin by Silktide - https://cookieconsent.insites.com/ -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#61c6c6",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#006f74",
+      "text": "#ffffff"
+    }
+  },
+  "position": "top",
+  "static": true,
+  "content": {
+    "message": "<t4 type="lang-var" default-language="en" en="This website uses cookies. By browsing this website, you agree to our use of cookies. " ga="Baineann an suíomh gréasáin seo úsáid as fianáin. Is ionann leanúint d’úsáid an tsuímh seo agus glacadh lenár n-úsáid fianán."  />",
+    "dismiss": "<t4 type="lang-var" default-language="en" en="Close" ga="Dún"  />",
+    "link": "<t4 type="lang-var" default-language="en" en="More info" ga="Tuilleadh eolais"  />",
+    "href": "<t4 type="navigation" id="977"/>"
+  }
+})});
+    </script>
+    <!-- End Cookie Consent plugin -->
+
+
+</head>
+
+
+<body>
+
+    <div class="header-mobile ">
+        <div class="container-fluid cso-border bg-primary">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0 my-1 p-1 navbar-main">
+
+                <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                    <div class="navbar-nav m-auto mt-1">
+                <form method="get" action="/en/searchresults/index.html" autocomplete="off">
+                    <input type="search" name="addsearch" class="form-control mr-sm-2 mt-2" placeholder="<t4 type="lang-var" default-language="en" en="Search" ga="Cuardaigh"  />">
+                </form>
+
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white active pl-2 mr-3" href="<t4 type="navigation" id="969"/>"><t4 type="lang-var" default-language="en" en="Home" ga="Baile"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-2 pr-4 mr-3" href="<t4 type="navigation" id="948"/>"><t4 type="lang-var" default-language="en" en="What is the Census Pilot?" ga="Cad é an Suirbhé Píolótach?"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-2 pr-4 mr-3" href="<t4 type="navigation" id="951"/>"><t4 type="lang-var" default-language="en" en="Areas taking part" ga="Ceantair roghnaithe"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-2 pr-4 mr-3" href="<t4 type="navigation" id="954"/>"><t4 type="lang-var" default-language="en" en="About the new forms" ga="Maidir leis na foirmeacha nua"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-2 pr-4" href="<t4 type="navigation" id="955"/>"><t4 type="lang-var" default-language="en" en="Forms in detail" ga="Foirmeacha go mion"  /></a>
+                        <ul class="d-flex flex-row pl-2 pr-2 mb-0 mt-2 list-unstyled">
+                            <li class="pr-2">
+                                <a class="" href="https://www.facebook.com/CSOIreland/" target="_blank">
+                                    <i class="fab fa-facebook text-white"></i>
+                                </a>
+                            </li>
+                            <li class="pl-2 pr-2">
+                                <a class="" href="https://twitter.com/CSOIreland" target="_blank">
+                                    <i class="fab fa-twitter text-white"></i>
+                                </a>
+                            </li>
+                        </ul>
+                     <span id="switch-ga-mobile"><!-- navigation object : Language Switcher (Gaeilge) --><t4 type="navigation" id="942"/> </span><span id="switch-en-mobile"><!-- navigation object : Language Switcher (English) --><t4 type="navigation" id="943"/></span>
+                        <!--<a class="navbar-brank d-block text-left text-white p-2" href="">Gaeilge</a>-->
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+        <div class="container-fluid cso-border-bottom bg-primary">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="container prl-none">
+                        <div class="row d-flex justify-content-between mt-2 mb-2">
+                            <div class="col-sm d-flex align-items-center">
+                                <a href="">
+                                    <img alt="" class="img-fluid" src="<t4 type="media" id="163902" formatter="path/*"/>">
+
+                                </a>
+                                <div class="col-sm pr-none">
+                                    <h2 class="text-right census-logo-secondary mb-0" style="font-size:1.25rem"><t4 type="lang-var" default-language="en" en="" ga="Suirbhé Píolótach"  /></h2>
+                                    <h1 class="text-right census-logo-primary mb-0 mt-0" style="font-size:2rem"><t4 type="lang-var" default-language="en" en="" ga="Daonáirimh"  /></h1>
+                                    <h1 class="text-right census-logo-primary mb-0 mt-0"><t4 type="lang-var" default-language="en" en="Census" ga=""  /></h1>
+                                    <h2 class="text-right census-logo-secondary mt-0"><t4 type="lang-var" default-language="en" en="Pilot Survey" ga=""  /></h2>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-desktop">
+        <div class="container-fluid bg-primary">
+            <div class="container p-0">
+                <nav class="navbar navbar-light justify-content-between bg-primary m-0">
+                    <div> <span id="switch-ga-desktop"><!-- navigation object : Language Switcher (Gaeilge) --><t4 type="navigation" id="942"/> </span><span id="switch-en-desktop"><!-- navigation object : Language Switcher (English) --><t4 type="navigation" id="943"/></span>
+                    </div>
+                    <!--<a class="navbar-brank d-block text-right text-white" href="">Gaeilge</a>-->
+
+					<form method="get" action="/en/searchresults/index.html" autocomplete="off">
+                        <ul class="d-flex flex-row align-items-center pr-2 mb-0 list-unstyled">
+                            <li class="pr-2">
+                                <a class="" href="https://www.facebook.com/CSOIreland/" target="_blank">
+                                    <i class="fab fa-facebook text-white"></i>
+                                </a>
+                            </li>
+                            <li class="pl-2 pr-2">
+                                <a class="" href="https://twitter.com/CSOIreland" target="_blank">
+                                    <i class="fab fa-twitter text-white"></i>
+                                </a>
+                            </li>
+                          	<li class="pl-2">
+                              <input type="search" name="addsearch" class="form-control mr-sm-2" placeholder="<t4 type="lang-var" default-language="en" en="Search" ga="Cuardaigh"  />"> 
+                          	</li>
+                        </ul>
+                   </form>
+
+
+
+                    
+
+
+                </nav>
+            </div>
+        </div>
+        <div class="container-fluid cso-border-top bg-primary">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="container">
+                        <div class="row d-flex justify-content-between mt-5 mb-5">
+                            <div class="col-sm d-flex align-items-center">
+                                <a href="">
+                                    <img alt="" class="img-fluid" src="<t4 type="media" id="163112" formatter="path/*"/>">
+
+                                </a>
+                            </div>
+                            <div class="col-sm">
+                                <h2 class="text-right census-logo-secondary mb-0"><t4 type="lang-var" default-language="en" en="" ga="Suirbhé Píolótach"  /></h2>
+                                <h1 class="text-right census-logo-primary mb-0 mt-0"><t4 type="lang-var" default-language="en" en="Census" ga="Daonáirimh"  /></h1>
+                                <h2 class="text-right census-logo-secondary mt-0"><t4 type="lang-var" default-language="en" en="Pilot Survey" ga=""  /></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid cso-border-bottom bg-primary">
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary m-0 navbar-main">
+                <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+                    <div class="navbar-nav m-auto">
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white active mr-3" href="<t4 type="navigation" id="969"/>"><t4 type="lang-var" default-language="en" en="Home" ga="Baile"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-4 pr-4 mr-3" href="<t4 type="navigation" id="948"/>"><t4 type="lang-var" default-language="en" en="What is the Census Pilot?" ga="Cad é an Suirbhé Píolótach?"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-4 pr-4 mr-3" href="<t4 type="navigation" id="951"/>"><t4 type="lang-var" default-language="en" en="Areas taking part" ga="Ceantair roghnaithe"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-4 pr-4 mr-3" href="<t4 type="navigation" id="954"/>"><t4 type="lang-var" default-language="en" en="About the new forms" ga="Maidir leis na foirmeacha nua"  /></a>
+                        <a class="text-decoration-none d-inline-block nav-item nav-link text-white pl-4 pr-4" href="<t4 type="navigation" id="955"/>"><t4 type="lang-var" default-language="en" en="Forms in detail" ga="Foirmeacha go mion"  /></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+
+   <div class="container mb-5">
+
+        <a name="top"></a>
+
+        <div class="row my-3">
+            <div class="col">
+
+
+                
+              <a class="" href="<t4 type="navigation" id="969"/>"><t4 type="lang-var" default-language="en" en="Home" ga="Baile"  /></a> / <t4 type="navigation" id="991"/>
+
+
+            </div>
+        </div>
+
+
+_hdr.html

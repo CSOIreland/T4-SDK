@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="html, css bootstrap, mega menu, navbar, large dropdown, menu CSS examples">
+    <meta name="description" content="Bootstrap 5 navbar megamenu examples with simple css demo code">
+
+    <title>ves</title>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/js/t4-sdk-megaNav.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/css/t4-sdk-bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/css/t4-sdk-megaNav.css">
+
+    <!--
+         <script src="js/t4-sdk-megaNav.js"></script>
+        <link href="css/megamenu.css" rel="stylesheet">
+    <link href="css/t4-sdk-bootstrap.css" rel="stylesheet">
+    <link href="css/t4-sdk-megaNav.css" rel="stylesheet">  
+    odcjepnok.
+    -->
+
+
+
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            //	return;
+            /////// Prevent closing from click inside dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    console.log("clicked")
+                    e.stopPropagation();
+                });
+            })
+        });
+        // DOMContentLoaded  end
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <div class="t4-sdk-col-12 t4-sdk-m-4">
+        <a href="https://t4.cso.ie/terminalfour/preview/10/en/8816"><img
+                src="https://t4.cso.ie/terminalfour/SiteManager?ctfn=download&amp;fnno=60&amp;ceid=f963ad67e9b3b9ccbfb5039a1847ab97a32e7b2c"
+                alt="Central Statistics Office"></a>
+
+
+
+
+
+
+
+
+
+
+
+        <!--/col-->
+    </div>
+
+    <!-- section-header.// -->
+
+
+
+    <div style="margin-left:  0px;">
+
+        <!-- ============= COMPONENT ============== -->
+        <nav class="t4-sdk-navbar t4-sdk-navbar-expand-lg t4-sdk-navbar-dark t4-sdk-mainNav"
+            style="width:100%;background-color: #006F74;margin: 0;padding: 0;">
+            <div class="t4-sdk-container-fluid">
+
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false"
+                    aria-label="Toggle navigation" class="t4-sdk-navbar-toggler">
+                    <span class="t4-sdk-navbar-toggler-icon"></span>
+                </button>
+                <div class="t4-sdk-collapse t4-sdk-navbar-collapse" id="main_nav">
+
+                    <ul class="t4-sdk-navbar-nav">
+
+                        <!--work in progress-->
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Demo0 </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu meganav-bg-color  cso-border-bottom-5"
+                                role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <a class="t4-sdk-btn meganav-button cso-border-left-1"
+                                                href="t4_nav path">sample 1</a>
+
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-1">Browse
+                                                Statistics</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-2">Statistics
+                                                Database</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-3">Information
+                                                Hubs</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Interactive
+                                                Visualisations</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-5">Infographics
+                                                by Theme</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Statistics
+                                                A-Z</button>
+                                        </div>
+
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2 meganav-bg-color">
+
+                                            <div class="t4-sdk-row t4-sdk-align-items-stretch  t4-sdk-p-5">
+                                                <div class="t4-sdk-card t4-sdk-col-md-9  t4-sdk-p-2">
+                                                    <div class="t4-sdk-card-header cso-border-bottom-5">
+                                                        <h5 class="t4-sdk-card-title">Methods & Standards</h5>
+                                                    </div>
+
+                                                    <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                        <div class="t4-sdk-row" style="background-color: white;">
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">People &
+                                                                    Society >
+                                                                </h6>
+
+                                                                <div class="t4-sdk-d-grid">
+
+                                                                    <a class="meganav-fore-color">Browse
+                                                                        Statistics v2</a>
+
+
+
+
+
+                                                                    <a class="meganav-fore-color">Statistics
+                                                                        Database</a>
+                                                                    <a class="meganav-fore-color">Information
+                                                                        Hubs</a>
+                                                                    <a class="meganav-fore-color">Interactive
+                                                                        Visualisations
+
+                                                                        <t4 type="navigation"
+                                                                            name="Path:Interactive Visualisations"
+                                                                            id="1389" />
+
+                                                                    </a>
+                                                                    <a class="meganav-fore-color">Infographics
+                                                                        by Theme</a>
+                                                                    <a class="meganav-fore-color">Statistics
+                                                                        A-Z</a>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">Labour
+                                                                    Market >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid">
+
+                                                                    <a class="meganav-fore-color">Browse
+                                                                        Statistics</a>
+                                                                    <a class="meganav-fore-color">Statistics
+                                                                        Database</a>
+                                                                    <a class="meganav-fore-color">Information
+
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">Earnings
+                                                                    >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid">
+
+                                                                    <a class="meganav-fore-color">Browse
+                                                                        Statistics</a>
+                                                                    <a class="meganav-fore-color">Statistics
+                                                                        Database</a>
+                                                                    <a class="meganav-fore-color">Information
+                                                                        Hubs</a>
+                                                                    <a class="meganav-fore-color">Interactive
+                                                                        Visualisations</a>
+                                                                    <a class="meganav-fore-color">Infographics
+                                                                        by Theme</a>
+                                                                    <a class="meganav-fore-color">Statistics
+                                                                        A-Z</a>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="t4-sdk-card  t4-sdk-col-md-3  t4-sdk-p-2">
+                                                    <div class="t4-sdk-card-header cso-border-bottom-5 t4-sdk-p-2">
+                                                        <h5 class="t4-sdk-card-title">Research</h5>
+                                                    </div>
+
+                                                    <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                        <div class="t4-sdk-row " style="background-color: white;">
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Environment >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid">
+
+                                                                    <a class="meganav-fore-color">Browse Statistic1s</a>
+                                                                    <a class="meganav-fore-color">Statistics</a>
+                                                                    <a class="meganav-fore-color">InformationHubs</a>
+                                                                    <a
+                                                                        class="meganav-fore-color">InteractiveVisualisations</a>
+                                                                    <a class="meganav-fore-color">Infographicsby
+                                                                        Theme</a>
+                                                                    <a class="meganav-fore-color">StatisticsA-Z</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                        </li>
+
+
+                        <!--work in progress-->
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Demo1 </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu meganav-bg-color  cso-border-bottom-5"
+                                role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-1">Browsey
+                                                Statistics</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-2">Statistics
+                                                Database</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-3">Information
+                                                Hubs</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Interactive
+                                                Visualisations</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-5">Infographics
+                                                by Theme</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Statistics
+                                                A-Z</button>
+                                        </div>
+
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2 meganav-bg-color">
+
+
+                                            <div class="t4-sdk-card">
+                                                <div class="t4-sdk-card-header">
+                                                    <h5 class="t4-sdk-card-title">Card Title</h5>
+                                                </div>
+
+                                                <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                    <div class="t4-sdk-row" style="background-color: white;">
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                        </li>
+
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Demo2 </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu cso-border-bottom-5" role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                Statistics</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                Database</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                Hubs</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                Visualisations</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                by Theme</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                A-Z</button>
+                                        </div>
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2">
+
+
+                                            <div class="t4-sdk-card">
+                                                <div class="t4-sdk-card-header">
+                                                    <h5 class="t4-sdk-card-title">Card Title</h5>
+                                                </div>
+
+                                                <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                    <div class="t4-sdk-row">
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                        </li>
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Demo4 </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu  cso-border-bottom-5" role="menu">
+
+                                <div class="t4-sdk-card">
+                                    <div class="t4-sdk-card-header">
+                                        <h5 class="t4-sdk-card-title">Card Title</h5>
+                                    </div>
+                                    <div class="t4-sdk-card-body">
+                                        <p class="t4-sdk-card-text">Card content goes here.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+                <!-- navbar-collapse.// -->
+            </div>
+            <!-- container-fluid.// -->
+        </nav>
+        <!-- ============= COMPONENT END// ============== -->
+
+
+
+
+    </div>
+    <!-- container //  -->
+
+</body>
+
+</html>

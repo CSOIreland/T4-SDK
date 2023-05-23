@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+		<!--include main stylesheet - all other stylesheets are embeded within this-->  
+		<!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
+        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
+        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
+        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
+          
+		<!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+          
+		<!--include Flexslider - used for carousels and image slders-->
+		<!--flexslider-min..js--><t4 type="media" id="86226" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
+          
+		<!--include High Charts-->
+          <!-- removed jc 13/02/14  
+		<script src="assets/highcharts/js/highcharts.js"></script>
+		<script src="assets/highcharts/js/highcharts-3d.js"></script>
+		<script src="assets/highcharts/js/modules/exporting.js"></script>-->
+          
+		<!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+          
+      
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+        //alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
+
+            $("#statisticsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Databases') {
+
+            $("#databasesTab").addClass("currentbranch0");
+
+        }
+
+
+        else if (theme == 'Surveys and Methodology') {
+
+            $("#methodsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+
+ 
+<!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
+      <!--/mainNav-->
+      
+		<!-- ********** CONTENT ********** -->
+		<div class="container content">
+			<div class="row pageHeader">
+				<div class="col span12">
+					<div id="breadcrumbs">
+						<span class="youarehere">You are here: </span> &gt;
+						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
+					</div><!--/breadcrumb-->
+				</div><!--/col-->
+				<div class="col span12">
+					<h1>About Us</h1>
+				</div><!--/col-->				
+			
+          </div><!--/row-->
+
+			<div class="row">
+				<div class="col span3">
+                  
+                   <div class="sideitem green">
+						<h3><a  href="<t4 type="navigation" id="858"/>">Census 2021<i class="fa fa-users"></i></a></h3>
+                     <p>Find out more about Census 2021</p>
+                    
+						<a class="btn" href="<t4 type="navigation" id="858"/>">Go to Census 2021</a>
+					</div><!--/sideitem-->
+                  
+                </div><!--/col-->
+              
+              <div class="col span3">
+                
+                 <div class="sideitem pink">
+						<h3><a  href="<t4 type="navigation" id="859"/>">Census 2016 Results<i class="fa fa-briefcase"></i></a></h3>
+                     <p>Find all the results from the 2016 census</p>
+                    
+						<a class="btn" href="<t4 type="navigation" id="859"/>">Go to Census 2016 Results</a>
+					</div><!--/sideitem-->
+                  
+                </div><!--/col-->
+              
+              <div class="col span3">
+                
+                  <div class="sideitem teal">
+						<h3><a  href="<t4 type="navigation" id="860"/>">Historical Censuses<i class="fa fa-phone"></i></a></h3>
+                     <p>Find out more about previous Censuses</p>
+                    
+						<a class="btn" href="<t4 type="navigation" id="860"/>">Go to Historical Censuses</a>
+					</div><!--/sideitem-->
+                  
+                </div><!--/col-->
+              
+               <div class="col span3">
+                
+                  <div class="sideitem purple">
+						<h3><a  href="<t4 type="navigation" id="881"/>">Census News<i class="fa fa-file-text-o"></i></a></h3>
+                     <p>Keep up to date with Census News</p>
+                    
+						<a class="btn" href="<t4 type="navigation" id="881"/>">Go to Census News</a>
+					</div><!--/sideitem-->
+                  
+                </div><!--/col-->
+				
+			</div><!--/row-->
+            
+          
+          <div class="row">
+				<div class="col span6">
+					<div class="module open surveyblue">
+						<div class="moduleHeader">
+							<h2><a href="#">Taking part in a survey</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+                              <li><!-- navigation object : Path: Taking Part in a Survey --><t4 type="navigation" id="901"/></li> 
+                              <li><!-- navigation object : Path: Surveys of Households & Individuals --><t4 type="navigation" id="862"/></li>
+                              <li><!-- navigation object : Path: The CSO Team --><t4 type="navigation" id="864"/></li>
+															<li><!-- navigation object : Path: Important Safety Information --><t4 type="navigation" id="861"/></li> 
+                              <li><!-- navigation object : Path: CSO Surveys Data Protection & Confidentiality --><t4 type="navigation" id="1079"/></li>
+                              <li><!-- navigation object : Path: Surveys of Surveys of businesses --><t4 type="navigation" id="863"/></li>
+                              <li><!-- navigation object : Path: Data Protection --><t4 type="navigation" id="865"/></li>
+                              
+                              
+							</ul>
+						</div>
+					</div>
+          
+          <!--/module-->
+                 
+					
+					
+				</div><!--/col-->
+            
+            <div class="row">
+				<div class="col span6">
+					<div class="module open surveyblue">
+						<div class="moduleHeader">
+							<h2><a href="#">About the Census</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+                              <li><!-- navigation object : Path: Taking Part in a Survey --><t4 type="navigation" id="901"/></li> 
+                              <li><!-- navigation object : Path: Surveys of Households & Individuals --><t4 type="navigation" id="862"/></li>
+                              <li><!-- navigation object : Path: The CSO Team --><t4 type="navigation" id="864"/></li>
+															<li><!-- navigation object : Path: Important Safety Information --><t4 type="navigation" id="861"/></li> 
+                              <li><!-- navigation object : Path: CSO Surveys Data Protection & Confidentiality --><t4 type="navigation" id="1079"/></li>
+                              <li><!-- navigation object : Path: Surveys of Surveys of businesses --><t4 type="navigation" id="863"/></li>
+                              <li><!-- navigation object : Path: Data Protection --><t4 type="navigation" id="865"/></li>
+                              
+                              
+							</ul>
+						</div>
+					</div>
+          
+          <!--/module-->
+                 
+					
+					
+				</div><!--/col-->
+				<div class="col span6">
+                  
+                 
+                   <div class="module open yellow">
+						<div class="moduleHeader">
+							<h2><a href="#">Legislation, Governance &amp; Data Policies</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+								<li><!-- navigation object : Path: CSO Data Policies --><t4 type="navigation" id="866"/></li>
+                              <li><!-- navigation object : Path: Corporate Governance & Transparency --><t4 type="navigation" id="867"/></li>
+                              <li><!-- navigation object : Path: Legislation --><t4 type="navigation" id="868"/></li>
+                              <li><!-- navigation object : Path: Data For Researchers --><t4 type="navigation" id="869"/></li>
+                              <li><!-- navigation object : Path: Data Protection & Transparency --><t4 type="navigation" id="978"/></li>
+                              <li><!-- navigation object : Path: Liaison Groups --><t4 type="navigation" id="998"/></li>
+                               
+
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+                  
+                
+					 
+					      
+                 </div><!--/col-->
+				
+			</div><!--/row-->
+
+          
+          
+           
+        </div><!--/content-->
+
+
+
+_hdr.html

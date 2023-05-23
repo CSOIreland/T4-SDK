@@ -1,0 +1,97 @@
+<!--start header-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GeoJSON.cso.ie</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <t4 type="media" formatter="css/*" id="204941" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Resources - API -->
+    <!-- **************************************************************************** -->
+
+    <!-- API Constant -->
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/Client-API-Library@3.0.2/src/js/api.constant.min.js"></script>
+
+    <!-- API Configuration -->
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/Client-API-Library@3.0.2/src/js/api.config.min.js"></script>
+
+    <!-- API Library -->
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/Client-API-Library@3.0.2/src/js/api.library.min.js"></script>
+
+    <!-- API Plugin -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CSOIreland/Client-API-Library@3.0.2/src/css/api.plugin.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/Client-API-Library@3.0.2/src/js/api.plugin.min.js"></script>
+
+    <!-- Datatables - https://datatables.net -->
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
+    <!-- Datatables Bootstrap - https://datatables.net/examples/styling/bootstrap4 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Datatables Responsive - https://datatables.net/extensions/responsive/ -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/natural.js"></script>
+
+    <!--highcharts-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/maps/modules/map.js"></script>
+
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- ClipboardJS - https://clipboardjs.com/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+    <!--JQuery-CSV - https://github.com/typeiii/jquery-csv-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.12/jquery.csv.min.js"></script>
+
+    <style>
+        .highcharts-subtitle p {
+            font-family: "Roboto Sans", sans-serif;
+            font-size: 16px;
+            line-height: 1.6 !important;
+        }
+
+    </style>
+    <t4 type="media" formatter="javascript/*" id="205290" />
+</head>
+
+<body>
+   <div class="container-fluid">
+    <div class="m-3">
+      <div class="row align-items-end">
+        <div class="col-sm-8">
+          <img id="main-logo" class="img-responsive" alt="Central Statistics Office" src="https://cdn.cso.ie/client/2.0.0/img/cso_logo.png" />
+        </div>
+        <div class="col-sm-4">
+          <h2 class="text-right align-bottom text-primary">GeoJSON.cso.ie</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+
+    <!-- Navigation -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+            <a id="nav-link-English-Maps" class="nav-link text-light " href="<t4 type="navigation" name="Path: English Maps" id="1082" />">English Maps
+            </a>
+            </li>
+      <li class="nav-item">
+        <a id="nav-link-Irish-Maps" class="nav-link text-light" href="<t4 type="navigation" name="Path: Irish Maps" id="1083" />">Irish Maps</a>
+      </li>    
+    </ul>
+
+  </nav>
+  
+  <div class="container-fluid">_hdr.html

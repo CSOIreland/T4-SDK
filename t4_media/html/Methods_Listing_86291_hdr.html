@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+         
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+          <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!--include main stylesheet - all other stylesheets are embeded within this-->  
+		<!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
+        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
+        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
+        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
+          
+		<!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+          
+		<!--include Flexslider - used for carousels and image slders-->
+		<!--flexslider-min..js--><t4 type="media" id="86226" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
+          
+		<!--include High Charts-->
+          <!-- removed jc 13/02/14  
+		<script src="assets/highcharts/js/highcharts.js"></script>
+		<script src="assets/highcharts/js/highcharts-3d.js"></script>
+		<script src="assets/highcharts/js/modules/exporting.js"></script>-->
+          
+		<!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+          
+      
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+        //alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
+
+            $("#statisticsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Databases') {
+
+            $("#databasesTab").addClass("currentbranch0");
+
+        }
+
+
+        else if (theme == 'Methods') {
+
+            $("#methodsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+
+ 
+<!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
+      <!--/mainNav-->
+      
+		<!-- ********** CONTENT ********** -->
+		<div class="container content">
+			<div class="row pageHeader">
+				<div class="col span12">
+					<div id="breadcrumbs">
+						<span class="youarehere">You are here: </span> &gt;
+						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
+					</div><!--/breadcrumb-->
+				</div><!--/col-->
+				<div class="col span12">
+					<h1>Our Methodologies and Practices</h1>
+				</div><!--/col-->				
+			</div><!--/row-->
+
+			<div class="row">
+				<div class="col span6">
+                  
+                  <h2>Survey Methodologies</h2>
+					<div class="module orange">
+						<div class="moduleHeader">
+							<h2><a href="#">People and Society</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- navigation object : Path to Granite Methods Population -->
+								<li><a href="<t4 type="navigation" id="524"/>">Population</a></li>
+                              <!-- navigation object : Path to Granite Methods Education -->
+								<li><a href="<t4 type="navigation" id="525"/>">Education</a></li>  
+                              <!-- navigation object : Path to Granite Methods Births, Deaths and Marriages -->
+								<li><a href="<t4 type="navigation" id="526"/>">Births, Deaths and Marriages</a></li>
+                              <!-- navigation object : Path to Granite Methods Crime and Justice -->
+								<li><a href="<t4 type="navigation" id="527"/>">Crime and Justice</a></li>
+                              <!-- navigation object : Path to Granite Methods Social Conditions -->
+								<li><a href="<t4 type="navigation" id="528"/>">Social Conditions</a></li>
+                              <!-- navigation object : Path to Granite Methods Health -->
+								<li><a href="<t4 type="navigation" id="529"/>">Health</a></li>
+                              <!-- navigation object : Path to Granite Methods Information Society -->
+								<li><a href="<t4 type="navigation" id="530"/>">Information Society</a></li>
+                              <!-- navigation object : Path to Granite Methods Housing and Households -->
+								<li><a href="<t4 type="navigation" id="531"/>">Housing and Households</a></li>   
+							</ul>
+						</div>
+					</div><!--/module-->
+					<div class="module yellow">
+						<div class="moduleHeader">
+							<h2><a href="#">Labour Market and Earnings</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- navigation object : Path to Granite Methods Labour Market -->
+								<li><a href="<t4 type="navigation" id="532"/>">Labour Market</a></li>
+                              <!-- navigation object : Path to Granite Methods Earnings -->
+								<li><a href="<t4 type="navigation" id="533"/>">Earnings</a></li>
+
+							</ul>
+						</div>
+					</div><!--/module-->
+					<div class="module blue">
+						<div class="moduleHeader">
+							<h2><a href="#">Environment and Climate</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- navigation object : Path to Granite Methods Environment -->
+								<li><a href="<t4 type="navigation" id="534"/>">Environment</a></li>
+                              <!-- navigation object : Path to Granite Methods Climate -->
+								<li><a href="<t4 type="navigation" id="535"/>">Climate and Energy</a></li> 
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+                  
+                  <div class="module teal">
+						<div class="moduleHeader">
+							<h2><a href="#">Economy</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                                <!-- navigation object : Path to Granite Methods Balance of Payments -->
+								<li><a href="<t4 type="navigation" id="536"/>">International Accounts </a></li>
+                              <!-- navigation object : Path to Granite Methods Prices -->
+								<li><a href="<t4 type="navigation" id="537"/>">Prices </a></li>
+                              <!-- navigation object : Path to Granite Methods National Accounts -->
+								<li><a href="<t4 type="navigation" id="538"/>">National Accounts </a></li>
+                              <!-- navigation object : Path to Granite Methods Government Accounts -->
+								<li><a href="<t4 type="navigation" id="945"/>">Government Accounts </a></li>
+                              <!-- navigation object : Path to Granite Methods External Trade -->
+								<li><a href="<t4 type="navigation" id="539"/>">External Trade </a></li>   
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+                  <div class="module pink">
+						<div class="moduleHeader">
+							<h2><a href="#">Business Sectors</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- Path to Granite Methods Multisectoral -->
+								<li><a href="<t4 type="navigation" id="540"/>">Multisectoral </a></li>
+                              <!-- Path to Granite Methods Agriculture and Fishing -->
+								<li><a href="<t4 type="navigation" id="541"/>">Agriculture and Fishing </a></li>
+                              <!-- navigation object : Path to Granite Methods Services -->
+								<li><a href="<t4 type="navigation" id="542"/>">Services </a></li>
+                              <!-- navigation object : Path to Granite Methods Construction -->
+								<li><a href="<t4 type="navigation" id="543"/>">Construction </a></li>
+                              <!-- navigation object : Path to Granite Methods Tourism and Travel -->
+								<li><a href="<t4 type="navigation" id="544"/>">Tourism and Travel </a></li>
+                              <!-- navigation object : Path to Granite Methods Industry -->
+								<li><a href="<t4 type="navigation" id="545"/>">Industry </a></li>
+                              <!-- navigation object : Path to Granite Methods Transport -->
+								<li><a href="<t4 type="navigation" id="546"/>">Transport </a></li>
+                              <!-- navigation object : Path to Granite Methods Science and Technology -->
+								<li><a href="<t4 type="navigation" id="547"/>">Science and Technology</a></li>
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+                  
+                  
+				</div><!--/col-->
+				<div class="col span6">
+					
+                  <h2>Statistical Practices</h2>
+					
+                  <div class="module pink">
+						<div class="moduleHeader">
+							<h2><a href="#">Classifications</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+                              
+                              <!-- navigation object : Path to Granite Methods Classifications -->
+                                <li><a href="<t4 type="navigation" id="1023"/>">Classifications Explained</a></li>
+                               <li><a href="<t4 type="navigation" id="1024"/>">CSO Standard Classifications</a></li>
+                                <li><a href="<t4 type="navigation" id="1025"/>">Classifications Glossary</a></li>
+	          <li><a href="<t4 type="navigation" id="1026"/>">Frequently Asked Questions</a></li>
+	           <li><a href="<t4 type="navigation" id="1027"/>">International Comparison</a></li>
+	           <li><a href="<t4 type="navigation" id="1028"/>">Industrial Activity</a></li>
+                                 <li><a href="<t4 type="navigation" id="1129"/>">NACE Coder</a></li>
+                              
+							</ul>
+						</div>
+					</div><!--/module-->   
+                  
+                   <div class="module teal">
+						<div class="moduleHeader">
+							<h2><a href="#">Quality</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>                             
+                              
+                              <!-- navigation object : Path to Methods Quality -->
+                                <li><a href="<t4 type="navigation" id="1018"/>">Standards and Quality</a></li>
+                                <li><a href="<t4 type="navigation" id="1019"/>">Quality Links</a></li>
+                                <li><a href="<t4 type="navigation" id="1020"/>">Quality Management Framework</a></li>
+                                <li><a href="<t4 type="navigation" id="1297"/>">Treatment of Revisions</a></li>
+                                <li><a href="https://stats.oecd.org/glossary/index.htm" target="_blank">OECD Glossary of Statistical Terms</a></li>
+              
+                              
+                              
+							</ul>
+						</div>
+					</div><!--/module-->  
+                  
+                  
+                    <div class="module yellow">
+						<div class="moduleHeader">
+							<h2><a href="#">Information Notes</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>                             
+                              
+                              <!-- navigation object : Path to Granite Methods Information Notes -->
+                                <li><a href="<t4 type="navigation" id="1029"/>">Information Notices</a></li>
+                               <li><a href="<t4 type="navigation" id="1030"/>">Information Note for Data Users: revision to the Irish NUTS 2 and NUTS 3 Regions</a></li>
+                              
+                              
+							</ul>
+						</div>
+					</div><!--/module-->  
+                  
+                  
+                   <div class="module purple">
+						<div class="moduleHeader">
+							<h2><a href="#">Standard Methodologies</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>                             
+                              
+                              <!-- navigation object : Path to Granite Methods Standard Methodologies -->
+                                <li><a href="<t4 type="navigation" id="1022"/>">Methodology Videos</a></li>
+                              
+                              
+							</ul>
+						</div>
+					</div><!--/module-->  
+<div class="module orange">
+						<div class="moduleHeader">
+							<h2><a href="#">Methodological Research</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- navigation object : Path to Commercial Property -->
+								<li><a href="<t4 type="navigation" id="1060"/>">Commercial Property</a></li>
+                <li><a href="<t4 type="navigation" id="1219"/>">Equality Data Audit</a></li>
+                              
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+
+<div class="module teal">
+						<div class="moduleHeader">
+							<h2><a href="#">Administrative Data</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <!-- navigation object : Path to Administrative Data FAQs -->
+								<li><a href="<t4 type="navigation" id="1063"/>">Administrative Data FAQs</a></li>
+                <li><a href="<t4 type="navigation" id="1296"/>">The Central Statistics Office and the Central Credit Register</a></li>
+                              
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+				             
+				</div><!--/col-->
+			</div><!--/row-->
+
+           
+        </div><!--/content-->
+
+
+
+_hdr.html

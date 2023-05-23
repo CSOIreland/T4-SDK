@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+		<!--include main stylesheet - all other stylesheets are embeded within this-->  
+		<!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
+        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
+        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
+        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
+          
+		<!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+          
+		<!--include Flexslider - used for carousels and image slders-->
+		<!--flexslider-min..js--><t4 type="media" id="86226" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
+          
+		<!--include High Charts-->
+          <!-- removed jc 13/02/14  
+		<script src="assets/highcharts/js/highcharts.js"></script>
+		<script src="assets/highcharts/js/highcharts-3d.js"></script>
+		<script src="assets/highcharts/js/modules/exporting.js"></script>-->
+          
+		<!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+          
+      
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+        //alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
+
+            $("#statisticsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Databases') {
+
+            $("#databasesTab").addClass("currentbranch0");
+
+        }
+
+
+        else if (theme == 'Surveys and Methodology') {
+
+            $("#methodsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+
+ 
+<!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
+      <!--/mainNav-->
+      
+		<!-- ********** CONTENT ********** -->
+		<div class="container content">
+			<div class="row pageHeader">
+				<div class="col span12">
+					<div id="breadcrumbs">
+						<span class="youarehere">You are here: </span> &gt;
+						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
+					</div><!--/breadcrumb-->
+				</div><!--/col-->
+				<div class="col span12">
+					<h1>Databases</h1>
+				</div><!--/col-->				
+			</div><!--/row-->
+    
+      
+        
+        
+        
+        
+        
+        
+				<div class="col span6">
+					<div class="module open green">
+						<div class="moduleHeader">
+							<h2><a href="#">CSO Statistical Databases</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+								<li><a href="https://data.cso.ie/#">PxStat (CSO Main Data Dissemination Service)</a></li>
+                <li><a href="<t4 type="navigation" name="Path: StatBank R package" id="1137" />">PxStat R package: csodata</a></li>
+                <li><a href="https://youtu.be/vesyixSAzkM" target="_blank">Video: How to browse tables in PxStat (youtube)</a></li>
+                <li><a href="https://youtu.be/DkB-Cm7AB3g" target="_blank">Video: How to create graph in PxStat (youtube)</a></li>
+                              
+							</ul>
+						</div>
+					</div><!--/module-->
+                  
+                  <div class="module open pink">
+						<div class="moduleHeader">
+							<h2><a href="#">CSO as Linked Open Data</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+								<li><a href="https://data.gov.ie/publisher/central-statistics-office" target="_blank">data.gov.ie: Ireland's Open Data Portal</a></li>
+                                <li><a href="<t4 type="navigation" id="1034"/>" >UN Sustainable Development Goals (SDGs)</a></li>
+
+							</ul>
+						</div>
+					</div><!--/module-->
+					
+					<div class="module open purple">
+						<div class="moduleHeader">
+							<h2><a href="#">Statistical Databases from International Organisations</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              
+								<li><a href="http://ec.europa.eu/eurostat" target="_blank">Eurostat</a></li>
+                              <li><a href="http://www.ecb.europa.eu/stats/html/index.en.html" target="_blank">European Central Bank (ECB)</a></li>
+                              <li><a href="http://stats.oecd.org/" target="_blank">Organisation for Economic Co-operation and Development (OECD)</a></li>
+                              <li><a href="http://w3.unece.org/PXWeb/en/" target="_blank">United Nations Economic Commission for Europe (UNECE)</a></li>
+                              <li><a href="http://data.un.org/" target="_blank">United Nations Security Council (UNSC)</a></li>
+                              <li><a href="http://www.imf.org/external/data.htm" target="_blank">International Monetary Fund (IMF)</a></li>
+                              
+								
+							</ul>
+						</div>
+					</div><!--/module-->
+				</div><!--/col-->
+				<div class="col span6">
+                  
+					<div class="module open yellow">
+						<div class="moduleHeader">
+							<h2><a href="#">Other Public Sector Databases</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                                <li><a href="https://data.cso.ie/copyright/DPHPLG" target="_blank">Department of Housing, Local Government and Heritage</a></li>
+                              <li><a href="<t4 type="navigation" id="1370"/>" >Department of Education and Skills</a></li>
+                              
+                              <li><a href="https://data.cso.ie/copyright/IMDO" target="_blank">Irish Maritime Development Office (IMDO)</a></li>
+                             
+                              <li><a href="https://data.cso.ie/copyright/SEI" target="_blank">Sustainable Energy Authority of Ireland</a></li>
+                             
+                              <!--<li><a href="https://data.cso.ie/copyright/COMREG" target="_blank">Commission for Communications Regulation (Comreg)</a></li>-->
+                              
+                              <li><a href="https://data.cso.ie/copyright/RTB" target="_blank">Residential Tenancies Board (RTB)</a></li>
+                             
+                              <li><a href="https://data.cso.ie/copyright/HRB" target="_blank">Health Research Board (HRB) </a></li>
+                            
+                              <li><a href="https://data.cso.ie/copyright/TII" target="_blank">Transport Infrastructure Ireland</a></li>
+                              <li><a href="https://data.cso.ie/copyright/RCT" target="_blank">Revenue Tax and Customs Statistics</a></li>
+                              <li><a href="https://data.cso.ie/copyright/RSA" target="_blank">Road Safety Authority of Ireland</a></li>
+                              <li><a href="https://data.cso.ie/copyright/DOH" target="_blank">Department of Health</a></li>
+                							<li><a href="https://data.cso.ie/copyright/CB" target="_blank">Central Bank of Ireland</a></li>
+                              <li><a href="https://data.cso.ie/copyright/AGRI" target="_blank">Department of Agriculture, Food and the Marine</a></li>
+                							<li><a href="https://data.cso.ie/copyright/DETE" target="_blank">Department of Enterprise, Trade and Employment</a></li>
+                							<li><a href="https://data.cso.ie/copyright/DOT" target="_blank">Department of Transport</a></li>
+                              <li><a href="https://data.cso.ie/copyright/EPA" target="_blank">Environmental Protection Agency</a></li>
+							                <li><a href="https://data.cso.ie/copyright/DCYA" target="_blank">Department of Children, Equality, Disability, Integration and Youth</a></li>
+							  </ul>
+						</div>
+					</div><!--/module-->
+					             
+				</div><!--/col-->
+			</div><!--/row-->
+
+           
+        </div><!--/content-->
+
+
+
+_hdr.html

@@ -1,0 +1,99 @@
+                                </div>
+</div>
+                                </div>
+</div>
+<!--</div>-->
+<div class="footer-container">
+                  
+       <div class="container-fluid">
+    <div class="footer-row row">
+        <div class="logo-row col-lg-5 col-md-5 col-xs-12">
+            <div class="footer-logo">
+                <img id="methologyLogo" alt="Central Statistics Office Methodology Department Image" src='<t4 type="media" id="171515" formatter="image/path"/>'></img>
+                <h2 class="footer-title">Methodology</h2>
+            </div>
+        </div>
+        <div class="team-detail col-lg-7 col-md-7 col-xs-12">
+            <div class="team-detail-wrapper">
+                <h4>Methodology Team</h4>
+                <h4 class="mail-to"> <a href="mailto:methodology@cso.ie"> &#9993; &nbsp;methodology@cso.ie</h4>
+            </div>
+        </div>
+    </div>         
+</div>
+</body>
+<script>
+$(document).ready(function() {
+    $(function() {
+   if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1))
+{
+  
+  window.location.replace("https://methodology.cso.ie/ieredirect/");
+ } 
+        var myArray = ["btn-cso-purple-65", "btn-cso-green-40", "btn-cso-mint-40", "btn-cso-yellow-65", "btn-cso-teal-90", "btn-cso-green-65", "btn-cso-purple-40", "btn-cso-mint-65"];
+        $.each(myArray, function(index, value) {
+            console.log(" Index " + index + "  Value " + value);
+            var nthindex = index + 1;
+            var secnthindex = index + 9;
+			var thirdnthindex = index + 17;
+			var forthnthindex = index + 25;
+			var fifthnthindex = index + 33;
+            $(".accordion-adj div:nth-child(" + nthindex + ") .btn-adjustment").addClass(myArray[index]);
+            $(".accordion-adj div:nth-child(" + secnthindex + ") .btn-adjustment").addClass(myArray[index]);
+			$(".accordion-adj div:nth-child(" + thirdnthindex + ") .btn-adjustment").addClass(myArray[index]);
+			$(".accordion-adj div:nth-child(" + forthnthindex + ") .btn-adjustment").addClass(myArray[index]);	
+			$(".accordion-adj div:nth-child(" + fifthnthindex + ") .btn-adjustment").addClass(myArray[index]);
+
+        });
+    });
+    $(".nav-item").on("click", function() {
+        reload();
+
+    });
+
+    function reload() {
+        window.location.reload();
+        marksec();
+    }
+
+    $.when(reload).done(function marksec() {
+        var mySection = $(this).attr("name");
+        var t4Section = ('<t4 type="navigation" id="1007"/>');
+        console.log(t4Section);
+        $('.navbar-nav a').removeClass('selected');
+
+        if (t4Section == "Projects") {
+            $("[name='Projects']").addClass('selected');
+        } else if (t4Section == "User Groups") {
+            $("[name='User Groups']").addClass('selected');
+        } else if (t4Section == "Statistical Methodologies") {
+            $("[name='Statistical Methodologies']").addClass('selected');
+        } else if (t4Section.startsWith("Statistical Resources")) {
+            $("[name='Statres']").addClass('selected');
+        } else if (t4Section.startsWith("Statistical Papers")) {
+            $("[name='Statpap']").addClass('selected');
+        } else {
+            $("[name='Home']").addClass('selected');
+        }
+
+    });
+
+
+
+//checks if hash value exists
+if ( window.location.hash != '' ) {
+//removes the initial hash
+openval = window.location.hash.slice(6);
+//opens the relavant accordion
+$('.' + openval).addClass('show');
+
+}
+
+
+ });
+ 
+
+           
+</script>
+
+ _hdr.html
