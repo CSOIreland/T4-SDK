@@ -10,7 +10,7 @@ class ConvertedDivs {
         this.lastElement = false;
     }
 }
-t4Sdk.high_chart_fix.callback4pdf = function () {
+t4Sdk.high_chart_fix.callback4pdf = function() {
     t4Sdk.contextMenu = null;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
         var c = t4Sdk.high_chart_fix.converted[i];
@@ -25,33 +25,33 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
     //document.body.appendChild(div);
 }
 
-t4Sdk.high_chart_fix.callback = function () {
-    t4Sdk.contextMenu = null;
-    for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        var c = t4Sdk.high_chart_fix.converted[i];
-        c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
-        c.originalDiv.parentElement.removeChild(c.originalDiv);
+t4Sdk.high_chart_fix.callback = function() {
+        t4Sdk.contextMenu = null;
+        for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+            var c = t4Sdk.high_chart_fix.converted[i];
+            c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
+            c.originalDiv.parentElement.removeChild(c.originalDiv);
+        }
+        window.print();
+        t4Sdk.high_chart_fix.revert2Original();
     }
-    window.print();
-    t4Sdk.high_chart_fix.revert2Original();
-}
-/*
-t4Sdk.high_chart_fix.fixSVG4Export_kill = function () {
-    t4Sdk.high_chart_fix.converted = new Array();
-    t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
-    t4Sdk.high_chart_fix.converted[0].lastElement = true;
-    var icn = document.createElement("span");
-    t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[0], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback);
-}
-*/
-t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
+    /*
+    t4Sdk.high_chart_fix.fixSVG4Export_kill = function () {
+        t4Sdk.high_chart_fix.converted = new Array();
+        t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
+        t4Sdk.high_chart_fix.converted[0].lastElement = true;
+        var icn = document.createElement("span");
+        t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[0], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback);
+    }
+    */
+t4Sdk.html2image.fnExportPrintPage = function(cnv, type, icon, callbackFunc) {
     // alert("ver 2")
     var opt = { "bgcolor": "white" };
     var tgt = cnv.originalDiv;
     switch (type) {
         case t4Sdk.html2image.png:
             domtoimage.toPng(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     /*
                     const img = document.createElement('img');
                     img.src = dataUrl;
@@ -63,14 +63,14 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
                     }
                     */
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
         case t4Sdk.html2image.svg:
 
             domtoimage.toSvg(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     cnv.convertedImage = document.createElement('img');
                     //var img = cnv.img;
                     cnv.convertedImage.src = dataUrl;
@@ -80,19 +80,19 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
                     cnv.convertedImage.style.maxWidth = '100%';
                     cnv.convertedImage.style.maxHeight = '100%';
                     // div.appendChild(img);
-                    cnv.convertedImage.onload = function () {
+                    cnv.convertedImage.onload = function() {
                         if (cnv.lastElement)
                             callbackFunc();
                     }
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
         case t4Sdk.html2image.jpg:
 
             domtoimage.toJpeg(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     const link = document.createElement('a');
                     link.href = dataUrl;
                     t4Sdk.html2image.file_index += 1;
@@ -105,7 +105,7 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
                     tgt.style.margin = null;
                     tgt.style.padding = null;
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
@@ -113,7 +113,7 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
 };
 
 
-t4Sdk.high_chart_fix.customContextMenu = function (event) {
+t4Sdk.high_chart_fix.customContextMenu = function(event) {
     event.preventDefault();
     if (t4Sdk.contextMenu == null) {
         t4Sdk.isCustomContextMenuClosed = false;
@@ -129,7 +129,7 @@ t4Sdk.high_chart_fix.customContextMenu = function (event) {
         menuItem.textContent = 'Print Page';
         menuItem.style.cursor = "pointer";
         menuItem.className = "custom_menu";
-        menuItem.addEventListener('click', function () {
+        menuItem.addEventListener('click', function() {
             t4Sdk.high_chart_fix.fixSVG();
         });
         t4Sdk.contextMenu.appendChild(menuItem);
@@ -141,13 +141,13 @@ t4Sdk.high_chart_fix.customContextMenu = function (event) {
     document.body.appendChild(t4Sdk.contextMenu);
 };
 
-t4Sdk.high_chart_fix.populateElements = function (className) {
+t4Sdk.high_chart_fix.populateElements = function(className) {
     var arr = document.body.getElementsByClassName(className);
     for (var i = 0; i < arr.length; i++) {
         t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length] = new ConvertedDivs(arr[i]);
     }
 }
-t4Sdk.high_chart_fix.gcs = function (element) {
+t4Sdk.high_chart_fix.gcs = function(element) {
 
 
     let computedStyles = window.getComputedStyle(element);
@@ -163,13 +163,13 @@ t4Sdk.high_chart_fix.gcs = function (element) {
     // element.setAttribute("0_gcc", true);
 }
 t4Sdk.high_chart_fix.noSVGs = false;
-t4Sdk.high_chart_fix.enumerateElements = function () {
+t4Sdk.high_chart_fix.enumerateElements = function() {
     t4Sdk.high_chart_fix.converted = new Array();
     t4Sdk.high_chart_fix.populateElements("highchartBox");
     t4Sdk.high_chart_fix.populateElements("px-stat-widget-chart");
     t4Sdk.high_chart_fix.populateElements("highchart-pie-wrapper");
 }
-t4Sdk.high_chart_fix.fixSVG = function () {
+t4Sdk.high_chart_fix.fixSVG = function() {
     t4Sdk.high_chart_fix.enumerateElements();
     if (t4Sdk.high_chart_fix.converted.length == 0) {
         t4Sdk.high_chart_fix.noSVGs = true;
@@ -185,7 +185,7 @@ t4Sdk.high_chart_fix.fixSVG = function () {
     }
 }
 
-t4Sdk.high_chart_fix.fixSVG4pdf = function () {
+t4Sdk.high_chart_fix.fixSVG4pdf2 = function() {
     if (window.location.href.split('?')[1] == "export2pdf") {
         t4Sdk.high_chart_fix.body = document.body;
         t4Sdk.high_chart_fix.enumerateElements();
@@ -201,18 +201,29 @@ t4Sdk.high_chart_fix.fixSVG4pdf = function () {
                 t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
             }
         }
-        /*
-        t4Sdk.high_chart_fix.converted = new Array();
-        t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
-        t4Sdk.high_chart_fix.converted[0].lastElement = true;
-        var icn = document.createElement("span");
-        if (t4Sdk.high_chart_fix.converted.length == 0) return;
-        t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[0], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
-        */
     }
 }
 
-t4Sdk.high_chart_fix.revert2Original = function () {
+t4Sdk.high_chart_fix.fixSVG4pdf = function() {
+    if (window.location.href.split('?')[1] == "export2pdf") {
+        t4Sdk.high_chart_fix.body = document.body;
+        t4Sdk.high_chart_fix.enumerateElements();
+        if (t4Sdk.high_chart_fix.converted.length == 0) {
+            t4Sdk.high_chart_fix.noSVGs = true;
+            //window.print();
+            return;
+        }
+        t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length - 1].lastElement = true;
+        var icn = document.createElement("span");
+        if (t4Sdk.high_chart_fix.checkZoomLevel()) {
+            for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+                t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[i], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback4pdf);
+            }
+        }
+    }
+}
+
+t4Sdk.high_chart_fix.revert2Original = function() {
     if (t4Sdk.high_chart_fix.noSVGs)
         t4Sdk.high_chart_fix.noSVGs = false;
     else {
@@ -224,21 +235,28 @@ t4Sdk.high_chart_fix.revert2Original = function () {
         t4Sdk.high_chart_fix.truncatedText.parentElement.removeChild(t4Sdk.high_chart_fix.truncatedText);
     }
 }
+t4Sdk.high_chart_fix.fixSVG4pdf_delay2 = function() {
+    setTimeout(() => {
+        t4Sdk.high_chart_fix.fixSVG4pdf2();
+        console.log('export2pdf_started');
+    }, 5000);
+};
 
-t4Sdk.high_chart_fix.fixSVG4pdf_delay = function () {
+t4Sdk.high_chart_fix.fixSVG4pdf_delay = function() {
     setTimeout(() => {
         t4Sdk.high_chart_fix.fixSVG4pdf();
         console.log('export2pdf_started');
     }, 5000);
 
 };
-//document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
+
 window.addEventListener('load', t4Sdk.high_chart_fix.fixSVG4pdf_delay);
 //const mediaQueryList = window.matchMedia('print');
 
 
 
 /*
+//document.addEventListener('contextmenu', t4Sdk.high_chart_fix.customContextMenu);
 mediaQueryList.addEventListener('change', (event) => {
     if (event.matches) {
         //  event.preventDefault();
@@ -255,8 +273,8 @@ mediaQueryList.addEventListener('change', (event) => {
 */
 
 t4Sdk.high_chart_fix.truncatedText = document.createElement("span");
-t4Sdk.high_chart_fix.truncatedText.innerHTML = "";// "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
-t4Sdk.high_chart_fix.checkZoomLevel = function () {
+t4Sdk.high_chart_fix.truncatedText.innerHTML = ""; // "<br>If you have issues with truncated text, please make sure that your browser zoom is equal to 100% or more.";
+t4Sdk.high_chart_fix.checkZoomLevel = function() {
 
     document.body.appendChild(t4Sdk.high_chart_fix.truncatedText);
     /*
@@ -267,7 +285,7 @@ t4Sdk.high_chart_fix.checkZoomLevel = function () {
     return true;
 
 }
-t4Sdk.high_chart_fix.checkZoomLevel_old = function () {
+t4Sdk.high_chart_fix.checkZoomLevel_old = function() {
 
 
     if (window.visualViewport.scale !== 1) {
@@ -286,17 +304,17 @@ t4Sdk.high_chart_fix.checkZoomLevel_old = function () {
     return;
     var res = true;
     const targetZoomLevel = 1; // 100% zoom
-    const zoomTolerance = 0.01; const zoomFactor = window.devicePixelRatio;
+    const zoomTolerance = 0.01;
+    const zoomFactor = window.devicePixelRatio;
     res = !(Math.abs(zoomFactor - targetZoomLevel) > zoomTolerance);
     if (!res)
         alert("Please, set zoom level to 100%!");
     return res;
 }
-window.addEventListener('keydown', function (event) {
+window.addEventListener('keydown', function(event) {
     if ((event.key === 'P' || event.key === 'p') && event.ctrlKey) {
         event.preventDefault();
         // Call your custom function
         t4Sdk.high_chart_fix.fixSVG();
     }
-}
-); 
+});
