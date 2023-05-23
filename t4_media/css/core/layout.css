@@ -2574,14 +2574,6 @@ margin-bottom: 20px;
 	background-color: #c3d7d9;
 }
 
-    @media print {
-        .int-pub-header,
-        .int-pub-headline-block {
-            background: none !important;
-            padding: 0;
-            margin: 0;      
-        }
-    }
 .int-pub-header h2 {
     color: #fff;
     font-size: 24px;
@@ -2604,17 +2596,6 @@ margin-bottom: 20px;
   	margin-bottom: 0.5rem;
 }
 
-    @media print {
-        .int-pub-header h2,
-        .int-pub-header h3 {
-            color: #000;
-            padding: 0 0 0.25rem;
-        }
-        .int-pub-header h2 {
-            border-bottom: 4px solid #ADBECC;
-            margin-bottom: 0.25rem;
-        }
-    }
 .int-pub-body-block {
     font-size: 14px;
     padding: 0 1rem 1rem;
@@ -2624,11 +2605,7 @@ margin-bottom: 20px;
 .pub-header-census-results-2022 .int-pub-body-block {
     border-bottom: 2px solid #59c1a6;
 }
-    @media print {
-        .pub-header-census-results-2022 .int-pub-body-block {
-            border-bottom: none;
-        }
-    }
+
 .pub-header-research .int-pub-body-block {
         border-bottom: none;
     }

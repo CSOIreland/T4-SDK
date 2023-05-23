@@ -124,9 +124,21 @@
     }
 
   /* New format styling */
+
+  .int-pub-header,
+  .int-pub-headline-block {
+      background: none !important;
+      padding: 0;
+      margin: 0;      
+  }
+
+
+
     .int-pub-header h2 {
         font-size: 24px;
         font-weight: 700;
+        color: #000;
+        padding: 0 0 0.25rem;
         margin: 0;
         border: 0;
     }
@@ -146,12 +158,20 @@
         border-bottom-color: #283F73;
     }
 
+    .pub-header-press-statement h3:first-child {
+        margin-top: 1rem;
+    }
+
     .int-pub-body-block {
         font-size: 14px;
         padding: 0 0 1rem;
         margin: 1rem 0 0;
         border-bottom: 1px solid #006168;
     }  
+    .pub-header-census-results-2022 .int-pub-body-block {
+        border-bottom: none;
+    }    
+
     .pub-header-data {
         display:block;
     }
@@ -167,6 +187,9 @@
         padding: 0 0 0.5rem 2rem;
         margin:  2rem 0;
         border-left: 0.5rem solid #579599;
+    }
+    .pub-comment.contact-details {
+        border: none;
     }
     
     .release-key-findings h3.pub-findings-header,
@@ -237,7 +260,8 @@
     
     /* Hides the next chapter button */
     .next-chapter-btn,
-  	.print-chapter-btn {
+  	.print-chapter-btn,
+    .section-button {
         display:none;
     }
     

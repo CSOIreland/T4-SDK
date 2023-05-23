@@ -1,94 +1,118 @@
-body {
+/* body {
     font-size: 18px;
 }
 
 .copy p {
     font-size: 18px;
+} */
+@page {
+    size: auto;
+    margin: 1cm;
 }
 
-.header .btn,
-#cse-search-form,
-.mainNav,
-#breadcrumbs,
-.pageHeader,
-#downloadPDF,
-.columnRightinner-rightcol,
-.footer {
-    display: none;
-}
+@media print {
 
-#st-2 {
-    display: none !important;
-}
+    .col {
+        padding: 0 20px;
+    }
+    .header {
+        float:left;
+    }
+    .header .row {
+        padding:0;
+        margin: 0;
+    }
+    .header h1 {
+        margin:0 !important;
+        padding:0;
+    }
+    .header h1 img {
+        height: 40px;
+        /*filter: grayscale(100%);*/
+    }
+    
+    .header .btn,
+    .mainNav,
+    #breadcrumbs,
+    #downloadPDF,
+    .columnRightinner-rightcol,
+    .footer {
+        display: none;
+    }
 
-table {
-    page-break-inside: avoid;
-}
+    /*make the content column full width*/
+    .columnLeftinner-rightcol {
+        width: 100%;
+        border-right: none;
+    }
 
-.pressReleaseTitle h1 {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-}
+    #st-2 {
+        display: none !important;
+    }
 
-h1.pressStatement,
-h2.pressStatement,
-.pressReleaseDate,
-.pressReleaseTitle h1 {
-    text-align: center;
-    color: #07101a;
-    clear: both;
-}
+    table {
+        page-break-inside: avoid;
+    }
 
-.pressReleaseTitle {
-    margin-top: 50px;
-}
+    .pressReleaseTitle h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
 
-div.pdfLinks {
-    padding: 5px;
-    border: 1px solid #CCCDCD;
-    border-radius: 5px;
-    width: 200px;
-    clear: both;
-    margin-bottom: 5px;
-    float: right;
-}
+    h1.pressStatement,
+    h2.pressStatement,
+    .pressReleaseDate,
+    .pressReleaseTitle h1 {
+        text-align: center;
+        color: #07101a;
+        clear: both;
+    }
 
-.pressReleaseBulletPoints h5 {
-    margin-top: 50px;
-    text-transform: none;
-    font-size: 18px;
-}
+    .pressReleaseTitle {
+        margin-top: 50px;
+    }
 
-.editorsNote h5,
-.contactDetails h5 {
-    text-transform: none;
-    font-size: 18px;
-}
+    div.pdfLinks {
+        padding: 5px;
+        border: 1px solid #CCCDCD;
+        border-radius: 5px;
+        width: 200px;
+        clear: both;
+        margin-bottom: 5px;
+        float: right;
+    }
 
-. .editorsNote,
-.contactDetails {
-    margin-top: 40px;
-}
+    .pressReleaseBulletPoints h5 {
+        margin-top: 50px;
+        text-transform: none;
+        font-size: 18px;
+    }
 
-p.pressReleaseEnds {
-    text-align: center;
-    font-weight: bold;
-}
+    .editorsNote h5,
+    .contactDetails h5 {
+        text-transform: none;
+        font-size: 18px;
+    }
 
-.columnLeftinner-rightcol {
-    border-right: 0px;
-    width: 100%;
-}
+    . .editorsNote,
+    .contactDetails {
+        margin-top: 40px;
+    }
 
-.row {
-    margin-top: 0px;
-}
+    p.pressReleaseEnds {
+        text-align: center;
+        font-weight: bold;
+    }
 
-.pressReleaseBulletPoints ul li {
-    font-weight: bold;
-}
 
-.columnLeftinner-rightcol {
-    padding: 40px;
+    .row {
+        margin-top: 0px;
+    }
+
+    .pressReleaseBulletPoints ul li {
+        font-weight: bold;
+    }
+    
+
 }
