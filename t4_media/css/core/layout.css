@@ -3017,9 +3017,9 @@ text-decoration:none;
 
 /* ==== CHART STYLING ==== */
 
-.highchartBox, .highchart-pie-wrapper {
+.highchartBox, .highchart-pie-wrapper .pieChart:first-child {
 	margin: 2rem 0;
-  	border-left: 1rem solid #E6EDF2;
+  border-left: 1rem solid #E6EDF2;
 }
 
 /* Excel 2 HTML OpenClose Tables (old style tables) */
@@ -3119,15 +3119,15 @@ text-decoration:none;
   overflow: auto;
   }
 
-  .widget-toggle-wrapper button {
-    border-radius: 0.25rem;
-	padding: 8px 15px;
+.widget-toggle-wrapper button {
+  border-radius: 0.25rem;
+  padding: 8px 15px;
 	color: #3D454C;
 	background: #CAD6E0;
-    border: 1px solid #8697A6;
+  border: 1px solid #8697A6;
 	font-size: 14px;
 	font-weight: 700;
-    box-shadow: none;
+  box-shadow: none;
 }
 
 
@@ -3193,11 +3193,12 @@ text-decoration:none;
       /* font-size: 1.25rem; */
       font-weight: 400;
       line-height: 1.5;
-      color: #495057;
+      color: #3D454C;
+      font-weight: bold;
       text-align: center;
       white-space: nowrap;
       background-color: #fff;
-      border: 1px solid #ced4da;
+      border: 1px solid #8697A6;
       border-radius: 0.3rem;
     }
 
@@ -3207,7 +3208,7 @@ position: relative;
     width: 1%;
     min-width: 0;
     margin-bottom: 0;
-border: 1px solid #ced4da;
+border: 1px solid #8697A6;
 border-radius: 0.25rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -3222,12 +3223,12 @@ width: auto !important;
 .widget-toggle-wrapper .select2-container .select2-selection--single {
 height: 100% !important;
 line-height: inherit !important;
-    padding: 0.5rem 1rem !important;
+    padding: 0.25rem 0.5rem !important;
 }
 
 .widget-toggle-wrapper .select2-container--default .select2-selection--single {
     border-radius: 0px 4px 4px 0px !important;
-border: 1px solid #ced4da !important;
+border: 1px solid #8697A6 !important;
 /* font-size: 1.25rem !important; */
 }
 
@@ -3292,9 +3293,8 @@ border: 1px solid #ced4da !important;
 }
 .px-stat-widget-chart.new-widget-style .px-stat-widget .moduleBody {
   background: #fff;
-  border: 0px;
+  border: none;
   padding: 10px 10px 0;
-  border-top: 0px;
 }
 
 .px-stat-widget-chart .px-stat-widget .moduleHeader {
@@ -3309,6 +3309,9 @@ border: 1px solid #ced4da !important;
   padding: 10px 20px;
   text-align: left;
   margin-left: 50px;
+}
+.px-stat-widget-toggles.px-stat-widget-chart.new-widget-style .px-stat-widget .moduleHeader {
+  margin-left: 0;
 }
 
 .px-stat-widget-chart .px-stat-widget-heading {
@@ -3344,9 +3347,51 @@ line-height: 1.4;
         height: 80vh !important;
     }
 }
+
 .px-stat-widget-map .moduleBody {
     padding: 0px; 
 }
+
+/* new widget map styles */
+.px-stat-widget-map.new-widget-style {
+  margin: 3rem 0;
+}
+
+.px-stat-widget-map.new-widget-style .moduleBody {
+  background: #fff;
+  border: 5px solid #E6EDF2;
+  padding: 0.25rem;
+}
+
+.px-stat-widget-map.new-widget-style .moduleHeader {
+  background: #fff;
+  border: 0px;
+  padding: 0.75rem 1.5rem 0.75rem 0;
+  text-align: left;
+  margin-bottom: 0.5rem;
+
+}
+
+.px-stat-widget-map.new-widget-style .px-stat-widget-heading {
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: bold;
+  font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
+  padding: 0 0 0.25rem;
+  border-bottom: 1px solid #CAD6E0;
+  color: #1D345C;
+}
+
+ .widget-toggle-wrapper .widget-toggle-panel {
+     padding: 1rem;
+     background: #f2f7fa;
+     border-bottom: 5px solid #E6EDF2;
+    }    
+
+.px-stat-widget-map .widget-toggle-wrapper .widget-toggle-panel {
+    margin-bottom: 5px;
+}
+
 
 
 /*End PxStat Widget custom css*/
