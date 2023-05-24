@@ -103,6 +103,7 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
 }
 
 t4Sdk.html2pdf.fnT4Reverse = function (e) {
+    e.preventDefault();
     if (t4Sdk.html2pdf.selectAll)
         t4Sdk.html2pdf.btnReverse.innerHTML = "Select all";
     else
