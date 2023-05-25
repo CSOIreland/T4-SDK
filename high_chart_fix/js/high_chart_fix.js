@@ -27,20 +27,23 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
 
 t4Sdk.high_chart_fix.callback = function () {
     t4Sdk.contextMenu = null;
-    var ok = true;
+    var ok = false;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        if (t4Sdk.high_chart_fix.converted[i].convertedImage == undefined) {
-            ok = false;
-            return;
+        if (t4Sdk.high_chart_fix.converted[i].convertedImage) {
+            ok = true;
         }
+        else
+            ok = false;
     }
-    for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        var c = t4Sdk.high_chart_fix.converted[i];
-        c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
-        c.originalDiv.parentElement.removeChild(c.originalDiv);
+    if (ok) {
+        for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+            var c = t4Sdk.high_chart_fix.converted[i];
+            c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
+            c.originalDiv.parentElement.removeChild(c.originalDiv);
+        }
+        window.print();
+        t4Sdk.high_chart_fix.revert2Original();
     }
-    window.print();
-    t4Sdk.high_chart_fix.revert2Original();
 }
 
 t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
