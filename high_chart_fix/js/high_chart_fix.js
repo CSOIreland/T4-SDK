@@ -200,7 +200,7 @@ t4Sdk.high_chart_fix.revert2Original = function () {
     else {
         for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
             var c = t4Sdk.high_chart_fix.converted[i];
-            c.convertedImage.removeEventListener("load");
+            // c.convertedImage.removeEventListener("load");
             c.convertedImage.parentElement.insertBefore(c.originalDiv, c.convertedImage);
             c.convertedImage.parentElement.removeChild(c.convertedImage);
         }
