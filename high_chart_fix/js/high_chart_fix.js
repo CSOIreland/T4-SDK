@@ -29,7 +29,8 @@ t4Sdk.high_chart_fix.callback = function () {
     t4Sdk.contextMenu = null;
     var ok = true;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        if (!t4Sdk.high_chart_fix.converted[i].convertedImage)
+
+        if (!t4Sdk.high_chart_fix.converted[i].convertedImage != undefined)
             ok = false;
     }
     if (ok) {
@@ -200,6 +201,7 @@ t4Sdk.high_chart_fix.revert2Original = function () {
     else {
         for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
             var c = t4Sdk.high_chart_fix.converted[i];
+            c.convertedImage.removeEventListener("load");
             c.convertedImage.parentElement.insertBefore(c.originalDiv, c.convertedImage);
             c.convertedImage.parentElement.removeChild(c.convertedImage);
         }
