@@ -27,6 +27,13 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
 
 t4Sdk.high_chart_fix.callback = function () {
     t4Sdk.contextMenu = null;
+    var ok = true;
+    for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+        if (t4Sdk.high_chart_fix.converted[i].convertedImage == undefined) {
+            ok = false;
+            return;
+        }
+    }
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
         var c = t4Sdk.high_chart_fix.converted[i];
         c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
@@ -35,15 +42,7 @@ t4Sdk.high_chart_fix.callback = function () {
     window.print();
     t4Sdk.high_chart_fix.revert2Original();
 }
-/*
-t4Sdk.high_chart_fix.fixSVG4Export_kill = function () {
-    t4Sdk.high_chart_fix.converted = new Array();
-    t4Sdk.high_chart_fix.converted[0] = new ConvertedDivs(window.document.body);
-    t4Sdk.high_chart_fix.converted[0].lastElement = true;
-    var icn = document.createElement("span");
-    t4Sdk.html2image.fnExportPrintPage(t4Sdk.high_chart_fix.converted[0], t4Sdk.html2image.svg, icn, t4Sdk.high_chart_fix.callback);
-}
-*/
+
 t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
     // alert("ver 2")
     var opt = { "bgcolor": "white" };
@@ -52,16 +51,6 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
         case t4Sdk.html2image.png:
             domtoimage.toPng(tgt, opt)
                 .then(function (dataUrl) {
-                    /*
-                    const img = document.createElement('img');
-                    img.src = dataUrl;
-                    const div = document.createElement('div');
-                    img.style.maxWidth = '100%';
-                    img.style.maxHeight = '100%'; 
-                    img.onload = function () { 
-                        callbackFunc();
-                    }
-                    */
                 })
                 .catch(function (error) {
                     console.error('oops, something went wrong!', error);
@@ -81,8 +70,7 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
                     cnv.convertedImage.style.maxHeight = '100%';
                     // div.appendChild(img);
                     cnv.convertedImage.onload = function () {
-                        if (cnv.lastElement)
-                            callbackFunc();
+                        callbackFunc();
                     }
                 })
                 .catch(function (error) {
