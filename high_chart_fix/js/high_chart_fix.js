@@ -27,12 +27,9 @@ t4Sdk.high_chart_fix.callback4pdf = function () {
 
 t4Sdk.high_chart_fix.callback = function () {
     t4Sdk.contextMenu = null;
-    var ok = false;
+    var ok = true;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        if (t4Sdk.high_chart_fix.converted[i].convertedImage) {
-            ok = true;
-        }
-        else
+        if (!t4Sdk.high_chart_fix.converted[i].convertedImage)
             ok = false;
     }
     if (ok) {
