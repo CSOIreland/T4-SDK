@@ -29,8 +29,7 @@ t4Sdk.high_chart_fix.callback = function () {
     t4Sdk.contextMenu = null;
     var ok = true;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-
-        if (!t4Sdk.high_chart_fix.converted[i].convertedImage != undefined)
+        if (t4Sdk.high_chart_fix.converted[i].convertedImage == undefined)
             ok = false;
     }
     if (ok) {
