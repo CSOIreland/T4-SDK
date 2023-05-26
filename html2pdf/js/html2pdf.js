@@ -5,9 +5,11 @@ t4Sdk.html2pdf.disableHrefs = function (e) {
     t4Sdk.html2pdf.downloadSelectionUL = ch;
     if (ch) {
         ch.classList.add("moduleBody");
-        ch.style.backgroundColor = "white";
-        ch.style.listStyleType = "none";
-        ch.style.lineHeight = "180%";
+        /*
+               ch.style.backgroundColor = "white";
+               ch.style.listStyleType = "none";
+               ch.style.lineHeight = "180%";
+        */
         for (var i = 0; i < ch.children.length; i++) {
             var cbox = ch.children[i];
             cbox.children[1].style.display = "none";
