@@ -333,6 +333,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
         $.each(localConfig.data.datasets, function (index, value) {
             value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
             value.api.query.data.params.extension.matrix = matrix;
+            value.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             delete value.api.query.data.params.extension.release
         });
     };
