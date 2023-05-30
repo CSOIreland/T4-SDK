@@ -366,7 +366,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
         //can't have fluid time on time toggle
         localConfig.metadata.fluidTime = [];
     }
-
+    debugger
     pxWidget.draw.init(
         'chart',
         "pxwidget" + elementId,
@@ -422,6 +422,8 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
         localConfig.fluidTime = [];
     }
 
+    debugger
+
     pxWidget.draw.init(
         'table',
         "pxwidget" + elementId,
@@ -473,7 +475,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
         //can't have fluid time on time toggle
         localConfig.data.datasets[0].fluidTime = [];
     }
-
+    debugger
     pxWidget.draw.init(
         'map',
         "pxwidget" + elementId,
