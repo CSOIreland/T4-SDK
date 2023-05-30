@@ -634,7 +634,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
     };
 
     return $.ajax({
-        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
@@ -652,7 +652,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
  */
 t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
     return $.ajax({
-        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
         "xhrFields": {
             "withCredentials": true
         },
