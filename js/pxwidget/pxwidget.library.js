@@ -643,7 +643,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
     };
 
     return $.ajax({
-        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
+        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
         "xhrFields": {
             "withCredentials": true
         },
