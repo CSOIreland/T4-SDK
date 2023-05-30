@@ -60,19 +60,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }
     }
     else {
-        switch (type) {
-            case "chart":
-                matrixRelease = config.matrix;
-                break;
-            case "table":
-                matrixRelease = config.matrix;
-                break;
-            case "map":
-                matrixRelease = config.matrix;
-                break;
-            default:
-                break;
-        }
+        matrixRelease = config.matrix;
     }
 
     $("#" + elementId).empty();
