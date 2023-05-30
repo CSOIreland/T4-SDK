@@ -412,8 +412,6 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
         localConfig.fluidTime = [];
     }
 
-    debugger
-
     pxWidget.draw.init(
         'table',
         "pxwidget" + elementId,
@@ -441,6 +439,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
 
         localConfig.data.datasets[0].api.query.data.params.extension.matrix = matrix;
         localConfig.data.datasets[0].api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+        localConfig.data.datasets[0].api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
@@ -465,7 +464,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
         //can't have fluid time on time toggle
         localConfig.data.datasets[0].fluidTime = [];
     }
-    debugger
+
     pxWidget.draw.init(
         'map',
         "pxwidget" + elementId,
