@@ -355,7 +355,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
         //can't have fluid time on time toggle
         localConfig.metadata.fluidTime = [];
     }
-    debugger
+
     pxWidget.draw.init(
         'chart',
         "pxwidget" + elementId,
@@ -384,6 +384,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
 
         localConfig.data.api.query.data.params.extension.matrix = matrix;
         localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+        localConfig.data.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
