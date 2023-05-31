@@ -60,19 +60,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }
     }
     else {
-        switch (type) {
-            case "chart":
-                matrixRelease = config.matrix;
-                break;
-            case "table":
-                matrixRelease = config.matrix;
-                break;
-            case "map":
-                matrixRelease = config.matrix;
-                break;
-            default:
-                break;
-        }
+        matrixRelease = config.matrix;
     }
 
     $("#" + elementId).empty();
@@ -345,6 +333,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
         $.each(localConfig.data.datasets, function (index, value) {
             value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
             value.api.query.data.params.extension.matrix = matrix;
+            value.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             delete value.api.query.data.params.extension.release
         });
     };
@@ -395,6 +384,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
 
         localConfig.data.api.query.data.params.extension.matrix = matrix;
         localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+        localConfig.data.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
@@ -449,6 +439,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
 
         localConfig.data.datasets[0].api.query.data.params.extension.matrix = matrix;
         localConfig.data.datasets[0].api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
+        localConfig.data.datasets[0].api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
@@ -661,7 +652,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
  */
 t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
     return $.ajax({
-        "url": "https://ws.cso.ie/public/api.jsonrpc",
+        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
         "xhrFields": {
             "withCredentials": true
         },
