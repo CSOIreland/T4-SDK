@@ -10,7 +10,8 @@ t4Sdk.contextMenu = null;
 t4Sdk.high_chart_fix.converted = null;
 t4Sdk.high_chart_fix.noSVGs = false;
 t4Sdk.high_chart_fix.truncatedText = document.createElement("span");
-t4Sdk.high_chart_fix.truncatedText.innerHTML = T4SDK_HIGHCHARTFIX_TRUNCATED_WARNING
+t4Sdk.high_chart_fix.truncatedText.innerHTML = T4SDK_HIGHCHARTFIX_TRUNCATED_WARNING;
+console.log("ver 30-5-2023");
 //#endregion Init
 
 
