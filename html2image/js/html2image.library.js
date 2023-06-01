@@ -10,6 +10,9 @@ t4Sdk.html2image.active_mode = true;
 t4Sdk.html2image.loadEventAttached = t4Sdk.html2image.loadEventAttached || null;
 t4Sdk.html2image.contextMenuVisible = false;
 t4Sdk.html2image.openedList = null;
+t4Sdk.html2image.jpg = "Download JPG";
+t4Sdk.html2image.png = "Download PNG";
+t4Sdk.html2image.svg = "Download SVG";
 //#endregion Init
 
 
