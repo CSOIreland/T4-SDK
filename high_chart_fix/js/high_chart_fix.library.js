@@ -113,8 +113,8 @@ t4Sdk.html2image.fnExportPrintPage = function (cnv, type, icon, callbackFunc) {
 t4Sdk.high_chart_fix.populateElements = function (className) {
     var arr = document.body.getElementsByClassName(className);
     for (var i = 0; i < arr.length; i++) {
-        if (className == "highchartBox")
-            arr[i].style.margin = "0px";
+        //  if (className == "highchartBox")
+        arr[i].style.margin = "0px";
         t4Sdk.high_chart_fix.converted[t4Sdk.high_chart_fix.converted.length] = new ConvertedDivs(arr[i]);
     }
 }
