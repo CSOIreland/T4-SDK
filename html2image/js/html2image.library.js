@@ -13,7 +13,6 @@ t4Sdk.html2image.openedList = null;
 //#endregion Init
 
 
-
 //Executes export to image on user click
 t4Sdk.html2image.download = function (e) {
     var list = e.target.parentElement;
