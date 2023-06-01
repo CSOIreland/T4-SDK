@@ -18,10 +18,19 @@ console.log("ver 30-5-2023");
 //calback after html -> image conversion for .pdf convert service
 t4Sdk.high_chart_fix.callback4pdf = function () {
     t4Sdk.contextMenu = null;
+    var ok = true;
     for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
-        var c = t4Sdk.high_chart_fix.converted[i];
-        c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
-        c.originalDiv.parentElement.removeChild(c.originalDiv);
+        if (t4Sdk.high_chart_fix.converted[i].convertedImage == undefined)
+            ok = false;
+    }
+    if (ok) {
+        for (var i = 0; i < t4Sdk.high_chart_fix.converted.length; i++) {
+            var c = t4Sdk.high_chart_fix.converted[i];
+            c.originalDiv.parentElement.insertBefore(c.convertedImage, c.originalDiv);
+            c.originalDiv.parentElement.removeChild(c.originalDiv);
+        }
+        window.print();
+        t4Sdk.high_chart_fix.revert2Original();
     }
     var div = document.createElement("div");
     div.setAttribute("id", "export2pdf_completed");
