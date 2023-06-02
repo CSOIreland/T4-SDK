@@ -62,13 +62,13 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     else {
         switch (type) {
             case "chart":
-                matrixRelease = config.metadata.api.query.data.params.matrix || config.metadata.api.query.data.params.release;
+                matrixRelease = config.metadata.api.query.data.params.matrix || config.matrix;
                 break;
             case "table":
-                matrixRelease = config.data.api.query.data.params.extension.matrix || config.data.api.query.data.params.extension.release;
+                matrixRelease = config.data.api.query.data.params.extension.matrix || config.matrix;
                 break;
             case "map":
-                matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix || config.data.datasets[0].api.query.data.params.extension.release;
+                matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix || config.matrix;
                 break;
             default:
                 break;
