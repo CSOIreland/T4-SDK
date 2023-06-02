@@ -1,0 +1,667 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="html, css bootstrap, mega menu, navbar, large dropdown, menu CSS examples">
+    <meta name="description" content="Bootstrap 5 navbar megamenu examples with simple css demo code">
+
+    <title>ver 4 </title>
+
+
+    <!--
+    <script src="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/js/t4-sdk-megaNav.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/css/t4-sdk-bootstrap.css"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/css/t4-sdk-megaNav.css"
+        rel="stylesheet">
+  
+-->
+
+    <script src="https://dev-incubator.cso.ie/t4sdk/t4helper/client/mega_nav/js/t4-sdk-megaNav.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/gh/CSOIreland/T4-SDK@d11a76a/t4-sdk-bootstrap/css/t4-sdk-bootstrap.css"
+        rel="stylesheet">
+    <link href="https://dev-incubator.cso.ie/t4sdk/t4helper/client/mega_nav/css/t4-sdk-megaNav.css" rel="stylesheet">
+
+
+
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            //	return;
+            /////// Prevent closing from click inside dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    console.log("clicked")
+                    e.stopPropagation();
+                });
+            })
+        });
+        // DOMContentLoaded  end
+    </script>
+
+</head>
+
+<body>
+    <div class="t4-sdk-col-12 t4-sdk-m-4">
+        <!--  
+        <a href="https://t4.cso.ie/terminalfour/preview/10/en/8816"><img
+                src="https://t4.cso.ie/terminalfour/SiteManager?ctfn=download&amp;fnno=60&amp;ceid=f963ad67e9b3b9ccbfb5039a1847ab97a32e7b2c"
+                alt="Central Statistics Office"></a>
+      --><!--/col-->
+    </div>
+
+    <!-- section-header.// -->
+
+    <a style="width:120px"> Demo0 </a>
+
+    <div style="width:120px;height:120px;background-color: yellow; position:absolute;">
+        <div style="width:20px;height:20px;background-color: red; left: 50%;  position: absolute; ">
+        </div>
+    </div>
+
+    <div style="width:120px;height:120px;background-color: yellow; position:absolute;">
+        <div style="width:20px;height:20px;background-color: red;left: 50%;position: absolute;">
+
+        </div>
+    </div>
+    <div class="meganav-selected-item" style="background-color: rgb(38, 0, 255);"></div>
+    <div class="t4-sdk-nav-link" style="width: 150px;">
+
+
+
+    </div>
+
+
+    <div style="margin-left:  0px;">
+
+        <!-- ============= COMPONENT ============== -->
+        <nav class="t4-sdk-navbar t4-sdk-navbar-expand-lg t4-sdk-navbar-dark t4-sdk-mainNav"
+            style="width:100%;background-color: #006F74;margin: 0;padding: 0;">
+            <div class="t4-sdk-container-fluid">
+
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false"
+                    aria-label="Toggle navigation" class="t4-sdk-navbar-toggler">
+                    <span class="t4-sdk-navbar-toggler-icon"></span>
+                </button>
+                <div class="t4-sdk-collapse t4-sdk-navbar-collapse" id="main_nav">
+
+                    <ul class="t4-sdk-navbar-nav">
+
+                        <!--work in progress-->
+
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <div class="t4-sdk-nav-link" style="background-color: red;padding-bottom: 0;">
+                                <a style="width:120px"> Statistics </a>
+                                <div class="meganav-selected-item"></div>
+                            </div>
+
+
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu meganav-bg-color  cso-border-bottom-5"
+                                role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-1">Browse
+                                                Statistics ></button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-2">Statistics
+                                                Database ></button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-3">Information Hubs
+                                                ></button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Interactive
+                                                Visualisations ></button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-5">Infographics
+                                                by Theme ></button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Statistics
+                                                A-Z ></button>
+                                        </div>
+
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2 meganav-bg-color">
+
+                                            <div class="t4-sdk-row t4-sdk-align-items-stretch  t4-sdk-p-5">
+                                                <div class="t4-sdk-card t4-sdk-col-md-12  t4-sdk-p-2">
+                                                    <div class="t4-sdk-card-header cso-border-bottom-5">
+                                                        <h5 class="t4-sdk-card-title">Methods & Standards</h5>
+                                                    </div>
+
+                                                    <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                        <div class="t4-sdk-row" style="background-color: white;">
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    People &
+                                                                    Society >
+                                                                </h6>
+
+                                                                <div class="t4-sdk-d-grid   meganav-fs-6">
+
+                                                                    <a class="meganav-fore-color"> Population > </a>
+                                                                    <a class="meganav-fore-color">Education > </a><a
+                                                                        class="meganav-fore-color">
+                                                                        Births, Deaths &
+                                                                        Marriages ></a><a class="meganav-fore-color">
+                                                                        Crime and Justice > </a><a
+                                                                        class="meganav-fore-color">
+                                                                        Social Conditions ></a><a
+                                                                        class="meganav-fore-color">
+                                                                        Health > </a><a class="meganav-fore-color">
+                                                                        Information Society ></a><a
+                                                                        class="meganav-fore-color">
+                                                                        Housing and
+                                                                        Households</a>
+
+                                                                </div>
+
+
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    General Statistical Publications >
+                                                                </h6>
+
+
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Frontier Series >
+                                                                </h6>
+
+
+                                                            </div>
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Labour
+                                                                    Market >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid   meganav-fs-6">
+
+                                                                    <a class="meganav-fore-color">> Labour
+                                                                        Market</a><a class="meganav-fore-color"></a><a
+                                                                        class="meganav-fore-color"> >
+                                                                        Earnings</a>
+
+
+
+
+                                                                </div>
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Economy >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid meganav-fs-6">
+
+                                                                    <a class="meganav-fore-color"> > Prices</a><a
+                                                                        class="meganav-fore-color"> >
+                                                                        International Accounts</a><a
+                                                                        class="meganav-fore-color">
+                                                                        >
+                                                                        National
+                                                                        Accounts </a><a class="meganav-fore-color">
+                                                                        > Government Accounts </a><a
+                                                                        class="meganav-fore-color">
+                                                                        > External Trade</a><a
+                                                                        class="meganav-fore-color">
+                                                                        > Key Economic Indicators</a><a
+                                                                        class="meganav-fore-color">
+                                                                        > IMF Summary Data Page </a>
+
+                                                                    <a class="meganav-fore-color"> >
+                                                                        Earnings</a>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">Business
+                                                                    Sectors >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid  meganav-fs-6">
+
+                                                                    <a class="meganav-fore-color"> > Agriculture
+                                                                    </a><a class="meganav-fore-color"> > Building and
+                                                                        Construction
+                                                                    </a><a class="meganav-fore-color"> > Digital
+                                                                        Economy
+                                                                    </a><a class="meganav-fore-color"> > Enterprise
+                                                                        Statistics
+                                                                    </a><a class="meganav-fore-color"> > Industry
+                                                                    </a><a class="meganav-fore-color"> >
+                                                                        International Enterprises
+                                                                    </a><a class="meganav-fore-color"> > People in
+                                                                        Business
+                                                                    </a><a class="meganav-fore-color"> >
+                                                                        Retail and Services
+                                                                    </a><a class="meganav-fore-color"> > Small and
+                                                                        Medium Enterprises
+                                                                    </a><a class="meganav-fore-color"> >
+                                                                        Technology and Innovation
+                                                                    </a><a class="meganav-fore-color"> > Tourism and
+                                                                        Travel
+                                                                    </a><a class="meganav-fore-color"> >
+                                                                        Transport
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Environment >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid  meganav-fs-6">
+
+
+
+
+                                                                    <a class="meganav-fore-color"> > Agri-Environment
+                                                                    </a><a class="meganav-fore-color">
+                                                                        > Climate
+                                                                    </a><a class="meganav-fore-color"> > Ecosystem
+                                                                        Accounts
+                                                                    </a><a class="meganav-fore-color">> Energy
+                                                                    </a><a class="meganav-fore-color">> Environment
+                                                                        Accounts
+                                                                    </a><a class="meganav-fore-color">>
+                                                                        Fishery
+                                                                    </a><a class="meganav-fore-color"> > Forestry
+                                                                    </a><a class="meganav-fore-color"> > Indicators
+                                                                    </a><a class="meganav-fore-color">> Social
+                                                                    </a><a class="meganav-fore-color"> > Water
+                                                                        and Waste Water
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--
+                                                <div class="t4-sdk-card  t4-sdk-col-md-3  t4-sdk-p-2">
+                                                    <div class="t4-sdk-card-header cso-border-bottom-5 t4-sdk-p-2">
+                                                        <h5 class="t4-sdk-card-title">Research</h5>
+                                                    </div>
+
+                                                    <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                        <div class="t4-sdk-row " style="background-color: white;">
+
+                                                            <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+                                                                <h6 class="t4-sdk-card-title cso-font-color-2">
+                                                                    Environment >
+                                                                </h6>
+                                                                <div class="t4-sdk-d-grid">
+
+                                                                    <a class="meganav-fore-color">Browse
+                                                                        Statistic1s</a>
+                                                                    <a class="meganav-fore-color">Statistics</a>
+                                                                    <a class="meganav-fore-color">InformationHubs</a>
+                                                                    <a
+                                                                        class="meganav-fore-color">InteractiveVisualisations</a>
+                                                                    <a class="meganav-fore-color">Infographicsby
+                                                                        Theme</a>
+                                                                    <a class="meganav-fore-color">StatisticsA-Z</a>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            -->
+                                            </div>
+                                        </div>
+
+                        </li>
+
+
+                        <!--work in progress-->
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link">Releases and Data</a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu meganav-bg-color  cso-border-bottom-5"
+                                role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-1">Browsey
+                                                Statistics</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-2">Statistics
+                                                Database</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-3">Information
+                                                Hubs</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Interactive
+                                                Visualisations</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-5">Infographics
+                                                by Theme</button>
+                                            <button class="t4-sdk-btn meganav-button cso-border-left-4">Statistics
+                                                A-Z</button>
+                                        </div>
+
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2 meganav-bg-color">
+
+
+                                            <div class="t4-sdk-card">
+                                                <div class="t4-sdk-card-header">
+                                                    <h5 class="t4-sdk-card-title">Card Title</h5>
+                                                </div>
+
+                                                <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                    <div class="t4-sdk-row" style="background-color: white;">
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <a class="meganav-fore-color">Browse
+                                                                    Statistics</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    Database</a>
+                                                                <a class="meganav-fore-color">Information
+                                                                    Hubs</a>
+                                                                <a class="meganav-fore-color">Interactive
+                                                                    Visualisations</a>
+                                                                <a class="meganav-fore-color">Infographics
+                                                                    by Theme</a>
+                                                                <a class="meganav-fore-color">Statistics
+                                                                    A-Z</a>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                        </li>
+
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link">Methods and Research </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu cso-border-bottom-5" role="menu">
+                                <div class="t4-sdk-container">
+                                    <div class="t4-sdk-row">
+                                        <div class="t4-sdk-col-md-2 t4-sdk-d-grid">
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                Statistics</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                Database</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                Hubs</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                Visualisations</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                by Theme</button>
+                                            <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                A-Z</button>
+                                        </div>
+                                        <div class="t4-sdk-col-md-10 t4-sdk-d-grid t4-sdk-p-2">
+
+
+                                            <div class="t4-sdk-card">
+                                                <div class="t4-sdk-card-header">
+                                                    <h5 class="t4-sdk-card-title">Card Title</h5>
+                                                </div>
+
+                                                <div class="t4-sdk-card-body t4-sdk-container  t4-sdk-p-2">
+                                                    <div class="t4-sdk-row">
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="t4-sdk-col-md-3 t4-sdk-d-grid  t4-sdk-p-2">
+
+                                                            <div class="t4-sdk-d-grid">
+
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Browse
+                                                                    Statistics</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    Database</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Information
+                                                                    Hubs</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Interactive
+                                                                    Visualisations</button>
+                                                                <button
+                                                                    class="t4-sdk-btn t4-sdk-btn-primary">Infographics
+                                                                    by Theme</button>
+                                                                <button class="t4-sdk-btn t4-sdk-btn-primary">Statistics
+                                                                    A-Z</button>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                        </li>
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Surveys </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu  cso-border-bottom-5" role="menu">
+
+                                <div class="t4-sdk-card">
+                                    <div class="t4-sdk-card-header">
+                                        <h5 class="t4-sdk-card-title">Card Title</h5>
+                                    </div>
+                                    <div class="t4-sdk-card-body">
+                                        <p class="t4-sdk-card-text">Card content goes here.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Resources </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu  cso-border-bottom-5" role="menu">
+
+                                <div class="t4-sdk-card">
+                                    <div class="t4-sdk-card-header">
+                                        <h5 class="t4-sdk-card-title">Card Title</h5>
+                                    </div>
+                                    <div class="t4-sdk-card-body">
+                                        <p class="t4-sdk-card-text">Card content goes here.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+
+                        <li class="t4-sdk-nav-item t4-sdk-dropdown t4-sdk-has-megamenu t4-sdk-megamenu">
+                            <a href="#" class="t4-sdk-nav-link"> Census </a>
+                            <div class="t4-sdk-dropdown-menu t4-sdk-megamenu  cso-border-bottom-5" role="menu">
+
+                                <div class="t4-sdk-card">
+                                    <div class="t4-sdk-card-header">
+                                        <h5 class="t4-sdk-card-title">Card Title</h5>
+                                    </div>
+                                    <div class="t4-sdk-card-body">
+                                        <p class="t4-sdk-card-text">Card content goes here.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+                <!-- navbar-collapse.// -->
+            </div>
+            <!-- container-fluid.// -->
+        </nav>
+        <!-- ============= COMPONENT END// ============== -->
+
+
+
+
+    </div>
+    <!-- container //  -->
+
+</body>
+
+</html>
