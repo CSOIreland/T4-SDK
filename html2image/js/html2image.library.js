@@ -1,20 +1,22 @@
-//version 1.3, date, 21/03/2023
-var t4Sdk = t4Sdk || {};
+
 //#region Add Namespace
+var t4Sdk = t4Sdk || {};
 t4Sdk.html2image = t4Sdk.html2image || {};
 //#endregion Add Namespace
 
-//#region Variables
+//#region Init
 t4Sdk.html2image.file_index = 0;
 t4Sdk.html2image.active_mode = true;
 t4Sdk.html2image.loadEventAttached = t4Sdk.html2image.loadEventAttached || null;
+t4Sdk.html2image.contextMenuVisible = false;
 t4Sdk.html2image.openedList = null;
-//#endregion Variables
+t4Sdk.html2image.jpg = "Download JPG";
+t4Sdk.html2image.png = "Download PNG";
+t4Sdk.html2image.svg = "Download SVG";
+//#endregion Init
+
 
 //Executes export to image on user click
-
-
-
 t4Sdk.html2image.download = function (e) {
     var list = e.target.parentElement;
     if (list.div2export) {
@@ -27,11 +29,8 @@ t4Sdk.html2image.download = function (e) {
     } else if (t4Sdk.html2image.active_mode)
         alert("No Element with class:dashboard-snapshot to export as Image!");
 }
-
-
-
+//Creates image from html
 t4Sdk.html2image.fnExport = function (tgt, type, icon) {
-    // var tgt = t4Sdk.html2image.clonedElement;
     tgt.style.backgroundColor = "white";
     var opt = { "bgcolor": tgt.style.backgroundColor };
     switch (type) {
@@ -123,7 +122,6 @@ t4Sdk.html2image.dataURItoBlob = function (dataURI) {
     return blob;
 }
 //Enumerates elements marked for export as images
-
 t4Sdk.html2image.addListItem = function (div, item_text) {
     var span = document.createElement("div");
     span.innerHTML = item_text;
@@ -131,35 +129,7 @@ t4Sdk.html2image.addListItem = function (div, item_text) {
     span.addEventListener("click", t4Sdk.html2image.download);
     div.appendChild(span);
 }
-
-t4Sdk.html2image.getOffset = function (el) {
-    var _x = 0;
-    var _y = 0;
-    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-        _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
-        el = el.offsetParent;
-    }
-    return { top: _y, left: _x };
-}
-
-t4Sdk.html2image.contextMenuVisible = false;
-t4Sdk.html2image.showContextMenu = function (e) {
-    var tgt = e.target.parentElement;
-    var lst = tgt.exportList;
-    if (t4Sdk.html2image.openedList && lst != t4Sdk.html2image.openedList) {
-        t4Sdk.html2image.openedList.style.display = "none";
-    }
-    t4Sdk.html2image.openedList = lst;
-    if (lst.style.display == "none")
-        lst.style.display = "block";
-    else
-        lst.style.display = "none";
-}
-t4Sdk.html2image.jpg = "Download JPG";
-t4Sdk.html2image.png = "Download PNG";
-t4Sdk.html2image.svg = "Download SVG";
-var cnt = 0;
+//shows context menu
 t4Sdk.html2image.fnContextMenu = function (iDiv, el, icon) {
     var list = document.createElement("div");
     list.div2export = el;
@@ -174,19 +144,17 @@ t4Sdk.html2image.fnContextMenu = function (iDiv, el, icon) {
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.png);
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.svg);
     var rct = iDiv.getBoundingClientRect();
-    var lsty = 16 + rct.y + rct.height + window.scrollY;
-    var lstx = rct.x + rct.width - 132;
+    var lsty = T4SDK_HTML2IMAGE_FIX_Y_POSITION_PX + rct.y + rct.height + window.scrollY;
+    var lstx = rct.x + rct.width - T4SDK_HTML2IMAGE_FIX_X_POSITION_PX;
     list.style.left = lstx + "px";
     list.style.top = lsty + "px";
     iDiv.exportList = list;
     iDiv.addEventListener("click", t4Sdk.html2image.showContextMenu);;
     document.body.appendChild(list);
 }
-
+//enumerates elements which needs to be converted
 t4Sdk.html2image.enumSaveAsImage = function (e) {
     var children = document.getElementsByClassName("html2image_container");
-    //alert(56746)
-
     for (var i = 0; i < children.length; i++) {
         var el = children[i];
         t4Sdk.html2image.i_div = document.createElement("div");
@@ -230,8 +198,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
         t4Sdk.html2image.fnContextMenu(t4Sdk.html2image.i_div, ex_el, t4Sdk.html2image.i_meta_mode);
     }
 };
-
-//Make sure that there is only one listener attached from T4
+//Makes sure that there is only one listener attached from T4
 if (t4Sdk.html2image.loadEventAttached == null) {
     t4Sdk.html2image.loadEventAttached = true;
     window.addEventListener("load", t4Sdk.html2image.enumSaveAsImage);
