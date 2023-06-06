@@ -948,7 +948,6 @@ padding-bottom: 0px !important;
     min-width: 45px;
     max-width: 45px;
     text-align: center;
-    min-height: 45px;
 }
 
 .sideitem h3.imgblock img {
@@ -1194,7 +1193,7 @@ padding-bottom: 0px !important;
 
 .footer h2 {
     margin: 20px 0px;
-    color: #45C1C0;
+    color: #85dbda;
 }
 
 .footer .span12 {
@@ -3119,7 +3118,11 @@ text-decoration:none;
 /*Widget tables overflow scroll*/
 .px-stat-widget .dataTables_wrapper {
   overflow: auto;
-  }
+}
+
+.px-stat-widget .dataTables_wrapper .dataTable {
+	font-size: 14px;
+}
 
 .widget-toggle-wrapper button {
   border-radius: 0.25rem;
@@ -3356,7 +3359,7 @@ line-height: 1.4;
 
 /* new widget map styles */
 .px-stat-widget-map.new-widget-style {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .px-stat-widget-map.new-widget-style .moduleBody {
@@ -3444,6 +3447,9 @@ font-family: "FontAwesome" !important;
     width: auto;
   }
 /* end sidebar module */
+
+
+
 
 
 

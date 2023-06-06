@@ -28,6 +28,19 @@
         height: 40px;
         /*filter: grayscale(100%);*/
     }
+
+    /* co-brand logo positioning */
+    #headerPrintHook {
+        display:block !important;
+        position: absolute;
+        top:0;
+        right:20px;
+    }
+    #headerPrintHook img {
+        height: 40px !important;
+        width: auto !important;
+        margin-bottom: 0.5rem;
+    }
     
     .footer {
         display:none;
@@ -213,7 +226,7 @@
         width   : 60px;  
         border-bottom: 5px solid #006168;
     }
-    
+
     .copy h3,
     h3.pub-findings-header {
         font-size: 20px;
@@ -231,6 +244,12 @@
         width   : 60px;  
         border-bottom: 3px solid #006168;
     }
+    
+    .press-key-findings h3.pub-findings-header {
+        color:#283F73;
+        font-size:22px;
+    }
+
     .advisory-notification {
         border-left: 10px solid #579599;
         margin-left: 0;
@@ -337,6 +356,19 @@
     }
   
   
+      .px-stat-widget .dataTables_wrapper {
+        overflow: none;
+        width: 100%;
+    }
+    
+    table.dataTable {
+        table-layout: fixed;
+        width: 100%;
+        overflow: none;
+    }
+
+  
+  
   /* style infobytes v2 */
     
     .infoByte_v2 {
@@ -424,6 +456,8 @@
     
         
     }
+
+
 
 
 
