@@ -1191,6 +1191,13 @@ padding-bottom: 0px !important;
 	color: #ffffff;
 }
 
+.footer p a {
+  color: #fff;
+}
+.footer p a:hover {
+  text-decoration: none;
+}
+
 .footer h2 {
     margin: 20px 0px;
     color: #85dbda;

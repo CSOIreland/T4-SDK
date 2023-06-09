@@ -517,6 +517,7 @@
 @media print {
     .prices-mini-viz {
         max-width: auto;
+        page-break-inside: avoid;
     }
 }
 
