@@ -1,0 +1,184 @@
+<style>
+  .columnLeftinner-rightcol
+  {
+  
+  width: 100%;
+  border: 0px;
+  
+  }
+  
+  .moduleBody ul {
+    margin: 0px;
+}
+  
+  .moduleBody ul li {
+    margin: 0px;
+  }
+  
+  .moduleBody p {
+    margin: 0px;
+}
+  
+  .moduleHeader h2 {
+    color: #fff;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 28px;
+    float: left;
+   margin: 0px;
+}
+  
+  .YouTube
+  {
+  margin-top: 10px;
+  
+  }
+  
+  .module.orange i {
+    color: #d64615;
+}
+  
+  
+</style>
+
+<script>
+  
+  var domain = document.domain;
+  
+  if (domain != "www.cso.ie")
+  
+  {
+  
+  			var time = '<t4 type="content" date_format="HH:mm" name="Release Date" output="normal" modifiers="" />';
+  
+  			if (time != "11:00")
+  			{  
+  			alert('The time in your release date element is '+time+'. Please update the time in your release date element to 11:00');  
+  			}
+  
+  			else
+ 
+  			{  
+ 			 //time is correct, do nothing
+  
+ 		    }
+  
+  
+  }
+  
+  else
+  {
+  
+  			//On live site, do nothing
+  
+  $(function() {
+  //$( '#pressreleaserhs' ).hide();
+  //$( '.columnRightinner-rightcol' ).hide();
+  
+  
+  
+  
+});
+  
+  }
+  
+  
+  $(function() {
+    $("iframe").each(function() {
+        $(this).attr("width", "100%");
+        $(this).attr("height", "300");
+    });
+  
+  
+  if (($('#<t4 type="meta" meta="content_id" />_releaseLink').is(':empty')) && ($('#<t4 type="meta" meta="content_id" />_presLink').is(':empty'))) {
+  $( "#otherinfo" ).remove();
+}
+  if(($('#<t4 type="meta" meta="content_id" />_releaseLink').is(':empty')))
+  {
+  $('#<t4 type="meta" meta="content_id" />_releaseLink').remove();
+  
+  }
+  
+  if(($('#<t4 type="meta" meta="content_id" />_presLink').is(':empty')))
+  {
+  $('#<t4 type="meta" meta="content_id" />_presLink').remove();
+  
+  }
+  
+  if(($('#<t4 type="meta" meta="content_id" />_sectionLink').is(':empty')))
+  {
+  $('#<t4 type="meta" meta="content_id" />_sectionLink').remove();
+  
+  }
+  
+});
+  
+  
+  
+  
+  
+  
+</script>
+<!-- This is a comment for PDF-->
+
+<t4 type="meta" meta="html_anchor" />
+
+
+<div class="col span8">
+  
+  <p style="font-style: italic;">Date Published: <t4 type="content" date_format="EEE, dd MMM yyyy" name="Release Date" output="normal" modifiers="" /></p>
+   <t4 type="exceltohtml" name="Insert Excel Table" />
+  
+
+<t4 type="content" name="Content" output="normal" modifiers="medialibrary, nav_sections"  />
+
+  
+</div>
+
+<div id="pressreleaserhs" class="col span4">
+  <div id="otherinfo" class="module green open">
+						<div class="moduleHeader">
+							<h2><a href="#">Other Relevant Information</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+                              <li id="<t4 type="meta" meta="content_id" />_releaseLink"><t4 type="content" name="Link to release" output="normal" modifiers="nav_sections"  /></li>
+                              
+                              <li id="<t4 type="meta" meta="content_id" />_sectionLink"><t4 type="content" name="General Section Link" output="normal" modifiers="nav_sections"  /></li>
+                              <li id="<t4 type="meta" meta="content_id" />_presLink"><t4 type="content" name="Link to presentation" output="normal" modifiers="medialibrary"  /></li>
+                              
+                          </ul>
+                              </div>
+                          </div>
+                          
+                           <div class="module orange open">
+						<div class="moduleHeader">
+							<h2><a href="#">Contact Details</a></h2>
+						</div>
+						<div class="moduleBody">
+                          
+                          <p>For further information, contact:</p>
+							
+                              <p><t4 type="content" name="Contact person 1 name" output="normal" modifiers=""  />  <i class="fa fa-phone"></i> <t4 type="content" name="Contact person 1 phone" output="normal" modifiers=""  /></p>
+                              <p><t4 type="content" name="Contact person 2 name" output="normal" modifiers=""  />  <i class="fa fa-phone"></i> <t4 type="content" name="Contact person 2 phone" output="normal" modifiers=""  /></p>
+                          
+                          <p>or email <a href="<t4 type="content" name="Contact email" output="normal" modifiers="encode_emails"  />" ><t4 type="content" name="Contact email" output="normal" modifiers="encode_emails"  /></a>
+</p>
+                              
+                           
+                              </div>
+                          </div>
+
+    
+    <div class="YouTube" style="text-align:center">
+<t4 type="content" name="YouTube Enbed Code" output="normal" modifiers=""  />
+</div>
+    
+    
+    </div>
+
+
+
+
+
+

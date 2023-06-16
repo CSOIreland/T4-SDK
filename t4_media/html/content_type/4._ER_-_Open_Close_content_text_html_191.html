@@ -1,0 +1,63 @@
+<div id="ShowHide" style="margin-top: 10px"> 
+
+<span id="show <t4 type="meta" meta="content_id" />"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />', 'show <t4 type="meta" meta="content_id" />', 'hide <t4 type="meta" meta="content_id" />');"><t4 type="media" id="52213" formatter="image/*"/> Show <t4 type="content" name="Title" output="normal" modifiers=""  /></a> </span>
+<span id="hide <t4 type="meta" meta="content_id" />" style="display:none; margin-bottom: 5px"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />', 'show <t4 type="meta" meta="content_id" />', 'hide <t4 type="meta" meta="content_id" />');"><t4 type="media" id="52212" formatter="image/*"/> Hide <t4 type="content" name="Title" output="normal" modifiers=""  /></a></span>
+</div>
+
+
+
+<div id="<t4 type="meta" meta="content_id" />" class="BackgroundNotes">
+<h1><t4 type="content" name="Title" output="normal" modifiers=""  /></h1>
+<t4 type="content" name="General content 1" output="normal" modifiers="medialibrary, nav_sections"  />
+  <div style="clear: both"></div>
+ 
+  <!--start table-->
+  
+  <div id="TableInOpenClose<t4 type="meta" meta="content_id" />" class="TableInOpenClose" style="margin-left: 15px">
+  <div id="ShowHide"> 
+
+<span style="background: white" id="show <t4 type="meta" meta="content_id" />excel"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52213" formatter="image/*"/> Show <t4 type="content" name="Table Title" output="normal" modifiers=""  /></a> </span>
+<span id="hide <t4 type="meta" meta="content_id" />excel" style="display:none; margin-bottom: 10px;"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52212" formatter="image/*"/> Hide <t4 type="content" name="Table Title" output="normal" modifiers=""  /></a></span>
+</div>
+  
+  
+  
+  <div id="<t4 type="meta" meta="content_id" />excel" class="excelTable">
+ 
+    <div id="<t4 type="meta" meta="content_id" />tableContainer" ><t4 type="exceltohtml" name="Insert Excel Table" /></div>
+  
+  <div class="HideTable">
+ <a href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52214" formatter="image/*"/>Hide Table</a></div>
+  </div>
+  </div> 
+  <!--end table-->
+</br>
+  
+  
+<div style="clear: both"></div>
+<t4 type="content" name="General content 2" output="normal" modifiers="medialibrary, nav_sections"  />
+  <div style="clear: both"></div>
+  
+<span class="HideTable" id="hide <t4 type="meta" meta="content_id" />" ><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />', 'show <t4 type="meta" meta="content_id" />', 'hide <t4 type="meta" meta="content_id" />');"><t4 type="media" id="52214" formatter="image/*"/>Hide <t4 type="content" name="Title" output="normal" modifiers=""  /></a></span>
+
+ </div>
+
+<script>
+  
+  $(document).ready(function(){
+  
+  
+  $('#<t4 type="meta" meta="content_id" />tableContainer').each(function() {
+  
+         if ($(this).text() == "") {
+  
+  		$( "#TableInOpenClose<t4 type="meta" meta="content_id" />" ).remove();
+                   
+         }
+});
+  
+});
+  
+  
+</script>
+

@@ -1,0 +1,32 @@
+<!--jquery.flexslider-min.js--><t4 type="media" id="98341" formatter="javascript/*"/>
+<!--flexslider.css--><t4 type="media" id="98337" formatter="css/*"/> 
+
+<script>
+$(window).load(function() {
+  // The slider being synced must be initialized first
+  $('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 210,
+    itemMargin: 5,
+    asNavFor: '#slider'
+  });
+ 
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel",
+    smoothHeight: true
+  });
+});
+</script>
+
+<!-- Place somewhere in the <body> of your page -->
+<div id="infographicSlider" class="">
+
+<div id="slider" class="flexslider">
+  <ul class="slides">

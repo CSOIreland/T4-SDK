@@ -1,0 +1,257 @@
+<style>
+  
+  .pieDataTable, .highcharts-button
+  {
+  display: none;
+  }
+  
+</style>
+
+<div style="clear:both"></div>
+<div id="<t4 type="meta" meta="content_id" />pieChart1" class="pieChart1 pieChart" >
+  
+</div>
+
+
+
+
+
+<div style="clear:both"></div>
+<button class="export" data-scale="1">Download chart</button>
+
+<div id="<t4 type="meta" meta="content_id" />datatable1" class="pieDataTable">
+  <t4 id="test" type="content" name="Series 1" output="normal" modifiers=""  />
+</div>
+
+
+
+<script>
+  
+  $( document ).ready(function() {
+    $("#<t4 type="meta" meta="content_id" />datatable1 table").attr('id', '<t4 type="meta" meta="content_id" />table1');
+  
+  $("#<t4 type="meta" meta="content_id" />datatable2 table").attr('id', '<t4 type="meta" meta="content_id" />table2');
+  
+ 
+  
+});
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+$(function () {
+  
+  
+  
+  var credits1 = '<t4 type="content" name="Chart 1 source" output="normal" modifiers=""  />'; 
+  
+  if (credits1 == '')
+  {
+  credits1 = 'Source: CSO Ireland';
+  }
+  
+  else
+  {
+  //leave it as it is from the element
+  
+  }
+  
+  
+  
+  
+  
+  Highcharts.setOptions({
+        lang: {
+            thousandsSep: ',',
+            decimalPoint: '.',
+            numericSymbols: ['k', ' million', ' billion', ' trillion'] 
+        }
+    });
+  
+  
+  
+  
+    $('#<t4 type="meta" meta="content_id" />pieChart1').highcharts({
+  
+  
+  
+  data: {
+  table: document.getElementById('<t4 type="meta" meta="content_id" />table1')
+   },
+  
+        chart: {
+            type: 'pie',
+  width: 320
+        },
+  credits: {
+            text: credits1,
+  			href: '',
+  			style: {
+						cursor: 'context-menu'
+				    }
+            
+        },
+  
+   colors: [
+	'#0052BA',
+'#666699',
+'#00B3AA',
+'#99CCFF',
+'#CC9933',
+'#006666',
+'#3399FF',
+'#993300',
+'#CCCC99',
+'#666666',
+'#FFCC66',
+'#6699CC'
+  ],
+        
+            title: {
+                text: '<t4 type="content" name="Chart Title" output="normal" modifiers="js-var"  />',
+                align: 'left',
+     style: { 
+                "fontSize": "12px",
+                 fontWeight: 'bold'
+                
+            }
+  		
+            },
+  
+  exporting: {
+    	enabled: true,
+  		filename: '<t4 type="content" name="Release Code" output="normal" modifiers=""  /><t4 type="content" name="Release Instance" output="normal" 				modifiers=""  />FIG1'
+},
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+ legend: {
+  // margin: 200
+        },
+        
+         tooltip: {
+  
+            useHTML: true,
+  	    formatter: function() {
+  
+  
+  
+  function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+  
+  
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places series 1" output="normal" modifiers=""  />);
+  
+  var number = this.y;
+  
+  if (number >= 0) {
+  
+  return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  
+  else
+  {
+
+return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  	
+  
+            
+	}
+  
+  
+  },
+  
+  
+  
+  
+  
+  
+         plotOptions: {
+        pie: {
+             size: 180,
+            showInLegend: true,
+            dataLabels: {
+                distance: -30,
+                format: '{y}<t4 type="content" name="Series 1 suffix" output="normal" modifiers="js-var"  />'
+            }
+        },
+         
+        series: {
+            point: {
+                events: {
+                    legendItemClick: function () {
+                        return false; // <== returning false will cancel the default action
+                    }
+                }
+            }
+        }
+    }
+    });
+
+ 
+
+
+
+
+$('button.export').click(function () {
+        $('#<t4 type="meta" meta="content_id" />pieChart1').highcharts()
+            .exportChart({
+                scale: $(this).data().scale
+            });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+</script>

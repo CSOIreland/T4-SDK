@@ -1,0 +1,90 @@
+<script type="text/javascript">
+
+function setCookie(AreYouInterestedIn)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getDate()+expiredays);
+document.cookie=AreYouInterestedIn+ "=" +escape(value)+
+((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+}
+
+</script>
+
+
+<script type="text/javascript">
+
+  function checkForm_1257503989137 (oForm)
+  {
+    if (oForm.t4_content_element_FullName.value.length == 0){
+      alert('Full Name is a required field.')
+      return false;
+    }
+    if (oForm.t4_content_element_FullName.value.length > 1600)
+    {
+      alert('Full Name has exceeded its maximum size.')
+      return false;
+    }
+    if (oForm.t4_content_element_YourComment.value.length > 4000)
+    {
+      alert('Comment has exceeded its maximum size.')
+      return false;
+    }
+    if (oForm.t4_content_element_Email.value.length > 800)
+    {
+      alert('Email address has exceeded its maximum size.')
+      return false;
+    }
+    return true;
+  }
+</script>
+<div class="form">
+<form action="/terminalfour//eForms" method="post" enctype="multipart/form-data" onsubmit="return checkForm_1257503989137(this)">
+
+<input  type="hidden" name="sid" value="118" />
+<input  type="hidden" name="t4_content_element_Name" value="Comment" />
+<input  type="hidden" name="tid" value="14" />
+<input  type="hidden" name="redirect" value="/tools/contactus/thankyou/" />
+<input  type="hidden" name="channel" value="1" />
+<input  type="hidden" name="status" value="1" />
+<input  type="hidden" name="el-name-prefix" value="t4_content_element_" />
+<input  type="hidden" name="remove-non-alphanumeric" value="true" />
+
+<table>
+  <tr>
+    <td valign="top" style="width: 25%;">Full Name (required)</td>    
+    <td style="width: 75%;"><div class="generatedform">
+<input type="text" name="t4_content_element_FullName"  id="t4_content_element_FullName" /><input type="hidden" name="t4_validation_function" value="checkFieldLength (document.getElementById ('t4_content_element_FullName'), 1600)" /></div></td>  
+  </tr>
+  <tr>
+    <td valign="top">Email Address</td>
+    <td><div  class="generatedform">
+<input type="text" name="t4_content_element_Email" id="t4_content_element_Email" /><input type="hidden" name="t4_validation_function" value="checkFieldLength (document.getElementById ('t4_content_element_Email'), 800)" /></div></td>
+  </tr>
+
+ <tr>
+    <td valign="top">What are you interested in?</td>
+    <td><div  class="generatedform">
+<input type="hidden" name="t4_validation_function" value="checkFieldLength (document.getElementById ('t4_content_element_AreYouInterestedIn'), 800)" />
+
+<select name="AreYouInterestedIn">
+<option value ="Option">-- Select a option</option>
+<option value ="Support">Talking to our Support Team</option>
+<option value ="Events">Attending an event</option>
+<option value ="Office">Visiting one of our office locations</option>
+</select>
+
+
+</div></td>
+  </tr>
+
+  <tr>
+    <td valign="top">Comment</td>    
+    <td><div  class="generatedform">
+<textarea  name="t4_content_element_YourComment" rows="5" cols="40" id="t4_content_element_YourComment"></textarea><input  type="hidden" name="t4_validation_function" value="checkFieldLength (document.getElementById ('t4_content_element_YourComment'), 4000)" /></div></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: right;"><input type="submit" name="SendButton" value="Send Request" /></td>  
+  </tr>
+</table>
+</form>
+</div>

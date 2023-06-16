@@ -1,0 +1,16 @@
+<script>
+$(function(){
+
+   var icon = '<i class=\"fa <t4 type="content" name="Icon" output="normal" modifiers=""  /> fa-2x\" aria-hidden=\"true\"><\/i>';
+   var linkText = $('#li_<t4 type="meta" meta="content_id" /> a').text();
+   
+  // alert($('#li_<t4 type="meta" meta="content_id" /> a').text());
+   
+   $('#li_<t4 type="meta" meta="content_id" /> a').html(icon + ' ' + linkText);
+
+});
+
+</script>
+<t4 type="meta" meta="html_anchor" />
+
+<li id="li_<t4 type="meta" meta="content_id" />"><a href="<t4 type="content" name="External link url " output="normal" modifiers=""  />" target="_blank"><t4 type="content" name="External link text" output="normal" modifiers=""  /></a></li>

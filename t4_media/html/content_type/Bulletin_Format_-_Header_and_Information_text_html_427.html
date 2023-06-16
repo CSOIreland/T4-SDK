@@ -1,0 +1,28 @@
+<div class="br_container"> <!-- starts wrapper for columns -->
+<div class="br_lhs"> <!-- starts LHS column -->
+  
+<div class="br_title">
+  <h1><t4 type="content" name="Release Title" output="normal" modifiers=""  /></h1>
+</div>
+<div class="br_instance">
+  <h3><t4 type="content" name="Release Period" output="normal" modifiers=""  /></h3>
+</div>
+<div id="releaseDate" class="br_date">
+  <span id="releasePublication">CSO statistical release</span>, <time datetime="<t4 date_format="yyyy-MM-dzhhmmssZ" type="content" name="Release Date" output="normal" modifiers=""  />"><t4 date_format="dd MMMM yyyy" type="content" name="Release Date" output="normal" modifiers=""  /></time>, 11am
+</div>
+
+
+<script>
+  //this came over from ER template - I don't need it but it outputs contact details for pdf - check with Damien
+$(document).ready(function(){  
+     
+  var contactDetailsPrint=$('#contactDetails').clone();
+  
+  $("#printContact").html(contactDetailsPrint); 
+  
+    
+});
+</script>
+
+
+

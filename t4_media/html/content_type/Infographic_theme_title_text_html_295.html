@@ -1,0 +1,67 @@
+<script>
+    $(function() {
+        $(".fancybox_<t4 type="content" name="Theme" output="normal" modifiers=""  />").fancybox({
+            afterLoad: function() {
+
+                var test = this.id;
+
+                //alert(test);
+
+                var href = this.href;
+                var title = this.title;
+                var titleAndUrl = title.split('~');
+
+                this.title = '<a href="' + titleAndUrl[1] + '">Go to release</a> ' + '&nbsp;&nbsp;&nbsp;' + titleAndUrl[0] + '&nbsp;&nbsp;&nbsp;<a href="' + href + '" download>Download Infographic</a>';
+            },
+            openEffect: 'none',
+            closeEffect: 'none'
+        });
+
+
+var theme = ('<t4 type="content" name="Theme" output="normal" modifiers=""  />').replace(/_/g, " ")
+
+
+$( "#themeHeading_<t4 type="meta" meta="content_id" />" ).text(theme);
+
+
+    });
+</script>
+<style>
+
+.fancybox_<t4 type="content" name="Theme" output="normal" modifiers=""  /> img {
+
+width: auto;
+
+}
+
+a.fancybox_<t4 type="content" name="Theme" output="normal" modifiers=""  /> {
+    margin: 10px;
+text-decoration: none;
+}
+
+.copy h2
+{
+
+font-size: 25px;
+margin: 0px;
+color: #384350;
+
+}
+
+.moduleHeader {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: #e0ffff;
+    border: 1px solid #00e6e6;
+    border-radius: 10px;
+}
+
+</style>
+
+
+<div class="moduleHeader">
+							<h2 id="themeHeading_<t4 type="meta" meta="content_id" />"></h2>
+						</div>
+
+
+

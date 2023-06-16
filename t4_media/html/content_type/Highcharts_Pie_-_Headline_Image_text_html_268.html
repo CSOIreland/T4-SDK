@@ -1,0 +1,231 @@
+<style>
+  
+   .highchartTable, .highcharts-button
+    {
+    display: none
+    }
+  
+ .highcharts-tooltip {
+    z-index: 9998;
+
+}
+
+   .tooltip {
+    padding:10px;
+   background-color:white;
+}
+   
+.highcharts-tooltip span {
+    background-color:white;
+    
+    opacity:1;
+    z-index:9999!important;
+} 
+   
+</style>
+
+<h3>Headline Image for Electronic Releases</h3>
+<p>Download the image below to use in your Header and Introduction content.</p>
+
+
+<div style="clear: both"></div>
+
+
+
+    
+    <div id="highchartDiv<t4 type="meta" meta="content_id" />" class="highchartBox"> 
+      
+</div><div class="highchartTable" id="<t4 type="meta" meta="content_id" />datatable">
+ <t4 type="content" name="inline table" output="normal" modifiers=""  />
+   <t4 type="content" name="Inline Table HTML" output="normal" modifiers=""  /> 
+     </div>
+          
+ 
+
+<button class="export" data-scale="1">Download chart</button>
+
+
+<script>
+  
+  //$( document ).ready(function() {
+  //$("#<t4 type="meta" meta="content_id" />datatable1 table").attr('id', '<t4 type="meta" meta="content_id" />table1');
+  
+  //});
+  
+$(function () {
+   
+  $("#<t4 type="meta" meta="content_id" />datatable1 table").attr('id', '<t4 type="meta" meta="content_id" />table1');
+  
+ 
+  
+  
+  
+  
+    $('#highchartDiv<t4 type="meta" meta="content_id" />').highcharts({
+  
+  lang: {
+            thousandsSep: ',',
+            decimalPoint: '.',
+            numericSymbols: ['k', ' million', ' billion', ' trillion'] 
+        },
+  
+  data: {
+  table: document.getElementById('<t4 type="meta" meta="content_id" />datatable')
+   },
+  
+        chart: {
+            type: 'pie',
+  width: 320
+  
+        },
+  credits: {
+            text: "<t4 type="content" name="Chart source" output="normal" modifiers=""  />",
+  			href: '',
+  			style: {
+						cursor: 'context-menu'
+				    }
+            
+        },
+  
+   colors: [
+				'#405482',
+				'#00af86',
+				'#fbaa34',
+				'#3c5daa',				
+				'#b7be34',
+				'#0099b4',
+				'#5b6670',
+				'#ffc629',
+				'#566db4',
+				'#6ac5ad',
+				'#FFCC66',
+				'#6699CC'
+			],
+        title: {
+            text: '<t4 type="content" name="Series Title" output="normal" modifiers=""  />',
+            useHTML: true,
+  		style: {
+                fontSize: '14px',
+  		textAlign: 'center'
+            }
+
+        },
+  
+  
+  exporting: {
+    	enabled: true,
+  filename: '<t4 type="content" name="Release Code" output="normal" modifiers=""  /><t4 type="content" name="Release Instance" output="normal" 				modifiers=""  />FIG1'
+  
+  		
+},
+  
+  navigation: {
+            buttonOptions: {
+                verticalAlign: 'bottom',
+                y: -20
+            }
+        },
+  
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+  
+  <t4 type="content" name="Extra code" output="normal" modifiers=""  />
+        
+         tooltip: {
+  
+            useHTML: true,
+  	    formatter: function() {
+  
+  
+  
+  function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+  
+  
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />);
+  
+  var number = this.y;
+  
+  if (number >= 0) {
+  
+  return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  
+  else
+  {
+
+return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  	
+  
+            
+	}
+  
+  
+  },
+  
+  
+  
+  
+  
+  
+        plotOptions: {
+            pie: {
+                size: 125,
+//innerSize: 80,
+//depth: 45,
+                allowPointSelect: true,
+  		showInLegend: false,
+                cursor: 'pointer',
+                dataLabels: {
+                 
+                    enabled: true,
+                    distance: 10,
+                    
+  
+                    style: { textShadow: 'none' }, 
+  		    formatter: function() {
+  return Highcharts.numberFormat (this.y,<t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />) + ' <t4 type="content" name="Series suffix" output="normal" modifiers=""  /><br/>' + this.point.name ;}
+                }
+                
+                }
+  		
+            
+        }
+    });
+
+ 
+  
+  
+  });
+  
+  
+  
+  
+  $('button.export').click(function () {
+        $('#highchartDiv<t4 type="meta" meta="content_id" />').highcharts()
+            .exportChart({
+                scale: $(this).data().scale
+            });
+    });
+  
+  
+  
+  
+</script>

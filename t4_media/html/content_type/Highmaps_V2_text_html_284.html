@@ -1,0 +1,142 @@
+<div id="<t4 type="meta" meta="content_id" />mapContainer" class="highchart-map-wrapper" style="height: 500px; min-width: 310px; max-width: 800px; margin: 1rem 0;"></div>
+    <script>
+
+        $(function () {
+      
+      
+      
+      function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
+      
+      
+
+            // Prepare random data
+            var data = [<t4 type="content" name="JSON data" output="normal" modifiers=""  /><t4 type="content" name="JSON data file" output="normal" modifiers=""  />];
+
+                  
+      
+      		var variables = <t4 type="content" name="Highmap" output="normal" modifiers=""  />;
+      
+            Highcharts.setOptions({
+                  lang: {
+                           thousandsSep: ','
+                        }
+                     });
+      
+            
+            $.getJSON(variables[0], function (geojson) {
+
+                // Initiate the chart
+                $('#<t4 type="meta" meta="content_id" />mapContainer').highcharts('Map', {
+
+                    title: {
+                        text: '<t4 type="content" name="Map Title" output="normal" modifiers=""  />',
+                        style: {
+                            fontSize: '18px',
+                            fontWeight: 'bold',
+                            fontFamily: '"Roboto Slab", Georgia, Times New Roman, serif',
+                            paddingBottom: '0.25rem',
+                            borderBottom: '1px solid #CAD6E0',
+                            color: '#1D345C'
+                        },
+
+                        useHTML: true,
+                        margin: 50,
+                        widthAdjust: -80,
+                        align: 'left'
+                    },
+
+                    mapNavigation: {
+                        enabled: true,
+                        buttonOptions: {
+                            verticalAlign: 'bottom'
+                        }
+                    },
+
+                 <t4 type="content" name="Color Axis Code" output="normal" modifiers=""  />   
+
+                
+               legend: {
+                    valueDecimals: <t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />,
+                },
+               chart: {
+      //width: 700,
+      //height: 600
+                },
+              subtitle: {
+        align: 'right',
+        verticalAlign: 'bottom',
+        style: {
+            color: '#777',
+            'font-style': 'italic'
+        },
+        text: '<t4 type="content" name="Source" output="normal" display_field="value" />'
+    },
+                                                                                  
+				 
+                series: [{
+                    data: data,
+                    mapData: geojson,
+                    joinBy: ['AREA_ID', 0],
+                    keys: ['AREA_ID', 'value'],
+                    name: 'Random data',
+                    states: {
+                        hover: {
+                            color: '#35456b'
+                        }
+                    }
+
+                }],
+
+                tooltip: {
+
+                    allowHTML: true,
+
+                    formatter: function () {
+
+                        if (this.point.value == undefined)  {
+
+                            var tooltip = '<h1><b><t4 type="content" name="Series Name" output="normal" modifiers=""  /></b></h1><br>' + this.point.properties.AREA_NAME + ':' + ' <t4 type="content" name="No data available explanation" output="normal" modifiers=""  /> ';
+                        
+                        
+                        }
+
+                        //  alert(this.point.value);
+                        else {
+
+                            var tooltip = '<h1><b><t4 type="content" name="Series Name" output="normal" modifiers=""  /></b></h1><br>' + this.point.properties.AREA_NAME + ':' + ' <t4 type="content" name="Tooltip Prefix" output="normal" modifiers=""  /> ' + addCommas(this.point.value) + ' <t4 type="content" name="Tooltip Suffix" output="normal" modifiers=""  />';
+                        
+                        
+                        }
+                        
+
+                        return tooltip;
+
+                    }
+
+                   
+                    
+            }
+      
+      
+      
+      <t4 type="content" name="Extra code" output="normal" modifiers=""  />   
+      
+      
+      
+        });
+    });
+});
+
+
+    </script>

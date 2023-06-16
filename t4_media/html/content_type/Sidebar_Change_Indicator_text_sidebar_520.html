@@ -1,0 +1,27 @@
+<div class="prices-mini-viz solo-indicator sidebar-indicator">
+  <header>
+    <h3><t4 type="content" name="Indicator name" output="normal" modifiers="striptags,htmlentities" /></h3>
+    <t4 type="content" name="Indicator description" output="selective-output" modifiers="striptags,htmlentities" format="<h4>$value</h4>" />
+  </header>
+  <div class="change-indicator">
+    <h3><t4 type="content" name="Period" output="normal" modifiers="striptags,htmlentities" /></h3>
+    <div class="change-indicator-grid">
+     <div class="prices-item-change <t4 type="content" name="Monthly change" output="normal" display_field="value" />">
+      <div class="price-change-indicator">
+        Monthly Change
+      </div>
+      <div class="price-item-text">
+        <t4 type="content" name="Monthly change rate" output="normal" modifiers="striptags,htmlentities" />
+      </div>
+     </div>
+     <div class="prices-item-change <t4 type="content" name="Annual change" output="normal" display_field="value" />">
+      <div class="price-change-indicator">
+        Annual Change
+      </div>
+      <div class="price-item-text">
+        <t4 type="content" name="Annual change rate" output="normal" modifiers="striptags,htmlentities" />
+      </div>
+     </div>
+    </div>
+  </div>
+</div>

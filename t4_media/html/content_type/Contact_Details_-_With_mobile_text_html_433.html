@@ -1,0 +1,31 @@
+<div class="module open orange epContactDetails">
+   <div class="moduleHeader">
+      <h2><a href="#">For further information please contact</a></h2>
+   </div>
+   <div class="moduleBody">
+      <ul>
+        
+        
+        <t4 type="content" output="selective-output" process-format="true" name="Contact Person 1" format="<li>
+		<p>$value&nbsp;&nbsp;<i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;></i> 
+		<t4 type=&quot;content&quot; name=&quot;Contact Person 1 Mobile Number&quot; output=&quot;normal&quot; modifiers=&quot;striptags,htmlentities,js-var&quot; />
+		</p></li>" />
+        
+      
+        <t4 type="content" output="selective-output" process-format="true" name="Contact Person 2" format="<li>
+		<p>$value&nbsp;&nbsp;<i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;></i> 
+		<t4 type=&quot;content&quot; name=&quot;Contact Person 2 Mobile Number&quot; output=&quot;normal&quot; modifiers=&quot;striptags,htmlentities,js-var&quot; />
+		</p></li>" />
+        
+       
+        <t4 type="content" output="selective-output" process-format="true" name="Contact Person 3" format="<li>
+		<p>$value&nbsp;&nbsp;<i class=&quot;fa fa-phone&quot; aria-hidden=&quot;true&quot;></i> 
+		<t4 type=&quot;content&quot; name=&quot;Contact Person 3 Mobile Number&quot; output=&quot;normal&quot; modifiers=&quot;striptags,htmlentities,js-var&quot; />
+		</p></li>" />
+        
+         <li><a href="mailto:<t4 type="content" name="Section email" output="normal" modifiers="encode_emails"  />" target="_top">Email: <t4 type="content" name="Section email" output="normal" modifiers="encode_emails"  /></a></li>
+        
+		<t4 type="content" name="Secondary email" output="selective-output" modifiers="encode_emails" process-format="true" format="        <li><a href=&quot;mailto:<t4 type=&quot;content&quot; name=&quot;Secondary email&quot; output=&quot;normal&quot; modifiers=&quot;encode_emails&quot;  />&quot; target=&quot;_top&quot;>Email: <t4 type=&quot;content&quot; name=&quot;Secondary email&quot; output=&quot;normal&quot; modifiers=&quot;encode_emails&quot;  /></a></li>" />
+     </ul>
+   </div>
+</div>

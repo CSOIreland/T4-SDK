@@ -1,0 +1,57 @@
+<div class="px-stat-widget px-stat-widget-map new-widget-style px-stat-widget-toggles">
+   <div class="module   <t4 type="content" name="Width" output="normal" display_field="value" />">
+      <div class="moduleHeader">       
+        <span class="px-stat-widget-heading">
+<t4 type="content" name="Title" output="normal" modifiers="htmlentities" />
+         </span>
+      </div>
+      <div class="moduleBody">
+         <div id="<t4 type="meta" meta="content_id" />-widget-wrapper" class="widget-toggle-wrapper"></div>
+        
+        
+        
+        <script>
+                 
+	var toggleVariables_<t4 type="meta" meta="content_id" /> = null;
+  	var defaultVariable_<t4 type="meta" meta="content_id" /> = null; 
+    var widgetTogglePxStatStatus_<t4 type="meta" meta="content_id" /> = null;
+  
+    
+  if (typeof widgetTogglePxStatStatus === 'undefined') {
+    widgetTogglePxStatStatus_<t4 type="meta" meta="content_id" /> = true;
+} else {
+    if (widgetTogglePxStatStatus == "wip") {
+        widgetTogglePxStatStatus_<t4 type="meta" meta="content_id" /> = false;
+    } else {
+        widgetTogglePxStatStatus_<t4 type="meta" meta="content_id" /> = true;
+    }
+}
+   
+  //handle snippet code string for parsing. Need to pass as string
+  var snippet = $('<span>').html('<t4 type="content" name="Snippet code" output="normal" modifiers="htmlentities,js-var" />').text();
+           
+    <t4 type="content" name="Toggle variables" output="selective-output" process-format="true" format="toggleVariables_<t4 type=&quot;meta&quot; meta=&quot;content_id&quot; /> = &quot;$value&quot;" />
+           
+	<t4 type="content" name="Default variable" output="selective-output" process-format="true" format="defaultVariable_<t4 type=&quot;meta&quot; meta=&quot;content_id&quot; /> = &quot;$value&quot;" />
+                                  
+t4Sdk.pxWidget.create(
+     "map",
+	"<t4 type="meta" meta="content_id" />-widget-wrapper", 
+	widgetTogglePxStatStatus_<t4 type="meta" meta="content_id" />,
+	snippet,
+	"<t4 type="content" name="Toggle type" output="normal" display_field="value" modifiers="js-var" />",
+	"<t4 type="content" name="Toggle classification code" output="normal" modifiers="striptags,htmlentities" />",
+	toggleVariables_<t4 type="meta" meta="content_id" />,
+	defaultVariable_<t4 type="meta" meta="content_id" />
+);
+        
+</script>       
+        
+        
+        
+         <t4 type="content" name="Footnote" output="selective-output" modifiers="medialibrary,nav_sections" format="<span class=&quot;footnote&quot;>$value</span>" />
+        
+        
+      </div>
+   </div>
+</div>

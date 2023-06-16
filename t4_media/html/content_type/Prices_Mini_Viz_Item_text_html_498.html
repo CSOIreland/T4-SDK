@@ -1,0 +1,18 @@
+        <div class="prices-item">
+            <div class="prices-item-icon">
+                <img src="<t4 type="content" name="Icon" output="normal" formatter="path/*" />" width="90px" />
+            </div>
+                <div class="prices-item-change <t4 type="content" name="Price change type" output="normal" display_field="value" />">
+                    <div class="price-change-indicator"><t4 type="content" name="Price change type" output="normal" display_field="name" /></div>
+                    <div class="price-item-text">
+                        <t4 type="content" name="Price change incl currency symbol" output="normal" modifiers="striptags,htmlentities" />
+                    </div>
+                </div>    
+                <div class="prices-item-current">
+                    <span class="price-time-label">now</span>
+                    <t4 type="content" name="Current price" output="normal" modifiers="striptags,htmlentities" />
+                </div>
+            <div class="prices-item-label">
+                <t4 type="content" name="Item name" output="normal" modifiers="striptags,htmlentities" />
+            </div>
+        </div>

@@ -1,0 +1,157 @@
+<div class="moduleHeader">
+<h2><a href="#"><t4 type="content" name="Series 1 Title" output="normal" modifiers=""  /></a></h2>
+</div>
+<div class="moduleBody">
+<div id="<t4 type="meta" meta="content_id" />pieChart1" class="pieChart1"></div>
+
+  <div style="display: none" id="<t4 type="meta" meta="content_id" />datatable1" class="pieDataTable">
+<t4 id="test" type="content" name="Series 1" output="normal" modifiers=""  />
+</div>
+
+  </div>
+
+<script>
+  
+  $( document ).ready(function() {
+    $("#<t4 type="meta" meta="content_id" />datatable1 table").attr('id', '<t4 type="meta" meta="content_id" />table1');
+  
+ 
+ 
+  
+});
+  
+$(function () {
+  
+  
+  Highcharts.setOptions({
+        lang: {
+            thousandsSep: ',',
+            decimalPoint: '.',
+            numericSymbols: ['k', ' million', ' billion', ' trillion'] 
+        }
+    });
+  
+  
+  
+  
+    $('#<t4 type="meta" meta="content_id" />pieChart1').highcharts({
+  
+  
+  
+  data: {
+  table: document.getElementById('<t4 type="meta" meta="content_id" />table1')
+   },
+  
+        chart: {
+            type: 'pie',
+            backgroundColor:'rgba(255, 255, 255, 0.1)',
+  //width: 400,
+   height: 300
+        },
+  credits: {
+            enabled: false
+        },
+  
+   colors: [
+	'#0052BA',
+'#99CCFF',
+'#00B3AA',
+'#666699',
+'#CC9933',
+'#006666',
+'#3399FF',
+'#993300',
+'#CCCC99',
+'#666666',
+'#FFCC66',
+'#6699CC'
+  ],
+        title: {
+             text: '',
+            useHTML: true
+
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+        
+         tooltip: {
+  
+            useHTML: true,
+  	    formatter: function() {
+  
+  
+  
+  function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+  
+  
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places series 1" output="normal" modifiers=""  />);
+  
+  var number = this.y;
+  
+  if (number >= 0) {
+  
+  return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  
+  else
+  {
+
+return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  	
+  
+            
+	}
+  
+  
+  },
+  
+  
+  
+  
+  
+  
+        plotOptions: {
+            pie: {
+            size: 180,
+                allowPointSelect: true,
+  		showInLegend: false,
+                cursor: 'pointer',
+                dataLabels: {
+					
+                    enabled: true,
+  
+                    style: { textShadow: 'none' }, 
+  		    formatter: function() {
+  return Highcharts.numberFormat (this.y,<t4 type="content" name="Number of decimal places series 1" output="normal" modifiers=""  />) + ' <t4 type="content" name="Series 1 suffix" output="normal" modifiers=""  /><br/>' + this.point.name ;}
+                }
+                
+                }
+  		
+            
+        }
+    });
+
+ 
+  
+  
+  });
+  
+</script>

@@ -1,0 +1,511 @@
+ <style>
+ .highcharts-tooltip {
+    z-index: 9998;
+
+}
+
+   .tooltip {
+    padding:10px;
+   background-color:white;
+}
+   
+.highcharts-tooltip span {
+    background-color:white;
+    
+    opacity:1;
+    z-index:9999!important;
+} 
+   
+</style>
+
+<div style="display: none" id="<t4 type="meta" meta="content_id" />stacking"><t4 type="content" name="Column/Bar stacked" output="normal" modifiers=""  /></div>
+<div style="clear: both"></div>
+
+
+ <div id="highchartDiv<t4 type="meta" meta="content_id" />" class="highchartBox">  
+</div><div class="highchartTable" id="<t4 type="meta" meta="content_id" />datatable">
+ <t4 type="content" name="inline table" output="normal" modifiers=""  />
+   <t4 type="content" name="Inline Table HTML" output="normal" modifiers=""  /> 
+     </div>
+          
+ 
+
+<div style="clear: both"></div>
+
+<div class="highchartText">
+ <t4 type="content" name="General Text" output="normal" modifiers="medialibrary, nav_sections"  />
+</div>
+ <div style="clear: both"></div>  
+
+
+
+
+
+<script language="JavaScript" type="text/JavaScript">
+$(function () {
+  
+  
+    // On document ready, call visualize on the datatable.
+    $(document).ready(function() {
+        /**
+         * Visualize an HTML table using Highcharts. The top (horizontal) header
+         * is used for series names, and the left (vertical) header is used
+         * for category names. This function is based on jQuery.
+         * @param {Object} table The reference to the HTML table to visualize
+         * @param {Object} options Highcharts options
+         */
+      
+      $("#<t4 type="meta" meta="content_id" />datatable table").attr('id', '<t4 type="meta" meta="content_id" />table');
+        
+              
+      Highcharts.visualize = function(table, options) {
+            // the categories
+            options.xAxis.categories = [];
+            $('tbody th', table).each( function(i) {
+                options.xAxis.categories.push(this.innerHTML);
+            });
+        
+                
+  Highcharts.setOptions({
+        lang: {
+            thousandsSep: ',',
+            decimalPoint: '.',
+            numericSymbols: ['k', ' million', ' billion', ' trillion'] 
+        }
+    });
+     
+            // the data series
+            options.series = [];
+            //options.yAxis = [];
+        
+                
+            $('tr', table).each( function(i) {
+                var tr = this;
+              
+                $('th, td', tr).each( function(j) {
+                    if (j > 0) { // skip first column
+                        if (i == 0) { // get the name and init the series
+                         
+
+
+                         var align = $(this).attr("align");
+                         var yAxis = 0;
+                         
+                         if (align == 'left')
+                         {
+                            yAxis = 0;
+                         }
+
+                         else if (align == 'right')
+                         {
+                            yAxis = 1;
+                         }
+
+                         
+                       // myInteger = parseInt($(this).attr("align"));
+
+
+
+                         options.series[j - 1] = {
+                                name: this.innerHTML,
+                                data: [],
+  //pointPadding: $(this).attr("pointPadding"),
+  //pointPlacement: $(this).attr("pointPlacement"),
+  				                color: $(this).attr("color"),
+  				                type: $(this).attr("class"),
+                                yAxis: yAxis
+                            };
+                        } else { // add values
+                            options.series[j - 1].data.push(parseFloat(this.innerHTML));
+                        }
+                    }
+                });
+            });
+    
+            var chart = new Highcharts.Chart(options);
+        }
+    
+  //var zoom = chartType('<t4 type="meta" meta="content_id" />datatable');
+  
+  
+  
+  var credits = '<t4 type="content" name="Highchart source" output="normal" modifiers=""  />'; 
+  
+  if (credits == '')
+  {
+  credits = 'Source: CSO Ireland';
+  }
+  
+  else
+  {
+  //leave it as it is from the element
+  
+  }
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  //var screenWidth = $(window).width();  
+  // var width = '';
+  
+  //if(screenWidth < 800) {
+	
+  // width= screenWidth * .9;
+ 
+  //} 
+  //else {
+	
+  //width= '800';
+  //}
+  
+  
+  
+  
+        var table = document.getElementById('<t4 type="meta" meta="content_id" />table'),
+        options = {
+              
+           
+             
+            chart: {
+  
+  
+  //style: {
+  //  fontFamily: 'Verdana'
+  // },
+  
+  
+                renderTo: 'highchartDiv<t4 type="meta" meta="content_id" />', 
+           
+               
+                  zoomType: 'none',     
+  //marginRight: 60,
+  //width: width,
+              height: <t4 type="content" name="Chart Height" output="normal" modifiers=""  />
+  		
+  
+  },
+          
+          
+          
+  
+          
+          
+          subtitle: {
+        align: 'right',
+        verticalAlign: 'bottom',
+        style: {
+            color: '#777',
+            'font-style': 'italic'
+        },
+        text: '<t4 type="content" name="Highchart source" output="normal" modifiers=""  />'
+    },
+          
+          
+  
+   colors: [
+				'#405482',
+				'#00af86',
+				'#fbaa34',
+				'#3c5daa',				
+				'#b7be34',
+				'#0099b4',
+				'#5b6670',
+				'#ffc629',
+				'#566db4',
+				'#6ac5ad',
+				'#FFCC66',
+				'#6699CC'
+			],
+  
+          
+			title: {
+
+				style: {
+					fontSize: '18px',
+                  	fontWeight: 'bold',
+                  	fontFamily: '"Roboto Slab", Georgia, Times New Roman, serif',
+                  	paddingBottom: '0.25rem',
+                  	borderBottom: '1px solid #CAD6E0',
+                  	color: '#1D345C'
+				},
+
+				text: '<t4 type="content" name="Chart Title" output="normal" modifiers="js-var"  />',
+				useHTML: true,
+				margin: 50,
+				widthAdjust: -80,
+              	align: 'left',
+              	x: 50
+			},
+            
+               xAxis:  
+  
+  		{
+
+  		
+                 tickInterval: <t4 type="content" name="X Axis interval" output="normal" modifiers=""  />,
+  	
+  
+               labels: {
+                style: {
+                    fontSize: '<t4 type="content" name="X Axis labels font size" output="normal" modifiers=""          />',
+                  width: 'auto' 
+                  
+                },
+  useHTML:true
+            }
+  
+              
+     },
+                 
+  
+  
+          plotOptions: {
+            series: {
+             marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+  
+            }
+        },
+  
+  
+   tooltip: {
+ 
+  
+            useHTML: true,
+  	   
+ formatter: function() {
+  
+  
+  
+  
+  
+  function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+  
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />);  
+      var number = this.y;
+  
+  if (number >= 0) {
+
+  			  return  this.x +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+		}
+	
+	else	 {
+   		
+			 return  this.x +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+		}
+  	
+	}
+  
+  },
+  
+       
+            yAxis: [
+
+
+		{
+
+
+			plotLines: [{
+  
+  				<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Set Y axis plot line" format="color: '#333333', width: 2,value: <t4 type=&quot;content&quot; name=&quot;Plot line value&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />, zIndex: 3 " />
+  
+                
+            }],
+
+			startOnTick: true,
+<t4 type="content" output="selective-output" modifiers="" name="Y axis start value" format="min: $value," />
+
+            title: 	{
+                		text: '<t4 type="content" name="Left Y Axis Description" output="normal" modifiers="js-var"  />'
+            		}
+        }, 
+
+
+		{
+            title: {
+                		text: '<t4 type="content" name="Right Y Axis Description" output="normal" modifiers="js-var"  />'
+            		},
+            
+			opposite: true
+
+<t4 type="content" output="selective-output" modifiers="" name="Opposite Y axis start value" format=",min: $value" />
+
+
+
+
+
+        }
+
+
+		]
+  
+  <t4 type="content" name="Extra code" output="normal" modifiers=""  />
+        };
+    
+
+
+		if ($( "#<t4 type="meta" meta="content_id" />stacking" ).text() == '') {
+   
+  
+   options.plotOptions.series = {
+                stacking: null,
+				 marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+            }
+  
+  
+}
+  
+  else if ($( "#<t4 type="meta" meta="content_id" />stacking" ).text() == 'null') {
+   
+  
+   options.plotOptions.series = {
+                stacking: null,
+				 marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+            }
+  
+  
+}
+  
+  
+  
+  
+  else if ($( "#<t4 type="meta" meta="content_id" />stacking" ).text() == 'normal') {
+  
+  
+  
+  
+  options.plotOptions.series = {
+                stacking: 'normal',
+				 marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+            }
+   
+  
+    
+  
+}
+  
+  
+  else if ($( "#<t4 type="meta" meta="content_id" />stacking" ).text() == 'percent') {
+  
+  options.plotOptions.series = {
+                stacking: 'percent',
+				 marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+            }  
+  
+    
+  
+}
+  
+  else  {
+   
+  
+   options.plotOptions.series = {
+                stacking: null,
+				 marker: {
+                    
+  		 radius: 2
+                    
+                },
+  
+                shadow: false,
+  		border: true
+            }  
+  
+  
+}
+    
+
+
+
+
+
+
+
+
+        Highcharts.visualize(table, options);
+  console.log(options)
+    });
+    
+});
+</script>
+  
+   
+  
+        
+       <script language="JavaScript" type="text/JavaScript">
+      
+      $(document).ready(function(){
+
+
+$("#highchartTableShow<t4 type="meta" meta="content_id" />").click(function(){
+    $("#<t4 type="meta" meta="content_id" />datatable").slideToggle(1000);
+    
+         var $span = $(this).find('#buttonText<t4 type="meta" meta="content_id" />');
+         
+         if($span.text() == "Show chart data"){
+               $span.text("Hide chart data");
+            } else {
+               $span.text("Show chart data");
+           }
+         
+         
+  });
+         });
+         
+
+      
+      
+      </script>
+                      

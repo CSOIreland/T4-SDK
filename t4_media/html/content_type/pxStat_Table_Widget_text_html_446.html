@@ -1,0 +1,59 @@
+<script>
+  
+  $.fn.redraw = function() {
+    $(this).each(function() {
+        var redraw = this.offsetHeight;
+    });
+};
+  
+  
+  
+  
+  $(document).ready(function(){
+      
+
+  $("#px-stat-widget-<t4 type="meta" meta="content_id" /> .moduleHeaderClosed").on("click", function(){
+    
+        
+              
+    $("#px-stat-widget-<t4 type="meta" meta="content_id" /> .moduleBody").slideToggle(600, function(){   
+       
+      if($("#px-stat-widget-<t4 type="meta" meta="content_id" /> .moduleBody").is(":visible")) {
+      
+        $("#px-stat-widget-<t4 type="meta" meta="content_id" /> .moduleHeaderClosed").find("[name=open-close-icon]").removeClass().addClass("fa fa-minus-circle")
+                
+        
+      }
+      else {
+      $("#px-stat-widget-<t4 type="meta" meta="content_id" /> .moduleHeaderClosed").find("[name=open-close-icon]").removeClass().addClass("fa fa-plus-circle")
+           
+    
+      
+      }
+    
+    });  
+    
+
+})
+   
+
+});
+</script>
+<div class="px-stat-widget" id="px-stat-widget-<t4 type="meta" meta="content_id" />">
+   <div class="module">
+      <div class="moduleHeader <t4 type="content" output="selective-output" modifiers="" name="Widget Closed" format="moduleHeaderClosed" />">
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Widget Closed" format="<i name=&quot;open-close-icon&quot; class=&quot;fa fa-plus-circle&quot; aria-hidden=&quot;true&quot;></i>" /> 
+        <span class="px-stat-widget-heading">
+<t4 type="content" name="Title" output="normal" modifiers="htmlentities" />
+         </span>
+      </div>
+      <div class="moduleBody" <t4 type="content" output="selective-output" modifiers="" name="Widget Closed" format="style=&quot;display: none&quot;" />>
+     
+     <t4 type="content" name="Snippet Code" output="normal" />
+         
+    
+     <t4 type="content" name="Footnote" output="selective-output" modifiers="medialibrary,nav_sections" format="<span class=&quot;footnote&quot;>$value</span>" />
+  
+      </div>
+   </div>
+</div>

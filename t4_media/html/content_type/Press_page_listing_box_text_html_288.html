@@ -1,0 +1,47 @@
+<script>
+  
+  $(function(){
+ $(".optional a").each(function() {
+  
+  //alert('a');
+
+   if ($(this).attr('href') == "") {
+
+        $(this).parent().remove();
+    }
+});
+  });
+  
+</script>
+
+<style>
+
+.copy ul, .copy h2, .copy ul li  {
+    margin: 0px;
+}
+
+.moduleBody li a:before {
+
+    top: 25px;
+
+}
+
+</style>
+
+
+
+<div class="module orange open">
+						<div class="moduleHeader">
+							<h2><a href="#"><t4 type="content" name="Release/Publication title" output="normal" modifiers=""  /></a></h2>
+						</div>
+						<div class="moduleBody">
+<ul>
+<li class="optional"><a href="<t4 type="content" name="Link to release / publication" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-bar-chart fa-3x" aria-hidden="true" style="color: #006BB6"></i> Release</a> </li>
+<li class="optional"><a href="<t4 type="content" name="Link to press release" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-newspaper-o fa-3x" aria-hidden="true" style="color: #D90016"> </i> Press Release</a> </li>
+<li class="optional"><a href="<t4 type="content" name="Link to promotional video" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-video-camera fa-3x" aria-hidden="true" style="color: #00ada8"></i> Promotional video</a> </li>
+<li class="optional"><a href="<t4 type="content" name="Link to Presentation" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-television fa-3x" aria-hidden="true" style="color: #e68600"></i> Presentation</a> </li>
+<li class="optional"><a href="<t4 type="content" name="Link to technical notes" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-cogs fa-3x" aria-hidden="true" style="color: #d3205c"></i> Technical Note</a> </li>
+<li class="optional"><a href="<t4 type="content" name="Link to FAQ's" output="linkurl" modifiers="nav_sections"  />"><i class="fa fa-question-circle fa-3x" aria-hidden="true" style="color: #d64615"></i> FAQ's</a> </li>
+</ul>
+
+</div>
