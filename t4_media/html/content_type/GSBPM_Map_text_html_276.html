@@ -1,0 +1,38 @@
+<t4 type="media" id="93393" formatter="javascript/*"/>
+<script type="text/javascript">
+    $(function() {
+
+        $('#mapArea').find('area').each(function() {
+            var link = $(this).attr("href");
+            var res = link.split("\Process Mapping");
+
+            //console.log('Process Mapping' + res[1]);
+
+            //link = link.slice(24);
+            link = 'https://qualityinformationsystem.cso.ie/processmapping' + res[1];
+            link = link.replace(/\\/g, '/')
+            $(this).attr("href", link);
+        });
+
+        $('map').imageMapResize();
+
+
+    });
+</script>
+    
+    <style>
+    
+    
+   .gsbpm_image
+   {
+       width: initial;
+   
+   }
+    
+    </style>
+
+<div id="mapArea">
+  <t4 type="content" name="HTML Code" output="normal" modifiers=""  />
+</div>
+
+<img class="gsbpm_image" src="<t4 type="content" name="Image" output="normal" modifiers="medialibrary" formatter="path/*"   />" border="0" alt="GSBPM.gif" usemap="#navmap" ismap>

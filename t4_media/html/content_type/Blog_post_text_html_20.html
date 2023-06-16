@@ -1,0 +1,42 @@
+<!--start extranet show hide-->
+<t4 type="meta" meta="html_anchor" />
+
+<h1><t4 type="content" name="Title" output="normal" modifiers=""  /></h1>
+<t4 type="content" name="MainBody" output="normal" modifiers=""  />
+<div id="q<t4 type="meta" meta="id" />" class="question"><p><a href="#">Post a comment</a></p></div>
+<div id="a<t4 type="meta" meta="id" />" class="answer"><script type="text/javascript">
+  function checkForm (eForm){
+    if (eForm.t4_content_element_Fullname.value.length > 1600){
+      alert('Element Fullname has exceeded its maximum size.')
+      return false;
+    }
+    return true;
+  }
+</script>
+
+<form action="/terminalfour//eForms" method="post" enctype="multipart/form-data" onsubmit="setDate(); return checkForm(this);">
+<input type="hidden" name="sid" value="<t4 type="navigation" id="20" />" />
+<input type="hidden" name="t4_content_element_Name" value="Blog Comment" />
+<input type="hidden" name="tid" value="19" />
+<input type="hidden" name="redirect" value="<t4 type="navigation" id="21" />" />
+<input type="hidden" name="status" value="1" />
+<input type="hidden" name="channel" value="<t4 type="channel" output="id"/>" />
+<input type="hidden" name="el-name-prefix" value="t4_content_element_" />
+<input type="hidden" name="remove-non-alphanumeric" value="true" />
+
+<table>
+  <tr>
+    <td valign="top" style="border: 0px;">Fullname</td>
+    <td style="border: 0px;"><input type="text" name="t4_content_element_Fullname" id="t4_content_element_Fullname" /></td>
+  </tr>
+  <tr>
+    <td valign="top" style="border: 0px;">Comment</td>
+	<td style="border: 0px;"><textarea  name="t4_content_element_MyComment" rows="5" cols="40" id="t4_content_element_MyComment"></textarea></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border: 0px;"><input type="submit" name="SendButton" value="Submit" /></td>
+  </tr>
+</table>
+</form>
+</div>
+<!--end extranet show hide-->

@@ -1,0 +1,40 @@
+<style>
+.ui-dialog-titlebar {
+   background: #d3205c;
+    color: #fff;
+}
+</style>
+<div id="dialog-pop-up" title="<t4 type="content" name="Title" output="normal" modifiers="striptags,htmlentities" />">
+  <t4 type="content" name="Content" output="normal" modifiers="medialibrary,nav_sections" />
+</div>
+
+<script>
+$(document).ready(function () {
+    
+        if (!Cookies.get('<t4 type="content" name="Cookie Name" output="normal" modifiers="striptags,htmlentities,js-var" />')) {
+            $("#dialog-pop-up").dialog({
+                position: {
+                    my: "right top",
+                    at: "right+100 top+100",
+                    of: "body"
+                },
+                close: function (event, ui) {
+                    Cookies.set('<t4 type="content" name="Cookie Name" output="normal" modifiers="striptags,htmlentities,js-var" />', true, { expires: <t4 type="content" name="Cookie expire days" output="normal" modifiers="striptags,htmlentities" /> })
+                }
+            });
+        }
+        else {
+            $("#dialog-pop-up").hide();
+        }
+        
+        $("#dialog-pop-up a").blur();
+
+        $("#dialog-pop-up a").click("on", function () {
+            Cookies.set('<t4 type="content" name="Cookie Name" output="normal" modifiers="striptags,htmlentities,js-var" />', true, { expires: <t4 type="content" name="Cookie expire days" output="normal" modifiers="striptags,htmlentities" /> });
+            $("#dialog-pop-up").dialog("close");
+        })
+   
+});
+
+    
+</script>

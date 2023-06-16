@@ -1,0 +1,17 @@
+<script>
+
+var reDirectUrl = "<t4 type="content" name="Redirect URL" output="normal" modifiers="js-var"  />";
+
+
+const regex = /^(https?):\/\/(.+?\.)?cso\.ie(.*)$/;
+
+        if (regex.test(reDirectUrl)) {
+            window.location.replace(reDirectUrl);
+            }
+            else {
+            window.location.replace("https://www.cso.ie");
+            }
+            
+            
+            
+</script>

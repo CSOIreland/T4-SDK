@@ -1,0 +1,82 @@
+</div>
+
+<div id="<t4 type="meta" meta="content_id" />_ERtable" class="ERtable">
+<div id="ShowHide"> 
+
+<span style="background: white" id="show <t4 type="meta" meta="content_id" />excel"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52213" formatter="image/*"/> Show <t4 type="content" name="Table Title" output="normal" modifiers=""  /></a> </span>
+
+<span id="hide <t4 type="meta" meta="content_id" />excel" style="display:none; margin-bottom: 10px;"><a id="displayText" href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52212" formatter="image/*"/> Hide <t4 type="content" name="Table Title" output="normal" modifiers=""  /></a></span>
+
+</div>
+
+
+ 
+ 
+ 
+ <div id="<t4 type="meta" meta="content_id" />excel" class="excelTable">
+ <t4 type="exceltohtml" name="Insert Excel Table" />
+ 
+   
+ 
+ <div class="viewInStatbank" id="<t4 type="meta" meta="content_id" />Wrap1">
+<a target="_blank" id="<t4 type="meta" meta="content_id" />statbank1" href="<t4 type="content" name="PxStat Table 1 Link" output="normal" modifiers=""  />">View Table <t4 type="content" name="PxStat Table 1 ID" output="normal" modifiers=""  /> in PxStat</a></div>
+   
+   <div class="viewInStatbank" id="<t4 type="meta" meta="content_id" />Wrap2">
+<a target="_blank" id="<t4 type="meta" meta="content_id" />statbank2" href="<t4 type="content" name="PxStat Table 2 Link" output="normal" modifiers=""  />">View Table <t4 type="content" name="PxStat Table 2 ID" output="normal" modifiers=""  /> in PxStat</a></div>
+   
+   <div class="viewInStatbank" id="<t4 type="meta" meta="content_id" />Wrap3">
+<a target="_blank" id="<t4 type="meta" meta="content_id" />statbank3" href="<t4 type="content" name="PxStat Table 3 Link" output="normal" modifiers=""  />">View Table <t4 type="content" name="PxStat Table 3 ID" output="normal" modifiers=""  /> in PxStat</a></div>
+ 
+ <div class="OpenInExcel">Open in Excel: <t4 type="content" name="Insert Excel Table" output="normal" modifiers=""  /></div>
+ 
+ 
+ <div class="HideTable">
+ <a href="javascript:toggle('<t4 type="meta" meta="content_id" />excel', 'show <t4 type="meta" meta="content_id" />excel', 'hide <t4 type="meta" meta="content_id" />excel');"><t4 type="media" id="52214" formatter="image/*"/>Hide Table</a></div>
+ 
+ 
+ </div>
+
+</div>
+
+
+<div class="lhs_column">
+
+  <script type="text/javascript">
+$(document).ready(function(){
+var value1 = $('#<t4 type="meta" meta="content_id" />statbank1').attr('href');
+    var value2 = $('#<t4 type="meta" meta="content_id" />statbank2').attr('href');
+    var value3 = $('#<t4 type="meta" meta="content_id" />statbank3').attr('href');
+    
+    
+    if( value1.length == 0)
+    {
+    
+   
+    $("#<t4 type="meta" meta="content_id" />Wrap1").hide();
+    
+    }
+    
+    var value2 = $('#<t4 type="meta" meta="content_id" />statbank2').attr('href');
+    
+    
+    if( value2.length == 0)
+    {
+    
+   
+    $("#<t4 type="meta" meta="content_id" />Wrap2").hide();
+    
+    }
+    
+    var value3 = $('#<t4 type="meta" meta="content_id" />statbank3').attr('href');
+    
+    
+    if( value3.length == 0)
+    {
+    
+   
+    $("#<t4 type="meta" meta="content_id" />Wrap3").hide();
+    
+    }
+    
+});
+</script>

@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( document ).tooltip();
+   
+  } );
+  </script>
+  
+  
+<script>
+  
+
+  $(function(){
+
+  var firstIndicator = $.trim(escape($("#indicatorTitle_<t4 type="meta" meta="content_id" />").text()).toUpperCase());
+var chapterTitle = $.trim(escape("<t4 type="title" />").toUpperCase());
+  //alert(firstIndicator);
+  // alert(chapterTitle);
+  
+if (firstIndicator == chapterTitle) {
+
+    $("#chapterTitle").remove();
+}
+
+});
+  
+  
+  
+  function printSelectionYearBook(node) {
+
+
+    //get number of style tags in documnet
+    var count = document.getElementsByTagName('style').length;
+    
+
+    //build string of styles to add to head of print page so tables will look better
+
+    var styles = "<style type=\"text/css\">";
+    
+    styles = styles.concat('body {font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;font-size:13px;color: #02395F; line-height: 1.4em;} .ShowHide {display: none} .hidePrint {display: none} .HideTable {display: none} .OpenInExcel {display: none} img{margin-bottom: 15px} .IndicatorText{width: 70%} .highcharts-button{display: none} .excelTable{display: block !important} .ShowHide{display: none} .highchartTable{display: none} .pieDataTable{display: none} .hideText{display: none} .ERtable table {width: 800px} .indicatorHeadlineTable {display: block !important} .pubOpenCloseTableTitle {display: none}   ');
+    
+    for (var i = 0; i < count; i++) //create one big string of styles from orginal page
+    {
+
+
+        styles = styles.concat(document.getElementsByTagName('style')[i].innerHTML);
+        
+        
+    }
+  
+   
+  styles = styles.concat("</style>")
+
+    var html = "<html><head>" + styles + "</head>"; 
+    html = html + "<body onload=\"window.print();\"> <div id=\"container\">";
+    //alert(node);
+    var content = node.innerHTML;
+    html = html + content;
+    html = html + "</div></body></html>";
+    
+    var pwin = window.open('', 'print_content', 'width=1200,height=600, scrollbars=1');
+    pwin.document.open();
+
+    pwin.document.write(html);
+
+   pwin.document.close();
+
+  setTimeout(function () { pwin.close(); }, 1000);
+
+}
+</script>
+<t4 type="content" name="Extra code" output="normal" modifiers=""  />
+ 
+ 
+<t4 type="meta" meta="html_anchor" />
+
+
+<div class="module open indicator indicator-purple" id="<t4 type="meta" meta="content_id" />yearBookIndicator">
+						<div id="moduleHeader_<t4 type="meta" meta="content_id" />" class="moduleHeader">
+							<h2><a href="#" id="indicatorTitle_<t4 type="meta" meta="content_id" />"><t4 type="content" name="Title" output="normal" modifiers=""  /></a></h2>
+                          
+                          <!--<a href="" title="Print this indicator" style="float: right;" onclick="printSelectionYearBook(document.getElementById('<t4 type="meta" meta="content_id" />yearBookIndicator'));return false"><i style="color: #ffffff" class="fa fa-print fa-2x" aria-hidden="true"></i></a>-->
+                          
+                          
+                          
+							
+						</div>
+						<div class="moduleBody">
+
+  
+  <span class="printIndicatorYB">
+
+  <!--<a href="" onclick="printSelectionYearBook(document.getElementById('<t4 type="meta" meta="content_id" />yearBookIndicator'));return false"><img class="hidePrint" src="<t4 type="media" id="55384" formatter="path/*"/>" alt="Print"  title="Print this indicator" width="45px" height="45px"></a>-->
+  </span>
+    <div style="clear: both"></div>
+    <div id="<t4 type="meta" meta="content_id" />excel" class="indicatorHeadlineTable"><t4 type="exceltohtml" name="Insert Excel Table 1" /></div>
+  <div class="clear"></div>
+  <div id="<t4 type="meta" meta="content_id" />OpenInExcel" class="OpenInExcel">Open in Excel: <t4 type="content" name="Insert Excel Table 1" output="normal" modifiers=""  /></div>
+    
+   
+       
+  <div class="PublicationIndicatorText">
+    <t4 type="content" name="Indicator text" output="normal" modifiers="medialibrary, nav_sections"  />
+  </div>
+  <div class="clear"></div> 
+  
+  
+  <!--<div id="<t4 type="meta" meta="content_id" />_ERtable" class="ERtable" style="display: <t4 type="content" name="Include table" output="normal" modifiers=""  /> ">
+  
+
+ 
+  </div>-->
+  
+  
+<div class="clear"></div>
+  
+  <script>
+    //Script to hide 'Open in excel' div' if no excel table in indicator
+    
+    var n = $( "#<t4 type="meta" meta="content_id" />excel" ).text().length;
+    
+    if(n == 0) {
+    //alert('No excel file');
+    $( "#<t4 type="meta" meta="content_id" />OpenInExcel" ).hide();
+	}
+    
+    
+    
+    </script>
+  
