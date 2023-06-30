@@ -242,10 +242,12 @@ a:active {
 	padding-left: 6px;
 	color: inherit;
 }
-
+/* all variations meet WCAG AA */
 .btn.pink { background-color: #d3205c; }
 .btn.purple { background-color: #35456B; }
 .btn.blue-grey { background-color: #6a7884; }
+.btn.teal-blue  { background-color: #007a90; } 
+.btn.mid-purple { background-color: #4f6497; }
 
 /* style a standalone button */
 .section-button {
@@ -3454,6 +3456,8 @@ font-family: "FontAwesome" !important;
     width: auto;
   }
 /* end sidebar module */
+
+
 
 
 

@@ -31,6 +31,9 @@ This fix replaces the interactive chart with an svg when printing by ctrl+p or w
 | html |  |
 | - content_type | extracted and synced content types |
 | - layout | extracted and synced page layouts |
+| -- landing pages | 1:1 layouts used for a single page |
+| -- templates | layouts used for multiple pages |
+| -- themes | themed areas of the site e.g. surveys and careers |
 | - ManuallyAdded | Added after the initial extraction |
 | -- Extracted | Refactoring assets |
 | -- megaNav | Meganav POC assets |
