@@ -12,6 +12,7 @@ This fix replaces the interactive chart with an svg when printing by ctrl+p or w
 
 **html2pdf**
 : add a wrapper around a block of code to add a download symbol which offers a pdf download
+After the chart has been fixed, 'export2pdf_completed' has been applied. This can be used from backend side to detect when process has been finished.
 
 **t4_media**
 : this library contains the T4 assets of the website
