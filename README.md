@@ -63,3 +63,12 @@ https://test-t4.cso.ie/terminalfour/page/content#edit/47688/360608
 **FullEditorUpgrade**
 :Custom TinyMCE plugin
 https://test-t4.cso.ie/terminalfour/page/htmleditorconfig#htmleditors
+
+**https://dev-incubator.cso.ie/t4sdk/t4helper/client/t4_helper.html**
+
+ReadMe file : Z:\t4sdk\t4helper\readme\readme.txt
+ReadMe file : Z:\t4sdk\t4helper\readme\readme.txt
+
+
+**source code for C# for T4Helper**
+Z:\t4sdk\T4_MetaData
