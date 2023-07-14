@@ -45,10 +45,21 @@ After the chart has been fixed, 'export2pdf_completed' has been applied. This ca
 | js | media library extracted js files |
 
 **t4-sdk-bootstrap**
-: bootstrap assets
+: local bootstrap assets create db using this method:
+How to do prefix:
+Notepad++
+find:(\.)([a-zA-Z]+[-][a-zA-Z]+[-]?[a-zA-Z]*)
+replace:$1t4-sdk-$2
+It adds t4-sdk- prefix to .css  class.
+There is no local bootstrap.js , t4-sdk-megaNav.js is used to create meganav functionality
 
 **includes.html**
-: definition needed
+:  Working file helps to create includes related with this project using VS Code formatting
 
-**poc.html**
-: definition needed
+**megaNav**
+: Changes related with content of megaNav, should be pasted here:
+https://test-t4.cso.ie/terminalfour/page/content#edit/47688/360608
+
+**FullEditorUpgrade**
+:Custom TinyMCE plugin
+https://test-t4.cso.ie/terminalfour/page/htmleditorconfig#htmleditors
