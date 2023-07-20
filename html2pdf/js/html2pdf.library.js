@@ -14,6 +14,7 @@ t4Sdk.html2pdf.disableHrefs = function (e) {
     var ch = document.getElementById(T4SDK_HTML2PDF_MAIN_DIV_ID);
     t4Sdk.html2pdf.downloadSelectionUL = ch;
     if (ch) {
+        ch.style.backgroundColor = "none";
         ch.classList.add("moduleBody");
         for (var i = 0; i < ch.children.length; i++) {
             var cbox = ch.children[i];
