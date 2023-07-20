@@ -83,6 +83,7 @@ t4Sdk.html2pdf.callApiRead = function (input, callback = t4Sdk.html2pdf.callApiR
 t4Sdk.html2pdf.fnExportPDF = function (inp) {
     var toSend = {
         "urls": inp,
+        "htmlIdForMasterHeader": "pageHeaderRow",
         "chromeCommandLineOptions": [
             "headless",
             "disable-gpu",
@@ -92,10 +93,8 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
             "paperWidth": 8.3,
             "paperHeight": 11.7,
             "scale": 1.0,
-            "pageRanges": "",
-            "footerTemplate": "<span class=pageNumber></span> / <span class=totalPages></span>"
+            "pageRanges": ""
         },
-        "htmlIdForMasterHeader": "pageHeader",
         "returnType": "base64String"
     };
     var url = "https://pdf.cso.ie/api.jsonrpc";
