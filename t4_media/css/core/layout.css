@@ -2343,7 +2343,7 @@ margin-bottom: 20px;
     .release-key-findings p {
          font-size: 16px;
     }
-    h3.pub-findings-header  {
+    h3.pub-findings-header {
         background-color: #CAD6E0;
         padding: 0.75rem 1rem;
         font-size: 20px;
@@ -2353,15 +2353,29 @@ margin-bottom: 20px;
 	h3.pub-findings-header.heading--mint {
     	background-color: #daf2e9;
     }
-	.release-key-findings > h3.pub-findings-header {
+	.release-key-findings > h3.pub-findings-header,
+  .press-key-findings > .pub-findings-header-block {
         margin: -1rem -1rem 0;
 	}
-	.press-key-findings h3.pub-findings-header {
+	.press-key-findings > h3.pub-findings-header,
+  .press-key-findings .pub-findings-header-block {
     	background-color: #006f74;
       	color: #fff;
       	padding: 1.25rem 1rem;
     }
-	.pub-findings-block h3.pub-findings-header {
+  .press-key-findings .pub-findings-header-block h3  {
+      color: #fff;
+      font-size: 21px;
+      font-weight: 400;
+      margin: 0 0 0.25rem;
+  }
+  .press-key-findings .pub-findings-header-block h4 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0;
+  }
+.pub-findings-block h3.pub-findings-header {
     	background-color: #283F73;
       	padding: 1rem;
       	font-size: 22px;
