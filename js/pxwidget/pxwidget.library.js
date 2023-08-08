@@ -74,7 +74,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
     }
-
+//test
     $("#" + elementId).empty();
     //set up html elements needed
 
