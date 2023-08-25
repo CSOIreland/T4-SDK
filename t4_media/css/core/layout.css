@@ -3194,6 +3194,7 @@ text-decoration:none;
       -webkit-box-align: stretch;
       -ms-flex-align: stretch;
       align-items: stretch;
+      justify-content: center;
       width: 100%;
     }
 
@@ -3202,6 +3203,8 @@ text-decoration:none;
       display: -ms-flexbox;
       display: flex;
       margin-right: -1px;
+      flex: 2 1 0;
+      justify-content: flex-end;
     }
 
     .widget-toggle-input-group>.widget-toggle-input-group-prepend>.widget-toggle-input-group-text {
@@ -3221,12 +3224,12 @@ text-decoration:none;
       /* font-size: 1.25rem; */
       font-weight: 400;
       line-height: 1.5;
-      color: #3D454C;
+      color: #fff;
       font-weight: bold;
       text-align: center;
       white-space: nowrap;
-      background-color: #fff;
-      border: 1px solid #8697A6;
+      background-color: #35456B;
+      border: none;
       border-radius: 0.3rem;
     }
 
@@ -3245,7 +3248,7 @@ position: relative;
 
 .widget-toggle-wrapper .select2-container {
 width: auto !important;
-    flex: 1 1 auto !important;
+    flex: 3 1 0 !important;
 }
 
 .widget-toggle-wrapper .select2-container .select2-selection--single {
@@ -3268,10 +3271,23 @@ border: 1px solid #8697A6 !important;
 .widget-toggle-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered {
    padding-left: 0px !important;
 }
+
+/* override the library styling to increase the dropdown arrow prominence */
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #5F6A73 transparent transparent transparent !important;
+    border-width: 8px 7px 0 7px !important;
+    margin-left: -9px !important;
+    margin-top: -4px !important;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent #5F6A73 transparent !important;
+  border-width: 0 7px 8px 7px !important;
+}
     
-    .px-stat-widget .table {
+.px-stat-widget .table {
     padding: 10px
-    }
+}
 
 @media all and (max-width: 1023px) {
 	.px-stat-widget .moduleBody {
