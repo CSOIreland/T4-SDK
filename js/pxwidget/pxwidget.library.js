@@ -74,7 +74,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
     }
-    
+
     $("#" + elementId).empty();
     //set up html elements needed
 
@@ -696,5 +696,32 @@ t4Sdk.pxWidget.utility.loadIsogram = function (url) {
             console.log("api-ajax-exception");
         }
     });
+};
+
+t4Sdk.pxWidget.utility.snippetIsPrivate = function (type, snippet) {
+    //get config object from snippet
+    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    var result = false;
+    //if snippet contains a release code instead of a matrix in it's query, it must be from a private query
+    switch (type) {
+        case "chart":
+            if (!$.isEmptyObject(config.metadata.api.query) && config.metadata.api.query.data.params.release) {
+                result = true
+            }
+            break;
+        case "table":
+            if (!$.isEmptyObject(config.data.api.query) && config.data.api.query.data.params.extension.release) {
+                result = true
+            }
+            break;
+        case "map":
+            if (!$.isEmptyObject(config.data.datasets[0].api.query) && config.data.datasets[0].api.query.data.params.extension.release) {
+                result = true
+            }
+            break;
+        default:
+            break;
+    }
+    return result
 };
 //#endregion utilities
