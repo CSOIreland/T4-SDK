@@ -2608,14 +2608,22 @@ margin-bottom: 20px;
     margin: 0;
 }
 .int-pub-header.pub-header-press-statement h2 {
-	color: #1d345c;
+	color: #006168;
+  font-size: 25px;
 }
+
+.int-pub-header.pub-header-press-statement h4 {
+	color: #1d345c;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 .int-pub-header.pub-header-press-statement h3 {
 	color: #283f73;
-  	font-weight: 800;
-  	font-size: 20px;
-  	text-transform: uppercase;
-  	margin-bottom: 0.5rem;
+  	font-weight: 400;
+  	font-size: 22px;
 }
 
 .int-pub-body-block {
@@ -3379,7 +3387,8 @@ line-height: 1.4;
 }
 
 @media (min-width: 1200px) {
-   .px-stat-widget-chart .pxwidget .pxwidget-canvas-wrapper, .px-stat-widget-chart.px-stat-widget-chart-standard .pxwidget .pxwidget-canvas-wrapper {
+   .px-stat-widget-chart .pxwidget .pxwidget-canvas-wrapper,
+   .px-stat-widget-chart.px-stat-widget-chart-standard .pxwidget .pxwidget-canvas-wrapper {
         height: 50vh !important;
     }
   

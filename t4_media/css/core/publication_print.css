@@ -1,0 +1,478 @@
+/* ==== Publication-specific Print Styles ==== */
+
+@page {
+    size: auto;
+    margin: 1cm;
+}
+    
+    
+@media print {
+    
+    /* don't display the header or footer on each chapter */
+    
+    .col {
+        padding: 0 20px;
+    }
+    .header {
+        float:left;
+    }
+    .header .row {
+        padding:0;
+        margin: 0;
+    }
+    .header h1 {
+        margin:0 !important;
+        padding:0;
+    }
+    .header h1 img {
+        height: 40px;
+      	max-height: 40px;
+        width: auto;
+      	max-width: 164px;
+        /*filter: grayscale(100%);*/
+    }
+
+    /* co-brand logo positioning */
+    #headerPrintHook {
+        display:block !important;
+        position: absolute;
+        top:0;
+        right:20px;
+    }
+    #headerPrintHook img {
+        height: 40px !important;
+        width: auto !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer {
+        display:none;
+    }
+    
+    .transcriptCollapse {
+        display: none;
+    }
+    
+    /*make the content column full width*/
+    .columnLeftinner-rightcol {
+        width: 100%;
+        border-right: none;
+    }
+    
+    /* hide the right hand column */
+    .columnRightinner-rightcol {
+        display:none;
+    }
+        
+    /* Add a margin to the bottom of the Chapter title */
+    .pageHeader.row {
+        margin: 0;
+        padding: 0;
+        border-bottom: 4px solid #006168;
+    }
+    .pageHeader .col {
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* remove margin on publication title which is hidden */
+    #chapterTitleWrapper {
+        padding: 0;   
+    }
+    #chapterTitle {
+        font-size:28px;
+        font-weight: 400;
+        color: #006168;
+        text-align: right;
+        margin: 0 0 1rem;
+    }
+    
+    /* Hides the publication title so it is not repeated on every chapter */
+    h1#pageTitle {
+        color: #000;
+        text-align: right;
+        margin:0;
+        padding:0;
+        border: none;
+        max-width: unset;
+    }
+    
+    .pageHeader + .row {
+        padding: 0;
+    }
+    
+    .copy .moduleHeader {
+        padding: 1rem 0;
+        background: none;
+    }
+    
+    /* styles the chapter heading */
+    .copy .moduleHeader h2 {
+        background: none;
+        padding: 0 0 0.75rem;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;     
+        border-bottom: none;
+        position: relative;
+
+    }
+    .copy .moduleHeader h2::after {
+        content : "";
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        height  : 1px;
+        width   : 60px;  
+        border-bottom: 5px solid #006168;
+    }
+    .copy .moduleHeader h2 a {
+        color: #006168;
+    }
+    
+    .copy .moduleHeader h2 {
+        line-height: normal;
+    }
+        
+    /* changes the link colour */
+    .mainContent a {
+        color: #006bb6;
+    }
+
+  /* New format styling */
+
+  .int-pub-header,
+  .int-pub-headline-block {
+      background: none !important;
+      padding: 0;
+      margin: 0;      
+  }
+
+
+
+    .int-pub-header h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        padding: 0 0 0.25rem;
+        margin: 0;
+        border: 0;
+    }
+    .copy .int-pub-header h3 {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0;
+        margin: 0;
+        color: #006168;
+    }
+    .int-pub-headline-block {
+        border-bottom: 3px solid #006168;
+        margin-bottom: 0.25rem;
+        padding-bottom: 0.5rem;
+    }
+    .pub-header-census-results-2022 .int-pub-headline-block {
+        border-bottom-color: #283F73;
+    }
+
+    .pub-header-press-statement h3:first-child {
+        margin-top: 1rem;
+    }
+
+    .int-pub-body-block {
+        font-size: 14px;
+        padding: 0 0 1rem;
+        margin: 1rem 0 0;
+        border-bottom: 1px solid #006168;
+    }  
+    .pub-header-census-results-2022 .int-pub-body-block {
+        border-bottom: none;
+    }    
+
+    .pub-header-data {
+        display:block;
+    }
+
+    .release-key-findings {
+        background: none;
+        padding: 1rem 0 0;
+        margin:  0.75em 0 1rem;
+    }
+    
+    .pub-comment {
+        background: none;
+        padding: 0 0 0.5rem 2rem;
+        margin:  2rem 0;
+        border-left: 0.5rem solid #579599;
+    }
+    .pub-comment.contact-details {
+        border: none;
+    }
+    
+    .release-key-findings h3.pub-findings-header,
+    .pub-comment h3,
+    .pub-comment h3:first-child {
+        background: none;
+        padding: 0 0 0.75rem;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;     
+        border-bottom: none;
+        position: relative;
+    }
+    .release-key-findings h3.pub-findings-header::after,
+    .pub-comment h3::after {
+        content : "";
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        height  : 1px;
+        width   : 60px;  
+        border-bottom: 5px solid #006168;
+    }
+
+    .copy h3,
+    h3.pub-findings-header {
+        font-size: 20px;
+        font-weight: 700;
+        position:relative;
+        padding: 1rem 0 0.75rem;
+        border: none;
+    }
+    h3.pub-findings-header::after {
+        content : "";
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        height  : 1px;
+        width   : 60px;  
+        border-bottom: 3px solid #006168;
+    }
+    
+    .press-key-findings h3.pub-findings-header {
+        color:#283F73;
+        font-size:22px;
+    }
+
+    .advisory-notification {
+        border-left: 10px solid #579599;
+        margin-left: 0;
+        background-color: #fdfdfd !important;
+    }
+    h3.pub-findings-header + .advisory-notification {
+        margin-left: 0;
+    }
+    
+  /* hide audio player */
+    audio { display: none; }
+
+    
+    /* Removes border from open/close tables */
+    .pubOpenCloseTable {
+        border: none;
+    }
+        
+    /* Hides the 'show table' title of an open/close table */
+    .pubOpenCloseTableTitle {
+         display:none; 
+    }
+    
+    .indicatorHeadlineTable {
+        display:block !important;
+    }
+    
+    /* Hides the next chapter button */
+    .next-chapter-btn,
+  	.print-chapter-btn,
+    .section-button {
+        display:none;
+    }
+    
+    table { page-break-inside : avoid }
+    .indicatorHeadlineTable { page-break-inside: avoid;}
+    
+    .copy p,
+    .copy h3,
+    .copy h4,
+    .copy h5 {
+        orphans: 3;
+        widows: 4;
+    }
+
+    /* controls responsive images */
+    .copy img { 
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .module-release-datasets .moduleHeader {
+        background: none;
+        padding: 0 0 0.75rem;
+        margin: 2rem 0 0;
+    
+        border-bottom: none;
+        position: relative;
+    }
+    .module-release-datasets .moduleHeader h2 {
+        font-size: 20px;
+        font-weight: 700;    
+        color: #006168;
+    }
+    .module-release-datasets .moduleHeader h2 a {
+        color: #006168;
+
+    }
+
+
+    
+/* styling Widget tables */
+  
+    .dt-buttons,
+    .dataTables_filter,
+    .dataTables_length,
+    .dataTables_paginate,
+    .px-stat-widget .moduleHeader .fa-plus-circle {
+        display:none;
+    }
+    
+    .px-stat-widget .moduleHeader {
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
+        padding: 0 0 0.75rem;
+        
+    }
+    
+    .px-stat-widget-chart,
+    .px-stat-widget-map,
+    .px-stat-widget-table,
+    .px-stat-widget,
+    .dataTable {
+        page-break-inside: avoid;
+    }
+    
+    .px-stat-widget-chart .px-stat-widget-heading {
+        font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+    
+    .px-stat-widget .moduleHeader {
+        border: none;
+    }
+    .px-stat-widget .moduleBody {
+        display:block !important;
+        border-top: 1px solid #000;
+        border-color: #000;
+    }
+  
+  
+      .px-stat-widget .dataTables_wrapper {
+        overflow: none;
+        width: 100%;
+    }
+    
+    table.dataTable {
+        table-layout: fixed;
+        width: 100%;
+        overflow: none;
+    }
+
+  
+  
+  /* style infobytes v2 */
+    
+    .infoByte_v2 {
+        margin: 2rem 0;
+        border: 1px solid #000;
+        box-shadow: 3px 3px 4px rgb(0 0 0 / 0.4);
+    }
+    .infoBytev2__source {
+        border-top: 1px solid #000;
+    }
+    
+  	.html2image-download-icon {
+    	display:none;
+    }
+  
+  
+  
+    /* ----- OPTIONALS ------*/
+        
+    /* Next Chapter Link
+        hide next chapter plain text link (old format) - uncomment if required  
+    .mainContent #columnLeft .copy p:last-child {
+        display:none;
+    }
+    */
+    
+    /* For Background notes / reference chapters
+        print the full link url after the link text - uncomment if required 
+    .mainContent p a[href^="/"]::after {
+        content: " (https://www.cso.ie" attr(href) ") ";
+    }
+    .mainContent p a[href^="http://"]::after, 
+    .mainContent p a[href^="https://"]::after,
+    .mainContent .OpenInExcel a[href^="http://"]::after,
+    .mainContent .OpenInExcel a[href^="https://"]::after
+    {
+    content: " (" attr(href) ")";
+    }
+    */
+    
+    /* print out URL after external (non-cso.ie, non-relative) links 
+    .mainContent a:not([href^="https://www.cso.ie"]):not([href^="/"]):not([name])::after {
+        content: " ("attr(href)")";
+    }
+    */
+  
+    /* to remove the appearance of links in the text + turn off the appending of link urls above
+    .mainContent p a {
+        text-decoration:none;
+        color: inherit;
+    }
+    */
+    
+    /* append pxstat links after highcharts
+    .highchartText a::after {
+        content: " (" attr(href) ") ";        
+    }
+    /*
+    
+    /* Open Close tables
+        Adds a page break after every table - uncomment where there are many tables in series 
+    .pubOpenCloseTable {
+        page-break-after: always;
+    }
+    */
+        
+    /* Open close tables - short tables 
+        page break after every second table - uncomment as needed. previous option must not be used with this one
+    .pubOpenCloseTable:nth-child(even) {
+        page-break-after: always;
+    }
+    */
+    
+    /*  Hide Highcharts  
+        Uncomment styles below if you want to hide highcharts and highmaps
+    .highchartBox {
+        display:none;
+    }
+    div[id$="mapContainer"] {
+        display:none;
+    }
+    */
+    
+
+    
+        
+    }
+
+
+
+
+
+
+
+
+
