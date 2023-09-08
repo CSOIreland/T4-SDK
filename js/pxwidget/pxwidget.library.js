@@ -620,12 +620,16 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
  * Retreive a sing value vis a data connector api call
  * @param {*} url 
  */
-t4Sdk.dataConnector.ajax.getSingleValue = function (url) {
-    return $.ajax({
+t4Sdk.dataConnector.ajax.getData = function (url, callback) {
+
+    return $.getJSON(url, callback).fail(function () {
+        console.log("error");
+    })
+    /* return $.ajax({
         "url": url,
         "dataType": "json",
         "jsonp": false
-    });
+    }); */
 };
 
 t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
