@@ -6,7 +6,7 @@ t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
-
+t4Sdk.dataConnector = {};
 t4Sdk.dataConnector.ajax = {};
 t4Sdk.dataConnector.callback = {};
 //#endregion Add Namespace
