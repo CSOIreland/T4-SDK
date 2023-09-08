@@ -7,8 +7,6 @@ t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
 t4Sdk.dataConnector = {};
-t4Sdk.dataConnector.ajax = {};
-t4Sdk.dataConnector.callback = {};
 //#endregion Add Namespace
 
 //#region create a chart with toggle variables
@@ -615,47 +613,37 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
 };
 
 //#endregion
-//#region data connector functions
+
+//#region data connector
 /**
- * Retreive a sing value vis a data connector api call
- * @param {*} url 
+ * Process single value from data connector
+ * @param {*} response 
+ * @returns 
  */
-t4Sdk.dataConnector.ajax.getData = function (url, callback) {
-
-    return $.getJSON(url, callback).fail(function () {
-        console.log("error");
-    })
-    /* return $.ajax({
-        "url": url,
-        "dataType": "json",
-        "jsonp": false
-    }); */
-};
-
-t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
+t4Sdk.dataConnector.parseSingleValue = function (response) {
     var returnValue = {
         "time": null,
         "unit": null,
         "value": null
     };
     jsonStat = JSONstat(response)
-    if (jsonStat.length) {
-        //must only contain single value
-        if (jsonStat.value.length != 1) {
-            console.log("Invalid data connector query");
-            return returnValue;
-        }
-        var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
-        returnValue.unit = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
-        var timeCode = jsonStat.Dimension({ role: "time" })[0].id[0];
-        returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
-        var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
-        returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
-        return returnValue;
-    } else {
+    if (!jsonStat.length) {
         console.log("Invalid JSON-stat response");
         return returnValue;
     }
+    //must only contain single value
+    if (jsonStat.value.length != 1) {
+        console.log("Invalid data connector query");
+        return returnValue;
+    }
+    var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
+    returnValue.unit = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
+    var timeCode = jsonStat.Dimension({ role: "time" })[0].id[0];
+    returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
+    var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
+    returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
+    return returnValue;
+
 };
 
 //#endregion
