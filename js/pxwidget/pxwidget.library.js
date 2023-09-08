@@ -7,7 +7,8 @@ t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
 
-t4Sdk.dataConnector = {};
+t4Sdk.dataConnector.ajax = {};
+t4Sdk.dataConnector.callback = {};
 //#endregion Add Namespace
 
 //#region create a chart with toggle variables
@@ -619,13 +620,50 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
  * Retreive a sing value vis a data connector api call
  * @param {*} url 
  */
-t4Sdk.dataConnector.getSingleValue = function (url) {
-    var returnValue = {
+t4Sdk.dataConnector.ajax.getSingleValue = function (url) {
+
+
+
+    return $.ajax({
+        "url": url,
+        "dataType": "json",
+        "jsonp": false
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* var returnValue = {
         "time": null,
         "unit": null,
         "value": null
     };
-    $.getJSON(url, function (data) {
+    return $.getJSON(url, function (data) {
         var response = JSONstat(data);
         if (response.length) {
             //must only contain single value
@@ -647,7 +685,11 @@ t4Sdk.dataConnector.getSingleValue = function (url) {
     }).fail(function () {
         console.log("Failed to retreive data from data connector query");
         return returnValue;
-    });
+    }); */
+};
+
+t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
+
 };
 
 //#endregion
