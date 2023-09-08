@@ -6,6 +6,8 @@ t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
+
+t4Sdk.dataConnector = {};
 //#endregion Add Namespace
 
 //#region create a chart with toggle variables
@@ -612,7 +614,43 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
 };
 
 //#endregion
+//#region data connector functions
+/**
+ * Retreive a sing value vis a data connector api call
+ * @param {*} url 
+ */
+t4Sdk.dataConnector.getSingleValue = function (url) {
+    var returnValue = {
+        "time": null,
+        "unit": null,
+        "value": null
+    };
+    $.getJSON(url, function (data) {
+        var response = JSONstat(data);
+        if (response.length) {
+            //must only contain single value
+            if (response.value.length != 1) {
+                console.log("Invalid data connector query");
+                return returnValue;
+            }
+            var statisticCode = response.Dimension({ role: "metric" })[0].id[0];
+            returnValue.unit = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
+            var timeCode = response.Dimension({ role: "time" })[0].id[0];
+            returnValue.time = response.Dimension(response.role.time[0]).Category(timeCode).label;
+            var statisticDecimal = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
+            returnValue.value = t4Sdk.pxWidget.utility.formatNumber(response.value[0], statisticDecimal);
+            return returnValue;
+        } else {
+            console.log("Invalid JSON-stat response");
+            return returnValue;
+        }
+    }).fail(function () {
+        console.log("Failed to retreive data from data connector query");
+        return returnValue;
+    });
+};
 
+//#endregion
 //#region utility
 /**
  * Format a number
@@ -686,6 +724,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
     };
 
     return $.ajax({
+        // "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
