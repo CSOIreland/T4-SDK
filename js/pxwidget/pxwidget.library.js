@@ -634,18 +634,19 @@ t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
         "unit": null,
         "value": null
     };
-    if (response.length) {
+    jsonStat = JSONstat(response)
+    if (jsonStat.length) {
         //must only contain single value
-        if (response.value.length != 1) {
+        if (jsonStat.value.length != 1) {
             console.log("Invalid data connector query");
             return returnValue;
         }
-        var statisticCode = response.Dimension({ role: "metric" })[0].id[0];
-        returnValue.unit = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
-        var timeCode = response.Dimension({ role: "time" })[0].id[0];
-        returnValue.time = response.Dimension(response.role.time[0]).Category(timeCode).label;
-        var statisticDecimal = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
-        returnValue.value = t4Sdk.pxWidget.utility.formatNumber(response.value[0], statisticDecimal);
+        var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
+        returnValue.unit = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
+        var timeCode = jsonStat.Dimension({ role: "time" })[0].id[0];
+        returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
+        var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
+        returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
         return returnValue;
     } else {
         console.log("Invalid JSON-stat response");
