@@ -621,75 +621,36 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
  * @param {*} url 
  */
 t4Sdk.dataConnector.ajax.getSingleValue = function (url) {
-
-
-
     return $.ajax({
         "url": url,
         "dataType": "json",
         "jsonp": false
     });
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* var returnValue = {
+t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
+    var returnValue = {
         "time": null,
         "unit": null,
         "value": null
     };
-    return $.getJSON(url, function (data) {
-        var response = JSONstat(data);
-        if (response.length) {
-            //must only contain single value
-            if (response.value.length != 1) {
-                console.log("Invalid data connector query");
-                return returnValue;
-            }
-            var statisticCode = response.Dimension({ role: "metric" })[0].id[0];
-            returnValue.unit = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
-            var timeCode = response.Dimension({ role: "time" })[0].id[0];
-            returnValue.time = response.Dimension(response.role.time[0]).Category(timeCode).label;
-            var statisticDecimal = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
-            returnValue.value = t4Sdk.pxWidget.utility.formatNumber(response.value[0], statisticDecimal);
-            return returnValue;
-        } else {
-            console.log("Invalid JSON-stat response");
+    if (response.length) {
+        //must only contain single value
+        if (response.value.length != 1) {
+            console.log("Invalid data connector query");
             return returnValue;
         }
-    }).fail(function () {
-        console.log("Failed to retreive data from data connector query");
+        var statisticCode = response.Dimension({ role: "metric" })[0].id[0];
+        returnValue.unit = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
+        var timeCode = response.Dimension({ role: "time" })[0].id[0];
+        returnValue.time = response.Dimension(response.role.time[0]).Category(timeCode).label;
+        var statisticDecimal = response.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
+        returnValue.value = t4Sdk.pxWidget.utility.formatNumber(response.value[0], statisticDecimal);
         return returnValue;
-    }); */
-};
-
-t4Sdk.dataConnector.callback.parseSingleValue = function (response) {
-
+    } else {
+        console.log("Invalid JSON-stat response");
+        return returnValue;
+    }
 };
 
 //#endregion
