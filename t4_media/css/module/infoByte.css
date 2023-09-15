@@ -721,3 +721,259 @@
 .prices-item-change.same .price-item-text {
     font-size: 20px;
 }
+
+/* ==================
+
+==== Dashboard Indicators ====
+
+===================== */
+
+   .dashboard-grid-container {
+      background-color: #F2F7Fa;
+      padding: 0.25rem 0.5rem;
+      margin-bottom: 1rem;
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #283F73;
+   }
+   @media print {
+      .dashboard-grid-container {
+        max-width: auto;
+        page-break-inside: avoid;
+      }
+   }
+
+   .dashboard-grid-container h3 {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    size: 20px;
+    color: #4463AA;
+    margin-bottom: 0;
+    padding-left: 1rem;
+}
+
+.dashboard-grid-container h4 {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #286B73;
+    margin-top: 0;
+    padding-left: 1rem;
+}
+
+.dashboard-grid-container h6 {
+    font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: none;
+    color: #4463AA;
+    margin: 0.5rem 0 0;
+    padding-left: 1rem;
+}
+
+.dashboard-grid-container footer {
+    font-size: 15px;
+    font-style: italic;
+    margin: 0.5rem 0 0;
+    padding-left: 1rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-gap: 1em;
+    padding: 1em 1em 1em;
+    grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 567px) {
+   .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+   .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 992px) {
+   .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media print {
+   .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+   .dashboard-item header {
+      background: #5A6AB0;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      padding: 0.75rem 0.25rem;
+   }
+   .dashboard-item header h4 {
+      font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #fff;
+      margin: 0;
+   }
+
+   .dashboard-item-body {
+      background: #fff;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      padding: 0.25rem;
+   }
+   .dashboard-item-indicator {
+      text-align: right;
+      margin-bottom: 0.25rem;
+      padding: 0.5rem 0.25rem 0.25rem;
+   }
+   .dashboard-indicator-figure {
+      font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+      font-size: 36px;
+      font-weight: bold;
+   }
+   .dashboard-indicator-period {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+   }
+
+   .dashboard-item-chart {
+      padding: 0.25rem;
+   }
+  .dashboard-item-chart .pxwidget p:last-child {
+  	display:none;
+  }
+
+ /* Extra small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap
+ */
+ /* Small devices (landscape phones, 576px and up) */
+ @media (min-width: 576px) { 
+   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+        height: 40vh
+    }
+ }
+
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+        height: 70vh
+    }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+        height: 32vh
+    }
+ }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+        height: 32vh
+    }
+ }
+
+
+/* =============
+
+SOLO GRID
+Add a grid around other elements
+
+    ============= */
+
+    .solo-grid {
+        display: grid;
+        grid-gap: 1em;
+        padding: 1em 1em 1em;
+        grid-template-columns: 1fr;
+    }
+    
+/* .solo-grid-2up = 2 cols at desktop */
+
+    @media screen and (min-width: 567px) {
+        .solo-grid.solo-grid-2up {
+             grid-template-columns: repeat(1, 1fr);
+         }
+     }
+     
+     @media screen and (min-width: 768px) {
+        .solo-grid.solo-grid-2up {
+             grid-template-columns: repeat(1, 1fr);
+         }
+     }
+     
+     @media screen and (min-width: 992px) {
+        .solo-grid.solo-grid-2up {
+             grid-template-columns: repeat(2, 1fr);
+         }
+     }
+     
+     @media print {
+        .solo-grid.solo-grid-2up {
+             grid-template-columns: repeat(2, 1fr);
+         }
+     }
+ 
+  
+/* .solo-grid-3up = 3 cols at desktop */
+
+@media screen and (min-width: 567px) {
+    .solo-grid.solo-grid-3up {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
+ 
+ @media screen and (min-width: 768px) {
+    .solo-grid.solo-grid-3up {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
+ 
+ @media screen and (min-width: 992px) {
+    .solo-grid.solo-grid-3up {
+         grid-template-columns: repeat(3, 1fr);
+     }
+ }
+ 
+ @media print {
+    .solo-grid.solo-grid-3up {
+         grid-template-columns: repeat(3, 1fr);
+     }
+ }
+
+/* .solo-grid-4up = 4 cols at desktop */
+
+@media screen and (min-width: 567px) {
+    .solo-grid.solo-grid-4up {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
+ 
+ @media screen and (min-width: 768px) {
+    .solo-grid.solo-grid-4up {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
+ 
+ @media screen and (min-width: 992px) {
+    .solo-grid.solo-grid-4up {
+         grid-template-columns: repeat(4, 1fr);
+     }
+ }
+ 
+ @media print {
+    .solo-grid.solo-grid-4up {
+         grid-template-columns: repeat(4, 1fr);
+     }
+ }
+
