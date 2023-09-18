@@ -1407,12 +1407,10 @@ form.general input[type="submit"] {
 }
 
 .copy h5 {
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 700;
 	margin: 10px 0 10px;
 	color: #07101a;
-	text-transform: uppercase;
-	letter-spacing: 1px;
 }
 
 .copy h6 {
@@ -2350,8 +2348,11 @@ margin-bottom: 20px;
         font-weight: 400;
       	margin-top: 1.5rem;
     }
-	h3.pub-findings-header.heading--mint {
+    h3.pub-findings-header.heading--mint {
     	background-color: #daf2e9;
+    }
+    h3.pub-findings-header.heading--purple  {
+    	background-color: #dae0f2;
     }
 	.release-key-findings > h3.pub-findings-header,
     .press-key-findings > .pub-findings-header-block {
