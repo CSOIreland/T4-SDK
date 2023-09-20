@@ -839,18 +839,22 @@
       font-size: 36px;
       font-weight: bold;
    }
-   .dashboard-indicator-period {
-      font-size: 14px;
-      font-weight: bold;
-      text-transform: uppercase;
-   }
+   .dashboard-indicator-descriptor {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+ }
 
-   .dashboard-item-chart {
+ .dashboard-indicator-period {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+ }
+
+.dashboard-item-chart {
       padding: 0.25rem;
    }
-  .dashboard-item-chart .pxwidget p:last-child {
-  	display:none;
-  }
+
 
  /* Extra small devices (portrait phones, less than 576px)
  No media query for `xs` since this is the default in Bootstrap
