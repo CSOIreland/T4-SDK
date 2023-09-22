@@ -708,6 +708,9 @@
     font-weight: 700;
     padding: 0.25rem;
 }
+.price-change-indicator.price-change-lowercase {
+    text-transform: none;
+}
 
 .price-item-text {
     text-align: right;
@@ -716,6 +719,9 @@
     font-weight: 700;
     font-size: 28px;
     padding: 0.25rem;
+}
+.price-item-text.price-item-thousands {
+    font-size: 24px;
 }
 
 .prices-item-change.same .price-item-text {
