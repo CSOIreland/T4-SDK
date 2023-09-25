@@ -140,7 +140,7 @@ t4Sdk.html2image.fnContextMenu = function (iDiv, el, icon) {
     list.style.background = "white";
     list.style.display = "none";
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.jpg);
-    cnt++;
+    //cnt++;
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.png);
     t4Sdk.html2image.addListItem(list, t4Sdk.html2image.svg);
     var rct = iDiv.getBoundingClientRect();
