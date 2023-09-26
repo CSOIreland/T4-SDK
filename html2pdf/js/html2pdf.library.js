@@ -84,7 +84,8 @@ t4Sdk.html2pdf.callApiRead = function (input, callback = t4Sdk.html2pdf.callApiR
 t4Sdk.html2pdf.fnExportPDF = function (inp) {
     var toSend = {
         "urls": inp,
-        "htmlIdForMasterHeader": "pageHeaderRowID",
+        "htmlIdForMasterHeader":"pageHeaderRow",
+        "htmlIdsToCut":["pageHeaderRow"],
         "chromeCommandLineOptions": [
             "headless",
             "disable-gpu",
