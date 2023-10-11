@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "build": "rollup -c",
+    "build-prod": "rollup -c --env prod",
+    "dev": "rollup -c -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-eslint": "^9.0.4",
+    "@rollup/plugin-html": "^1.0.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.50.0",
+    "onchange": "^7.1.0",
+    "rollup": "^3.29.4",
+    "rollup-plugin-auto-reload": "^1.0.2",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dev": "^2.0.4",
+    "rollup-plugin-dotenv": "^0.5.0",
+    "rollup-plugin-scss": "^4.0.0",
+    "sass": "^1.68.0",
+    "tslib": "^2.6.2"
+  },
+  "dependencies": {
+    "orgchart.js": "^0.0.4"
+  }
+}
