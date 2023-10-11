@@ -1,4 +1,3 @@
-
 //#region Add Namespace
 var t4Sdk = t4Sdk || {};
 t4Sdk.html2image = t4Sdk.html2image || {};
@@ -17,26 +16,26 @@ t4Sdk.html2image.svg = "Download SVG";
 
 
 //Executes export to image on user click
-t4Sdk.html2image.download = function (e) {
-    var list = e.target.parentElement;
-    if (list.div2export) {
-        e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
-        t4Sdk.html2image.active_mode = false;
-        list.div2export.style.margin = "0";
-        list.div2export.style.padding = "0";
-        t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
+t4Sdk.html2image.download = function(e) {
+        var list = e.target.parentElement;
+        if (list.div2export) {
+            e.target.parentElement.icon.className = "fa fa-solid fa-spinner fa-pulse";
+            t4Sdk.html2image.active_mode = false;
+            list.div2export.style.margin = "0";
+            list.div2export.style.padding = "0";
+            t4Sdk.html2image.fnExport(list.div2export, e.target.innerHTML, e.target.parentElement.icon);
 
-    } else if (t4Sdk.html2image.active_mode)
-        alert("No Element with class:dashboard-snapshot to export as Image!");
-}
-//Creates image from html
-t4Sdk.html2image.fnExport = function (tgt, type, icon) {
+        } else if (t4Sdk.html2image.active_mode)
+            alert("No Element with class:dashboard-snapshot to export as Image!");
+    }
+    //Creates image from html
+t4Sdk.html2image.fnExport = function(tgt, type, icon) {
     tgt.style.backgroundColor = "white";
     var opt = { "bgcolor": tgt.style.backgroundColor };
     switch (type) {
         case t4Sdk.html2image.png:
             domtoimage.toPng(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     const link = document.createElement('a');
                     link.href = dataUrl;
                     t4Sdk.html2image.file_index += 1;
@@ -49,13 +48,13 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     tgt.style.margin = null;
                     tgt.style.padding = null;
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
         case t4Sdk.html2image.svg:
             domtoimage.toSvg(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     const link = document.createElement('a');
                     link.href = dataUrl;
                     t4Sdk.html2image.file_index += 1;
@@ -68,14 +67,14 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     tgt.style.margin = null;
                     tgt.style.padding = null;
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
         case t4Sdk.html2image.jpg:
 
             domtoimage.toJpeg(tgt, opt)
-                .then(function (dataUrl) {
+                .then(function(dataUrl) {
                     const link = document.createElement('a');
                     link.href = dataUrl;
                     t4Sdk.html2image.file_index += 1;
@@ -88,7 +87,7 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
                     tgt.style.margin = null;
                     tgt.style.padding = null;
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.error('oops, something went wrong!', error);
                 });
             break;
@@ -96,64 +95,77 @@ t4Sdk.html2image.fnExport = function (tgt, type, icon) {
 };
 //Converts Base64 to Blob- much slower
 t4Sdk.html2image.b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
-    const byteCharacters = window.atob(b64Data);
-    const byteArrays = [];
-    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        const slice = byteCharacters.slice(offset, offset + sliceSize);
-        const byteNumbers = new Array(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
+        const byteCharacters = window.atob(b64Data);
+        const byteArrays = [];
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
         }
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
+        const blob = new Blob(byteArrays, { type: contentType });
+        return blob;
     }
-    const blob = new Blob(byteArrays, { type: contentType });
-    return blob;
-}
-//Converts Base64 to Blob- much faster
-t4Sdk.html2image.dataURItoBlob = function (dataURI) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        int8Array[i] = byteString.charCodeAt(i);
+    //Converts Base64 to Blob- much faster
+t4Sdk.html2image.dataURItoBlob = function(dataURI) {
+        const byteString = window.atob(dataURI);
+        const arrayBuffer = new ArrayBuffer(byteString.length);
+        const int8Array = new Uint8Array(arrayBuffer);
+        for (let i = 0; i < byteString.length; i++) {
+            int8Array[i] = byteString.charCodeAt(i);
+        }
+        const blob = new Blob([int8Array], { type: 'application/pdf' });
+        return blob;
     }
-    const blob = new Blob([int8Array], { type: 'application/pdf' });
-    return blob;
-}
-//Enumerates elements marked for export as images
-t4Sdk.html2image.addListItem = function (div, item_text) {
-    var span = document.createElement("div");
-    span.innerHTML = item_text;
-    span.className = "custom_dd";
-    span.addEventListener("click", t4Sdk.html2image.download);
-    div.appendChild(span);
-}
-//shows context menu
-t4Sdk.html2image.fnContextMenu = function (iDiv, el, icon) {
-    var list = document.createElement("div");
-    list.div2export = el;
-    list.icon = icon;
-    list.style.position = "absolute";
-    list.className = "custom_list";
-    list.style.width = "130px";
-    list.style.background = "white";
-    list.style.display = "none";
-    t4Sdk.html2image.addListItem(list, t4Sdk.html2image.jpg);
-    cnt++;
-    t4Sdk.html2image.addListItem(list, t4Sdk.html2image.png);
-    t4Sdk.html2image.addListItem(list, t4Sdk.html2image.svg);
-    var rct = iDiv.getBoundingClientRect();
-    var lsty = T4SDK_HTML2IMAGE_FIX_Y_POSITION_PX + rct.y + rct.height + window.scrollY;
-    var lstx = rct.x + rct.width - T4SDK_HTML2IMAGE_FIX_X_POSITION_PX;
-    list.style.left = lstx + "px";
-    list.style.top = lsty + "px";
-    iDiv.exportList = list;
-    iDiv.addEventListener("click", t4Sdk.html2image.showContextMenu);;
-    document.body.appendChild(list);
-}
-//enumerates elements which needs to be converted
-t4Sdk.html2image.enumSaveAsImage = function (e) {
+    //Enumerates elements marked for export as images
+t4Sdk.html2image.addListItem = function(div, item_text) {
+        var span = document.createElement("div");
+        span.innerHTML = item_text;
+        span.className = "custom_dd";
+        span.addEventListener("click", t4Sdk.html2image.download);
+        div.appendChild(span);
+    }
+    //missed in refactoring 22/5/2023
+t4Sdk.html2image.showContextMenu = function(e) {
+        var tgt = e.target.parentElement;
+        var lst = tgt.exportList;
+        if (t4Sdk.html2image.openedList && lst != t4Sdk.html2image.openedList) {
+            t4Sdk.html2image.openedList.style.display = "none";
+        }
+        t4Sdk.html2image.openedList = lst;
+        if (lst.style.display == "none")
+            lst.style.display = "block";
+        else
+            lst.style.display = "none";
+    }
+    //shows context menu
+t4Sdk.html2image.fnContextMenu = function(iDiv, el, icon) {
+        var list = document.createElement("div");
+        list.div2export = el;
+        list.icon = icon;
+        list.style.position = "absolute";
+        list.className = "custom_list";
+        list.style.width = "130px";
+        list.style.background = "white";
+        list.style.display = "none";
+        t4Sdk.html2image.addListItem(list, t4Sdk.html2image.jpg);
+        //cnt++;
+        t4Sdk.html2image.addListItem(list, t4Sdk.html2image.png);
+        t4Sdk.html2image.addListItem(list, t4Sdk.html2image.svg);
+        var rct = iDiv.getBoundingClientRect();
+        var lsty = T4SDK_HTML2IMAGE_FIX_Y_POSITION_PX + rct.y + rct.height + window.scrollY;
+        var lstx = rct.x + rct.width - T4SDK_HTML2IMAGE_FIX_X_POSITION_PX;
+        list.style.left = lstx + "px";
+        list.style.top = lsty + "px";
+        iDiv.exportList = list;
+        iDiv.addEventListener("click", t4Sdk.html2image.showContextMenu);;
+        document.body.appendChild(list);
+    }
+    //enumerates elements which needs to be converted
+t4Sdk.html2image.enumSaveAsImage = function(e) {
     var children = document.getElementsByClassName("html2image_container");
     for (var i = 0; i < children.length; i++) {
         var el = children[i];
@@ -163,8 +175,7 @@ t4Sdk.html2image.enumSaveAsImage = function (e) {
 
         if (el.children.length == 1) {
             ex_el = el.children[0];
-        }
-        else {
+        } else {
             alert("The object number:" + (i + 1) + ", must have only one child!");
             throw new Error("The object must have only one child!");
         }

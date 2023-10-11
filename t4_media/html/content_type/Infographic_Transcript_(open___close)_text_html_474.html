@@ -2,13 +2,21 @@
 
 <div class="transcriptCollapse" >
   <div class="transcriptTitleBar" id="<t4 type="meta" meta="content_id" />_description">
+<<<<<<< HEAD
     <span class="fa fa-chevron-right"></span>  <span id="#<t4 type="meta" meta="content_id" />_openClose">View Infographic Transcript</span>
+=======
+    <span id="#<t4 type="meta" meta="content_id" />_openClose"><i name="open-close-icon" class="fa fa-plus-circle" aria-hidden="true"></i></span> View Transcript
+>>>>>>> T4-asset
   </div>
 
 <div style="clear: both"></div>
 
 	<div class="transcriptBody" id="<t4 type="meta" meta="content_id" />_text" style="display: none">
+<<<<<<< HEAD
     	<h5><t4 type="content" name="Infographic Title" output="normal" modifiers=""  /></h5>
+=======
+    	<h5><t4 type="content" name="Content Title" output="normal" modifiers=""  /></h5>
+>>>>>>> T4-asset
 		<t4 type="content" name="Transcript Content" output="normal" modifiers="medialibrary,nav_sections" />
 	</div>
   </div>
@@ -20,10 +28,27 @@
   //$(document).ready(function(){
   
 $("#<t4 type="meta" meta="content_id" />_description").click(function(){
+<<<<<<< HEAD
     $("#<t4 type="meta" meta="content_id" />_text").slideToggle(1000);  
    
   });
   
+=======
+    $("#<t4 type="meta" meta="content_id" />_text").slideToggle(1000, function() {
+
+      if($("#<t4 type="meta" meta="content_id" />_text").is(":visible")) {
+        $("#<t4 type="meta" meta="content_id" />_description").find("[name=open-close-icon]").removeClass().addClass("fa fa-minus-circle")
+      }
+      else {
+      $("#<t4 type="meta" meta="content_id" />_description").find("[name=open-close-icon]").removeClass().addClass("fa fa-plus-circle")
+      }
+    });
+    
+});  
+  
+
+
+>>>>>>> T4-asset
   //});
   
 </script>
