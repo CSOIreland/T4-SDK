@@ -6,6 +6,7 @@ t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.map = {};
 t4Sdk.pxWidget.latestValue = {};
 t4Sdk.pxWidget.utility = {};
+t4Sdk.dataConnector = {};
 //#endregion Add Namespace
 
 //#region create a chart with toggle variables
@@ -35,6 +36,46 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+
+    //check that config doesn't contain a response, must be query
+    var queryIsInvalid = false;
+    switch (type) {
+        case "chart":
+            if (!$.isEmptyObject(config.metadata.api.response)) {
+                queryIsInvalid = true;
+            }
+            break;
+        case "table":
+            if (!$.isEmptyObject(config.data.api.response)) {
+                queryIsInvalid = true;
+            }
+            break;
+        case "map":
+            if (!$.isEmptyObject(config.data.api.response)) {
+                queryIsInvalid = true;
+            }
+            break;
+        default:
+            break;
+    }
+
+    if (queryIsInvalid) {
+        //invalid query, load isogram now to access error function
+        t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Toggle widget must contain a query, not a response.");
+
+        //abort drawing of toggle widget
+        return;
+    }
+
+    //check if type is table and that toggle dimension is not the same as pivot dimension
+    if (type == "table") {
+        if (config.pivot == toggleDimension) {
+            t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Pivot dimesnion and toggle dimensoin cannot be the same");
+
+            //abort drawing of toggle widget
+            return;
+        }
+    }
 
     //check config to see if it's from a live snippet code
     //if matrix at root level is null, it must be live
@@ -573,6 +614,38 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
 
 //#endregion
 
+//#region data connector
+/**
+ * Process single value from data connector
+ * @param {*} response 
+ * @returns 
+ */
+t4Sdk.dataConnector.parseSingleValue = function (response) {
+    var returnValue = {
+        "time": null,
+        "unit": null,
+        "value": null
+    };
+    jsonStat = JSONstat(response);
+    if (!jsonStat.length) {
+        console.log("Invalid JSON-stat response");
+        return returnValue;
+    }
+    //must only contain single value
+    if (jsonStat.value.length != 1) {
+        console.log("Invalid data connector single value query");
+        return returnValue;
+    }
+    var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
+    returnValue.unit = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.label;
+    var timeCode = jsonStat.Dimension({ role: "time" })[0].id[0];
+    returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
+    var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
+    returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
+    return returnValue;
+};
+
+//#endregion
 //#region utility
 /**
  * Format a number
@@ -646,6 +719,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
     };
 
     return $.ajax({
+        // "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
@@ -695,6 +769,51 @@ t4Sdk.pxWidget.utility.loadIsogram = function (url) {
         "error": function (jqXHR, textStatus, errorThrown) {
             console.log("api-ajax-exception");
         }
+    });
+};
+/**
+ * Check that snippet code used in a non toggle content type doesn't contain a private end point
+ * @param {*} type 
+ * @param {*} snippet 
+ * @returns 
+ */
+t4Sdk.pxWidget.utility.isSnippetPrivate = function (type, snippet) {
+    //get config object from snippet
+    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    var result = false;
+    //if snippet contains a release code instead of a matrix in it's query, it must be from a private query
+    switch (type) {
+        case "chart":
+            if (!$.isEmptyObject(config.metadata.api.query) && config.metadata.api.query.data.params.release) {
+                result = true
+            }
+            break;
+        case "table":
+            if (!$.isEmptyObject(config.data.api.query) && config.data.api.query.data.params.extension.release) {
+                result = true
+            }
+            break;
+        case "map":
+            if (!$.isEmptyObject(config.data.datasets[0].api.query) && config.data.datasets[0].api.query.data.params.extension.release) {
+                result = true
+            }
+            break;
+        default:
+            break;
+    }
+    return result
+};
+
+/**
+ * Draw custom widget error with custom error logged in console 
+ * @param {*} isogramUrl 
+ * @param {*} elementId 
+ * @param {*} consoleMessage 
+ */
+t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessage) {
+    $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+        pxWidget.draw.error(elementId, 'Invalid widget');
+        console.log(consoleMessage);
     });
 };
 //#endregion utilities
