@@ -29,7 +29,8 @@
     #breadcrumbs,
     #downloadPDF,
     .columnRightinner-rightcol,
-    .footer {
+    .footer,
+    .section-button {
         display: none;
     }
 
@@ -81,14 +82,16 @@
         text-transform: none;
         font-size: 18px;
     }
-
+    .press-key-findings h3.pub-findings-header {
+        color: #384350;
+    }
     .editorsNote h5,
     .contactDetails h5 {
         text-transform: none;
         font-size: 18px;
     }
 
-    . .editorsNote,
+    .editorsNote,
     .contactDetails {
         margin-top: 40px;
     }
@@ -97,7 +100,6 @@
         text-align: center;
         font-weight: bold;
     }
-
 
     .row {
         margin-top: 0px;
