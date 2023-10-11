@@ -1,5 +1,4 @@
 export function looseParseFromString(str: string) {
-    console.log("Loose parse", str);
     const parser = new DOMParser();
     str = str.replace(/ \/>/g, '>').replace(/(<(area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr).*?>)/g, '$1</$2>');
     const xdom = parser.parseFromString('<xml>'+str+'</xml>', 'text/xml');
