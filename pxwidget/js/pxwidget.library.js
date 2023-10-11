@@ -51,7 +51,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             }
             break;
         case "map":
-            if (!$.isEmptyObject(config.data.api.response)) {
+            if (!$.isEmptyObject(config.data.datasets[0].api.response)) {
                 queryIsInvalid = true;
             }
             break;
