@@ -99,6 +99,7 @@ t4Sdk.html2pdf.fnExportPDF = function (inp) {
         },
         "returnType": "base64String"
     };
+
     var url = "https://pdf.cso.ie/api.jsonrpc";
     var inp2 = { "jsonrpc": "2.0", "method": T4SDK_HTML2PDF_PDF_SERVICE_METHOD_NAME, "params": toSend };
     t4Sdk.html2pdf.callApiRead(inp2, t4Sdk.html2pdf.callApiReadCallback, url);
