@@ -626,14 +626,14 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
         "unit": null,
         "value": null
     };
-    jsonStat = JSONstat(response)
+    jsonStat = JSONstat(response);
     if (!jsonStat.length) {
         console.log("Invalid JSON-stat response");
         return returnValue;
     }
     //must only contain single value
     if (jsonStat.value.length != 1) {
-        console.log("Invalid data connector query");
+        console.log("Invalid data connector single value query");
         return returnValue;
     }
     var statisticCode = jsonStat.Dimension({ role: "metric" })[0].id[0];
@@ -643,7 +643,6 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
     var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
     returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
     return returnValue;
-
 };
 
 //#endregion
