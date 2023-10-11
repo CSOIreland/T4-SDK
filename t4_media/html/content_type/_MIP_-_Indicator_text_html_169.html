@@ -1,0 +1,122 @@
+<t4 type="meta" meta="html_anchor" />
+<div class="indicator" id="indicator<t4 type="meta" meta="content_id" />">
+<!--start table-->
+  <div class="indicatorHeading"><h2><t4 type="content" name="Indicator Name" output="normal" modifiers=""  /></h2></div>
+  <div style="clear: both"></div>
+<div class="ERtable">
+<t4 type="exceltohtml" name="Insert Excel Table" />
+
+</div>
+<!--end table-->
+<!--start text-->
+<div class="IndicatorText">
+  
+  <div class="icons">
+
+  <!--start graph-->
+  <div id="graphDiv<t4 type="meta" meta="content_id" />" class="graphDiv">
+    
+    
+    
+    
+    <a id="<t4 type="meta" meta="content_id" />graphLink" href="<t4 type="content" name="Insert Graph" output="normal" formatter="path/*" modifiers=""  />" class="highslide" onclick="return hs.expand(this)">
+	<img src="<t4 type="media" id="55364" formatter="path/*"/>" alt="Graph"  title="Show Graph"></a>
+      
+      <div class="highslide-caption">
+    <t4 type="content" name="Graph description"output="normal" modifiers=""  />
+        <div style="clear: both; margin-bottom: 5px"></div>
+        <div style="float: right; color: #383838 ; font-weight:bold;">
+        <a href="#" onclick="return hs.close(this)">Close</a>
+        </div>
+</div>
+    
+      </div>
+
+<!--end graph-->
+
+
+
+
+
+ <!--start map-->
+  <div id="mapDiv<t4 type="meta" meta="content_id" />" class="mapDiv">
+    
+    
+    
+    <a id="<t4 type="meta" meta="content_id" />mapLink" href="<t4 type="content" name="Insert Map" output="normal" formatter="path/*" modifiers=""  />" class="highslide" onclick="return hs.expand(this)">
+	<img src="<t4 type="media" id="55380" formatter="path/*"/>" alt="Map"  title="Show Map"></a>
+      
+      <div class="highslide-caption">
+    <t4 type="content" name="Map description"output="normal" modifiers=""  />
+        <div style="clear: both; margin-bottom: 5px"></div>
+        <div style="float: right; color: #383838 ; font-weight:bold;">
+        <a href="#" onclick="return hs.close(this)">Close</a>
+        </div>
+</div>
+    
+    </div>
+  
+<!--end map-->
+    
+    
+    <div class="OpenInExcel"><a href="<t4 type="content" name="Insert Excel Table" output="normal" modifiers="" formatter="path/*"  />" target="_blank"><img src="<t4 type="media" id="55372" formatter="path/*"/>" alt="Excel"  title="Open table in Excel" width="45px" height="45px"></a> </div>
+
+    
+<div class="printIndicator">
+
+  <a href="" onclick="printSelection(document.getElementById('indicator<t4 type="meta" meta="content_id" />'), '<t4 type="meta" meta="content_id" />graphLink', '<t4 type="meta" meta="content_id" />mapLink');return false"><img src="<t4 type="media" id="55384" formatter="path/*"/>" alt="Print"  title="Print this indicator" width="45px" height="45px"></a>
+</div>
+
+
+</div>
+  <t4 type="content" name="Text" output="normal" modifiers=""  />
+</div>
+<div style="clear: both"></div>
+<!--end text-->
+
+
+
+
+    </div>
+
+<script>
+  
+  //hide empty graphs 
+ $().ready(function () {
+
+     $('#<t4 type="meta" meta="content_id" />graphLink').each(function () {
+  
+         var href = $(this).attr("href");
+  
+         if (href.length == 0) { 
+  $(this).attr('href','http://null');
+  
+  $("#graphDiv<t4 type="meta" meta="content_id" />").hide();
+         } 
+     });
+
+  
+ });
+  
+  
+  
+  
+   //hide empty maps
+ $().ready(function () {
+
+     $('#<t4 type="meta" meta="content_id" />mapLink').each(function () {
+  
+         var href = $(this).attr("href");
+  
+         if (href.length == 0) { 
+  $(this).attr('href','http://null');
+  
+  $("#mapDiv<t4 type="meta" meta="content_id" />").hide();
+         } 
+     });
+
+  
+ });
+  
+</script>
+

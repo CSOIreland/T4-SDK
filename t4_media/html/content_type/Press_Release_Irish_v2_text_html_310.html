@@ -1,0 +1,53 @@
+
+<t4 type="content" name="Press Release / Information Notice" output="normal" modifiers=""  />
+
+<p class="pressReleaseDate"><t4 date_format="dd MMMM yyyy" type="content" name="Release Date" output="normal" modifiers="" locale="ga"  /></p>
+<div class="pressReleaseTitle">
+   <h1><t4 type="content" name="Title" output="normal" modifiers=""  /></h1>
+</div>
+
+
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet points heading" format="<div class=&quot;pressReleaseBulletPoints&quot;><h5>$value</h5><ul>"/>
+
+
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 1" format="<li>$value</li>"/>
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 2" format="<li>$value</li>"/>
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 3" format="<li>$value</li>"/>
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 4" format="<li>$value</li>"/>
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 5" format="<li>$value</li>"/>
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet point 6" format="<li>$value</li>"/>
+
+
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Bullet points heading" format="</ul></div>"/>
+
+<t4 type="content" output="selective-output" process-format="true" modifiers="" name="Link to release" format="<p>Breathnaigh ar an eisiúint: $value</p>"/>
+
+<t4 type="content" name="General text 1" output="normal" modifiers="medialibrary, nav_sections"  />
+
+
+<t4 type="exceltohtml" name="Press release Table 1" />
+
+<t4 type="content" name="General text 2" output="normal" modifiers="medialibrary, nav_sections"  />
+
+
+<t4 type="exceltohtml" name="Press release Table 2" />
+
+
+  
+  
+<t4 type="content" output="selective-output" process-format="true" modifiers="medialibrary, nav_sections" name="Editors Note" format="<div class=&quot;editorsNote&quot;><h5>Nótaí d'Eagarthóirí:</h5> $value</div>"/>
+
+<div class="contactDetails">
+
+<h5>I gcomhair tuilleadh eolais, déan teagmháil le:</h5>
+
+  <p><t4 type="content" name="Contact person 1 name" output="normal" modifiers=""  /> <t4 type="content" name="Contact person 1 location" output="normal" modifiers=""  /> <t4 type="content" name="Contact person 1 ext" output="normal" modifiers=""  />
+  
+ <t4 type="content" output="selective-output" process-format="true" modifiers="medialibrary, nav_sections" name="Contact person 2 name" format=" nó $value <t4 type=&quot;content&quot; name=&quot;Contact person 2 location&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /> <t4 type=&quot;content&quot; name=&quot;Contact person 2 ext&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />"/>
+  
+  </p>
+  
+  <t4 type="content" output="selective-output" process-format="true" modifiers="encode_emails" name="Contact email" format="<p>nó seol ríomhphost chuig <a href=&quot;mailto:$value&quot;>$value</a></p>"/>
+  
+  
+  </div>

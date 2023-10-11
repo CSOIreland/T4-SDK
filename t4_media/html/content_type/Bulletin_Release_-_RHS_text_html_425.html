@@ -1,0 +1,102 @@
+</div> <!--closes br_lhs column -->
+<div class="br_rhs"> <!-- open sidebar column -->
+
+<div id="RHStoggle">
+<div class="bulletin-release-rhs">
+
+  <div class="br-rhs-column-related">
+
+      <div class="br-column-header">
+          <h4>Related Content</h4>
+      </div>
+
+      <div id="topRelatedContent">
+        <ul>
+          <t4 type="content" name="Infograpic" output="selective-output" format="<li class=&quot;rhs-infographic&quot;>$value</li>" />
+          
+          
+          <t4 type="content" name="Press Release Link" output="selective-output" modifiers="nav_sections" process-format="true" format="<li>$value</li>" />
+        </ul>
+      </div>
+
+
+      <div id="relatedDataTables">
+        <h5>PxStat  tables</h5>
+        <ul>
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="PxStat Link 1" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 1&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="StatBank Link 2" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 2&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="PxStat Link 3" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 3&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="PxStat Link 4" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 4&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="PxStat Link 5" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 5&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="PxStat Link 6" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;PxStat Title 6&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />
+        </ul>
+
+      </div> <!-- /relatedDataTables -->
+
+
+      <div id="relatedReleases">
+        <h5>Related releases</h5>  
+        <ul>
+          <t4 type="content" name="Related Release 1" output="selective-output" modifiers="nav_sections"  process-format="true" format="<li>$value</li>" />
+          <t4 type="content" name="Related Release 2" output="selective-output" modifiers="nav_sections"  process-format="true" format="<li>$value</li>" />
+        </ul>
+      </div> <!-- /relatedReleases -->
+
+     <div id="intlReference">
+        <h5>International reference</h5>
+        <ul>
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="International reference 1 - Link" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;International reference 1 - Text&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />      
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="International reference 2 - Link" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;International reference 2 - Text&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />      
+        </ul>
+      </div> <!-- /intlReference -->
+      <div id="otherRelatedContent">
+        <h5>See also</h5>   
+        <ul>
+          <t4 type="content" name="Presentation Document" output="selective-output" modifiers="medialibrary" process-format="true" format="<li>$value</li>" />
+          <t4 type="content" name="Document 1" output="selective-output" modifiers="medialibrary" process-format="true" format="<li>$value</li>" />  
+
+          <t4 type="content" output="selective-output" process-format="true" modifiers="" name="External Link - Link" format="<li><a href=&quot;$value&quot; target=&quot;_blank&quot;><t4 type=&quot;content&quot; name=&quot;External Link - Text&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></a></li> " />      
+        </ul>
+      </div> <!-- /otherRelatedContent -->
+  
+  </div> <!-- /related sidebar -->
+
+  <div class="br-rhs-column-furtherinfo">
+
+      <div class="br-column-header">
+          <h4>Further Information</h4>
+      </div>
+
+      <h5>Contact</h5>
+        <dl>
+        <dt>E-mail: <a href="mailto:<t4 type="content" name="Email" output="normal" modifiers="striptags,htmlentities,encode_emails" />"><t4 type="content" name="Email" output="normal" modifiers="striptags"  /></a></dt>
+
+          <dt><t4 type="content" name="Contact Name 1" output="normal" modifiers="striptags"  /></dt>
+          <dd><t4 type="content" name="Contact Phone 1" output="normal" modifiers="striptags"  /></dd>
+
+         <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Contact Name 2" format="<dt>$value</dt><dd><t4 type=&quot;content&quot; name=&quot;Contact Phone 2&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></dd> " />      
+
+         <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Contact Name 3" format="<dt>$value</dt><dd><t4 type=&quot;content&quot; name=&quot;Contact Phone 2&quot; output=&quot;normal&quot; modifiers=&quot;striptags&quot; /></dd> " />      
+      </dl>
+
+    <div class="br-column-metaData">
+    	<t4 type="content" name="ISSN" output="selective-output" modifiers="" process-format="true" format="<em>On-line ISSN: $value</em>"  />
+    </div>
+
+  </div> <!-- /further info -->
+
+</div>
+</div>
+
+
+         
+</div> <!-- closes sidebar column
+</div> <!-- closes br_container wrapper -->
+        
+        

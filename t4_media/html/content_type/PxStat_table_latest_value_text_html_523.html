@@ -1,0 +1,14 @@
+<div id="<t4 type="meta" meta="content_id" />-px-stat-latest-value-wrapper">
+  <p>The value is <span name="value"></span></p>
+  <p>The unit is <span name="unit"></span></p>
+  <p>The time is <span name="time"></span></p>
+</div>
+
+<script>
+ t4Sdk.pxWidget.latestValue.draw(
+      <t4 type="content" name="Query" output="normal" />,
+      "#<t4 type="meta" meta="content_id" />-px-stat-latest-value-wrapper [name=value]",
+      "#<t4 type="meta" meta="content_id" />-px-stat-latest-value-wrapper [name=unit]",
+      "#<t4 type="meta" meta="content_id" />-px-stat-latest-value-wrapper [name=time]"      
+);
+</script>  

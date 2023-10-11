@@ -1,0 +1,48 @@
+<div class="row m-4">
+            <div id="accordion-<t4 type="meta" meta="content_id" />" name="accordion" class="col-sm">
+
+                <div class="card">
+                    <div class="card-header rounded-0" id="accordion-<t4 type="meta" meta="content_id" />-headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#accordion-collapse-<t4 type="meta" meta="content_id" />" aria-expanded="true" aria-controls="accordion-collapse-<t4 type="meta" meta="content_id" />">
+                                <i name="accordion-icon" class="fas fa-plus-circle"></i> <span name="map-name"><t4 type="content" name="Name" output="normal" modifiers="striptags,htmlentities" /></span>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="accordion-collapse-<t4 type="meta" meta="content_id" />" class="collapse" aria-labelledby="accordion-<t4 type="meta" meta="content_id" />-headingOne" data-parent="#accordion-<t4 type="meta" meta="content_id" />">
+                        <div class="card-body">
+                            <div class="row mt-4">
+                                <div class="col-4">
+                                    <table class="table table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Code</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div name="map" class="col-8">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex w-100 justify-content-between">
+                            <button name="download-classifications" class="btn btn-primary" disabled><i class="fas fa-file-download"></i>
+                                Download Classification
+                            </button>
+                            <div class="form-group row mb-0">
+                                <label for="geo-json-link" class="col-sm-3 col-form-label text-right pr-0">GeoJSON URL:</label>
+                                <div class="col-sm-7">
+                                    <input id="geo-json-link-<t4 type="meta" meta="content_id" />" name="geo-json-link" class="form-control" value="<t4 type="content" name="GeoJSON Url" output="normal" modifiers="striptags,htmlentities" />" size="50" readonly type="url">
+                                </div>
+                                <button type="button" name="copy-to-clipboard" class="col-sm-2 btn btn-primary" data-toggle="tooltip" data-placement="top" title="Copy GeoJSON URL to clipboard" data-clipboard-target="#geo-json-link-<t4 type="meta" meta="content_id" />">Copy <i class="far fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div name="description" class="d-none"><t4 type="content" name="Description" output="normal" modifiers="medialibrary,nav_sections" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>

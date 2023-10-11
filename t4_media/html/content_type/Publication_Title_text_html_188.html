@@ -1,0 +1,39 @@
+<script>
+  
+  var domain = document.domain;
+  
+  if (domain != "www.cso.ie")
+  {
+  
+  			var time = '<t4 type="content" date_format="HH:mm" name="Release Date" output="normal" modifiers="" />';
+  
+  			if (time != "11:00")
+  			{  
+  			alert('The time in your release date element is '+time+'. Please update the time in your release date element to 11:00');  
+  			}
+  
+  			else
+  			{  
+ 			 //time is correct, do nothing
+  
+ 		    }
+  
+  
+  }
+  
+  else
+  {
+  
+  			//On live site, do nothing
+  
+  }
+  
+</script>
+
+
+
+<div id="pubDate">
+  <p>CSO statistical publication, <time datetime="<t4 date_format="yyyy-MM-dzhhmmssZ" type="content" name="Release Date" output="normal" modifiers=""  />"><t4 date_format="dd MMMM yyyy" type="content" name="Release Date" output="normal" modifiers=""  /></time>, 11am</p>
+  
+</div>
+<div class="clear"></div>

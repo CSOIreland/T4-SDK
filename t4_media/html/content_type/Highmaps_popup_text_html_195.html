@@ -1,0 +1,201 @@
+<t4 type="content" name="Load Map file" output="normal" modifiers=""  />
+
+<style>
+  #OSiAcknowledgement<t4 type="meta" meta="content_id" />
+  {
+  
+  font-style: italic;
+  font-size: 10px;
+  text-align: right;
+  margin-bottom: 10px;
+  display: none;
+  }
+    </style>
+  <script>
+  $(function () {
+    
+    
+        
+        // Initiate the chart
+        $('#mapContainer<t4 type="meta" meta="content_id" />').highcharts('Map', {
+            
+            title : {
+                text : '<t4 type="content" name="Title" output="normal" modifiers=""  />',
+                useHTML: true,
+    
+    		style: {
+    		
+    			textAlign: 'center'
+    
+     		}
+    
+    
+            },
+     subtitle: {
+        align: 'right',
+        verticalAlign: 'bottom',
+        style: {
+            color: '#777',
+            'font-style': 'italic'
+        },
+        text: 'Source: CSO Ireland'
+    },
+    
+    
+    
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+    
+    legend: {
+valueDecimals: <t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />,
+},
+    
+    
+     tooltip: {
+        useHTML: true,
+                formatter: function () { if (this.point.value === null && this.point.name === undefined) 
+                    {
+    
+    
+    
+    
+  
+    
+    
+    
+                   return '<b>No data available for this area </b><br>' ;}
+                    else{
+    
+    
+    function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+    
+    	
+                           if (this.point.value === null) {
+                           return '<b>No data available for </b><br>' 
+                           + this.point.name ;}
+                           else{
+    
+    var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places" output="normal" modifiers=""  />);
+    var number = this.point.value;
+    
+    if (number >= 0) {
+    
+    return '<b>' + this.series.name + '</b><br>' 
+                                  + this.point.name + ': '+ addCommas(Math.round((this.point.value + 0.0000001) * numDecimals)/numDecimals)+  ' <t4 type="content" name="Tooltip Suffix" output="normal" modifiers=""  />' ;
+    
+    }
+    
+    else
+    {
+    
+    return '<b>' + this.series.name + '</b><br>' 
+                                  + this.point.name + ': '+ addCommas(Math.round((this.point.value - 0.0000001) * numDecimals)/numDecimals)+  ' <t4 type="content" name="Tooltip Suffix" output="normal" modifiers=""  />' ;
+    
+    }
+    
+    
+    
+                    }
+                   }
+                }
+            },      
+        
+    
+    
+    
+
+    
+    
+    
+    
+           
+    <t4 type="content" name="color axis code" output="normal" modifiers=""  />
+    
+    
+    
+    
+
+            series : [{
+            
+    
+    
+    
+    
+    
+    		 
+    
+    		data : [ <t4 type="content" name="JSON data" output="normal" modifiers=""  /> ],
+    
+    
+    
+                mapData: Highcharts.maps.<t4 type="content" name="Highmap name" output="normal" modifiers=""  />,
+                joinBy: 'code',
+                name: '<t4 type="content" name="Series Name" output="normal" modifiers=""  />',
+                states: {
+                    hover: {
+                        color: '#000000',
+                        borderColor: 'red'
+                    }
+                }
+    
+    
+     
+    
+    
+           
+            }]
+        });
+    
+   
+});
+  </script>
+
+<div style="clear: both"></div>
+
+<div class="popupLink">
+  
+ <a href="index.htm" onclick="return hs.htmlExpand(this, {width: 820})">
+	<span class="hideText">Show Map - <t4 type="content" name="Title" output="normal" modifiers=""  /></span>
+</a>
+  
+<div class="highslide-maincontent">
+	<div class="highmap" id="mapContainer<t4 type="meta" meta="content_id" />" style="max-width: 1000px"></div>
+<div style="clear: both">
+  <div class="OSiAcknowledgement" id="OSiAcknowledgement<t4 type="meta" meta="content_id" />">This map is © Ordnance Survey Ireland. All rights reserved. License number 01/05/001.</div>
+    <div style="clear: both"> </div>
+<t4 type="content" name="General text" output="normal" modifiers="medialibrary, nav_sections"  />
+</div>
+</div>
+</div>
+
+    <script>
+  var region = '<t4 type="content" name="Highmap name" output="normal" modifiers=""  />';
+  
+  //alert(region);
+  
+  if (region == 'counties26v1' || region == 'NUTS3v1' || region == 'countiesandcitiesv1' )
+  {
+  
+  document.getElementById("OSiAcknowledgement<t4 type="meta" meta="content_id" />").style.display = "block";
+  
+  }
+  
+</script>
+
+
+
+

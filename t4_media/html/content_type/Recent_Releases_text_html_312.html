@@ -1,0 +1,96 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+$(function(){
+
+   $( "#openingParagraph" ).remove();
+$( "#releaseDate" ).remove();
+
+
+
+
+  
+  
+  if ($('#releasesFooter').is(':empty')) { 
+    $('#releasesFooter').remove();
+} 
+  
+  
+  $(".releaseList li").sort(sort_li).appendTo('.releaseList');
+  function sort_li(a, b) {
+    return ($(b).data('position')) < ($(a).data('position')) ? 1 : -1;
+  }
+  
+  
+  
+  
+  $( "#fullRelease" ).insertAfter( ".highchartBox" );
+  
+  
+   });
+  
+  
+  
+  
+</script>
+
+<div class="module open green statisticsModule">
+   <div class="moduleHeader">
+      <h2><a id="releases-heading" href="#">Releases</a></h2>
+   </div>
+   <div class="moduleBody">
+      <ul class="releaseList">
+         
+         <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Release 1" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Release 1 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;Release 1&quot; output=&quot;linkurl&quot; />&quot;><t4 type=&quot;content&quot; name=&quot;Release 1&quot; output=&quot;linktext&quot; /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Release 2" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Release 2 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;Release 2&quot; output=&quot;linkurl&quot; />&quot;><t4 type=&quot;content&quot; name=&quot;Release 2&quot; output=&quot;linktext&quot; /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Release 3" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Release 3 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;Release 3&quot; output=&quot;linkurl&quot; />&quot;><t4 type=&quot;content&quot; name=&quot;Release 3&quot; output=&quot;linktext&quot; /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Release 4" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Release 4 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;Release 4&quot; output=&quot;linkurl&quot; />&quot;><t4 type=&quot;content&quot; name=&quot;Release 4&quot; output=&quot;linktext&quot; /></a></li>" />
+                
+        
+         <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Media release 1" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Media release 1 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;>$value</li>" />
+        
+         <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Media release 2" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Media release 2 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;>$value</li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Media release 3" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Media release 3 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;>$value</li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Media release 4" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;Media release 4 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;>$value</li>" />
+        
+        
+        
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="External Link 1 text" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 1 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 1&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><t4 type=&quot;content&quot; name=&quot;External Link 1 text&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="External Link 2 text" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 2 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 2&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><t4 type=&quot;content&quot; name=&quot;External Link 2 text&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="External Link 3 text" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 3 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 3&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><t4 type=&quot;content&quot; name=&quot;External Link 3 text&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></a></li>" />
+        
+        <t4 type="content" output="selective-output" process-format="true" modifiers="" name="External Link 4 text" format="<li data-position=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 4 position&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><a href=&quot;<t4 type=&quot;content&quot; name=&quot;External Link 4&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><t4 type=&quot;content&quot; name=&quot;External Link 4 text&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></a></li>" />
+        
+       
+       
+        
+      </ul>
+   </div>
+  
+   <div id="releasesFooter" class="moduleFooter"><t4 type="content" output="selective-output" process-format="true" modifiers="" name="Statbank link" format="<a class=&quot;btn&quot; href=&quot;<t4 type=&quot;content&quot; name=&quot;Statbank link&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;>PxStat tables <i class=&quot;fa fa-angle-right&quot;></i></a> " />
+     
+     
+     
+     
+     
+     <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Statbank section link" format="<a class=&quot;btn&quot; href=&quot;<t4 type=&quot;content&quot; name=&quot;Statbank section link&quot; output=&quot;linkurl&quot; modifiers=&quot;&quot;  />&quot;>PxStat tables <i class=&quot;fa fa-angle-right&quot;></i></a> " />
+     
+     
+     
+     
+     
+     
+     
+     
+     <t4 type="content" output="selective-output" process-format="true" modifiers="" name="Archive link" format="<a class=&quot;btn&quot; href=&quot;<t4 type=&quot;content&quot; name=&quot;Archive link&quot; output=&quot;linkurl&quot; modifiers=&quot;&quot;  />&quot;>all releases <i class=&quot;fa fa-angle-right&quot;></i></a> " /></div>
+  
+</div>

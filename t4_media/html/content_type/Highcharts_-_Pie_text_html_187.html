@@ -1,0 +1,388 @@
+<div class="highchart-pie-wrapper">
+	<div id="<t4 type="meta" meta="content_id" />pieChart1" class="pieChart1 pieChart">
+  
+	</div>
+
+	<div id="<t4 type="meta" meta="content_id" />pieChart2" class="pieChart2 pieChart">
+  
+	</div>
+</div>
+
+<div class="pieGeneralText" >
+  <t4 type="content" name="General text" output="normal" modifiers="medialibrary, nav_sections"  />
+</div>
+
+<div style="clear:both"></div>
+
+<div id="<t4 type="meta" meta="content_id" />datatable1" class="pieDataTable">
+  <t4 id="test" type="content" name="Series 1" output="normal" modifiers=""  />
+</div>
+
+<div id="<t4 type="meta" meta="content_id" />datatable2" class="pieDataTable">
+  <t4 id="test" type="content" name="Series 2" output="normal" modifiers=""  />
+</div>
+
+<script>
+  
+  $( document ).ready(function() {
+    $("#<t4 type="meta" meta="content_id" />datatable1 table").attr('id', '<t4 type="meta" meta="content_id" />table1');
+  
+  $("#<t4 type="meta" meta="content_id" />datatable2 table").attr('id', '<t4 type="meta" meta="content_id" />table2');
+  
+ 
+  
+});
+  
+$(function () {
+  
+  
+  
+  
+  
+  
+  Highcharts.setOptions({
+        lang: {
+            thousandsSep: ',',
+            decimalPoint: '.',
+            numericSymbols: ['k', ' million', ' billion', ' trillion'] 
+        }
+    });
+  
+  
+  
+  
+    $('#<t4 type="meta" meta="content_id" />pieChart1').highcharts({
+  
+  
+  
+  data: {
+  table: document.getElementById('<t4 type="meta" meta="content_id" />table1')
+   },
+  
+        chart: {
+            type: 'pie',
+  useHTML: true,
+  width: 400,
+   height: 430
+        },
+ subtitle: {
+        align: 'right',
+        verticalAlign: 'bottom',
+        style: {
+            color: '#777',
+            'font-style': 'italic'
+        },
+        text: '<t4 type="content" name="Chart 1 source" output="normal" modifiers=""  />'
+    },
+  
+   colors: [
+	'#405482',
+				'#00af86',
+				'#fbaa34',
+				'#3c5daa',				
+				'#b7be34',
+				'#0099b4',
+				'#5b6670',
+				'#ffc629',
+				'#566db4',
+				'#6ac5ad',
+				'#FFCC66',
+				'#6699CC'
+  ],
+        title: {
+            text: '<t4 type="content" name="Series 1 Title" output="normal" modifiers="js-var"  />',
+
+				style: {
+					fontSize: '18px',
+                  	fontWeight: 'bold',
+                  	fontFamily: '"Roboto Slab", Georgia, Times New Roman, serif',
+                  	paddingBottom: '0.25rem',
+                  	borderBottom: '1px solid #CAD6E0',
+                  	color: '#1D345C'
+				},
+
+				useHTML: true,
+				margin: 50,
+          		widthAdjust: -80,
+              	align: 'left',
+              	x: 50
+			},
+
+  
+  exporting: {
+            width: 500
+        },
+  
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+        
+         tooltip: {
+  
+            useHTML: true,
+  	    formatter: function() {
+  
+  
+  
+  function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+  
+  
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places series 1" output="normal" modifiers=""  />);
+  
+  var number = this.y;
+  
+  if (number >= 0) {
+  
+  return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  
+  else
+  {
+
+return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  	
+  
+            
+	}
+  
+  
+  },
+  
+  
+  
+  
+  
+  
+        plotOptions: {
+            pie: {
+                size: 180,
+
+                allowPointSelect: true,
+  		showInLegend: false,
+                cursor: 'pointer',
+                dataLabels: {
+					
+                    enabled: true,
+                    style: { textShadow: 'none' }, 
+  		    formatter: function() {
+  return Highcharts.numberFormat (this.y,<t4 type="content" name="Number of decimal places series 1" output="normal" modifiers=""  />) + ' <t4 type="content" name="Series 1 suffix" output="normal" modifiers=""  /><br/>' + this.point.name ;}
+                }
+                
+                }
+  		
+            
+        },
+
+
+
+exporting: {
+            enabled: false
+        }
+
+
+<t4 type="content" name="Chart 1 Extra code" output="normal" modifiers=""  />
+
+
+
+    });
+
+ 
+  
+  
+  });
+  
+  
+  
+  
+  //2nd pie chart
+  
+  
+  $(function () {
+  
+
+
+
+
+
+  
+  Highcharts.setOptions({
+        lang: {
+            thousandsSep: ',',
+            decimalPoint: '.'
+        }
+    });
+  
+  
+  
+  
+    $('#<t4 type="meta" meta="content_id" />pieChart2').highcharts({
+  
+  
+  
+  data: {
+  table: document.getElementById('<t4 type="meta" meta="content_id" />table2')
+   },
+  
+        chart: {
+            type: 'pie',
+            width: 400,
+            height: 430
+        },
+		
+		subtitle: {
+        align: 'right',
+        verticalAlign: 'bottom',
+        style: {
+            color: '#777',
+            'font-style': 'italic'
+        },
+        text: '<t4 type="content" name="Series 2" output="selective-output" process-format="true" format="<t4 type=&quot;content&quot; name=&quot;Chart 2 source&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />" formatter="" />'
+    },
+      
+      credits: {
+        enabled: false
+    },
+      
+      
+		<t4 type="content" name="Series 2" output="selective-output" format="credits: {enabled: true}," formatter="" />		
+		
+  
+   colors: [
+				'#405482',
+				'#00af86',
+				'#fbaa34',
+				'#3c5daa',				
+				'#b7be34',
+				'#0099b4',
+				'#5b6670',
+				'#ffc629',
+				'#566db4',
+				'#6ac5ad',
+				'#FFCC66',
+				'#6699CC'
+			],
+        title: {
+            text: '<t4 type="content" name="Series 2 Title" output="normal" modifiers="js-var"  />',
+
+				style: {
+					fontSize: '18px',
+                  	fontWeight: 'bold',
+                  	fontFamily: '"Roboto Slab", Georgia, Times New Roman, serif',
+                  	paddingBottom: '0.25rem',
+                  	borderBottom: '1px solid #CAD6E0',
+                  	color: '#1D345C'
+				},
+
+				useHTML: true,
+				margin: 50,
+                widthAdjust: -80,
+              	align: 'left',
+              	x: 50
+			},
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+        
+         tooltip: {
+  
+            useHTML: true,
+  	    formatter: function() {
+
+
+function addCommas(nStr) {
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
+  		
+      var numDecimals = Math.pow(10, <t4 type="content" name="Number of decimal places series 2" output="normal" modifiers=""  />);
+  
+  var number = this.y;
+  
+  if (number >= 0) {
+  
+  return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y + 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  
+  else
+  {
+
+return  this.point.name +'</br>'+ this.series.name +': <b>'+ addCommas(Math.round((this.y - 0.0000001) * numDecimals)/numDecimals)  +'</b>';
+  
+  }
+  	
+  
+            
+	}
+  
+  
+  },
+  
+  
+  
+  
+  
+  
+  
+        plotOptions: {
+            pie: {
+                size: 180,
+                allowPointSelect: true,
+  		showInLegend: false,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    style: { textShadow: 'none' }, 
+  		    formatter: function() {
+  return Highcharts.numberFormat (this.y,<t4 type="content" name="Number of decimal places series 2" output="normal" modifiers=""  />) + ' <t4 type="content" name="Series 2 suffix" output="normal" modifiers=""  /><br/>' + this.point.name ;}
+                }
+                
+                }
+  		
+            
+        },
+exporting: {
+            enabled: false
+        }
+		
+		<t4 type="content" name="Chart 2 Extra code" output="normal" modifiers=""  />
+
+    });
+
+ 
+ 
+  
+  });
+  
+  
+  
+  
+</script>

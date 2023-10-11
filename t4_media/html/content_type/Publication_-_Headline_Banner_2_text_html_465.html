@@ -1,0 +1,38 @@
+<div class="int-pub-header">
+  
+  <div class="int-pub-headline-block">
+
+	<h2><t4 type="content" name="Headline" output="normal" modifiers=""  /></h2>
+    <t4 type="content" name="Sub-headline" output="selective-output" process-format="true" format="<h3><t4 type=&quot;content&quot; name=&quot;Sub-headline&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></h3>" />
+    
+  </div>
+
+    <div class="int-pub-body-block">
+
+    <div class="pub-header-data">
+        <t4 type="content" name="ISSN" output="selective-output" modifiers="" process-format="true" format="        
+            <div class=&quot;pub-header-issn&quot;>
+                Online ISSN: <t4 type=&quot;content&quot; name=&quot;ISSN&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />
+            </div> " />
+
+		<div class="pub-header-date">
+ 		 	CSO statistical publication, <time datetime="<t4 date_format="yyyy-MM-dzhhmmssZ" type="content" name="Release Date" output="normal" modifiers=""  />"><t4 date_format="dd MMMM yyyy" type="content" name="Pub Date" output="normal" modifiers=""  /></time>, 11am
+
+        <t4 type="content" name="Update Date" output="selective-output" modifiers="" process-format="true" format="            
+            <div class=&quot;pub-header-updated&quot;>
+                Updated <time datetime=&quot;<t4 date_format=&quot;yyyy-MM-dzhhmmssZ&quot; type=&quot;content&quot; name=&quot;Updated&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  />&quot;><t4 date_format=&quot;dd MMMM yyyy, h:mm a&quot; type=&quot;content&quot; name=&quot;Updated&quot; output=&quot;normal&quot; modifiers=&quot;&quot;  /></time>
+            </div> " />    
+
+
+		</div> <!-- end pub-header-date -->
+
+	</div> <!-- end pub-header-data -->
+
+      <t4 type="content" name="Release Note Text" output="selective-output" modifiers="medialibrary,nav_sections" process-format="true" format="<div class=&quot;pub-header-note <t4 type=&quot;content&quot; name=&quot;Release Note Type&quot; output=&quot;normal&quot; display_field=&quot;value&quot; /> <t4 type=&quot;content&quot; name=&quot;Release Note Image Banner&quot; output=&quot;selective-output&quot; format=&quot;pub-header-image-banner&quot; />&quot;>
+        <h5><t4 type=&quot;content&quot; name=&quot;Release Note Heading&quot; output=&quot;normal&quot; modifiers=&quot;striptags,htmlentities&quot; /></h5>
+        <t4 type=&quot;content&quot; name=&quot;Release Note Text&quot; output=&quot;normal&quot; modifiers=&quot;medialibrary,nav_sections&quot; />
+    </div>  <!-- end pub-header-note-->" />
+
+  </div> <!-- end int-pub-body-block -->
+  
+</div> <!-- end int-pub-header -->
