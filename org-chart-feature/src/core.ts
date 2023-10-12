@@ -1,18 +1,27 @@
 // import { INIT_SELECTOR } from "config";
-import OrgChart from "orgchart.js";
+// import OrgChart from "orgchart.js";
+import { MAIN_CONTAINER, DATA_SELECTOR } from "./constants.mjs";
+import { getContainers } from "./utils/dom";
+import { OrgChartContainer } from "./org-chart-container";
 // import { exampleData } from "./data/example";
 
 class CSOOrgChart {
     template!: Document;
+    containers!: NodeListOf<HTMLDivElement>;
+
+    chartInstances: OrgChartContainer[] = [];
 
     constructor(el?: HTMLElement) {
-        console.log("Org chart init", process.env.INIT_SELECTOR, process.env.DATA_SELECTOR);
+        console.log("Org chart init", MAIN_CONTAINER, DATA_SELECTOR);
         console.log("init element", el);
+        console.log("Show constant", { MAIN_CONTAINER });
         this.init(el);
     }
 
     init(el: HTMLElement = document.body) {
         try {
+            this.containers = getContainers();
+
             const data = document.querySelector(`.${process.env.INIT_SELECTOR}`);
 
             if (!data) {
@@ -20,13 +29,12 @@ class CSOOrgChart {
                 return;
             }
 
-            const orgchart = new OrgChart({
-                'chartContainer': `.${process.env.INIT_SELECTOR}`,
-                'data': `#${process.env.DATA_SELECTOR}`,
-                // 'data': exampleData,
-            })
+            // const orgchart = new OrgChart({
+            //     'chartContainer': `.${MAIN_CONTAINER}`,
+            //     'data': `#${DATA_SELECTOR}`,
+            // })
 
-            console.log("INIT section", { el, orgchart, data });
+            console.log("INIT section", { el, data });
 
         } catch (e) {
             console.error("Can't build template. Err: ", e);
@@ -36,6 +44,17 @@ class CSOOrgChart {
 
         console.log("Built template", { template: this.template });
         // this.appendChild(el, this.template)
+    }
+
+    buildCharts() {
+        if (!this.containers || this.containers.length === 0) {
+            console.error("OrgChart -> No containers found");
+            return;
+        }
+
+        this.containers.forEach((el) => {
+            this.chartInstances.push(new OrgChartContainer(el));
+        });
     }
 
 

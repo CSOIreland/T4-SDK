@@ -12,12 +12,13 @@ import copy from 'rollup-plugin-copy'
 import 'dotenv/config'
 import nodeResolve from "@rollup/plugin-node-resolve";
 import dev from 'rollup-plugin-dev'
+import { CLASS_PREFIX } from './src/constants.mjs';
 
 
-const OUTPUT_FN_DEV = `${process.env.CLASS_PREFIX}.js`;
-const OUTPUT_FN_PROD = `${process.env.CLASS_PREFIX}-[hash].js`;
-const OUTPUT_FN_ASSETS_DEV = `${process.env.CLASS_PREFIX}[extname]`;
-const OUTPUT_FN_ASSETS_PROD = `${process.env.CLASS_PREFIX}-[hash][extname]`;
+const OUTPUT_FN_DEV = `${CLASS_PREFIX}.js`;
+const OUTPUT_FN_PROD = `${CLASS_PREFIX}-[hash].js`;
+const OUTPUT_FN_ASSETS_DEV = `${CLASS_PREFIX}[extname]`;
+const OUTPUT_FN_ASSETS_PROD = `${CLASS_PREFIX}-[hash][extname]`;
 
 /**
  * Helper function to clear all files in a directory.
@@ -50,6 +51,7 @@ export default async (cliArgs) => {
 
   const assetFileNames = isProd ? OUTPUT_FN_ASSETS_PROD : OUTPUT_FN_ASSETS_DEV;
   const entryFileNames = isProd ? OUTPUT_FN_PROD : OUTPUT_FN_DEV;
+  // console.log("This are the consts", CONSTS);
 
   const build = {
     input: "src/index.ts",
