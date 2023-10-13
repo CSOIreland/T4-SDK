@@ -1,10 +1,8 @@
-import { MAIN_CONTAINER as MAIN_CONTAINER$1 } from 'src/constants.mjs';
-
 const MAIN_CONTAINER = "cso-org-chart-feature-container";
 const DATA_SELECTOR = "cso-org-chart-feature-data";
 
 function getContainers() {
-    return this.document.querySelectorAll(`.${MAIN_CONTAINER$1}`);
+    return this.document.querySelectorAll(`.${MAIN_CONTAINER}`);
 }
 
 class OrgChartContainer {
@@ -12,10 +10,30 @@ class OrgChartContainer {
         this.nodeIdNum = 0;
         this.containerId = `${MAIN_CONTAINER}__${OrgChartContainer.idNum++}`;
         node.id = this.containerId;
+        if (!node) {
+            console.error("OrgChart -> Can't initialize orgchart. Container not found.", 'Container id: ', this.containerId);
+            return;
+        }
         this.container = node;
-        this.buildChart();
+        this.extractDataFromContainer(node);
+        this.init();
     }
-    buildChart() {
+    init() {
+        if (!this.container && !this.data) {
+            return console.error("OrgChart -> Container or data not found", "Container id: ", this.containerId);
+        }
+    }
+    extractDataFromContainer(container, isChild = false) {
+        try {
+            const dataNodes = container.querySelectorAll(`.${"cso-org-chart-feature-data"}`);
+            if (dataNodes.length === 0) {
+                console.error("Can't find data node", { containerId: this.containerId });
+                return null;
+            }
+        }
+        catch (e) {
+            console.error("Can't extract data from container", { containerId: this.containerId });
+        }
     }
 }
 OrgChartContainer.idNum = 1;

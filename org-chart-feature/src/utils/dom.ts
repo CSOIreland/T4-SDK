@@ -1,4 +1,4 @@
-import { MAIN_CONTAINER } from "src/constants.mjs";
+import { MAIN_CONTAINER } from "../constants.mjs";
 
 export function looseParseFromString(str: string) {
     const parser = new DOMParser();
@@ -24,3 +24,4 @@ export function looseParseFromString(str: string) {
   export function getContainers(): NodeListOf<HTMLDivElement> {
     return this.document.querySelectorAll(`.${MAIN_CONTAINER}`);
   }
+
