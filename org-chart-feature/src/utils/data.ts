@@ -1,7 +1,7 @@
-import { CSOOrgChartAttribute } from "src/typings/cso-org-chart";
+import { CSOOrgChartChildAttributes, CSOOrgChartParentAttributes } from "src/typings/cso-org-chart";
 
 export function nodeAttributes(node: HTMLElement | Element) {
-    return (attribute: CSOOrgChartAttribute): string | null => {
-        return node.getAttribute(attribute);
+    return (attribute: CSOOrgChartChildAttributes | CSOOrgChartParentAttributes): string | null => {
+        return node.getAttribute(`data-${attribute}`);
     }
 }

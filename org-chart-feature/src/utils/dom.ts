@@ -22,6 +22,6 @@ export function looseParseFromString(str: string) {
    * @returns List of containers
    */
   export function getContainers(): NodeListOf<HTMLDivElement> {
-    return this.document.querySelectorAll(`.${MAIN_CONTAINER}`);
+    return globalThis.document.querySelectorAll(`.${MAIN_CONTAINER}`);
   }
 

@@ -12,7 +12,7 @@ import copy from 'rollup-plugin-copy'
 import 'dotenv/config'
 import nodeResolve from "@rollup/plugin-node-resolve";
 import dev from 'rollup-plugin-dev'
-import { CLASS_PREFIX } from './src/constants.mjs';
+import ALL_CONSTS, { CLASS_PREFIX } from './src/constants.mjs';
 
 
 const OUTPUT_FN_DEV = `${CLASS_PREFIX}.js`;
@@ -36,6 +36,26 @@ async function deleteAllFilesInDir(dirPath) {
     console.log(err);
   }
 }
+
+// /**
+//  * Generate css variables from constants.
+//  * This is usefull so that we can use the constants in the scss files
+//  * for namespacing.
+//  * @param {Object} constantMap - Object containing all the constants.
+//  * @returns {String} - Array<String> containing all the css variables.
+//  */
+// function generateScssVarsFromConstants(constantMap) {
+//   console.log("ALL CONST", JSON.stringify(ALL_CONSTS, null, 2))
+//   const entries = Object.entries(ALL_CONSTS);
+
+//   if (entries.length) {
+//     return entries.map(([key, value]) => {
+//       return `$${key}: ${value};`;
+//     })
+//   }
+
+//   return [];
+// } 
 
 export default async (cliArgs) => {
   /**
@@ -82,12 +102,30 @@ export default async (cliArgs) => {
         /**
          * Temporary fix for source maps so it points to the correct asset.
          */
-        fileName: "cso-org-chart-feature.css"
+        fileName: "cso-org-chart-feature.css",
+        watch: "src/assets/*.scss",
+        processor: (css, map) => {
+          const entries = Object.entries(ALL_CONSTS);
+          let _css = css;
+
+          if (entries.length) {
+            entries.forEach(([key, value]) => {
+                _css = _css.replaceAll(`__${key}__`, value, 'g');
+              });
+          }
+
+          return {
+            css: _css,
+            map
+          }
+        }
       }),
       // compile typescript to javascript
       typescript({
         // source maps only for development
-        sourceMap
+        sourceMap,
+        inlineSourceMap: sourceMap,
+        inlineSources: sourceMap,
       }),
       ...(
         isProd ? [] : [

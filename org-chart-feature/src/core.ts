@@ -15,35 +15,31 @@ class CSOOrgChart {
         console.log("Org chart init", MAIN_CONTAINER, DATA_SELECTOR);
         console.log("init element", el);
         console.log("Show constant", { MAIN_CONTAINER });
-        this.init(el);
+        // this.init(el);
+        this.init();
     }
 
-    init(el: HTMLElement = document.body) {
+    // init(el: HTMLElement = globalThis.document.body) {
+    init() {
         try {
             this.containers = getContainers();
+            // const data = globalThis.document.querySelector(`.${MAIN_CONTAINER}`);
 
-            const data = document.querySelector(`.${process.env.INIT_SELECTOR}`);
+            // if (!data) {
+            //     console.error("Can't find data");
+            //     return;
+            // }
 
-            if (!data) {
-                console.error("Can't find data");
-                return;
-            }
-
+            this.buildCharts();
             // const orgchart = new OrgChart({
             //     'chartContainer': `.${MAIN_CONTAINER}`,
             //     'data': `#${DATA_SELECTOR}`,
             // })
-
-            console.log("INIT section", { el, data });
-
         } catch (e) {
             console.error("Can't build template. Err: ", e);
 
             return;
         }
-
-        console.log("Built template", { template: this.template });
-        // this.appendChild(el, this.template)
     }
 
     buildCharts() {
@@ -58,22 +54,22 @@ class CSOOrgChart {
     }
 
 
-    buildTemplate(temp: string) {
-        console.log(
-            "Building template",
-            { temp },
-        )
-        const parser = new DOMParser();
-        return parser.parseFromString(temp, 'text/html');
-    }
+    // buildTemplate(temp: string) {
+    //     console.log(
+    //         "Building template",
+    //         { temp },
+    //     )
+    //     const parser = new DOMParser();
+    //     return parser.parseFromString(temp, 'text/html');
+    // }
 
-    appendChild(target: HTMLElement, parsedDoc: Document) {
-        const el = parsedDoc.body.firstElementChild;
+    // appendChild(target: HTMLElement, parsedDoc: Document) {
+    //     const el = parsedDoc.body.firstElementChild;
 
-        if (el) {
-            target.appendChild(el);
-        }
-    }
+    //     if (el) {
+    //         target.appendChild(el);
+    //     }
+    // }
 }
 
 export { CSOOrgChart };

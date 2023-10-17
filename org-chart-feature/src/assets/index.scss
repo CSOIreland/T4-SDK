@@ -1,17 +1,17 @@
 @import 'node_modules/orgchart.js/src/orgchart';
 
 /**
-  This is a placeholder to inject constants into the scss. 
-  Injected constants should be namespaced to the 'MAIN_CONTAINER' defined in the constants file.
-*/
-/** INJECT_CONSTANTS */
+  We can reference the constants defined in the 'constants.mjs' file:
+  .__{CONSTANT_NAME}__ {
+    [attribute]: value;
+  }
 
-:root {
-  /**
-    Here 
-  */
-  // ENV_VARS
-}
+  e.g.
+
+  .__MAIN_CONTAINER__ {
+    background-color: red;
+  }
+*/
 
 .orgchart {
   display: inline-block;
