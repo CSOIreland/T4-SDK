@@ -77,10 +77,6 @@ export class OrgChartContainer {
         }
     }
 
-    // nestedList(node: HTMLElement) {
-    //     // const nestedList = node.querySelector(`ul`);
-    // }
-
     getDataFromChildNode(node: HTMLElement): OrgChartDataChild | null {
         const nAttrs = nodeAttributes(node);
         let data: Partial<OrgChartDataChild> | null = null
@@ -119,30 +115,7 @@ export class OrgChartContainer {
 
     extractDataFromContainer(dataNode: HTMLElement, isChild = false): OrgChartData | OrgChartDataChild | null {
         try {
-            // const dataNodes = container.querySelectorAll(`.${DATA_SELECTOR}`);
-
-            // if (dataNodes.length === 0) {
-            //     console.error("Can't find data node", {container, containerId: this.containerId, dataNodes });
-            //     return null;
-            // }
-
-            // console.info("Found data nodes", {container, containerId: this.containerId, dataNodes });
-
             if (isChild) {
-                // let nodes: Array<HTMLElement> | null = null;
-
-                // if (dataNode?.tagName?.toLowerCase() == 'li') {
-                //     nodes = [dataNode];
-
-                // } else {
-                //     const _nodes = dataNode?.querySelectorAll('li');
-
-                //     if (_nodes) {
-                //         nodes = Array.from(_nodes);
-                //     }
-                // }
-
-                // nodes?.map((node) => {
                     if (dataNode) {
                         const data =  this.getDataFromParentNode(dataNode);
                         if (data) {
@@ -160,7 +133,6 @@ export class OrgChartContainer {
                             return data as OrgChartData;
                         }
                     }
-                // }).filter(n => n)
             } else {
                 // Check if its a list element or a ul element. If its a ul element, get the first li element.
                 // We check for only a single li element because the orgchart.js library doesn't support multiple root nodes.

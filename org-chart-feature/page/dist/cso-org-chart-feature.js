@@ -1,5 +1,4 @@
 const MAIN_CONTAINER = "cso-org-chart-feature-container";
-const DATA_SELECTOR = "cso-org-chart-feature-data";
 
 function getContainers() {
     return globalThis.document.querySelectorAll(`.${MAIN_CONTAINER}`);
@@ -1897,11 +1896,8 @@ class OrgChartContainer {
 OrgChartContainer.idNum = 1;
 
 class CSOOrgChart {
-    constructor(el) {
+    constructor() {
         this.chartInstances = [];
-        console.log("Org chart init", MAIN_CONTAINER, DATA_SELECTOR);
-        console.log("init element", el);
-        console.log("Show constant", { MAIN_CONTAINER });
         this.init();
     }
     init() {
