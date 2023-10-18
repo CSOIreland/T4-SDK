@@ -1,0 +1,97 @@
+@mixin override-org-chart-colors {
+    .orgchart {
+        background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+    }
+
+    .orgchart .verticalNodes>td::before {
+        border: 1px solid var(--primary-color);
+    }
+
+    .orgchart .verticalNodes ul>li::before,
+    .orgchart .verticalNodes ul>li::after {
+        border-color: var(--primary-color);
+    }
+
+    .orgchart>.spinner {
+        color: rgba(68, 157, 68, 0.8);
+    }
+
+    .orgchart tr.lines .topLine {
+        border-top: 2px solid var(--primary-color);
+    }
+
+    .orgchart tr.lines .rightLine {
+        border-right: 1px solid var(--primary-color);
+    }
+
+    .orgchart tr.lines .leftLine {
+        border-left: 1px solid var(--primary-color);
+    }
+
+    .orgchart tr.lines .downLine {
+        background-color: var(--primary-color);
+    }
+
+    .orgchart .node>.spinner {
+        color: rgba(68, 157, 68, 0.8);
+    }
+
+    .orgchart .node:hover {
+        background-color: var(--select-border-color);
+    }
+
+    .orgchart .node.focused {
+        background-color: var(--select-border-color);
+    }
+
+    .orgchart .ghost-node rect {
+        fill: #ffffff;
+        stroke: #bf0000;
+    }
+
+    .orgchart .node.allowedDrop {
+        border-color: rgba(68, 157, 68, 0.9);
+    }
+
+    .orgchart .node .title {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .orgchart .node .content {
+        border: 1px solid var(--primary-color);
+    }
+
+    .orgchart .node .edge {
+        color: rgba(68, 157, 68, 0.5);
+    }
+
+    .orgchart .edge:hover {
+        color: #449d44;
+    }
+
+    .orgchart .node .toggleBtn {
+        color: rgba(68, 157, 68, 0.6);
+    }
+
+    .orgchart .node .toggleBtn:hover {
+        color: rgba(68, 157, 68, 0.8);
+    }
+
+    .oc-export-btn {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+
+    .oc-export-btn:hover,
+    .oc-export-btn:focus,
+    .oc-export-btn:active {
+        background-color: #449d44;
+        border-color: #347a34;
+    }
+
+    .orgchart~.mask .spinner {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}

@@ -1809,6 +1809,13 @@ class OrgChartContainer {
                 data: this.data,
                 nodeContent: 'title',
                 createNode: (node, data) => {
+                    const imgSrc = "https://t3.ftcdn.net/jpg/01/65/63/94/360_F_165639425_kRh61s497pV7IOPAjwjme1btB8ICkV0L.jpg";
+                    const imgContainer = globalThis.document.createElement('div');
+                    imgContainer.classList.add('org-chart-avatar-container');
+                    const imgEl = globalThis.document.createElement('img');
+                    imgEl.srcset = imgSrc;
+                    imgContainer.appendChild(imgEl);
+                    node.prepend(imgContainer);
                     console.log("createNode", { node, data });
                 },
                 depth: 3,
@@ -1830,6 +1837,9 @@ class OrgChartContainer {
                 }
             }
         });
+        if (data) {
+            data.id = "TEST_" + Math.random().toString(36).substring(7);
+        }
         return data;
     }
     getDataFromParentNode(node) {

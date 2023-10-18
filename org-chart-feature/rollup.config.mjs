@@ -37,26 +37,6 @@ async function deleteAllFilesInDir(dirPath) {
   }
 }
 
-// /**
-//  * Generate css variables from constants.
-//  * This is usefull so that we can use the constants in the scss files
-//  * for namespacing.
-//  * @param {Object} constantMap - Object containing all the constants.
-//  * @returns {String} - Array<String> containing all the css variables.
-//  */
-// function generateScssVarsFromConstants(constantMap) {
-//   console.log("ALL CONST", JSON.stringify(ALL_CONSTS, null, 2))
-//   const entries = Object.entries(ALL_CONSTS);
-
-//   if (entries.length) {
-//     return entries.map(([key, value]) => {
-//       return `$${key}: ${value};`;
-//     })
-//   }
-
-//   return [];
-// } 
-
 export default async (cliArgs) => {
   /**
    * Environment of build.

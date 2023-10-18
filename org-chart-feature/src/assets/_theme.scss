@@ -1,0 +1,8 @@
+@mixin init-colors {
+    --primary-color: rgb(1,111,116);
+    --primary-color--contrast: #fff;
+    --accent-color: rgb(88, 149, 153);
+    --accent-color--contrast: #fff;
+
+    --select-border-color: rgb(130, 14, 14);
+}
