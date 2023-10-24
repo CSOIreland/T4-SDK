@@ -25,3 +25,6 @@ export function looseParseFromString(str: string) {
     return globalThis.document.querySelectorAll(`.${MAIN_CONTAINER}`);
   }
 
+  export function looseParseOnlyElement(str: string): HTMLElement | null {
+    return looseParseFromString(str)?.body?.firstChild as HTMLElement || null;
+  }

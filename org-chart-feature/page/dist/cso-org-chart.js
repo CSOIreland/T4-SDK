@@ -1,7 +1,16 @@
-const MAIN_CONTAINER = "cso-org-chart-feature-container";
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+const CLASS_PREFIX = "cso-org-chart";
+const MAIN_CONTAINER = "cso-org-chart-container";
 
 function getContainers() {
     return globalThis.document.querySelectorAll(`.${MAIN_CONTAINER}`);
+}
+
+function nodeAttributes(node) {
+    return (attribute) => {
+        return node.getAttribute(`data-${attribute}`);
+    };
 }
 
 class OrgChart {
@@ -1770,18 +1779,27 @@ class OrgChart {
   }
 }
 
-function nodeAttributes(node) {
-    return (attribute) => {
-        return node.getAttribute(`data-${attribute}`);
-    };
+class OrgChartOverride extends OrgChart {
+    constructor(...opts) {
+        super(...opts);
+    }
+    _createNode(nodeData, level) {
+        const promise = super._createNode(nodeData, level);
+        return promise;
+    }
+    _buildJsonDS(li) {
+        const built = super._buildJsonDS(li);
+        return built;
+    }
 }
 
-const CHILD_ATTRS = ['name', 'title', 'imageSrc'];
+const CHILD_ATTRS = ['name', 'title', 'imageSrc', 'bio'];
 const PARENT_ATTRS = [...CHILD_ATTRS, 'direction'];
 class OrgChartContainer {
     constructor(node) {
         var _a;
         this.nodeIdNum = 0;
+        this.dataByNodeId = {};
         this.containerId = `${MAIN_CONTAINER}__${OrgChartContainer.idNum++}`;
         node.id = this.containerId;
         if (!node) {
@@ -1804,24 +1822,81 @@ class OrgChartContainer {
         }
         this.data = this.extractDataFromContainer(this.container);
         if (this.data) {
-            this.orgChartInstance = new OrgChart({
+            this.orgChartInstance = new OrgChartOverride({
                 chartContainer: `#${this.containerId}`,
                 data: this.data,
                 nodeContent: 'title',
                 createNode: (node, data) => {
-                    const imgSrc = "https://t3.ftcdn.net/jpg/01/65/63/94/360_F_165639425_kRh61s497pV7IOPAjwjme1btB8ICkV0L.jpg";
-                    const imgContainer = globalThis.document.createElement('div');
-                    imgContainer.classList.add('org-chart-avatar-container');
-                    const imgEl = globalThis.document.createElement('img');
-                    imgEl.srcset = imgSrc;
-                    imgContainer.appendChild(imgEl);
-                    node.prepend(imgContainer);
-                    console.log("createNode", { node, data });
+                    if (data.imageSrc) {
+                        const imgContainer = globalThis.document.createElement('div');
+                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar-container`);
+                        const imgEl = globalThis.document.createElement('img');
+                        imgEl.srcset = data.imageSrc;
+                        imgContainer.appendChild(imgEl);
+                        node.prepend(imgContainer);
+                        node.classList.add(`${CLASS_PREFIX}__node--with-image`);
+                    }
+                    if (data.dataRefId) {
+                        const mainData = this.dataByNodeId[data.dataRefId];
+                        node.setAttribute('data-dataRefId', data.dataRefId);
+                        this.addAriaLabels(node, mainData);
+                    }
+                    this.addBioDialog(node, data);
                 },
                 depth: 3,
                 toggleSiblingsResp: false,
             });
+            this.addEventListeners();
         }
+    }
+    addEventListeners() {
+        globalThis.document.body.addEventListener('click', () => {
+            this.closeAllBioDialogs();
+        });
+    }
+    closeAllBioDialogs() {
+        this.container.querySelectorAll(`.show-bio`).forEach((node) => {
+            var _a;
+            console.log("remove bio dialog", node);
+            if ((_a = node === null || node === void 0 ? void 0 : node.classList) === null || _a === void 0 ? void 0 : _a.remove) {
+                node.classList.remove('show-bio');
+            }
+        });
+    }
+    addBioDialog(node, data) {
+        if (data.bio) {
+            node.classList.add(`with-bio`);
+            node.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (!node.classList.contains('show-bio')) {
+                    node.classList.toggle('show-bio');
+                }
+            });
+            const bioDialog = globalThis.document.createElement('div');
+            bioDialog.classList.add('bio-dialog', `bio-dialog-${data.dataRefId}`);
+            const bioText = globalThis.document.createElement('span');
+            bioText.classList.add('bio-dialog--text');
+            bioText.innerText = data.bio;
+            bioDialog.appendChild(bioText);
+            const icon = globalThis.document.createElement('i');
+            icon.classList.add('fa', 'fa-times', 'close-bio');
+            icon.addEventListener('click', function (e) {
+                var _a;
+                e.stopPropagation();
+                (_a = this.closest('.show-bio')) === null || _a === void 0 ? void 0 : _a.classList.remove('show-bio');
+            });
+            bioDialog.appendChild(icon);
+            node.appendChild(bioDialog);
+        }
+    }
+    addAriaLabels(node, data) {
+        if (data.name) {
+            node === null || node === void 0 ? void 0 : node.setAttribute('aria-labelledby', `[data-dataRefId="${data.dataRefId}"] .title`);
+        }
+        if (data.title) {
+            node === null || node === void 0 ? void 0 : node.setAttribute('aria-describedby', `[data-dataRefId="${data.dataRefId}"] .content`);
+        }
+        console.log("node data", node, data);
     }
     getDataFromChildNode(node) {
         const nAttrs = nodeAttributes(node);
@@ -1837,8 +1912,10 @@ class OrgChartContainer {
                 }
             }
         });
-        if (data) {
-            data.id = "TEST_" + Math.random().toString(36).substring(7);
+        const dataRefId = node.id;
+        if (dataRefId && data) {
+            data.dataRefId = dataRefId;
+            this.dataByNodeId[dataRefId] = data;
         }
         return data;
     }
@@ -1856,6 +1933,14 @@ class OrgChartContainer {
                 }
             }
         });
+        const dataRefId = node.id;
+        if (dataRefId && data) {
+            data.dataRefId = dataRefId;
+            this.dataByNodeId[dataRefId] = data;
+        }
+        if (data) {
+            data.mainNode = true;
+        }
         return data;
     }
     extractDataFromContainer(dataNode, isChild = false) {
@@ -1863,7 +1948,7 @@ class OrgChartContainer {
         try {
             if (isChild) {
                 if (dataNode) {
-                    const data = this.getDataFromParentNode(dataNode);
+                    const data = this.getDataFromChildNode(dataNode);
                     if (data) {
                         const childList = dataNode.querySelector('ul');
                         if (childList) {
@@ -1931,11 +2016,5 @@ class CSOOrgChart {
     }
 }
 
-const socket = new WebSocket("ws://localhost:3000");
-socket.addEventListener("message", event => {
-    if (event.data === "RELOAD") {
-        window.location.reload();
-    }
-});
 new CSOOrgChart();
-//# sourceMappingURL=cso-org-chart-feature.js.map
+//# sourceMappingURL=cso-org-chart.js.map

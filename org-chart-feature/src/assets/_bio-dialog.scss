@@ -1,0 +1,33 @@
+@mixin dialog-style() {
+    .show-bio {
+        .bio-dialog {
+            display: block;
+        }
+    }
+
+    .bio-dialog {
+        i {
+            color: grey;
+            font-size: 14px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+
+            cursor: pointer;
+
+            &:hover {
+                color: black;
+            }
+        }
+
+        // position: relative;
+        display: none;
+        position: absolute;
+        min-width: 200px;
+        max-height: 300px;
+        // display: flex;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: whitesmoke;
+    }
+}

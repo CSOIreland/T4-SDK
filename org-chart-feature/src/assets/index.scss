@@ -1,5 +1,6 @@
 @use 'theme.scss'as theme;
 @use 'override.scss'as override;
+@use 'bio-dialog.scss'as bioDialog;
 @import 'node_modules/orgchart.js/src/orgchart';
 
 /**
@@ -21,38 +22,41 @@
   @include theme.init-colors();
   // override default chart colors
   @include override.override-org-chart-colors();
+  @include bioDialog.dialog-style();
 
-  // height: 200px;
-  .org-chart-avatar-container {
-    $radius: 3px;
+  // if node has image
+  .__CLASS_PREFIX____node--with-image {
+    .__CLASS_PREFIX__-avatar-container {
+      $radius: 3px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    background-color: var(--accent-color);
-    padding: 15px;
-    border-top-left-radius: $radius;
-    border-top-right-radius: $radius;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      background-color: var(--accent-color);
+      padding: 15px;
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
 
-    img {
-      // $size: 80px;
-      // width: $size;
-      // height: $size;
-      &:hover {
-        transform: scale(1.1);
+      img {
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        transition: transform 0.3s ease-in-out;
+
+        border-radius: 50%;
+        border: 1px solid var(--primary-color);
       }
+    }
 
-      transition: transform 0.3s ease-in-out;
-
-      border-radius: 50%;
-      border: 1px solid var(--primary-color);
+    &.node .title {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 
   .orgchart .node .title {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     display: flex;
     flex-flow: row-reverse;
     align-items: center;
@@ -62,8 +66,8 @@
 
   .orgchart .node .title .symbol {
     float: unset;
-    margin-top: 4px; 
-    margin-left: 2px;
+    margin-top: 0px; 
+    margin-left: 0px;
   }
 
   .orgchart .node {

@@ -1,10 +1,19 @@
 import OrgChart from "orgchart.js";
-import { MAIN_CONTAINER } from "./constants.mjs";
+import { CLASS_PREFIX, MAIN_CONTAINER } from "./constants.mjs";
 import { CSOOrgChartChildAttributes, CSOOrgChartParentAttributes, OrgChartData, OrgChartDataChild } from "./typings/cso-org-chart";
 import { nodeAttributes } from "./utils/data";
+import { OrgChartOverride } from "./org-chart-override";
+import { looseParseOnlyElement } from "./utils/dom";
+// import { createPopper } from "@popperjs/core/lib/popper-lite";
+// import { looseParseFromString, looseParseOnlyElement } from "./utils/dom";
 
-const CHILD_ATTRS: CSOOrgChartChildAttributes[] = ['name', 'title', 'imageSrc'];
+const CHILD_ATTRS: CSOOrgChartChildAttributes[] = ['name', 'title', 'imageSrc', 'bio'];
 const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [...CHILD_ATTRS, 'direction'];
+
+/**
+ * Note:
+ * data attributes are case insensitive.
+ */
 
 /**
  * Every container should get a unique id and each container node should have it's unique id.
@@ -22,6 +31,12 @@ export class OrgChartContainer {
     orgChartInstance!: OrgChart;
 
     data!: OrgChartData;
+    /**
+     * This id is used to reference the data from the node.
+     * The id is located on the data node element.
+     * When we create a node (initialise OrgChart lib) then the id is assigned to the node element as '[data-dataRefId]={dataRefId}'
+     */
+    dataByNodeId: Record<string, OrgChartData | OrgChartDataChild> = {};
 
 
     constructor(node: HTMLElement) {
@@ -64,26 +79,111 @@ export class OrgChartContainer {
         this.data = this.extractDataFromContainer(this.container) as OrgChartData;
 
         if (this.data) {
-            this.orgChartInstance = new OrgChart({
+            this.orgChartInstance = new OrgChartOverride({
                 chartContainer: `#${this.containerId}`,
                 data: this.data,
                 nodeContent: 'title',
                 createNode: (node: HTMLElement, data: OrgChartDataChild) => {
-                    const imgSrc = "https://t3.ftcdn.net/jpg/01/65/63/94/360_F_165639425_kRh61s497pV7IOPAjwjme1btB8ICkV0L.jpg";
-                    const imgContainer = globalThis.document.createElement('div');
-                    imgContainer.classList.add('org-chart-avatar-container');
-                    const imgEl  = globalThis.document.createElement('img');
-                    imgEl.srcset = imgSrc;
-                    imgContainer.appendChild(imgEl);
+                    // add image element if imageSrc is provided
+                    if (data.imageSrc) {
+                        const imgContainer = globalThis.document.createElement('div');
+                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar-container`);
+                        const imgEl  = globalThis.document.createElement('img');
+                        imgEl.srcset = data.imageSrc;
+                        imgContainer.appendChild(imgEl);
+                        node.prepend(imgContainer);
+                        node.classList.add(`${CLASS_PREFIX}__node--with-image`);
+                    }
 
-                    node.prepend(imgContainer);
+                    if (data.dataRefId) {
+                        const mainData = this.dataByNodeId[data.dataRefId] as OrgChartData;
+                        // link node with data
+                        node.setAttribute('data-dataRefId', data.dataRefId);
 
-                    console.log("createNode", { node, data });
+                        this.addAriaLabels(node, mainData);
+                    }
+
+                    this.addBioDialog(node, data);
                 },
                 depth: 3,
                 toggleSiblingsResp: false,
             });
+
+            this.addEventListeners();
         }
+    }
+
+    addEventListeners() {
+        globalThis.document.body.addEventListener('click', () => {
+            this.closeAllBioDialogs();
+        });
+    }
+
+    closeAllBioDialogs() {
+        this.container.querySelectorAll(`.show-bio`).forEach((node) => {
+            console.log("remove bio dialog", node);
+            if (node?.classList?.remove) {
+                node.classList.remove('show-bio');
+            }
+        });
+    }
+
+    addBioDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
+        if (data.bio) {
+            node.classList.add(`with-bio`);
+
+            node.addEventListener('click', (e) => {
+                e.stopPropagation()
+
+                if (!node.classList.contains('show-bio')) {
+                    node.classList.toggle('show-bio');
+                }
+            });
+
+            // Example:
+            //     `
+            //         <div class="bio-dialog bio-dialog-${data.dataRefId}">
+            //             <span class="bio-dialog--text">
+            //                 ${data.bio}
+            //             </span>
+            //         </div>
+            //     `
+            const bioDialog = globalThis.document.createElement('div');
+            bioDialog.classList.add('bio-dialog', `bio-dialog-${data.dataRefId}`);
+
+            const bioText = globalThis.document.createElement('span');
+            bioText.classList.add('bio-dialog--text');
+            bioText.innerText = data.bio;
+
+            bioDialog.appendChild(bioText);
+
+            const icon = globalThis.document.createElement('i');
+            icon.classList.add('fa', 'fa-times', 'close-bio');
+
+            // close bio dialog event listener
+            icon.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                this.closest('.show-bio')?.classList.remove('show-bio');
+            });
+
+            bioDialog.appendChild(icon);
+
+
+            node.appendChild(bioDialog);
+        }
+    }
+
+    addAriaLabels(node: HTMLElement, data: OrgChartDataChild) {
+        if (data.name) {
+            node?.setAttribute('aria-labelledby', `[data-dataRefId="${data.dataRefId}"] .title`);
+        }
+
+        if (data.title) {
+            node?.setAttribute('aria-describedby', `[data-dataRefId="${data.dataRefId}"] .content`);
+        }
+
+        console.log("node data", node, data);
     }
 
     getDataFromChildNode(node: HTMLElement): OrgChartDataChild | null {
@@ -100,9 +200,12 @@ export class OrgChartContainer {
             }
         })
 
-        // TODO: remove
-        if (data) {
-            (data as OrgChartDataChild).id = "TEST_"+ Math.random().toString(36).substring(7);
+        const dataRefId = node.id;
+
+        if (dataRefId && data) {
+            (data as Partial<OrgChartDataChild> ).dataRefId = dataRefId;
+
+            this.dataByNodeId[dataRefId] = data as OrgChartDataChild;
         }
 
         return data;
@@ -124,6 +227,18 @@ export class OrgChartContainer {
             }
         })
 
+        const dataRefId = node.id;
+
+        if (dataRefId && data) {
+            (data as Partial<OrgChartData> ).dataRefId = dataRefId;
+
+            this.dataByNodeId[dataRefId] = data as OrgChartDataChild;
+        }
+
+        if (data) {
+            (data as OrgChartData).mainNode = true;
+        }
+
         return data;
     }
 
@@ -131,7 +246,7 @@ export class OrgChartContainer {
         try {
             if (isChild) {
                     if (dataNode) {
-                        const data =  this.getDataFromParentNode(dataNode);
+                        const data =  this.getDataFromChildNode(dataNode);
                         if (data) {
                             const childList = dataNode.querySelector('ul');
                             if (childList) {

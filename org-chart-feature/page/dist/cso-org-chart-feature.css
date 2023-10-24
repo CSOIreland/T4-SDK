@@ -508,92 +508,115 @@
 
   e.g.
 
-  .cso-org-chart-feature-container {
+  .cso-org-chart-container {
     background-color: red;
   }
 */
-.cso-org-chart-feature-container {
+.cso-org-chart-container {
   --primary-color: rgb(1,111,116);
   --primary-color--contrast: #fff;
   --accent-color: rgb(88, 149, 153);
   --accent-color--contrast: #fff;
   --select-border-color: rgb(130, 14, 14);
 }
-.cso-org-chart-feature-container .orgchart {
-  background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+.cso-org-chart-container .orgchart {
+  background-image: none;
 }
-.cso-org-chart-feature-container .orgchart .verticalNodes > td::before {
+.cso-org-chart-container .orgchart .verticalNodes > td::before {
   border: 1px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart .verticalNodes ul > li::before,
-.cso-org-chart-feature-container .orgchart .verticalNodes ul > li::after {
+.cso-org-chart-container .orgchart .verticalNodes ul > li::before,
+.cso-org-chart-container .orgchart .verticalNodes ul > li::after {
   border-color: var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart > .spinner {
+.cso-org-chart-container .orgchart > .spinner {
   color: rgba(68, 157, 68, 0.8);
 }
-.cso-org-chart-feature-container .orgchart tr.lines .topLine {
+.cso-org-chart-container .orgchart tr.lines .topLine {
   border-top: 2px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart tr.lines .rightLine {
+.cso-org-chart-container .orgchart tr.lines .rightLine {
   border-right: 1px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart tr.lines .leftLine {
+.cso-org-chart-container .orgchart tr.lines .leftLine {
   border-left: 1px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart tr.lines .downLine {
+.cso-org-chart-container .orgchart tr.lines .downLine {
   background-color: var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart .node > .spinner {
+.cso-org-chart-container .orgchart .node > .spinner {
   color: rgba(68, 157, 68, 0.8);
 }
-.cso-org-chart-feature-container .orgchart .node:hover {
+.cso-org-chart-container .orgchart .node:hover {
   background-color: var(--select-border-color);
 }
-.cso-org-chart-feature-container .orgchart .node.focused {
+.cso-org-chart-container .orgchart .node.focused {
   background-color: var(--select-border-color);
 }
-.cso-org-chart-feature-container .orgchart .ghost-node rect {
+.cso-org-chart-container .orgchart .ghost-node rect {
   fill: #ffffff;
   stroke: #bf0000;
 }
-.cso-org-chart-feature-container .orgchart .node.allowedDrop {
+.cso-org-chart-container .orgchart .node.allowedDrop {
   border-color: rgba(68, 157, 68, 0.9);
 }
-.cso-org-chart-feature-container .orgchart .node .title {
+.cso-org-chart-container .orgchart .node .title {
   background-color: var(--primary-color);
   color: #fff;
 }
-.cso-org-chart-feature-container .orgchart .node .content {
+.cso-org-chart-container .orgchart .node .content {
   border: 1px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .orgchart .node .edge {
+.cso-org-chart-container .orgchart .node .edge {
   color: rgba(68, 157, 68, 0.5);
 }
-.cso-org-chart-feature-container .orgchart .edge:hover {
+.cso-org-chart-container .orgchart .edge:hover {
   color: #449d44;
 }
-.cso-org-chart-feature-container .orgchart .node .toggleBtn {
+.cso-org-chart-container .orgchart .node .toggleBtn {
   color: rgba(68, 157, 68, 0.6);
 }
-.cso-org-chart-feature-container .orgchart .node .toggleBtn:hover {
+.cso-org-chart-container .orgchart .node .toggleBtn:hover {
   color: rgba(68, 157, 68, 0.8);
 }
-.cso-org-chart-feature-container .oc-export-btn {
+.cso-org-chart-container .oc-export-btn {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
-.cso-org-chart-feature-container .oc-export-btn:hover,
-.cso-org-chart-feature-container .oc-export-btn:focus,
-.cso-org-chart-feature-container .oc-export-btn:active {
+.cso-org-chart-container .oc-export-btn:hover,
+.cso-org-chart-container .oc-export-btn:focus,
+.cso-org-chart-container .oc-export-btn:active {
   background-color: #449d44;
   border-color: #347a34;
 }
-.cso-org-chart-feature-container .orgchart ~ .mask .spinner {
+.cso-org-chart-container .orgchart ~ .mask .spinner {
   color: rgba(255, 255, 255, 0.8);
 }
-.cso-org-chart-feature-container .org-chart-avatar-container {
+.cso-org-chart-container .show-bio .bio-dialog {
+  display: block;
+}
+.cso-org-chart-container .bio-dialog {
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  max-height: 300px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: whitesmoke;
+}
+.cso-org-chart-container .bio-dialog i {
+  color: grey;
+  font-size: 14px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.cso-org-chart-container .bio-dialog i:hover {
+  color: black;
+}
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -603,29 +626,31 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-.cso-org-chart-feature-container .org-chart-avatar-container img {
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container img {
   transition: transform 0.3s ease-in-out;
   border-radius: 50%;
   border: 1px solid var(--primary-color);
 }
-.cso-org-chart-feature-container .org-chart-avatar-container img:hover {
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container img:hover {
   transform: scale(1.1);
 }
-.cso-org-chart-feature-container .orgchart .node .title {
+.cso-org-chart-container .cso-org-chart__node--with-image.node .title {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.cso-org-chart-container .orgchart .node .title {
   display: flex;
   flex-flow: row-reverse;
   align-items: center;
   justify-content: center;
   gap: 4px;
 }
-.cso-org-chart-feature-container .orgchart .node .title .symbol {
+.cso-org-chart-container .orgchart .node .title .symbol {
   float: unset;
-  margin-top: 4px;
-  margin-left: 2px;
+  margin-top: 0px;
+  margin-left: 0px;
 }
-.cso-org-chart-feature-container .orgchart .node {
+.cso-org-chart-container .orgchart .node {
   padding: 1px;
 }
 

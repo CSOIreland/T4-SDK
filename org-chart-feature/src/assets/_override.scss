@@ -1,6 +1,6 @@
 @mixin override-org-chart-colors {
     .orgchart {
-        background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(200, 0, 0, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+        background-image: none;
     }
 
     .orgchart .verticalNodes>td::before {

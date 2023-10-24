@@ -1,5 +1,4 @@
 // rollup.config.js
-import { autoReload } from "rollup-plugin-auto-reload"
 import typescript from "@rollup/plugin-typescript";
 import scss from "rollup-plugin-scss";
 import eslint from "@rollup/plugin-eslint";
@@ -11,8 +10,11 @@ import path from 'path';
 import copy from 'rollup-plugin-copy'
 import 'dotenv/config'
 import nodeResolve from "@rollup/plugin-node-resolve";
+import fg from 'fast-glob';
 import dev from 'rollup-plugin-dev'
 import ALL_CONSTS, { CLASS_PREFIX } from './src/constants.mjs';
+import livereload from 'rollup-plugin-livereload'
+
 
 
 const OUTPUT_FN_DEV = `${CLASS_PREFIX}.js`;
@@ -51,7 +53,6 @@ export default async (cliArgs) => {
 
   const assetFileNames = isProd ? OUTPUT_FN_ASSETS_PROD : OUTPUT_FN_ASSETS_DEV;
   const entryFileNames = isProd ? OUTPUT_FN_PROD : OUTPUT_FN_DEV;
-  // console.log("This are the consts", CONSTS);
 
   const build = {
     input: "src/index.ts",
@@ -70,6 +71,16 @@ export default async (cliArgs) => {
         // ignore warnings in development
         throwOnWarning: isProd,
       }),
+      // watch external files and scss
+      {
+        name: 'watch-external',
+        async buildStart(){
+            const files = await fg(['src/**/*', 'page/template.html']);
+            for(let file of files){
+                this.addWatchFile(file);
+            }
+        }
+    },
       // resolve modules from node_modules
       nodeResolve(),
       // compile scss to css
@@ -83,7 +94,7 @@ export default async (cliArgs) => {
          * Temporary fix for source maps so it points to the correct asset.
          */
         fileName: "cso-org-chart-feature.css",
-        watch: "src/assets/*.scss",
+        watch: "./src/assets/*.scss",
         processor: (css, map) => {
           const entries = Object.entries(ALL_CONSTS);
           let _css = css;
@@ -170,9 +181,7 @@ export default async (cliArgs) => {
             host: "localhost",
           }),
           // auto reload the browser when files change
-          autoReload({
-            port: 3000
-          })
+          livereload(),
         ]
       ),
     ],
