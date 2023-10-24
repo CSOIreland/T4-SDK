@@ -3,8 +3,8 @@ import { CLASS_PREFIX, MAIN_CONTAINER } from "./constants.mjs";
 import { CSOOrgChartChildAttributes, CSOOrgChartParentAttributes, OrgChartData, OrgChartDataChild } from "./typings/cso-org-chart";
 import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
-import { looseParseOnlyElement } from "./utils/dom";
-// import { createPopper } from "@popperjs/core/lib/popper-lite";
+// import { looseParseOnlyElement } from "./utils/dom";
+import { createPopper } from "@popperjs/core/lib/popper-lite";
 // import { looseParseFromString, looseParseOnlyElement } from "./utils/dom";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = ['name', 'title', 'imageSrc', 'bio'];
