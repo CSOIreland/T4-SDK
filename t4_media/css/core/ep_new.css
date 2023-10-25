@@ -19,6 +19,7 @@
     .publicationHome {
         padding: 0 20px;
     }
+    .publicationMenu {margin-top: 0px}
     
     .publicationMenu {
         margin-top: 0px
@@ -101,8 +102,26 @@
     
     span.currentbranch0 a {
         font-weight: 600;
-        color: #00ada8;
+        color: #30436a;
+        background-color: #9BBDBF;
+        border-right: 0.4rem solid #30436a;
     }
+
+    span.currentbranch0 a:hover {
+        font-weight: 600;
+        color: #30436a;
+        background-color: #E6F2F2;
+        border-right: 0.4rem solid #30436a;
+    }
+
+    span.currentbranch1 a {
+        font-weight: 600;
+        color: #30436a;
+        background-color: #C3D7D9;
+        border-right: 0.4rem solid #30436a;
+    }
+
+
     /*census its a fact start*/
     
     .censusFact,

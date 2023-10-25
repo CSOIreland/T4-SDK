@@ -1425,17 +1425,21 @@ form.general input[type="submit"] {
 	line-height: 22px;
 	margin: 10px 0 15px;
 }
+.copy p.lead-in {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: 'Roboto Slab', Georgia, 'Times New Roman', Times, serif;
+}
 
 .copy ul {
 	margin: 10px 0 15px 40px;
 }
 
 .copy ul li {
-	margin: 0 0 5px 0;
-	/*padding: 0 0 0 20px;*/
+	margin: 0 0 0.5rem 0;
+  line-height: 1.3rem;
 	position: relative;
-  /*background: transparent url('/en/media/styleassets/images/granite/greenArrow.JPG') 0px 6px no-repeat;*/
-margin-left: 0px !important;
+  margin-left: 0px !important;
 }
 
 /*.copy ul li:before {
@@ -2535,7 +2539,7 @@ margin-bottom: 20px;
 .related-viz-card {
     background: #F2F7Fa;
     padding: 1rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
@@ -2628,6 +2632,13 @@ margin-bottom: 20px;
     a.related-viz-link:active {
         border: 3px solid #000;
     }
+
+@media print {
+  .mainContent a.related-viz-link {
+    color: #fff;
+  }
+}
+
 /* -- end related visualisation card -- */
 
 
@@ -2801,7 +2812,7 @@ margin-bottom: 20px;
 
 
 
-/*Start Bulletin release custom css
+/*Start Bulletin release custom css */
 .ERtable table tr:hover, .indicatorHeadlineTable table tr:hover
 {
 
@@ -3611,26 +3622,68 @@ left: 0;
 }
 
 
+/* ========
+  HUB Styles
+  ========= */
+
+  .module-banner {
+    background-color: #f5f6fa;
+    padding: 0.5rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    justify-content: space-between;
+    align-items: start
+    }
+  @media screen and (min-width: 768px) {
+    .module-banner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+    .module-banner ul,
+    .module-banner-source ul {
+    list-style:none;
+    margin:0;
+    padding: 0;
+    }
+    .module-banner li,
+    .module-banner-source li {
+        margin:0;
+        line-height: 1.5;
+    }
+    .module-banner-sustainable-indicator {
+    justify-self: end;
+    text-align: right;
+    }
+    .module-banner-source {
+        line-height: 1.5;
+        padding: 0.5rem 1rem;
+        background: #e6e9f2;
+        margin: 0 0 0.5rem;
+    }
 
 
+/* ========
+    Hub Indicator Styles
+    ======= */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.wellbeing-hub-indicator .sideitem h3 {
+  color: #fff;
+  text-decoration: none;
+}
+.wellbeing-hub-indicator a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.wellbeing-hub-indicator .sideitem {
+  padding: 10px;
+}
+   
+.wellbeing-hub-indicator .sideitem h3 {
+  font-weight: 300;
+  font-size: 26px;
+}
+.wellbeing-hub-indicator .sideitem h3 i {
+  background-color: #fff;
+  color: #00A881;
+}
