@@ -1,6 +1,7 @@
 @use 'theme.scss'as theme;
 @use 'override.scss'as override;
 @use 'bio-dialog.scss'as bioDialog;
+@use 'popper.scss'as popper;
 @import 'node_modules/orgchart.js/src/orgchart';
 
 /**
@@ -16,13 +17,18 @@
   }
 */
 
+@include popper.popper-styles(__MAIN_CONTAINER__);
+@include bioDialog.dialog-style(__MAIN_CONTAINER__);
+
 // namespace all styles
 .__MAIN_CONTAINER__ {
+  max-width: 100%;
+  overflow: auto;
+
   // initialize css variabled
   @include theme.init-colors();
   // override default chart colors
   @include override.override-org-chart-colors();
-  @include bioDialog.dialog-style();
 
   // if node has image
   .__CLASS_PREFIX____node--with-image {
@@ -73,4 +79,14 @@
   .orgchart .node {
     padding: 1px;
   }
+
+  // remove side icons for collapsing nodes
+  table {
+    tr:not(:first-of-type) {
+      i.edge.horizontalEdge {
+        display: none;
+      }
+    }
+  }
 }
+

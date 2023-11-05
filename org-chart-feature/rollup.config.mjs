@@ -14,7 +14,7 @@ import fg from 'fast-glob';
 import dev from 'rollup-plugin-dev'
 import ALL_CONSTS, { CLASS_PREFIX } from './src/constants.mjs';
 import livereload from 'rollup-plugin-livereload'
-
+import terser from '@rollup/plugin-terser';
 
 
 const OUTPUT_FN_DEV = `${CLASS_PREFIX}.js`;
@@ -119,7 +119,10 @@ export default async (cliArgs) => {
         inlineSources: sourceMap,
       }),
       ...(
-        isProd ? [] : [
+        isProd ? [
+          // minify javascript
+          terser(),
+        ] : [
           // generate html file from template.html and inject js and css
           html({
             hook: 'closeBundle',

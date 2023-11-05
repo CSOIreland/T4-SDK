@@ -1,13 +1,87 @@
-@mixin dialog-style() {
-    .show-bio {
-        .bio-dialog {
+@mixin dialog-style($prefix: '') {
+    $max-width: 400px;
+    $min-width: 250px;
+    // $max-height: 300px;
+    $max-height: 150px;
+    $padd-top: 15px;
+    $padd-bottom: 10px;
+    $padd-side: 20px;
+    $arrow-size: 12px;
+
+    .#{$prefix}__show-bio {
+        .#{$prefix}__bio-dialog {
+            transform: translateY(0);
+            max-height: $max-height;
+            pointer-events: all;
             display: block;
+            opacity: 100%;
         }
     }
 
-    .bio-dialog {
+    .#{$prefix}__bio-dialog {
+        .bio-dialog--text {
+            max-height: $max-height - $padd-bottom - $padd-top;
+            display: block;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+    }
+
+
+    .#{$prefix}__bio-dialog {
+        overflow: visible !important;
+
+        &[data-popper-placement^='top']>.popper--arrow {
+            bottom: -4px;
+            transform: rotate(45deg) translateX(-#{$arrow-size / 2});
+        }
+
+        &[data-popper-placement^='bottom']>.popper--arrow {
+            top: -4px;
+            transform: rotate(45deg) translateX(-#{$arrow-size / 2});
+        }
+
+        &[data-popper-placement^='left']>.popper--arrow {
+            right: -4px;
+        }
+
+        &[data-popper-placement^='right']>.popper--arrow {
+            left: -4px;
+        }
+
+        box-shadow: 1.9px 3.8px 3.8px hsl(0deg 0% 0% / 0.44);
+        transition: opacity 0.3s ease-in-out,
+        max-height 0.2s ease-in-out;
+        border: 1px solid var(--accent-color);
+        transform: translateY(-15px);
+        overflow-y: auto;
+
+        &::-webkit-scrollbar-track,
+        &>::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px var(--custom-scrollbar-shadow-color);
+            border-radius: 10px;
+            background-color: var(--custom-scrollbar-background-color);
+        }
+
+        &::-webkit-scrollbar,
+        &>::-webkit-scrollbar {
+            margin-left: 10px;
+            width: 4px;
+            background-color: var(--custom-scrollbar-background-color);
+        }
+
+        &::-webkit-scrollbar-thumb,
+        &>::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px var(--custom-scrollbar-shadow-color);
+            background-color: var(custom-scrollbar-thumb-color);
+        }
+
+        z-index: 21;
+
         i {
-            color: grey;
+            color: var(--primary-color--contrast);
+            // color: grey;
             font-size: 14px;
             position: absolute;
             top: 5px;
@@ -20,14 +94,36 @@
             }
         }
 
-        // position: relative;
-        display: none;
+        pointer-events: none;
+        opacity: 0;
         position: absolute;
-        min-width: 200px;
-        max-height: 300px;
-        // display: flex;
-        padding: 10px 20px;
-        border-radius: 8px;
-        background: whitesmoke;
+        min-width: $min-width;
+        max-width: $max-width;
+        max-height: 0;
+        overflow: hidden;
+        padding: #{$padd-top} #{$padd-side} #{$padd-bottom} #{$padd-side};
+        border-radius: 5px;
+        // background: whitesmoke;
+        background: var(--primary-color);
+        color: var(--primary-color--contrast);
     }
+
+    .popper--arrow,
+    .popper--arrow::before {
+        position: absolute;
+        width: $arrow-size;
+        height: $arrow-size;
+        background: var(--primary-color);
+    }
+
+    .popper--arrow {
+        visibility: hidden;
+    }
+
+    .popper--arrow::before {
+        visibility: visible;
+        content: '';
+        transform: rotate(45deg);
+    }
+
 }
