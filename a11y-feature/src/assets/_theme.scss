@@ -1,0 +1,16 @@
+@mixin init-colors {
+    --primary-color: rgb(1,111,116);
+    --primary-color--contrast: #fff;
+    --accent-color: rgb(88, 149, 153);
+    --accent-color--contrast: #fff;
+
+    --not-active-bar-color: rgba(128, 128, 128, 0.25);
+
+    --select-border-color: rgb(130, 14, 14);
+
+    --border-color: var(--not-active-bar-color);
+
+    --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
+    --custom-scrollbar-background-color: #F5F5F5;
+    --custom-scrollbar-thumb-color: #555555
+}

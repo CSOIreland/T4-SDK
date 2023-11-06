@@ -1,0 +1,155 @@
+@use 'theme.scss'as theme;
+
+/**
+  We can reference the constants defined in the 'constants.mjs' file:
+  .__{CONSTANT_NAME}__ {
+    [attribute]: value;
+  }
+
+  e.g.
+
+  .__MAIN_CONTAINER__ {
+    background-color: red;
+  }
+*/
+
+// namespace all styles
+.__MAIN_CONTAINER__ {
+  // initialize css variabled
+  @include theme.init-colors();
+
+  display: flex;
+  position: fixed;
+  top: 50px;
+  right: 0;
+  max-width: 800px;
+
+  button.__TOGGLE_BUTTON {
+    // @TODO: style accessibility btn
+    visibility: hidden;
+  }
+
+  .__MENU_CONTAINER__ {
+    max-width: 300px;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: white;
+    box-shadow: 1.0px 1.9px 1.9px hsl(0deg 0% 0% / 0.47);
+
+    .__menu-title {
+      height: 40px;
+      background: var(--primary-color);
+      color: var(--primary-color--contrast);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .__btn-wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      padding: 15px 10px;
+
+      button.__MENU_BUTTON__ {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 4px 14px;
+        text-align: inherit;
+        font: inherit;
+        border-radius: 0;
+        appearance: none; // Just in case we missed anything.
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        gap: 8px;
+
+        $borderVar1: 1, 3, 5, 7;
+        $borderVar2: 2, 4, 6, 8;
+
+        @each $btnOrder in $borderVar1 {
+          &:nth-child(#{$btnOrder}) {
+            border-left: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+          }
+        }
+
+        @each $btnOrder in $borderVar2 {
+          &:nth-child(#{$btnOrder}) {
+
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+          }
+        }
+
+        // border: 1px solid black;
+
+        &:hover {
+          i {
+            transform: scale(1.1);
+          }
+        }
+
+        i {
+          transition: all 0.2s ease-in-out;
+          font-size: 28px;
+        }
+
+        cursor: pointer;
+
+        $size: 140px;
+
+        width: 140px;
+        height: 120px;
+
+        &[data-btn-type="__MENU_BUTTON__--reset"] {
+          width: 2*$size;
+
+          border-bottom: 1px solid var(--border-color);
+          border-right: 1px solid var(--border-color);
+        }
+      }
+    }
+
+    .__bar--wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      height: 5px;
+      width: 100%;
+      // background-color: aliceblue;
+      justify-content: space-between;
+      margin-top: 4px;
+
+      .__bar {
+        border-radius: 4px;
+        background: grey;
+      }
+
+      &--size-1 {
+        .__bar {
+          // width: 100%;
+          // height: 2px;
+          background: var(--not-active-bar-color);
+          width: 100%;
+        }
+      }
+
+      &--size-4 {
+        $gap: 2px;
+
+        .__bar {
+          display: flex;
+          // background: var(--accent-color);
+          background: var(--not-active-bar-color);
+          width: calc(25% - #{3*$gap});
+          // width: 100%;
+        }
+      }
+    }
+  }
+}
