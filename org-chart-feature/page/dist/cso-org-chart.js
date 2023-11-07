@@ -3628,10 +3628,13 @@ class OrgChartContainer {
                 createNode: (node, data) => {
                     if (data.imageSrc) {
                         const imgContainer = globalThis.document.createElement("div");
-                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar-container`);
+                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
+                        const imgSubContainer = globalThis.document.createElement("div");
+                        imgSubContainer.classList.add(`${CLASS_PREFIX}-avatar--sub-container`);
                         const imgEl = globalThis.document.createElement("img");
                         imgEl.srcset = data.imageSrc;
-                        imgContainer.appendChild(imgEl);
+                        imgSubContainer.appendChild(imgEl);
+                        imgContainer.appendChild(imgSubContainer);
                         node.prepend(imgContainer);
                         node.classList.add(`${CLASS_PREFIX}__node--with-image`);
                     }

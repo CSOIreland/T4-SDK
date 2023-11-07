@@ -109,10 +109,15 @@ export class OrgChartContainer {
           // add image element if imageSrc is provided
           if (data.imageSrc) {
             const imgContainer = globalThis.document.createElement("div");
-            imgContainer.classList.add(`${CLASS_PREFIX}-avatar-container`);
+            imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
+            const imgSubContainer = globalThis.document.createElement("div");
+            imgSubContainer.classList.add(`${CLASS_PREFIX}-avatar--sub-container`);
             const imgEl = globalThis.document.createElement("img");
             imgEl.srcset = data.imageSrc;
-            imgContainer.appendChild(imgEl);
+
+            imgSubContainer.appendChild(imgEl);
+            imgContainer.appendChild(imgSubContainer);
+
             node.prepend(imgContainer);
             node.classList.add(`${CLASS_PREFIX}__node--with-image`);
           }
@@ -235,21 +240,7 @@ export class OrgChartContainer {
               },
             },
           ],
-
-        // offset: [0, 10],
       });
-
-      // console.log("Node", node.querySelectorAll('i.edge.verticalEdge'), data );
-      // // prevent event bubbling when edge is clicked (button to expand/collapse children)
-      // const vEdges = node.querySelectorAll('i.edge.verticalEdge');
-
-      // if (vEdges.length > 0) {
-      //     Array.from(vEdges).forEach((edge) => {
-      //         edge.addEventListener('click', (e) => {
-      //             e.stopPropagation();
-      //         })
-      //     });
-      // }
 
       node.addEventListener("click", function (e) {
         e.stopPropagation();

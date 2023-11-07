@@ -565,11 +565,13 @@
 }
 .cso-org-chart-container__bio-dialog[data-popper-placement^=top] > .popper--arrow {
   bottom: -4px;
-  transform: rotate(45deg) translateX(-6px);
+  left: -6px !important;
+  transform: rotate(45deg) translateX(calc(-12px / 2));
 }
 .cso-org-chart-container__bio-dialog[data-popper-placement^=bottom] > .popper--arrow {
+  left: -6px !important;
   top: -4px;
-  transform: rotate(45deg) translateX(-6px);
+  transform: rotate(45deg) translateX(calc(-12px / 2));
 }
 .cso-org-chart-container__bio-dialog[data-popper-placement^=left] > .popper--arrow {
   right: -4px;
@@ -708,23 +710,33 @@
 .cso-org-chart-container .orgchart ~ .mask .spinner {
   color: rgba(255, 255, 255, 0.8);
 }
-.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container {
+.cso-org-chart-container .edge.verticalEdge.fa.topEdge.fa-chevron-down, .cso-org-chart-container .edge.verticalEdge.fa.bottomEdge.fa-chevron-up {
+  display: none;
+}
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar--container {
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   background-color: var(--accent-color);
-  padding: 15px;
+  height: 120px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container img {
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar--sub-container {
+  overflow: hidden;
   transition: transform 0.3s ease-in-out;
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
   border: 1px solid var(--primary-color);
 }
-.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar-container img:hover {
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar--sub-container:hover {
   transform: scale(1.1);
+}
+.cso-org-chart-container .cso-org-chart__node--with-image .cso-org-chart-avatar--sub-container img {
+  height: 100%;
+  object-fit: cover;
 }
 .cso-org-chart-container .cso-org-chart__node--with-image.node .title {
   border-top-left-radius: 0;
