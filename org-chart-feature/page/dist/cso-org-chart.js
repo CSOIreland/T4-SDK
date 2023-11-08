@@ -3709,6 +3709,7 @@ class OrgChartContainer {
                     },
                 ],
             });
+            const closeAll = this.closeAllBioDialogs.bind(this);
             node.addEventListener("click", function (e) {
                 var _a, _b, _c, _d;
                 e.stopPropagation();
@@ -3717,6 +3718,7 @@ class OrgChartContainer {
                     return;
                 }
                 if (!node.classList.contains(showSelectorName)) {
+                    closeAll();
                     (_d = data.popperInstance) === null || _d === void 0 ? void 0 : _d.update();
                     node.classList.toggle(showSelectorName);
                 }

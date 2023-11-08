@@ -216,7 +216,7 @@ export class OrgChartContainer {
       node.appendChild(bioDialog);
 
       data.popperInstance = createPopper(node, bioDialog, {
-        // placement: "right",
+        // placement: "auto-start",
         strategy: "fixed",
         // modifiers: [
         // {
@@ -242,6 +242,8 @@ export class OrgChartContainer {
           ],
       });
 
+      const closeAll = this.closeAllBioDialogs.bind(this);
+
       node.addEventListener("click", function (e) {
         e.stopPropagation();
 
@@ -252,6 +254,7 @@ export class OrgChartContainer {
         }
 
         if (!node.classList.contains(showSelectorName)) {
+          closeAll();
           data.popperInstance?.update();
           node.classList.toggle(showSelectorName);
         }
