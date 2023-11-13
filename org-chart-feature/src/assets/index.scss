@@ -30,29 +30,47 @@
   // override default chart colors
   @include override.override-org-chart-colors();
 
+  .edge.verticalEdge.fa {
+
+    &.topEdge.fa-chevron-down,
+    &.bottomEdge.fa-chevron-up {
+      display: none;
+    }
+  }
+
   // if node has image
   .__CLASS_PREFIX____node--with-image {
-    .__CLASS_PREFIX__-avatar-container {
-      $radius: 3px;
+    .__CLASS_PREFIX__-avatar {
+      &--container {
+        $radius: 3px;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      background-color: var(--accent-color);
-      padding: 15px;
-      border-top-left-radius: $radius;
-      border-top-right-radius: $radius;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: var(--accent-color);
+        height: 120px;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+      }
 
-      img {
+      &--sub-container {
         &:hover {
           transform: scale(1.1);
         }
 
+        overflow: hidden;
         transition: transform 0.3s ease-in-out;
-
         border-radius: 50%;
+        $size: 100px;
+        width: $size;
+        height: $size;
         border: 1px solid var(--primary-color);
+
+        img {
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
 
@@ -72,7 +90,7 @@
 
   .orgchart .node .title .symbol {
     float: unset;
-    margin-top: 0px; 
+    margin-top: 0px;
     margin-left: 0px;
   }
 
@@ -89,4 +107,3 @@
     }
   }
 }
-

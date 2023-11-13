@@ -3628,10 +3628,13 @@ class OrgChartContainer {
                 createNode: (node, data) => {
                     if (data.imageSrc) {
                         const imgContainer = globalThis.document.createElement("div");
-                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar-container`);
+                        imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
+                        const imgSubContainer = globalThis.document.createElement("div");
+                        imgSubContainer.classList.add(`${CLASS_PREFIX}-avatar--sub-container`);
                         const imgEl = globalThis.document.createElement("img");
                         imgEl.srcset = data.imageSrc;
-                        imgContainer.appendChild(imgEl);
+                        imgSubContainer.appendChild(imgEl);
+                        imgContainer.appendChild(imgSubContainer);
                         node.prepend(imgContainer);
                         node.classList.add(`${CLASS_PREFIX}__node--with-image`);
                     }
@@ -3706,6 +3709,7 @@ class OrgChartContainer {
                     },
                 ],
             });
+            const closeAll = this.closeAllBioDialogs.bind(this);
             node.addEventListener("click", function (e) {
                 var _a, _b, _c, _d;
                 e.stopPropagation();
@@ -3714,6 +3718,7 @@ class OrgChartContainer {
                     return;
                 }
                 if (!node.classList.contains(showSelectorName)) {
+                    closeAll();
                     (_d = data.popperInstance) === null || _d === void 0 ? void 0 : _d.update();
                     node.classList.toggle(showSelectorName);
                 }
