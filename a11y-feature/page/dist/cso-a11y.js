@@ -56,98 +56,76 @@ const getPageLang = () => {
     return window.location.pathname.includes('baile') ? 'baile' : 'en';
 };
 
-const BUTTON_OPTS = [
-    {
-        type: ButtonOptEnum.FONT_SIZE,
-        levels: 4,
-        icon: 'text-height'
-    },
-    {
-        type: ButtonOptEnum.LETTER_SPACING,
-        levels: 4,
-        icon: 'text-width'
-    },
-    {
-        type: ButtonOptEnum.LEGIBLE_FONT,
-        levels: 1,
-        icon: 'font'
-    },
-    {
-        type: ButtonOptEnum.HIGHLIGHT_LINKS,
-        levels: 1,
-        icon: 'underline'
-    },
-    {
-        type: ButtonOptEnum.CONTRAST,
-        levels: 4,
-        icon: 'adjust'
-    },
-    {
-        type: ButtonOptEnum.LARGE_POINTER,
-        levels: 1,
-        icon: 'mouse-pointer'
-    },
-    {
-        type: ButtonOptEnum.RESET,
-        levels: 0,
-        icon: 'rotate-left'
-    },
-];
-const getMenuTemplate = (forceLang) => {
-    const lang = forceLang || getPageLang();
-    const langMap = LANG_MAP[lang];
-    const container = document.createElement('div');
-    container.classList.add(MENU_CONTAINER);
-    const menuTitle = document.createElement('div');
-    menuTitle.classList.add('__menu-title');
-    menuTitle.append(langMap.menuHeader);
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('__btn-wrapper');
-    const buttons = BUTTON_OPTS.map((opt) => {
-        const button = document.createElement('button');
-        button.classList.add(MENU_BUTTON);
-        button.setAttribute(`data-btn-type`, opt.type);
-        button.setAttribute(`data-value`, '0');
-        if (opt.icon) {
-            const icon = document.createElement('i');
-            icon.classList.add('fa', `fa-${opt.icon}`);
-            button.append(icon);
-        }
-        const barWrapper = document.createElement('div');
-        barWrapper.classList.add('__bar--wrapper');
-        const bars = Array.from({ length: opt.levels }, () => {
-            const b = document.createElement('div');
-            b.classList.add('__bar');
-            return b;
-        });
-        barWrapper.append(...bars);
-        barWrapper.classList.add(`__bar--wrapper--size-${opt.levels}`);
-        const text = document.createElement('span');
-        text.append(langMap[opt.type]);
-        button.append(text);
-        if (bars.length) {
-            button.append(barWrapper);
-        }
-        return button;
-    });
-    wrapper.append(...buttons);
-    container.append(menuTitle, wrapper);
-    return container;
-};
-const getTemplate = (forceLang) => {
-    const container = document.createElement('div');
-    container.classList.add(MAIN_CONTAINER);
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add(TOGGLE_BUTTON);
-    const menuTemp = getMenuTemplate(forceLang);
-    container.append(toggleButton, menuTemp);
-    return container;
-};
-
 class CSOA11y {
     constructor() {
-        console.log('A11y initialized');
+        this.buttonOpts = [
+            {
+                type: ButtonOptEnum.FONT_SIZE,
+                levels: 4,
+                icon: "text-height",
+                clickHandlers: [this.toggleLevelFunc],
+            },
+            {
+                type: ButtonOptEnum.LETTER_SPACING,
+                levels: 4,
+                icon: "text-width",
+            },
+            {
+                type: ButtonOptEnum.LEGIBLE_FONT,
+                levels: 1,
+                icon: "font",
+            },
+            {
+                type: ButtonOptEnum.HIGHLIGHT_LINKS,
+                levels: 1,
+                icon: "underline",
+            },
+            {
+                type: ButtonOptEnum.CONTRAST,
+                levels: 4,
+                icon: "adjust",
+            },
+            {
+                type: ButtonOptEnum.LARGE_POINTER,
+                levels: 1,
+                icon: "mouse-pointer",
+            },
+            {
+                type: ButtonOptEnum.RESET,
+                levels: 0,
+                icon: "rotate-left",
+            },
+        ];
+        console.log("A11y initialized");
         this.init();
+    }
+    getTemplate(forceLang) {
+        const container = document.createElement("div");
+        container.classList.add(MAIN_CONTAINER);
+        const toggleButton = document.createElement("button");
+        toggleButton.classList.add(TOGGLE_BUTTON);
+        const menuTemp = this.getMenuTemplate(forceLang);
+        container.append(toggleButton, menuTemp);
+        return container;
+    }
+    toggleLevelFunc(opt) {
+        return function (e) {
+            const maxLevel = opt.levels;
+            console.log("maxLevel", { maxLevel, dis: this });
+            const target = e.target;
+            if (target) {
+                const value = target.getAttribute("data-level");
+                if (value === null || value === void 0 ? void 0 : value.length) {
+                    const val = parseInt(value);
+                    if (val < maxLevel) {
+                        target.setAttribute("data-level", `${val + 1}`);
+                    }
+                    else {
+                        target.setAttribute("data-level", "0");
+                    }
+                }
+            }
+        };
     }
     init() {
         try {
@@ -158,8 +136,56 @@ class CSOA11y {
             return;
         }
     }
+    getMenuTemplate(forceLang) {
+        const lang = forceLang || getPageLang();
+        const langMap = LANG_MAP[lang];
+        const container = document.createElement("div");
+        container.classList.add(MENU_CONTAINER);
+        const menuTitle = document.createElement("div");
+        menuTitle.classList.add("__menu-title");
+        menuTitle.append(langMap.menuHeader);
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("__btn-wrapper");
+        const buttons = this.buttonOpts.map((opt) => {
+            var _a;
+            const button = document.createElement("button");
+            button.classList.add(MENU_BUTTON);
+            button.setAttribute(`data-btn-type`, opt.type);
+            button.setAttribute(`data-level`, "0");
+            if (opt.icon) {
+                const icon = document.createElement("i");
+                icon.classList.add("fa", `fa-${opt.icon}`);
+                button.append(icon);
+            }
+            if ((_a = opt.clickHandlers) === null || _a === void 0 ? void 0 : _a.length) {
+                opt.clickHandlers.forEach((handler) => {
+                    console.log("dis set events", this);
+                    button.addEventListener("click", handler(opt).bind(this));
+                });
+            }
+            const barWrapper = document.createElement("div");
+            barWrapper.classList.add("__bar--wrapper");
+            const bars = Array.from({ length: opt.levels }, () => {
+                const b = document.createElement("div");
+                b.classList.add("__bar");
+                return b;
+            });
+            barWrapper.append(...bars);
+            barWrapper.classList.add(`__bar--wrapper--size-${opt.levels}`);
+            const text = document.createElement("span");
+            text.append(langMap[opt.type]);
+            button.append(text);
+            if (bars.length) {
+                button.append(barWrapper);
+            }
+            return button;
+        });
+        wrapper.append(...buttons);
+        container.append(menuTitle, wrapper);
+        return container;
+    }
     attachToDOM() {
-        const temp = getTemplate();
+        const temp = this.getTemplate();
         globalThis.document.body.appendChild(temp);
     }
 }

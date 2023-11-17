@@ -4,11 +4,33 @@ import { ButtonOpt, ButtonOptEnum } from "./typings/button-options";
 import { Lang } from "./typings/langs";
 import { getPageLang } from "./utils/lang";
 
+// const toggleLevelFunc: (e: Event) => void = function (e) {
+//             const maxLevel = (this as unknown as ButtonOpt).levels;
+
+//             console.log("maxLevel", { maxLevel });
+//             const target = e.target as HTMLElement;
+//             if (target) {
+//                 const value = target.getAttribute('data-level');
+//                 if (value?.length) {
+//                     const val = parseInt(value);
+//                     if (val < maxLevel) {
+//                         target.setAttribute('data-level', `${val + 1}`);
+//                     } else {
+//                         target.setAttribute('data-level', '0');
+//                     }
+//                 }
+//             }
+//         }
+
+/**
+ * All menu buttons. Here are events defined, btn levels and ordering.
+ */
 export const BUTTON_OPTS: ButtonOpt[] = [
     {
         type: ButtonOptEnum.FONT_SIZE,
         levels: 4,
-        icon: 'text-height'
+        icon: 'text-height',
+        // clickHandlers: [toggleLevelFunc]
     },
 
     {
@@ -42,6 +64,9 @@ export const BUTTON_OPTS: ButtonOpt[] = [
     },
 
 
+    // This should be the last button.
+    // Changes to the number of buttons will probably require
+    // changes to the css.
     {
         type: ButtonOptEnum.RESET,
         levels: 0,
@@ -73,12 +98,19 @@ export const getMenuTemplate = (forceLang?: Lang) => {
         const button = document.createElement('button');
         button.classList.add(MENU_BUTTON);
         button.setAttribute(`data-btn-type`, opt.type);
-        button.setAttribute(`data-value`, '0');
+        button.setAttribute(`data-level`, '0');
 
         if (opt.icon) {
             const icon = document.createElement('i');
             icon.classList.add('fa', `fa-${opt.icon}`);
             button.append(icon);
+        }
+
+        // attach click event handler
+        if (opt.clickHandlers?.length) {
+            opt.clickHandlers.forEach((handler) => {
+                button.addEventListener('click', handler?.bind(opt));
+            });
         }
 
         // add toggle bar indicator below button
