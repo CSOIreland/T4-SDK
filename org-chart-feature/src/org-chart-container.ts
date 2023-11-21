@@ -5,7 +5,7 @@ import {
   CSOOrgChartParentAttributes,
   OrgChartData,
   OrgChartDataChild,
-} from "./typings/cso-org-chart";
+} from "./typings/cso-org-chart.model";
 import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 // import { looseParseOnlyElement } from "./utils/dom";
@@ -24,6 +24,9 @@ const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
 const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [
   ...CHILD_ATTRS,
   "direction",
+  "variant",
+  "verticalDepth",
+  "depth"
 ];
 
 /**
@@ -86,6 +89,35 @@ export class OrgChartContainer {
     return `${this.containerId}__node__${this.nodeIdNum++}`;
   }
 
+  createNode(node: HTMLElement, data: OrgChartDataChild) {
+    // add image element if imageSrc is provided
+    if (data.imageSrc) {
+      const imgContainer = globalThis.document.createElement("div");
+      imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
+      const imgSubContainer = globalThis.document.createElement("div");
+      imgSubContainer.classList.add(`${CLASS_PREFIX}-avatar--sub-container`);
+      const imgEl = globalThis.document.createElement("img");
+      imgEl.srcset = data.imageSrc;
+
+      imgSubContainer.appendChild(imgEl);
+      imgContainer.appendChild(imgSubContainer);
+
+      node.prepend(imgContainer);
+      node.classList.add(`${CLASS_PREFIX}__node--with-image`);
+    }
+
+    if (data.dataRefId) {
+      const mainData = this.dataByNodeId[data.dataRefId] as OrgChartData;
+      // link node with data
+      node.setAttribute("data-dataRefId", data.dataRefId);
+
+      this.addBioDialog(node, mainData);
+      this.addAriaLabels(node, mainData);
+    }
+
+    node.classList.add(`variant-${data.variant ?? 1}`);
+  }
+
   /**
    * Initialize the orgchart.js library.
    */
@@ -101,39 +133,27 @@ export class OrgChartContainer {
     this.data = this.extractDataFromContainer(this.container) as OrgChartData;
 
     if (this.data) {
-      this.orgChartInstance = new OrgChartOverride({
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const opts: any = {
         chartContainer: `#${this.containerId}`,
         data: this.data,
         nodeContent: "title",
-        createNode: (node: HTMLElement, data: OrgChartDataChild) => {
-          // add image element if imageSrc is provided
-          if (data.imageSrc) {
-            const imgContainer = globalThis.document.createElement("div");
-            imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
-            const imgSubContainer = globalThis.document.createElement("div");
-            imgSubContainer.classList.add(`${CLASS_PREFIX}-avatar--sub-container`);
-            const imgEl = globalThis.document.createElement("img");
-            imgEl.srcset = data.imageSrc;
-
-            imgSubContainer.appendChild(imgEl);
-            imgContainer.appendChild(imgSubContainer);
-
-            node.prepend(imgContainer);
-            node.classList.add(`${CLASS_PREFIX}__node--with-image`);
-          }
-
-          if (data.dataRefId) {
-            const mainData = this.dataByNodeId[data.dataRefId] as OrgChartData;
-            // link node with data
-            node.setAttribute("data-dataRefId", data.dataRefId);
-
-            this.addBioDialog(node, mainData);
-            this.addAriaLabels(node, mainData);
-          }
-        },
-        depth: 3,
+        createNode: this.createNode.bind(this),
         toggleSiblingsResp: false,
-      });
+      }
+
+      if (this.data.depth) {
+        opts.depth = this.data.depth;
+      }
+
+      if (this.data.verticalDepth) {
+        opts.verticalDepth = this.data.verticalDepth;
+      }
+
+      this.orgChartInstance = new OrgChartOverride(
+        opts
+      );
 
       this.addEventListeners();
     }
@@ -311,12 +331,25 @@ export class OrgChartContainer {
 
     PARENT_ATTRS.forEach((attr) => {
       if (nAttrs(attr) ?? false) {
-        if (data) {
-          // avoid type error
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (data as any)[attr as string] = nAttrs(attr) as string;
-        } else {
-          data = { [attr]: nAttrs(attr) as string };
+        let val: string | number | null = nAttrs(attr);
+
+        if (attr === "depth" || attr === "verticalDepth") {
+          const _val = parseInt(val as string, 10);
+
+          // check if _val is a number and not NaN
+          if (typeof _val === 'number' && _val === _val) {
+            val = _val;
+          }
+        }
+
+        if (val ?? false) {
+          if (data) {
+            // avoid type error
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (data as any)[attr as string] = val;
+          } else {
+            data = { [attr]: val };
+          }
         }
       }
     });

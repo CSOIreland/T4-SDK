@@ -910,7 +910,6 @@ width: 100%;
 }
 
 @media print {
-/*  @page { size: a4; }	*/
 
 .mainContent {
             display: inline; /*changed from flex on 29/03/17 to fix printing issue on firefox*/
@@ -944,45 +943,9 @@ width: 100%;
     color: #384350;
   
   }
-
-     .copy table { page-break-inside : avoid }
-    
-    .copy p,
-    .copy h3,
-    .copy h4,
-    .copy h5 {
-        orphans: 3;
-        widows: 4;
-    }
-/*  
-	.copy { 
-      width: 840px;
-      overflow: hidden;
-  	}
-    
-	.highchartBox {
-    	max-width: 840px;
-}
-*/
   
-  /*  fix issue with multiple blank pages when widget is on the page	
-  https://stackoverflow.com/questions/74820718/chart-js-printing-a-webpage-containing-chart-js-canvas-prints-out-hundreds-of
-  backward compatibility for old widgets 
-  */
-  .pxwidget .chartjs-size-monitor{
-    position: fixed;
-    
-  }
 
 }
-
-
-
-
-
-
-
-
 
 
 

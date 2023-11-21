@@ -1,4 +1,4 @@
-/*OLD blue*/
+		/*blue*/
 /*
 .carousel .blue i.fa,
 .blue .moduleBody li a:before,
@@ -70,33 +70,6 @@ color : #006168
 color : #9BBDBF
 }
 
-/*soft green (darker than green 40%*/
-.carousel .softgreen i.fa,
-.softgreen .moduleBody li a:before,
-.softgreen .moduleBody li p:before,
-.softgreen .accordion h3 a,
-.softgreen .accordion > div li a:before,
-.softgreen .accordionMethods h3,
-.softgreen .accordionMethods > div li a:before,
-.footer .contact.softgreen i,
-.softgreen.multiList .moduleBody li a,
-.text-lead.softgreen,
-.text-highlight.softgreen {
-	color: #579599;
-}
-.softgreen .moduleHeader,
-.softgreen .softgreen .moduleFooter,
-.green .btn,
-
-.softgreen .label,
-.softgreen a.btn,
-.sideitem.softgreen {
-	background-color: #579599;
-}
-.wellbeing-hub-indicator .sideitem i.softgreen {
-color : #579599
-}
-
 /*mint*/
 .carousel .mint i.fa,
 .mint .moduleBody li a:before,
@@ -131,7 +104,7 @@ color : #579599
 color : #00A881
 }
 
-/*OLD pink
+/*pink
 .carousel .pink i.fa,
 .pink .moduleBody li a:before,
 .pink .accordion h3 a,
@@ -205,95 +178,6 @@ color : #00A3A0
 }
 .wellbeing-hub-indicator .sideitem i.purple {
 color : #35456B
-}
-
-/*census2022purple*/
-.census2022 .moduleHeader,
-.homepage .census2022 .moduleFooter,
-.census2022 .btn,
-.census2022 .label,
-.sideitem.census2022 {
-	background-color: #283F73;
-    color: #fff;
-}
-
-
-/*violet*/
-.carousel .violet i.fa,
-.violet .moduleBody li a:before,
-.violet .moduleBody li p:before,
-.violet .accordion h3 a,
-.violet .accordion > div li a:before,
-.violet .accordionMethods h3,
-.violet .accordionMethods > div li a:before,
-.footer .contact.violet i,
-.violet.multiList .moduleBody li a,
-.text-lead.violet,
-.text-highlight.violet {
-	color: #725499;
-}
-.violet .moduleHeader,
-.homepage .violet .moduleFooter,
-.violet .btn,
-.violet .label,
-.sideitem.violet {
-	background-color: #725499;
-    color: #fff;
-}
-.wellbeing-hub-indicator .sideitem i.violet {
-color : #725499
-}
-
-/*cobalt*/
-.carousel .cobalt i.fa,
-.cobalt .moduleBody li a:before,
-.cobalt .moduleBody li p:before,
-.cobalt .accordion h3 a,
-.cobalt .accordion > div li a:before,
-.cobalt .accordionMethods h3,
-.cobalt .accordionMethods > div li a:before,
-.footer .contact.cobalt i,
-.cobalt.multiList .moduleBody li a,
-.text-lead.cobalt,
-.text-highlight.cobalt {
-	color: #4463aa;
-}
-.cobalt .moduleHeader,
-.homepage .cobalt .moduleFooter,
-.cobalt .btn,
-.cobalt .label,
-.sideitem.cobalt {
-	background-color: #4463aa;
-    color: #fff;
-}
-.wellbeing-hub-indicator .sideitem i.cobalt {
-color : #4463aa
-}
-
-/*magenta*/
-.carousel .magenta i.fa,
-.magenta .moduleBody li a:before,
-.magenta .moduleBody li p:before,
-.magenta .accordion h3 a,
-.magenta .accordion > div li a:before,
-.magenta .accordionMethods h3,
-.magenta .accordionMethods > div li a:before,
-.footer .contact.magenta i,
-.magenta.multiList .moduleBody li a,
-.text-lead.magenta,
-.text-highlight.magenta {
-	color: #ab4d88;
-}
-.magenta .moduleHeader,
-.homepage .magenta .moduleFooter,
-.magenta .btn,
-.magenta .label,
-.sideitem.magenta {
-	background-color: #ab4d88;
-    color: #fff;
-}
-.wellbeing-hub-indicator .sideitem i.magenta {
-color : #ab4d88
 }
 
 /*CSO red90*/

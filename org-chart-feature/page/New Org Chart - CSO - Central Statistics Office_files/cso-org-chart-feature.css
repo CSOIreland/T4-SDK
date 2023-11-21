@@ -630,54 +630,27 @@
 .cso-org-chart-container {
   max-width: 100%;
   overflow: auto;
-  --primary-color: #016e74;
+  --primary-color: rgb(1,111,116);
   --primary-color--contrast: #fff;
   --accent-color: rgb(88, 149, 153);
   --accent-color--contrast: #fff;
-  --select-border-color: #EBB94B;
+  --select-border-color: rgb(130, 14, 14);
   --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
   --custom-scrollbar-background-color: #F5F5F5;
-  --custom-scrollbar-thumb-color: #555555
-  --primary-color__variant-1: #006168;
-  --primary-color--contrast__variant-1: #fff;
-  --accent-color__variant-1: #9BBDBF;
-  --accent-color--contrast__variant-1: #fff;
-  --primary-color__variant-2: #35456B;
-  --primary-color--contrast__variant-2: #fff;
-  --accent-color__variant-2: #A3AFCC;
-  --accent-color--contrast__variant-2: #fff;
-  --primary-color__variant-3: #00758A;
-  --primary-color--contrast__variant-3: #fff;
-  --accent-color__variant-3: #87B8C1;
-  --accent-color--contrast__variant-3: #fff;
+  --custom-scrollbar-thumb-color: #555555 ;
 }
-.cso-org-chart-container .orgchart .node .title {
-  background-color: var(--primary-color);
-  color: #fff;
+.cso-org-chart-container .orgchart {
+  background-image: none;
 }
-.cso-org-chart-container .orgchart .node .content {
+.cso-org-chart-container .orgchart .verticalNodes > td::before {
   border: 1px solid var(--primary-color);
 }
-.cso-org-chart-container .orgchart .node.variant-1 .title {
-  background-color: var(--primary-color__variant-1);
-  color: var(--primary-color--contrast__variant-1);
+.cso-org-chart-container .orgchart .verticalNodes ul > li::before,
+.cso-org-chart-container .orgchart .verticalNodes ul > li::after {
+  border-color: var(--primary-color);
 }
-.cso-org-chart-container .orgchart .node.variant-1 .content {
-  border: 1px solid var(--primary-color__variant-1);
-}
-.cso-org-chart-container .orgchart .node.variant-2 .title {
-  background-color: var(--primary-color__variant-2);
-  color: var(--primary-color--contrast__variant-2);
-}
-.cso-org-chart-container .orgchart .node.variant-2 .content {
-  border: 1px solid var(--primary-color__variant-2);
-}
-.cso-org-chart-container .orgchart .node.variant-3 .title {
-  background-color: var(--primary-color__variant-3);
-  color: var(--primary-color--contrast__variant-3);
-}
-.cso-org-chart-container .orgchart .node.variant-3 .content {
-  border: 1px solid var(--primary-color__variant-3);
+.cso-org-chart-container .orgchart > .spinner {
+  color: rgba(68, 157, 68, 0.8);
 }
 .cso-org-chart-container .orgchart tr.lines .topLine {
   border-top: 2px solid var(--primary-color);
@@ -691,12 +664,8 @@
 .cso-org-chart-container .orgchart tr.lines .downLine {
   background-color: var(--primary-color);
 }
-.cso-org-chart-container .orgchart .verticalNodes ul > li::before,
-.cso-org-chart-container .orgchart .verticalNodes ul > li::after {
-  border-color: var(--primary-color);
-}
-.cso-org-chart-container .orgchart .verticalNodes > td::before {
-  border: 1px solid var(--primary-color);
+.cso-org-chart-container .orgchart .node > .spinner {
+  color: rgba(68, 157, 68, 0.8);
 }
 .cso-org-chart-container .orgchart .node:hover {
   background-color: var(--select-border-color);
@@ -704,21 +673,19 @@
 .cso-org-chart-container .orgchart .node.focused {
   background-color: var(--select-border-color);
 }
-.cso-org-chart-container .orgchart {
-  background-image: none;
-}
-.cso-org-chart-container .orgchart > .spinner {
-  color: rgba(68, 157, 68, 0.8);
-}
-.cso-org-chart-container .orgchart .node > .spinner {
-  color: rgba(68, 157, 68, 0.8);
-}
 .cso-org-chart-container .orgchart .ghost-node rect {
   fill: #ffffff;
-  stroke: var(--select-border-color);
+  stroke: #bf0000;
 }
 .cso-org-chart-container .orgchart .node.allowedDrop {
   border-color: rgba(68, 157, 68, 0.9);
+}
+.cso-org-chart-container .orgchart .node .title {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.cso-org-chart-container .orgchart .node .content {
+  border: 1px solid var(--primary-color);
 }
 .cso-org-chart-container .orgchart .node .edge {
   color: rgba(68, 157, 68, 0.5);

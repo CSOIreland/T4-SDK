@@ -76,7 +76,7 @@
 }
 
 #fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-	background-image: url('/en/media/styleassets/fancybox/fancybox_sprite.png');
+	background-image: url('https://test-t4.cso.ie/terminalfour/SiteManager?ctfn=download&fnno=60&ceid=17df19f97628e77be09c352bf27425faea248251');
 }
 
 #fancybox-loading {
@@ -114,7 +114,7 @@
 	height: 100%;
 	cursor: pointer;
 	text-decoration: none;
-	background: transparent url('/en/media/styleassets/fancybox/blank.gif'); /* helps IE */
+	background: transparent url('https://test-t4.cso.ie/terminalfour/SiteManager?ctfn=download&fnno=60&ceid=2daeaa8b5f19f0bc209d976c02bd6acb51b00b0a'); /* helps IE */
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040;
 }
@@ -184,7 +184,7 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
-	background: url('/en/media/styleassets/fancybox/fancybox_overlay.png');
+	background: url('https://test-t4.cso.ie/terminalfour/SiteManager?ctfn=download&fnno=60&ceid=b3a4ee645ba494f52840ef8412015ba0f465dbe0');
 }
 
 .fancybox-overlay-fixed {
@@ -263,7 +263,7 @@
 	   only screen and (min-device-pixel-ratio: 1.5){
 
 	#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
-		background-image: url('/en/media/styleassets/fancybox/fancybox_sprite@2x.png');
+		background-image: url('https://test-t4.cso.ie/terminalfour/SiteManager?ctfn=download&fnno=60&ceid=30c58913f327e28f466a00f4c1ac8001b560aed8');
 		background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
 	}
 
