@@ -8,23 +8,20 @@ import {
 } from "./typings/cso-org-chart.model";
 import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
-// import { looseParseOnlyElement } from "./utils/dom";
 import { createPopper } from "@popperjs/core";
+import { looseParseFromString, looseParseOnlyElement, looseParseOnlyElements } from "./utils/dom";
 
-// import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow.js';
-// import flip from '@popperjs/core/lib/modifiers/flip.js';
-// import { looseParseFromString, looseParseOnlyElement } from "./utils/dom";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
   "title",
   "imageSrc",
   "bio",
+  "variant",
 ];
 const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [
   ...CHILD_ATTRS,
   "direction",
-  "variant",
   "verticalDepth",
   "depth"
 ];
@@ -80,7 +77,7 @@ export class OrgChartContainer {
     this.container = node;
 
     // extract data from the container
-    console.log("extracted data", this.extractDataFromContainer(node));
+    // console.log("extracted data", this.extractDataFromContainer(node));
 
     this.init();
   }
@@ -169,7 +166,7 @@ export class OrgChartContainer {
     this.container
       .querySelectorAll(this.popperShowSelector())
       .forEach((node) => {
-        console.log("remove bio dialog", node);
+        // console.log("remove bio dialog", node);
         if (node?.classList?.remove) {
           node.classList.remove(this.popperShowSelector(true));
         }
@@ -190,7 +187,7 @@ export class OrgChartContainer {
    * @param data Reference data
    */
   addBioDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
-    console.log("add bio dialog", node, data);
+    // console.log("add bio dialog", node, data);
     if (data.bio) {
       node.classList.add(`with-bio`);
 
@@ -211,7 +208,20 @@ export class OrgChartContainer {
 
       const bioText = globalThis.document.createElement("span");
       bioText.classList.add("bio-dialog--text");
-      bioText.innerText = data.bio;
+      // bioText.innerText = data.bio;
+      const parsedHtml = looseParseOnlyElements(data.bio);
+      console.log("nodes strange", { bioText: data.bio, parsedHtml });
+
+      if (parsedHtml?.length) {
+        const nodes = Array.from(parsedHtml);
+        console.log("parsedHtml", {bioText: data.bio, parsedHtml, nodes});
+
+        nodes.forEach((node) => {
+          console.log("append node", node);
+          bioText.appendChild(node);
+        });
+      }
+
       bioDialog.appendChild(bioText);
 
       const arrow = globalThis.document.createElement("div");
@@ -267,9 +277,11 @@ export class OrgChartContainer {
       node.addEventListener("click", function (e) {
         e.stopPropagation();
 
-        console.log("Click", { node, e });
-
-        if ((e.target as HTMLElement)?.classList?.contains?.("edge")) {
+        // don't open bio dialog if the user clicks on the edge or toggle button to expand the node
+        if (
+          (e.target as HTMLElement)?.classList?.contains?.("edge") ||
+          (e.target as HTMLElement)?.classList?.contains?.("toggleBtn")
+        ) {
           return;
         }
 
@@ -297,7 +309,7 @@ export class OrgChartContainer {
       );
     }
 
-    console.log("node data", node, data);
+    // console.log("node data", node, data);
   }
 
   getDataFromChildNode(node: HTMLElement): OrgChartDataChild | null {
@@ -305,11 +317,37 @@ export class OrgChartContainer {
     let data: Partial<OrgChartDataChild> | null = null;
 
     CHILD_ATTRS.forEach((attr) => {
+      // if (nAttrs(attr) ?? false) {
+      //   if (data) {
+      //     data[attr] = nAttrs(attr) as string;
+      //   } else {
+      //     data = { [attr]: nAttrs(attr) as string };
+      //   }
+      // }
+
+      // if (attr === "variant") {
+      //   console.log("VARIANT", attr);
+      // }
       if (nAttrs(attr) ?? false) {
-        if (data) {
-          data[attr] = nAttrs(attr) as string;
-        } else {
-          data = { [attr]: nAttrs(attr) as string };
+        const val: string | null = nAttrs(attr);
+
+        // if (attr === "depth" || attr === "verticalDepth") {
+        //   const _val = parseInt(val as string, 10);
+
+        //   // check if _val is a number and not NaN
+        //   if (typeof _val === 'number' && _val === _val) {
+        //     val = _val;
+        //   }
+        // }
+
+        if (val ?? false) {
+          if (data) {
+            // avoid type error
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (data as any)[attr as string] = val;
+          } else {
+            data = { [attr]: val };
+          }
         }
       }
     });

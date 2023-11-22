@@ -88,6 +88,10 @@
         border: 1px solid var(--primary-color);
     }
 
+    .orgchart .node {
+        border-radius: 4px;
+    }
+
     .orgchart .node:hover {
         background-color: var(--select-border-color);
     }

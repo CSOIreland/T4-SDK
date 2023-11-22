@@ -3,8 +3,27 @@
 const CLASS_PREFIX = "cso-org-chart";
 const MAIN_CONTAINER = "cso-org-chart-container";
 
+function looseParseFromString(str) {
+    const parser = new DOMParser();
+    str = str
+        .replace(/ \/>/g, ">")
+        .replace(/(<(area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr).*?>)/g, "$1</$2>");
+    const xdom = parser.parseFromString("<xml>" + str + "</xml>", "text/xml");
+    const hdom = parser.parseFromString("", "text/html");
+    for (const elem of Array.from(xdom.documentElement.children)) {
+        hdom.body.appendChild(elem);
+    }
+    for (const elem of Array.from(hdom.querySelectorAll("area,base,br,col,command,embed,hr,img,input,keygen,link,meta,param,source,track,wbr"))) {
+        elem.outerHTML = "<" + elem.outerHTML.slice(1).split("<")[0];
+    }
+    return hdom;
+}
 function getContainers() {
     return globalThis.document.querySelectorAll(`.${MAIN_CONTAINER}`);
+}
+function looseParseOnlyElements(str) {
+    var _a, _b;
+    return ((_b = (_a = looseParseFromString(str)) === null || _a === void 0 ? void 0 : _a.body) === null || _b === void 0 ? void 0 : _b.childNodes) || null;
 }
 
 function nodeAttributes(node) {
@@ -1790,6 +1809,37 @@ class OrgChartOverride extends OrgChart {
     _buildJsonDS(li) {
         const built = super._buildJsonDS(li);
         return built;
+    }
+    showChildren(node) {
+        const that = this, temp = this._nextAll(node.parentNode.parentNode), descendants = [];
+        this._removeClass(temp, "hidden");
+        if (temp.some((el) => el.classList.contains("verticalNodes"))) {
+            Array.from(temp).forEach((el) => {
+                var _a, _b;
+                (_b = (_a = el.querySelector('ul.hidden')) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.remove('hidden');
+            });
+            temp.forEach((el) => {
+                Array.prototype.push.apply(descendants, Array.from(el.querySelectorAll(".node")).filter((el) => {
+                    return that._isVisible(el);
+                }));
+            });
+        }
+        else {
+            Array.from(temp[2].children).forEach((el) => {
+                Array.prototype.push.apply(descendants, Array.from(el.querySelector("tr").querySelectorAll(".node")).filter((el) => {
+                    return that._isVisible(el);
+                }));
+            });
+        }
+        this._repaint(descendants[0]);
+        this._one(descendants[0], "transitionend", () => {
+            this._removeClass(descendants, "slide");
+            if (this._isInAction(node)) {
+                this._switchVerticalArrow(node.querySelector(".bottomEdge"));
+            }
+        }, this);
+        this._addClass(descendants, "slide");
+        this._removeClass(descendants, "slide-up");
     }
 }
 
@@ -3589,11 +3639,11 @@ const CHILD_ATTRS = [
     "title",
     "imageSrc",
     "bio",
+    "variant",
 ];
 const PARENT_ATTRS = [
     ...CHILD_ATTRS,
     "direction",
-    "variant",
     "verticalDepth",
     "depth"
 ];
@@ -3612,7 +3662,6 @@ class OrgChartContainer {
             node.id = this.generateNodeId();
         });
         this.container = node;
-        console.log("extracted data", this.extractDataFromContainer(node));
         this.init();
     }
     generateNodeId() {
@@ -3673,7 +3722,6 @@ class OrgChartContainer {
             .querySelectorAll(this.popperShowSelector())
             .forEach((node) => {
             var _a;
-            console.log("remove bio dialog", node);
             if ((_a = node === null || node === void 0 ? void 0 : node.classList) === null || _a === void 0 ? void 0 : _a.remove) {
                 node.classList.remove(this.popperShowSelector(true));
             }
@@ -3686,14 +3734,22 @@ class OrgChartContainer {
         return `${onlyName ? "" : "."}${MAIN_CONTAINER}__show-bio`;
     }
     addBioDialog(node, data) {
-        console.log("add bio dialog", node, data);
         if (data.bio) {
             node.classList.add(`with-bio`);
             const bioDialog = globalThis.document.createElement("div");
             bioDialog.classList.add(`${this.popperMainSelector(true)}`, `bio-dialog-${data.dataRefId}`);
             const bioText = globalThis.document.createElement("span");
             bioText.classList.add("bio-dialog--text");
-            bioText.innerText = data.bio;
+            const parsedHtml = looseParseOnlyElements(data.bio);
+            console.log("nodes strange", { bioText: data.bio, parsedHtml });
+            if (parsedHtml === null || parsedHtml === void 0 ? void 0 : parsedHtml.length) {
+                const nodes = Array.from(parsedHtml);
+                console.log("parsedHtml", { bioText: data.bio, parsedHtml, nodes });
+                nodes.forEach((node) => {
+                    console.log("append node", node);
+                    bioText.appendChild(node);
+                });
+            }
             bioDialog.appendChild(bioText);
             const arrow = globalThis.document.createElement("div");
             arrow.classList.add("popper--arrow");
@@ -3723,15 +3779,15 @@ class OrgChartContainer {
             });
             const closeAll = this.closeAllBioDialogs.bind(this);
             node.addEventListener("click", function (e) {
-                var _a, _b, _c, _d;
+                var _a, _b, _c, _d, _e, _f, _g;
                 e.stopPropagation();
-                console.log("Click", { node, e });
-                if ((_c = (_b = (_a = e.target) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.contains) === null || _c === void 0 ? void 0 : _c.call(_b, "edge")) {
+                if (((_c = (_b = (_a = e.target) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.contains) === null || _c === void 0 ? void 0 : _c.call(_b, "edge")) ||
+                    ((_f = (_e = (_d = e.target) === null || _d === void 0 ? void 0 : _d.classList) === null || _e === void 0 ? void 0 : _e.contains) === null || _f === void 0 ? void 0 : _f.call(_e, "toggleBtn"))) {
                     return;
                 }
                 if (!node.classList.contains(showSelectorName)) {
                     closeAll();
-                    (_d = data.popperInstance) === null || _d === void 0 ? void 0 : _d.update();
+                    (_g = data.popperInstance) === null || _g === void 0 ? void 0 : _g.update();
                     node.classList.toggle(showSelectorName);
                 }
             });
@@ -3744,7 +3800,6 @@ class OrgChartContainer {
         if (data.title) {
             node === null || node === void 0 ? void 0 : node.setAttribute("aria-describedby", `[data-dataRefId="${data.dataRefId}"] .content`);
         }
-        console.log("node data", node, data);
     }
     getDataFromChildNode(node) {
         const nAttrs = nodeAttributes(node);
@@ -3752,11 +3807,14 @@ class OrgChartContainer {
         CHILD_ATTRS.forEach((attr) => {
             var _a;
             if ((_a = nAttrs(attr)) !== null && _a !== void 0 ? _a : false) {
-                if (data) {
-                    data[attr] = nAttrs(attr);
-                }
-                else {
-                    data = { [attr]: nAttrs(attr) };
+                const val = nAttrs(attr);
+                if (val !== null && val !== void 0 ? val : false) {
+                    if (data) {
+                        data[attr] = val;
+                    }
+                    else {
+                        data = { [attr]: val };
+                    }
                 }
             }
         });

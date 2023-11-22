@@ -630,14 +630,14 @@
 .cso-org-chart-container {
   max-width: 100%;
   overflow: auto;
-  --primary-color: rgb(1,111,116);
+  /* --primary-color: rgb(1,111,116);
   --primary-color--contrast: #fff;
   --accent-color: rgb(88, 149, 153);
   --accent-color--contrast: #fff;
   --select-border-color: rgb(130, 14, 14);
   --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
   --custom-scrollbar-background-color: #F5F5F5;
-  --custom-scrollbar-thumb-color: #555555 ;
+  --custom-scrollbar-thumb-color: #555555 ; */
 }
 .cso-org-chart-container .orgchart {
   background-image: none;

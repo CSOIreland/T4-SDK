@@ -637,7 +637,7 @@
   --select-border-color: #EBB94B;
   --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
   --custom-scrollbar-background-color: #F5F5F5;
-  --custom-scrollbar-thumb-color: #555555
+  --custom-scrollbar-thumb-color: #555555;
   --primary-color__variant-1: #006168;
   --primary-color--contrast__variant-1: #fff;
   --accent-color__variant-1: #9BBDBF;
@@ -697,6 +697,9 @@
 }
 .cso-org-chart-container .orgchart .verticalNodes > td::before {
   border: 1px solid var(--primary-color);
+}
+.cso-org-chart-container .orgchart .node {
+  border-radius: 4px;
 }
 .cso-org-chart-container .orgchart .node:hover {
   background-color: var(--select-border-color);
