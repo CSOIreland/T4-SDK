@@ -1,156 +1,131 @@
 @mixin override-org-chart-colors {
-    .orgchart {
-        .node {
-            // DEFAULT START
+  .orgchart {
+    .node {
+      // DEFAULT START
+      .title {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+
+      .content {
+        border: 1px solid var(--primary-color);
+      }
+
+      // DEFAULT END
+      &.variant {
+        @for $i from 1 through 3 {
+          &-#{$i} {
             .title {
-                background-color: var(--primary-color);
-                color: #fff;
+              background-color: var(--primary-color__variant-#{$i});
+              color: var(--primary-color--contrast__variant-#{$i});
             }
 
             .content {
-                border: 1px solid var(--primary-color);
+              border: 1px solid var(--primary-color__variant-#{$i});
             }
-
-            // DEFAULT END
-
-            // VARIANT 1 START
-            &.variant-1 {
-                .title {
-                    background-color: var(--primary-color__variant-1);
-                    color: var(--primary-color--contrast__variant-1);
-                }
-
-                .content {
-                    border: 1px solid var(--primary-color__variant-1);
-                }
-            }
-            // VARIANT 1 END
-
-            // VARIANT 2 START
-            &.variant-2 {
-                .title {
-                    background-color: var(--primary-color__variant-2);
-                    color: var(--primary-color--contrast__variant-2);
-                }
-
-                .content {
-                    border: 1px solid var(--primary-color__variant-2);
-                }
-            }
-            // VARIANT 2 END
-
-            // VARIANT 3 START
-            &.variant-3 {
-                .title {
-                    background-color: var(--primary-color__variant-3);
-                    color: var(--primary-color--contrast__variant-3);
-                }
-
-                .content {
-                    border: 1px solid var(--primary-color__variant-3);
-                }
-            }
-            // VARIANT 3 END
+          }
         }
+      }
     }
+  }
 
-    // .orgchart .node .title {
-    //     background-color: var(--primary-color);
-    //     color: #fff;
-    // }
+  // .orgchart .node .title {
+  //     background-color: var(--primary-color);
+  //     color: #fff;
+  // }
 
-    // .orgchart .node .content {
-    //     border: 1px solid var(--primary-color);
-    // }
+  // .orgchart .node .content {
+  //     border: 1px solid var(--primary-color);
+  // }
 
-    .orgchart tr.lines .topLine {
-        border-top: 2px solid var(--primary-color);
-    }
+  .orgchart tr.lines .topLine {
+    border-top: 2px solid var(--primary-color);
+  }
 
-    .orgchart tr.lines .rightLine {
-        border-right: 1px solid var(--primary-color);
-    }
+  .orgchart tr.lines .rightLine {
+    border-right: 1px solid var(--primary-color);
+  }
 
-    .orgchart tr.lines .leftLine {
-        border-left: 1px solid var(--primary-color);
-    }
+  .orgchart tr.lines .leftLine {
+    border-left: 1px solid var(--primary-color);
+  }
 
-    .orgchart tr.lines .downLine {
-        background-color: var(--primary-color);
-    }
+  .orgchart tr.lines .downLine {
+    background-color: var(--primary-color);
+  }
 
-    .orgchart .verticalNodes ul>li::before,
-    .orgchart .verticalNodes ul>li::after {
-        border-color: var(--primary-color);
-    }
+  .orgchart .verticalNodes ul>li::before,
+  .orgchart .verticalNodes ul>li::after {
+    border-color: var(--primary-color);
+  }
 
-    .orgchart .verticalNodes>td::before {
-        border: 1px solid var(--primary-color);
-    }
+  .orgchart .verticalNodes>td::before {
+    border: 1px solid var(--primary-color);
+  }
 
-    .orgchart .node {
-        border-radius: 4px;
-    }
+  .orgchart .node {
+    border-radius: 4px;
+  }
 
-    .orgchart .node:hover {
-        background-color: var(--select-border-color);
-    }
+  .orgchart .node:hover {
+    background-color: var(--select-border-color);
+  }
 
-    .orgchart .node.focused {
-        background-color: var(--select-border-color);
-    }
+  .orgchart .node.focused {
+    background-color: var(--select-border-color);
+  }
 
-    .orgchart {
-        background-image: none;
-    }
+  .orgchart {
+    background-image: none;
+  }
 
-    .orgchart>.spinner {
-        color: rgba(68, 157, 68, 0.8);
-    }
+  .orgchart>.spinner {
+    color: rgba(68, 157, 68, 0.8);
+  }
 
-    .orgchart .node>.spinner {
-        color: rgba(68, 157, 68, 0.8);
-    }
+  .orgchart .node>.spinner {
+    color: rgba(68, 157, 68, 0.8);
+  }
 
-    .orgchart .ghost-node rect {
-        fill: #ffffff;
-        stroke: var(--select-border-color);
-    }
+  .orgchart .ghost-node rect {
+    fill: #ffffff;
+    stroke: var(--select-border-color);
+  }
 
-    .orgchart .node.allowedDrop {
-        border-color: rgba(68, 157, 68, 0.9);
-    }
+  .orgchart .node.allowedDrop {
+    border-color: rgba(68, 157, 68, 0.9);
+  }
 
-    .orgchart .node .edge {
-        color: rgba(68, 157, 68, 0.5);
-    }
+  .orgchart .node .edge {
+    color: rgba(68, 157, 68, 0.5);
+  }
 
-    .orgchart .edge:hover {
-        color: #449d44;
-    }
+  .orgchart .edge:hover {
+    color: #449d44;
+  }
 
-    .orgchart .node .toggleBtn {
-        color: rgba(68, 157, 68, 0.6);
-    }
+  .orgchart .node .toggleBtn {
+    color: rgba(68, 157, 68, 0.6);
+  }
 
-    .orgchart .node .toggleBtn:hover {
-        color: rgba(68, 157, 68, 0.8);
-    }
+  .orgchart .node .toggleBtn:hover {
+    color: rgba(68, 157, 68, 0.8);
+  }
 
-    .oc-export-btn {
-        color: #fff;
-        background-color: #5cb85c;
-        border-color: #4cae4c;
-    }
+  .oc-export-btn {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
 
-    .oc-export-btn:hover,
-    .oc-export-btn:focus,
-    .oc-export-btn:active {
-        background-color: #449d44;
-        border-color: #347a34;
-    }
+  .oc-export-btn:hover,
+  .oc-export-btn:focus,
+  .oc-export-btn:active {
+    background-color: #449d44;
+    border-color: #347a34;
+  }
 
-    .orgchart~.mask .spinner {
-        color: rgba(255, 255, 255, 0.8);
-    }
+  .orgchart~.mask .spinner {
+    color: rgba(255, 255, 255, 0.8);
+  }
 }

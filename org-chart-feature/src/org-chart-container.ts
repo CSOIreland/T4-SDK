@@ -9,8 +9,7 @@ import {
 import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 import { createPopper } from "@popperjs/core";
-import { looseParseFromString, looseParseOnlyElement, looseParseOnlyElements } from "./utils/dom";
-
+import { looseParseOnlyElements } from "./utils/dom";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
@@ -23,7 +22,8 @@ const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [
   ...CHILD_ATTRS,
   "direction",
   "verticalDepth",
-  "depth"
+  "depth",
+  "popperDialog",
 ];
 
 /**
@@ -108,7 +108,8 @@ export class OrgChartContainer {
       // link node with data
       node.setAttribute("data-dataRefId", data.dataRefId);
 
-      this.addBioDialog(node, mainData);
+      this.addFancyBoxDialog(node, mainData);
+      // this.addPopperBioDialog(node, mainData);
       this.addAriaLabels(node, mainData);
     }
 
@@ -130,7 +131,6 @@ export class OrgChartContainer {
     this.data = this.extractDataFromContainer(this.container) as OrgChartData;
 
     if (this.data) {
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const opts: any = {
         chartContainer: `#${this.containerId}`,
@@ -138,7 +138,7 @@ export class OrgChartContainer {
         nodeContent: "title",
         createNode: this.createNode.bind(this),
         toggleSiblingsResp: false,
-      }
+      };
 
       if (this.data.depth) {
         opts.depth = this.data.depth;
@@ -148,9 +148,7 @@ export class OrgChartContainer {
         opts.verticalDepth = this.data.verticalDepth;
       }
 
-      this.orgChartInstance = new OrgChartOverride(
-        opts
-      );
+      this.orgChartInstance = new OrgChartOverride(opts);
 
       this.addEventListeners();
     }
@@ -181,15 +179,104 @@ export class OrgChartContainer {
     return `${onlyName ? "" : "."}${MAIN_CONTAINER}__show-bio`;
   }
 
+  addFancyBoxDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
+    if (data.bio) {
+      node.classList.add(`with-bio`, "fancybox-dialog");
+      console.log("add fancybox dialog");
+
+      const fn = ((bio) =>
+        function (e: MouseEvent) {
+          const html = $.parseHTML(
+            `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`
+          );
+
+          // const icon = globalThis.document.createElement("i");
+          // icon.classList.add("fa", "fa-times", "close-bio");
+
+          // // close bio dialog event listener
+          // icon.addEventListener("click", function (e) {
+          //   e.stopPropagation();
+          //   const fancyClose = document.body.querySelector(
+          //     ".fancybox-close"
+          //   ) as HTMLElement;
+
+          //   console.log("Close fancybox dialog", this, fancyClose);
+
+          //   fancyClose?.click?.();
+          // });
+
+          e.stopPropagation();
+
+          // don't open bio dialog if the user clicks on the edge or toggle button to expand the node
+          if (
+            (e.target as HTMLElement)?.classList?.contains?.("edge") ||
+            (e.target as HTMLElement)?.classList?.contains?.("toggleBtn")
+          ) {
+            return;
+          }
+
+          // add close btn icon
+          // html[0].appendChild(icon);
+          // html[0].append(icon);
+
+          $.fancybox.open(html, {
+            padding: 25,
+            closeBtn: true,
+            afterLoad: function () {
+              console.log("afterLoad", this);
+              const overlay = this?.locked?.[0];
+
+              if (overlay) {
+                overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
+
+                const skin = overlay.querySelector(
+                  ".fancybox-skin"
+                ) as HTMLElement;
+
+                const icon = globalThis.document.createElement("i");
+                icon.classList.add("fa", "fa-times", "close-bio");
+
+                // close bio dialog event listener
+                icon.addEventListener("click", function (e) {
+                  e.stopPropagation();
+                  const fancyClose = document.body.querySelector(
+                    ".fancybox-close"
+                  ) as HTMLElement;
+
+                  console.log("Close fancybox dialog", this, fancyClose);
+
+                  fancyClose?.click?.();
+                });
+
+                skin.appendChild(icon);
+              }
+            },
+          });
+        })(data.bio);
+
+      node.addEventListener("click", fn);
+
+      // const f = $(html).fancybox({
+      //   padding : 0,
+      //   openEffect  : 'elastic'
+      // });
+
+      // f.click();
+    }
+  }
+
   /**
    * Initialize popper.js if there is bio data available
    * @param node Current node instantiated by OrgChart.js
    * @param data Reference data
    */
-  addBioDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
+  addPopperBioDialog(
+    node: HTMLElement,
+    data: OrgChartData | OrgChartDataChild
+  ) {
     // console.log("add bio dialog", node, data);
     if (data.bio) {
-      node.classList.add(`with-bio`);
+      node.classList.add(`with-bio`, "popper-dialog");
 
       // Example:
       //     `
@@ -214,7 +301,7 @@ export class OrgChartContainer {
 
       if (parsedHtml?.length) {
         const nodes = Array.from(parsedHtml);
-        console.log("parsedHtml", {bioText: data.bio, parsedHtml, nodes});
+        console.log("parsedHtml", { bioText: data.bio, parsedHtml, nodes });
 
         nodes.forEach((node) => {
           console.log("append node", node);
@@ -246,30 +333,15 @@ export class OrgChartContainer {
       node.appendChild(bioDialog);
 
       data.popperInstance = createPopper(node, bioDialog, {
-        // placement: "auto-start",
         strategy: "fixed",
-        // modifiers: [
-        // {
-        //   name: "offset",
-        //   options: {
-        //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        //     offset: ({ reference, placement, popper }: any) => [
-        //       0,
-        //       ["top", "bottom"].includes(placement)
-        //         ? -reference.height - (popper.height - reference.height) / 2
-        //         : -reference.width - (popper.width - reference.width) / 2
-        //     ]
-        //   }
-        // }
-        // ]
         modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 6],
-              },
+          {
+            name: "offset",
+            options: {
+              offset: [0, 6],
             },
-          ],
+          },
+        ],
       });
 
       const closeAll = this.closeAllBioDialogs.bind(this);
@@ -375,7 +447,7 @@ export class OrgChartContainer {
           const _val = parseInt(val as string, 10);
 
           // check if _val is a number and not NaN
-          if (typeof _val === 'number' && _val === _val) {
+          if (typeof _val === "number" && _val === _val) {
             val = _val;
           }
         }

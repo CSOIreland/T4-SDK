@@ -5,6 +5,8 @@
     "dev": "rollup -c -w"
   },
   "devDependencies": {
+    "@types/fancybox": "2.1.32",
+    "@types/jquery": "1.10.45",
     "@rollup/plugin-eslint": "^9.0.4",
     "@rollup/plugin-html": "^1.0.2",
     "@rollup/plugin-node-resolve": "^15.2.3",

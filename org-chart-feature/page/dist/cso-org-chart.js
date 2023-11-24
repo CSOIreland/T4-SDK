@@ -3645,7 +3645,8 @@ const PARENT_ATTRS = [
     ...CHILD_ATTRS,
     "direction",
     "verticalDepth",
-    "depth"
+    "depth",
+    "popperDialog",
 ];
 class OrgChartContainer {
     constructor(node) {
@@ -3684,7 +3685,7 @@ class OrgChartContainer {
         if (data.dataRefId) {
             const mainData = this.dataByNodeId[data.dataRefId];
             node.setAttribute("data-dataRefId", data.dataRefId);
-            this.addBioDialog(node, mainData);
+            this.addFancyBoxDialog(node, mainData);
             this.addAriaLabels(node, mainData);
         }
         node.classList.add(`variant-${(_a = data.variant) !== null && _a !== void 0 ? _a : 1}`);
@@ -3733,9 +3734,48 @@ class OrgChartContainer {
     popperShowSelector(onlyName = false) {
         return `${onlyName ? "" : "."}${MAIN_CONTAINER}__show-bio`;
     }
-    addBioDialog(node, data) {
+    addFancyBoxDialog(node, data) {
         if (data.bio) {
-            node.classList.add(`with-bio`);
+            node.classList.add(`with-bio`, "fancybox-dialog");
+            console.log("add fancybox dialog");
+            const fn = ((bio) => function (e) {
+                var _a, _b, _c, _d, _e, _f;
+                const html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`);
+                e.stopPropagation();
+                if (((_c = (_b = (_a = e.target) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.contains) === null || _c === void 0 ? void 0 : _c.call(_b, "edge")) ||
+                    ((_f = (_e = (_d = e.target) === null || _d === void 0 ? void 0 : _d.classList) === null || _e === void 0 ? void 0 : _e.contains) === null || _f === void 0 ? void 0 : _f.call(_e, "toggleBtn"))) {
+                    return;
+                }
+                $.fancybox.open(html, {
+                    padding: 25,
+                    closeBtn: true,
+                    afterLoad: function () {
+                        var _a;
+                        console.log("afterLoad", this);
+                        const overlay = (_a = this === null || this === void 0 ? void 0 : this.locked) === null || _a === void 0 ? void 0 : _a[0];
+                        if (overlay) {
+                            overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
+                            const skin = overlay.querySelector(".fancybox-skin");
+                            const icon = globalThis.document.createElement("i");
+                            icon.classList.add("fa", "fa-times", "close-bio");
+                            icon.addEventListener("click", function (e) {
+                                var _a;
+                                e.stopPropagation();
+                                const fancyClose = document.body.querySelector(".fancybox-close");
+                                console.log("Close fancybox dialog", this, fancyClose);
+                                (_a = fancyClose === null || fancyClose === void 0 ? void 0 : fancyClose.click) === null || _a === void 0 ? void 0 : _a.call(fancyClose);
+                            });
+                            skin.appendChild(icon);
+                        }
+                    },
+                });
+            })(data.bio);
+            node.addEventListener("click", fn);
+        }
+    }
+    addPopperBioDialog(node, data) {
+        if (data.bio) {
+            node.classList.add(`with-bio`, "popper-dialog");
             const bioDialog = globalThis.document.createElement("div");
             bioDialog.classList.add(`${this.popperMainSelector(true)}`, `bio-dialog-${data.dataRefId}`);
             const bioText = globalThis.document.createElement("span");
@@ -3770,7 +3810,7 @@ class OrgChartContainer {
                 strategy: "fixed",
                 modifiers: [
                     {
-                        name: 'offset',
+                        name: "offset",
                         options: {
                             offset: [0, 6],
                         },
@@ -3834,7 +3874,7 @@ class OrgChartContainer {
                 let val = nAttrs(attr);
                 if (attr === "depth" || attr === "verticalDepth") {
                     const _val = parseInt(val, 10);
-                    if (typeof _val === 'number' && _val === _val) {
+                    if (typeof _val === "number" && _val === _val) {
                         val = _val;
                     }
                 }

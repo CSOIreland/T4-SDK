@@ -30,6 +30,7 @@
   // override default chart colors
   @include override.override-org-chart-colors();
 
+  // disable node collapsing
   .edge.verticalEdge.fa {
 
     &.topEdge.fa-chevron-down,
@@ -38,8 +39,60 @@
     }
   }
 
+  &__fancybox {
+    &--backdrop {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    animation: fadeIn 0.3s ease-in-out;
+
+    // close icon
+    .close-bio {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &--content {
+    padding: 20px;
+  }
+}
+
   // if node has image
   .__CLASS_PREFIX____node--with-image {
+    &.variant {
+      @for $i from 1 through 3 {
+        &-#{$i} {
+          .__CLASS_PREFIX__-avatar {
+            &--container {
+              background-color: var(--accent-color__variant-#{$i});
+            }
+
+            &--sub-container {
+              border: 1px solid var(--primary-color__variant-#{$i})
+            }
+          }
+        }
+      }
+    }
+
     .__CLASS_PREFIX__-avatar {
       &--container {
         $radius: 3px;
