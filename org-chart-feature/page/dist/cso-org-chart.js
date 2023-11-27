@@ -3640,6 +3640,8 @@ const CHILD_ATTRS = [
     "imageSrc",
     "bio",
     "variant",
+    "acting",
+    "department"
 ];
 const PARENT_ATTRS = [
     ...CHILD_ATTRS,
@@ -3687,6 +3689,22 @@ class OrgChartContainer {
             node.setAttribute("data-dataRefId", data.dataRefId);
             this.addFancyBoxDialog(node, mainData);
             this.addAriaLabels(node, mainData);
+        }
+        if (data.acting === "true") {
+            const content = node.querySelector(".content");
+            if (content && content.innerText) {
+                content.innerText = `Acting ${content.innerText}`;
+            }
+        }
+        if (data === null || data === void 0 ? void 0 : data.department) {
+            console.log("Department", data.department);
+            const content = node.querySelector(".content");
+            if (content) {
+                const department = globalThis.document.createElement("div");
+                department.classList.add("department");
+                department.innerText = data.department;
+                node.insertBefore(department, content);
+            }
         }
         node.classList.add(`variant-${(_a = data.variant) !== null && _a !== void 0 ? _a : 1}`);
     }
@@ -3756,16 +3774,31 @@ class OrgChartContainer {
                         if (overlay) {
                             overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
                             const skin = overlay.querySelector(".fancybox-skin");
+                            const title = document.createElement("div");
+                            title.classList.add("bio-dialog-title");
+                            const titleText = document.createElement("span");
+                            titleText.innerText = "Biography";
+                            title.appendChild(titleText);
+                            title.setAttribute("aria-label", "Biography");
+                            title.setAttribute("title", "Biography");
+                            title.setAttribute("role", "heading");
+                            skin.appendChild(title);
                             const icon = globalThis.document.createElement("i");
-                            icon.classList.add("fa", "fa-times", "close-bio");
-                            icon.addEventListener("click", function (e) {
+                            const closeBtn = globalThis.document.createElement("button");
+                            icon.classList.add("fa", "fa-times");
+                            closeBtn.classList.add("close-bio");
+                            closeBtn.appendChild(icon);
+                            closeBtn.setAttribute("aria-label", "Close biography dialog");
+                            closeBtn.setAttribute("title", "Close biography dialog");
+                            closeBtn.setAttribute("type", "button");
+                            closeBtn.addEventListener("click", function (e) {
                                 var _a;
                                 e.stopPropagation();
                                 const fancyClose = document.body.querySelector(".fancybox-close");
                                 console.log("Close fancybox dialog", this, fancyClose);
                                 (_a = fancyClose === null || fancyClose === void 0 ? void 0 : fancyClose.click) === null || _a === void 0 ? void 0 : _a.call(fancyClose);
                             });
-                            skin.appendChild(icon);
+                            skin.appendChild(closeBtn);
                         }
                     },
                 });

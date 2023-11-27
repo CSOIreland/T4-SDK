@@ -1,14 +1,30 @@
 @mixin override-org-chart-colors {
   .orgchart {
     .node {
+      width: 160px;
+      .title, .content, .department {
+        padding: 0 5px;
+      }
+
       // DEFAULT START
       .title {
         background-color: var(--primary-color);
-        color: #fff;
+        color: var(--primary-color--contrast);
       }
 
       .content {
+        height: unset;
+        text-overflow: unset;
+        text-wrap: wrap;
         border: 1px solid var(--primary-color);
+      }
+
+      .department {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.8em;
       }
 
       // DEFAULT END
@@ -18,6 +34,11 @@
             .title {
               background-color: var(--primary-color__variant-#{$i});
               color: var(--primary-color--contrast__variant-#{$i});
+            }
+
+            .department {
+              background-color: var(--accent-color__variant-#{$i});
+              color: var(--primary-color__variant-#{$i});
             }
 
             .content {

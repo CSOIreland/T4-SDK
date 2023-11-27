@@ -17,6 +17,8 @@ const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "imageSrc",
   "bio",
   "variant",
+  "acting",
+  "department"
 ];
 const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [
   ...CHILD_ATTRS,
@@ -113,6 +115,31 @@ export class OrgChartContainer {
       this.addAriaLabels(node, mainData);
     }
 
+    // add acting text
+    if (data.acting === "true") {
+      const content = node.querySelector(".content") as HTMLElement | null;
+
+      if(content && content.innerText) {
+        content.innerText = `Acting ${content.innerText}`;
+      } 
+    }
+
+    if (data?.department) {
+      console.log("Department", data.department);
+      const content = node.querySelector(".content") as HTMLElement | null;
+
+      if (content) {
+        const department = globalThis.document.createElement("div");
+        department.classList.add("department");
+        department.innerText = data.department;
+
+        node.insertBefore(department, content);
+      }
+    }
+
+
+
+
     node.classList.add(`variant-${data.variant ?? 1}`);
   }
 
@@ -190,21 +217,6 @@ export class OrgChartContainer {
             `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`
           );
 
-          // const icon = globalThis.document.createElement("i");
-          // icon.classList.add("fa", "fa-times", "close-bio");
-
-          // // close bio dialog event listener
-          // icon.addEventListener("click", function (e) {
-          //   e.stopPropagation();
-          //   const fancyClose = document.body.querySelector(
-          //     ".fancybox-close"
-          //   ) as HTMLElement;
-
-          //   console.log("Close fancybox dialog", this, fancyClose);
-
-          //   fancyClose?.click?.();
-          // });
-
           e.stopPropagation();
 
           // don't open bio dialog if the user clicks on the edge or toggle button to expand the node
@@ -214,10 +226,6 @@ export class OrgChartContainer {
           ) {
             return;
           }
-
-          // add close btn icon
-          // html[0].appendChild(icon);
-          // html[0].append(icon);
 
           $.fancybox.open(html, {
             padding: 25,
@@ -233,35 +241,48 @@ export class OrgChartContainer {
                   ".fancybox-skin"
                 ) as HTMLElement;
 
+
+                  // create dialog header
+                  const title = document.createElement("div");
+                  title.classList.add("bio-dialog-title");
+                  const titleText = document.createElement("span");
+                  titleText.innerText = "Biography";
+                  title.appendChild(titleText);
+                  title.setAttribute("aria-label", "Biography");
+                  title.setAttribute("title", "Biography");
+                  title.setAttribute("role", "heading");
+
+                  skin.appendChild(title);
+
                 const icon = globalThis.document.createElement("i");
-                icon.classList.add("fa", "fa-times", "close-bio");
+                const closeBtn = globalThis.document.createElement("button");
+                icon.classList.add("fa", "fa-times");
+                closeBtn.classList.add("close-bio");
+                closeBtn.appendChild(icon);
+                closeBtn.setAttribute("aria-label", "Close biography dialog");
+                closeBtn.setAttribute("title", "Close biography dialog");
+                closeBtn.setAttribute("type", "button");
 
                 // close bio dialog event listener
-                icon.addEventListener("click", function (e) {
+                // icon.addEventListener("click", function (e) {
+                closeBtn.addEventListener("click", function (e) {
                   e.stopPropagation();
                   const fancyClose = document.body.querySelector(
                     ".fancybox-close"
-                  ) as HTMLElement;
+                  ) as HTMLElement
 
                   console.log("Close fancybox dialog", this, fancyClose);
 
                   fancyClose?.click?.();
                 });
 
-                skin.appendChild(icon);
+                skin.appendChild(closeBtn);
               }
             },
           });
         })(data.bio);
 
       node.addEventListener("click", fn);
-
-      // const f = $(html).fancybox({
-      //   padding : 0,
-      //   openEffect  : 'elastic'
-      // });
-
-      // f.click();
     }
   }
 
