@@ -111,7 +111,6 @@ export class OrgChartContainer {
       node.setAttribute("data-dataRefId", data.dataRefId);
 
       this.addFancyBoxDialog(node, mainData);
-      // this.addPopperBioDialog(node, mainData);
       this.addAriaLabels(node, mainData);
     }
 
@@ -133,12 +132,11 @@ export class OrgChartContainer {
         department.classList.add("department");
         department.innerText = data.department;
 
-        node.insertBefore(department, content);
+        // node.insertBefore(department, content);
+        node.appendChild(department);
+        node.classList.add("with-department");
       }
     }
-
-
-
 
     node.classList.add(`variant-${data.variant ?? 1}`);
   }
@@ -243,16 +241,16 @@ export class OrgChartContainer {
 
 
                   // create dialog header
-                  const title = document.createElement("div");
-                  title.classList.add("bio-dialog-title");
+                  const header = document.createElement("div");
+                  header.classList.add("bio-dialog-header");
                   const titleText = document.createElement("span");
                   titleText.innerText = "Biography";
-                  title.appendChild(titleText);
-                  title.setAttribute("aria-label", "Biography");
-                  title.setAttribute("title", "Biography");
-                  title.setAttribute("role", "heading");
+                  header.appendChild(titleText);
+                  header.setAttribute("aria-label", "Biography");
+                  header.setAttribute("title", "Biography");
+                  header.setAttribute("role", "heading");
 
-                  skin.appendChild(title);
+                  skin.appendChild(header);
 
                 const icon = globalThis.document.createElement("i");
                 const closeBtn = globalThis.document.createElement("button");

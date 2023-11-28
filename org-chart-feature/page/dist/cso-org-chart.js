@@ -3703,7 +3703,8 @@ class OrgChartContainer {
                 const department = globalThis.document.createElement("div");
                 department.classList.add("department");
                 department.innerText = data.department;
-                node.insertBefore(department, content);
+                node.appendChild(department);
+                node.classList.add("with-department");
             }
         }
         node.classList.add(`variant-${(_a = data.variant) !== null && _a !== void 0 ? _a : 1}`);
@@ -3774,15 +3775,15 @@ class OrgChartContainer {
                         if (overlay) {
                             overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
                             const skin = overlay.querySelector(".fancybox-skin");
-                            const title = document.createElement("div");
-                            title.classList.add("bio-dialog-title");
+                            const header = document.createElement("div");
+                            header.classList.add("bio-dialog-header");
                             const titleText = document.createElement("span");
                             titleText.innerText = "Biography";
-                            title.appendChild(titleText);
-                            title.setAttribute("aria-label", "Biography");
-                            title.setAttribute("title", "Biography");
-                            title.setAttribute("role", "heading");
-                            skin.appendChild(title);
+                            header.appendChild(titleText);
+                            header.setAttribute("aria-label", "Biography");
+                            header.setAttribute("title", "Biography");
+                            header.setAttribute("role", "heading");
+                            skin.appendChild(header);
                             const icon = globalThis.document.createElement("i");
                             const closeBtn = globalThis.document.createElement("button");
                             icon.classList.add("fa", "fa-times");
