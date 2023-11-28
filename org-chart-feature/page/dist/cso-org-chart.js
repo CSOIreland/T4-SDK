@@ -3697,7 +3697,6 @@ class OrgChartContainer {
             }
         }
         if (data === null || data === void 0 ? void 0 : data.department) {
-            console.log("Department", data.department);
             const content = node.querySelector(".content");
             if (content) {
                 const department = globalThis.document.createElement("div");
@@ -3756,7 +3755,6 @@ class OrgChartContainer {
     addFancyBoxDialog(node, data) {
         if (data.bio) {
             node.classList.add(`with-bio`, "fancybox-dialog");
-            console.log("add fancybox dialog");
             const fn = ((bio) => function (e) {
                 var _a, _b, _c, _d, _e, _f;
                 const html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`);
@@ -3770,7 +3768,6 @@ class OrgChartContainer {
                     closeBtn: true,
                     afterLoad: function () {
                         var _a;
-                        console.log("afterLoad", this);
                         const overlay = (_a = this === null || this === void 0 ? void 0 : this.locked) === null || _a === void 0 ? void 0 : _a[0];
                         if (overlay) {
                             overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
@@ -3796,7 +3793,6 @@ class OrgChartContainer {
                                 var _a;
                                 e.stopPropagation();
                                 const fancyClose = document.body.querySelector(".fancybox-close");
-                                console.log("Close fancybox dialog", this, fancyClose);
                                 (_a = fancyClose === null || fancyClose === void 0 ? void 0 : fancyClose.click) === null || _a === void 0 ? void 0 : _a.call(fancyClose);
                             });
                             skin.appendChild(closeBtn);
@@ -3815,12 +3811,9 @@ class OrgChartContainer {
             const bioText = globalThis.document.createElement("span");
             bioText.classList.add("bio-dialog--text");
             const parsedHtml = looseParseOnlyElements(data.bio);
-            console.log("nodes strange", { bioText: data.bio, parsedHtml });
             if (parsedHtml === null || parsedHtml === void 0 ? void 0 : parsedHtml.length) {
                 const nodes = Array.from(parsedHtml);
-                console.log("parsedHtml", { bioText: data.bio, parsedHtml, nodes });
                 nodes.forEach((node) => {
-                    console.log("append node", node);
                     bioText.appendChild(node);
                 });
             }

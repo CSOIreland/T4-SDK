@@ -78,9 +78,6 @@ export class OrgChartContainer {
     // assign container
     this.container = node;
 
-    // extract data from the container
-    // console.log("extracted data", this.extractDataFromContainer(node));
-
     this.init();
   }
 
@@ -124,7 +121,6 @@ export class OrgChartContainer {
     }
 
     if (data?.department) {
-      console.log("Department", data.department);
       const content = node.querySelector(".content") as HTMLElement | null;
 
       if (content) {
@@ -189,7 +185,6 @@ export class OrgChartContainer {
     this.container
       .querySelectorAll(this.popperShowSelector())
       .forEach((node) => {
-        // console.log("remove bio dialog", node);
         if (node?.classList?.remove) {
           node.classList.remove(this.popperShowSelector(true));
         }
@@ -207,7 +202,6 @@ export class OrgChartContainer {
   addFancyBoxDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
     if (data.bio) {
       node.classList.add(`with-bio`, "fancybox-dialog");
-      console.log("add fancybox dialog");
 
       const fn = ((bio) =>
         function (e: MouseEvent) {
@@ -229,7 +223,6 @@ export class OrgChartContainer {
             padding: 25,
             closeBtn: true,
             afterLoad: function () {
-              console.log("afterLoad", this);
               const overlay = this?.locked?.[0];
 
               if (overlay) {
@@ -269,8 +262,6 @@ export class OrgChartContainer {
                     ".fancybox-close"
                   ) as HTMLElement
 
-                  console.log("Close fancybox dialog", this, fancyClose);
-
                   fancyClose?.click?.();
                 });
 
@@ -293,7 +284,6 @@ export class OrgChartContainer {
     node: HTMLElement,
     data: OrgChartData | OrgChartDataChild
   ) {
-    // console.log("add bio dialog", node, data);
     if (data.bio) {
       node.classList.add(`with-bio`, "popper-dialog");
 
@@ -316,14 +306,11 @@ export class OrgChartContainer {
       bioText.classList.add("bio-dialog--text");
       // bioText.innerText = data.bio;
       const parsedHtml = looseParseOnlyElements(data.bio);
-      console.log("nodes strange", { bioText: data.bio, parsedHtml });
 
       if (parsedHtml?.length) {
         const nodes = Array.from(parsedHtml);
-        console.log("parsedHtml", { bioText: data.bio, parsedHtml, nodes });
 
         nodes.forEach((node) => {
-          console.log("append node", node);
           bioText.appendChild(node);
         });
       }
@@ -399,8 +386,6 @@ export class OrgChartContainer {
         `[data-dataRefId="${data.dataRefId}"] .content`
       );
     }
-
-    // console.log("node data", node, data);
   }
 
   getDataFromChildNode(node: HTMLElement): OrgChartDataChild | null {
@@ -408,29 +393,8 @@ export class OrgChartContainer {
     let data: Partial<OrgChartDataChild> | null = null;
 
     CHILD_ATTRS.forEach((attr) => {
-      // if (nAttrs(attr) ?? false) {
-      //   if (data) {
-      //     data[attr] = nAttrs(attr) as string;
-      //   } else {
-      //     data = { [attr]: nAttrs(attr) as string };
-      //   }
-      // }
-
-      // if (attr === "variant") {
-      //   console.log("VARIANT", attr);
-      // }
       if (nAttrs(attr) ?? false) {
         const val: string | null = nAttrs(attr);
-
-        // if (attr === "depth" || attr === "verticalDepth") {
-        //   const _val = parseInt(val as string, 10);
-
-        //   // check if _val is a number and not NaN
-        //   if (typeof _val === 'number' && _val === _val) {
-        //     val = _val;
-        //   }
-        // }
-
         if (val ?? false) {
           if (data) {
             // avoid type error
