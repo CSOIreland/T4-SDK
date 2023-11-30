@@ -44,7 +44,7 @@ export default async (cliArgs) => {
    * Environment of build.
    * @options dev, prod
    */
-  const env = cliArgs.type || "dev";
+  const env = cliArgs.env || "dev";
   const isProd = env === "prod";
   // only generate source maps for development
   const sourceMap = env === 'dev';
