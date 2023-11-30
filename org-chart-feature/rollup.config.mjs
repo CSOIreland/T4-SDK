@@ -194,7 +194,7 @@ export default async (cliArgs) => {
   /**
    * Clear all files in the dist directory before rollup executes.
    */
-  return deleteAllFilesInDir('./page/dist').then(() => {
+  return deleteAllFilesInDir(`./${dir}`).then(() => {
     return build;
   });
 };
