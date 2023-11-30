@@ -735,6 +735,9 @@
 .cso-org-chart-container .orgchart .node {
   width: 160px;
 }
+.cso-org-chart-container .orgchart .node .bottomEdge.fa-chevron-down {
+  bottom: -15px;
+}
 .cso-org-chart-container .orgchart .node.with-bio {
   cursor: pointer;
 }

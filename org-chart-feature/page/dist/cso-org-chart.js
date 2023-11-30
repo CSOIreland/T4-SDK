@@ -3720,6 +3720,7 @@ class OrgChartContainer {
                 nodeContent: "title",
                 createNode: this.createNode.bind(this),
                 toggleSiblingsResp: false,
+                parentNodeSymbol: "fa-sitemap",
             };
             if (this.data.depth) {
                 opts.depth = this.data.depth;
@@ -3728,13 +3729,7 @@ class OrgChartContainer {
                 opts.verticalDepth = this.data.verticalDepth;
             }
             this.orgChartInstance = new OrgChartOverride(opts);
-            this.addEventListeners();
         }
-    }
-    addEventListeners() {
-        globalThis.document.body.addEventListener("click", () => {
-            this.closeAllBioDialogs();
-        });
     }
     closeAllBioDialogs() {
         this.container

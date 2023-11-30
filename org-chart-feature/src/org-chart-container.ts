@@ -85,6 +85,11 @@ export class OrgChartContainer {
     return `${this.containerId}__node__${this.nodeIdNum++}`;
   }
 
+  /**
+   * This method is called by OrgChart.js to create a node.
+   * @param node The node element created by OrgChart.js
+   * @param data Node data
+   */
   createNode(node: HTMLElement, data: OrgChartDataChild) {
     // add image element if imageSrc is provided
     if (data.imageSrc) {
@@ -101,6 +106,8 @@ export class OrgChartContainer {
       node.prepend(imgContainer);
       node.classList.add(`${CLASS_PREFIX}__node--with-image`);
     }
+
+
 
     if (data.dataRefId) {
       const mainData = this.dataByNodeId[data.dataRefId] as OrgChartData;
@@ -159,6 +166,7 @@ export class OrgChartContainer {
         nodeContent: "title",
         createNode: this.createNode.bind(this),
         toggleSiblingsResp: false,
+        parentNodeSymbol: "fa-sitemap",
       };
 
       if (this.data.depth) {
@@ -171,15 +179,20 @@ export class OrgChartContainer {
 
       this.orgChartInstance = new OrgChartOverride(opts);
 
-      this.addEventListeners();
+      /**
+      * This isn't needed anymore because we use fancybox dialogs instead of popper.js.
+      * The reason why it isn't removed is because we might need it in the future and
+      * there is already a popper implementation built-in.
+      */
+      // this.addEventListeners();
     }
   }
 
-  addEventListeners() {
-    globalThis.document.body.addEventListener("click", () => {
-      this.closeAllBioDialogs();
-    });
-  }
+  // addEventListeners() {
+  //   globalThis.document.body.addEventListener("click", () => {
+  //     this.closeAllBioDialogs();
+  //   });
+  // }
 
   closeAllBioDialogs() {
     this.container

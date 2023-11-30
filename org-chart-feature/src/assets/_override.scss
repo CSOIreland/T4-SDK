@@ -6,6 +6,12 @@
 
   .orgchart {
     .node {
+      .bottomEdge {
+        &.fa-chevron-down {
+          bottom: -15px;
+        }
+      }
+
       &.with-bio {
         cursor: pointer;
       }
@@ -82,15 +88,6 @@
       }
     }
   }
-
-  // .orgchart .node .title {
-  //     background-color: var(--primary-color);
-  //     color: #fff;
-  // }
-
-  // .orgchart .node .content {
-  //     border: 1px solid var(--primary-color);
-  // }
 
   .orgchart tr.lines .topLine {
     border-top: 2px solid var(--primary-color);
