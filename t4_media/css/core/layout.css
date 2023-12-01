@@ -923,6 +923,7 @@ padding-bottom: 0px !important;
 
 
 /*SIDE ITEMS
+**** See colours.css for variations ****
 ********************************************************/
 
 .sideitem {
@@ -2357,6 +2358,9 @@ margin-bottom: 20px;
     }
     h3.pub-findings-header.heading--purple  {
     	background-color: #dae0f2;
+    }
+    h3.pub-findings-header.heading--purple10  {
+    	background-color: #F5F6FA;
     }
 	.release-key-findings > h3.pub-findings-header,
     .press-key-findings > .pub-findings-header-block {

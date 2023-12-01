@@ -199,6 +199,9 @@
     margin: 1em;
     background-color: #f0f0f0;
 }
+.article-gallery-item.infographic-gallery-item {
+    background-color: #F2F7FA;
+}
 
 .article-gallery-item h4 {
     margin: 0.5em 0 0;
@@ -225,6 +228,10 @@
 .article-map-chart-gallery .article-gallery-item a img {
     display: block;
     margin: 0 auto;
+}
+
+.infographic-gallery-item .btn {
+    margin: 1rem 0 1.5rem 0;
 }
 
 .article-gallery-item .gallery-download-link {
@@ -585,7 +592,7 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
     .prices-summary {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -792,24 +799,18 @@
     grid-template-columns: 1fr;
 }
 
-@media screen and (min-width: 567px) {
-   .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+@media screen and (min-width: 1024px) {
+    .dashboard-grid {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
 
-@media screen and (min-width: 768px) {
-   .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (min-width: 992px) {
-   .dashboard-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
+ @media screen and (min-width: 1280px) {
+    .dashboard-grid {
+         grid-template-columns: repeat(3, 1fr);
+     }
+ }
+  
 @media print {
    .dashboard-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -862,34 +863,53 @@
    }
 
 
- /* Extra small devices (portrait phones, less than 576px)
- No media query for `xs` since this is the default in Bootstrap
+ /* Adjust the height of the chart based on the width and height of the screeen to make more proportional
  */
- /* Small devices (landscape phones, 576px and up) */
- @media (min-width: 576px) { 
+ /* Small handheld devices */
+ @media (max-width: 1439px) and (min-height:720px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 50vh;
+     }
+  }
+ 
+  /* Medium handheld devices */
+ @media (max-width: 1439px) and (min-height: 900px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 40vh;
+     }
+  }
+ 
+  /* Large handheld devices  */
+ @media (max-width: 1439px) and (min-height: 1080px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 32vh;
+     }
+  }
+ /* Small displays  */
+ @media (min-width: 1440px) and (min-height:720px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 40vh;
+     }
+  }
+ 
+  /* Medium displays */
+ @media (min-width: 1440px) and (min-height: 900px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 32vh;
+     }
+  }
+ 
+  /* Large displays  */
+ @media (min-width: 1440px) and (min-height: 1080px) { 
+    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
+         height: 32vh;
+     }
+  }
+  
+ /* Extra displays */
+@media (min-width: 1440px) and (min-height: 1440px) { 
    .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
-        height: 40vh
-    }
- }
-
- /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
-        height: 70vh
-    }
- }
-
- /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
-        height: 32vh
-    }
- }
-
- /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-   .dashboard-item-chart .pxwidget .pxwidget-canvas-wrapper {
-        height: 32vh
+        height: 25vh;
     }
  }
 
@@ -988,5 +1008,6 @@ Add a grid around other elements
         }
     }
  
+
 
 
