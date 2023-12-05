@@ -90,6 +90,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         switch (type) {
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.release;
+                language = config.metadata.api.query.data.params.language;
                 break;
             case "table":
                 matrixRelease = config.data.api.query.data.params.extension.release;
@@ -97,6 +98,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
             case "map":
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.release;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
             default:
                 break;
@@ -106,6 +108,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         switch (type) {
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.matrix || config.matrix;
+                language = config.metadata.api.query.data.params.language;
                 break;
             case "table":
                 matrixRelease = config.data.api.query.data.params.extension.matrix || config.matrix;
@@ -113,6 +116,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
             case "map":
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix || config.matrix;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
             default:
                 break;
