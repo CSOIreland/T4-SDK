@@ -691,6 +691,7 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} callback 
  */
 t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, language) {
+    debugger
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
@@ -711,7 +712,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
         "method": T4SDK_PXWIDGET_READ_PRE_METADATA,
         "params": {
             "release": matrixRelease,
-            "language": "en",
+            "language": language || "en",
             "format": {
                 "type": "JSON-stat",
                 "version": "2.0"
