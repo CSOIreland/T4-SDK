@@ -5,6 +5,7 @@ import { Instance } from "@popperjs/core";
  */
 export interface OrgChartData extends OrgChartDataChild {
     /**
+     * Avoid using this attribute. The popper implementation probably needs to be fine tuned.
      * Use popper implementation to show the bio dialog instead of fancybox.
      * @warn Doesn't support URLs.
      * @value true - use popper implementation

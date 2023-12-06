@@ -136,7 +136,6 @@ export class OrgChartContainer {
         department.classList.add("department");
         department.innerText = data.department;
 
-        // node.insertBefore(department, content);
         node.appendChild(department);
         node.classList.add("with-department");
       }
@@ -349,7 +348,6 @@ export class OrgChartContainer {
 
       const bioText = globalThis.document.createElement("span");
       bioText.classList.add("bio-dialog--text");
-      // bioText.innerText = data.bio;
       const parsedHtml = looseParseOnlyElements(data.bio);
 
       if (parsedHtml?.length) {
