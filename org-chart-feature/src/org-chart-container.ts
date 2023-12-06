@@ -10,7 +10,7 @@ import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 import { createPopper } from "@popperjs/core";
 import { looseParseOnlyElements } from "./utils/dom";
-import { isUrl } from "./utils/helpers";
+import { isMobile, isUrl } from "./utils/helpers";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
@@ -219,6 +219,7 @@ export class OrgChartContainer {
 
       const fn = ((bio) =>
         function (e: MouseEvent) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           let html: any[] = [];
           const _isUrl = isUrl(bio);
 
@@ -241,9 +242,13 @@ export class OrgChartContainer {
           ) {
             return;
           }
+          const _isMobile = isMobile();
 
-          $.fancybox.open(html, {
-            padding: 25,
+          // fancybox options
+          const opts: FancyboxOptions | undefined =
+            {
+            // Remove side padding for mobile browsers.
+            padding: _isMobile ? [25, 0, 25, 0] : 25,
             closeBtn: true,
             afterLoad: function () {
               const overlay = this?.locked?.[0];
@@ -251,10 +256,23 @@ export class OrgChartContainer {
               if (overlay) {
                 overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
 
+                const wrap = overlay.querySelector(
+                  ".fancybox-wrap"
+                ) as HTMLElement;
+
                 const skin = overlay.querySelector(
                   ".fancybox-skin"
                 ) as HTMLElement;
 
+                if (isMobile()) {
+                  overlay.classList.add('isMobile');
+                  wrap.style.left = '0';
+                  wrap.style.right = '0';
+
+                  wrap.style.top = '0';
+                  wrap.style.bottom = '0';
+                  wrap.style.inset = '0';
+                }
 
                   // create dialog header
                   const header = document.createElement("div");
@@ -291,7 +309,11 @@ export class OrgChartContainer {
                 skin.appendChild(closeBtn);
               }
             },
-          });
+          }
+
+          $.fancybox.open(html, 
+            opts
+          );
         })(data.bio);
 
       node.addEventListener("click", fn);

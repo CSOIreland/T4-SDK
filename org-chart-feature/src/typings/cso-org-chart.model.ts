@@ -1,5 +1,8 @@
 import { Instance } from "@popperjs/core";
 
+/**
+ * Top node and config object for org charts.
+ */
 export interface OrgChartData extends OrgChartDataChild {
     /**
      * Use popper implementation to show the bio dialog instead of fancybox.
@@ -37,6 +40,9 @@ export interface OrgChartData extends OrgChartDataChild {
     direction?: string;
 }
 
+/**
+ * Child node and config object for org charts.
+ */
 export interface OrgChartDataChild {
     /**
      * The name of the person.
@@ -69,19 +75,16 @@ export interface OrgChartDataChild {
      * The department of the person.
      */
     department?: string; 
-
     /**
      * Children nodes.
      * @internalUse
      */
     children: OrgChartDataChild[];
-
     /**
      * Reference to the popper dialog.
      * @internalUse
      */
     popperInstance?: Instance;
-
     /**
      * The id of the data reference.
      * @internalUse

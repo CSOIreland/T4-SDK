@@ -3634,6 +3634,17 @@ var createPopper = /*#__PURE__*/popperGenerator({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
+const isUrl = (path) => {
+    if (typeof path !== 'string' && !path) {
+        return false;
+    }
+    const pattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/;
+    return pattern.test(path);
+};
+const isMobile = () => {
+    return window.innerWidth <= 450;
+};
+
 const CHILD_ATTRS = [
     "name",
     "title",
@@ -3753,8 +3764,8 @@ class OrgChartContainer {
             const fn = ((bio) => function (e) {
                 var _a, _b, _c, _d, _e, _f;
                 let html = [];
-                const isUrl = isUrl(bio);
-                if (isUrl) {
+                const _isUrl = isUrl(bio);
+                if (_isUrl) {
                     html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'><iframe src="${bio}"</div></div>`);
                 }
                 else {
@@ -3765,15 +3776,25 @@ class OrgChartContainer {
                     ((_f = (_e = (_d = e.target) === null || _d === void 0 ? void 0 : _d.classList) === null || _e === void 0 ? void 0 : _e.contains) === null || _f === void 0 ? void 0 : _f.call(_e, "toggleBtn"))) {
                     return;
                 }
-                $.fancybox.open(html, {
-                    padding: 25,
+                const _isMobile = isMobile();
+                const opts = {
+                    padding: _isMobile ? [25, 0, 25, 0] : 25,
                     closeBtn: true,
                     afterLoad: function () {
                         var _a;
                         const overlay = (_a = this === null || this === void 0 ? void 0 : this.locked) === null || _a === void 0 ? void 0 : _a[0];
                         if (overlay) {
                             overlay.classList.add(`${MAIN_CONTAINER}__fancybox--backdrop`);
+                            const wrap = overlay.querySelector(".fancybox-wrap");
                             const skin = overlay.querySelector(".fancybox-skin");
+                            if (isMobile()) {
+                                overlay.classList.add('isMobile');
+                                wrap.style.left = '0';
+                                wrap.style.right = '0';
+                                wrap.style.top = '0';
+                                wrap.style.bottom = '0';
+                                wrap.style.inset = '0';
+                            }
                             const header = document.createElement("div");
                             header.classList.add("bio-dialog-header");
                             const titleText = document.createElement("span");
@@ -3800,7 +3821,8 @@ class OrgChartContainer {
                             skin.appendChild(closeBtn);
                         }
                     },
-                });
+                };
+                $.fancybox.open(html, opts);
             })(data.bio);
             node.addEventListener("click", fn);
         }
