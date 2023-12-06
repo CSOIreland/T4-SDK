@@ -10,6 +10,7 @@ import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 import { createPopper } from "@popperjs/core";
 import { looseParseOnlyElements } from "./utils/dom";
+import { isUrl } from "./utils/helpers";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
@@ -218,9 +219,18 @@ export class OrgChartContainer {
 
       const fn = ((bio) =>
         function (e: MouseEvent) {
-          const html = $.parseHTML(
-            `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`
-          );
+          let html: any[] = [];
+          const _isUrl = isUrl(bio);
+
+          if (_isUrl) {
+            html = $.parseHTML(
+              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'><iframe src="${bio}"</div></div>`
+            );
+          } else {
+            html = $.parseHTML(
+              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'>${bio}</div></div>`
+            );
+          }
 
           e.stopPropagation();
 

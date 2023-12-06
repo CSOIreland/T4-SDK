@@ -217,7 +217,26 @@
       }
 
       &--content {
-        padding: 15px;
+        &:not(.has-iframe) {
+          padding: 15px;
+        }
+
+        iframe {
+          @media screen and (max-width: 480px) {
+            min-width: 98vw;
+            min-height: 98vh;
+          }
+
+          @media screen and (max-width: 1024px) {
+            min-width: 90vw;
+            min-height: 98vh;
+          }
+
+          @media screen and (min-width: 1025px) {
+            min-width: 80vw;
+            min-height: 800px;
+          }
+        }
       }
     }
   }

@@ -3752,7 +3752,14 @@ class OrgChartContainer {
             node.classList.add(`with-bio`, "fancybox-dialog");
             const fn = ((bio) => function (e) {
                 var _a, _b, _c, _d, _e, _f;
-                const html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`);
+                let html = [];
+                const isUrl = isUrl(bio);
+                if (isUrl) {
+                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'><iframe src="${bio}"</div></div>`);
+                }
+                else {
+                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'>${bio}</div></div>`);
+                }
                 e.stopPropagation();
                 if (((_c = (_b = (_a = e.target) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.contains) === null || _c === void 0 ? void 0 : _c.call(_b, "edge")) ||
                     ((_f = (_e = (_d = e.target) === null || _d === void 0 ? void 0 : _d.classList) === null || _e === void 0 ? void 0 : _e.contains) === null || _f === void 0 ? void 0 : _f.call(_e, "toggleBtn"))) {
