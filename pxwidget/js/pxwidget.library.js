@@ -84,17 +84,21 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     var matrixRelease = null;
+    var language = null;
 
     if (!isLive) {
         switch (type) {
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.release;
+                language = config.metadata.api.query.data.params.language;
                 break;
             case "table":
                 matrixRelease = config.data.api.query.data.params.extension.release;
+                language = config.data.api.query.data.params.extension.language.code;
                 break;
             case "map":
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.release;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
             default:
                 break;
@@ -104,12 +108,15 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         switch (type) {
             case "chart":
                 matrixRelease = config.metadata.api.query.data.params.matrix || config.matrix;
+                language = config.metadata.api.query.data.params.language;
                 break;
             case "table":
                 matrixRelease = config.data.api.query.data.params.extension.matrix || config.matrix;
+                language = config.data.api.query.data.params.extension.language.code;
                 break;
             case "map":
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix || config.matrix;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
             default:
                 break;
@@ -186,7 +193,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
 
     //get metadata to build toggles
-    t4Sdk.pxWidget.utility.getJsonStatMetadata(matrixRelease, isLive).done(function (response) {
+    t4Sdk.pxWidget.utility.getJsonStatMetadata(matrixRelease, isLive, language).done(function (response) {
         var toggleIsTime = false;
         var data = JSONstat(response.result);
         if (data.length) {
@@ -687,13 +694,13 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} isLive 
  * @param {*} callback 
  */
-t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
+t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, language) {
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
         "params": {
             "matrix": matrixRelease,
-            "language": "en",
+            "language": language || "en",
             "format": {
                 "type": "JSON-stat",
                 "version": "2.0"
@@ -708,7 +715,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive) {
         "method": T4SDK_PXWIDGET_READ_PRE_METADATA,
         "params": {
             "release": matrixRelease,
-            "language": "en",
+            "language": language || "en",
             "format": {
                 "type": "JSON-stat",
                 "version": "2.0"
