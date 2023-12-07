@@ -736,10 +736,10 @@
 .cso-org-chart-container__fancybox--content:not(.has-iframe) {
   padding: 15px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 1025px) {
   .cso-org-chart-container__fancybox--content iframe {
-    min-width: 100%;
-    min-height: calc(100vh - 55px);
+    min-width: 80vw;
+    min-height: 800px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -748,10 +748,10 @@
     min-height: 98vh;
   }
 }
-@media screen and (min-width: 1025px) {
+@media screen and (max-width: 480px) {
   .cso-org-chart-container__fancybox--content iframe {
-    min-width: 80vw;
-    min-height: 800px;
+    min-width: 100%;
+    min-height: calc(100vh - 55px);
   }
 }
 

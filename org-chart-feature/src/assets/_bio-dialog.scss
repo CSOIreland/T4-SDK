@@ -261,9 +261,9 @@
         }
 
         iframe {
-          @media screen and (max-width: 480px) {
-            min-width: 100%;
-            min-height: calc(100vh - 55px);
+          @media screen and (min-width: 1025px) {
+            min-width: 80vw;
+            min-height: 800px;
           }
 
           @media screen and (max-width: 1024px) {
@@ -271,9 +271,9 @@
             min-height: 98vh;
           }
 
-          @media screen and (min-width: 1025px) {
-            min-width: 80vw;
-            min-height: 800px;
+          @media screen and (max-width: 480px) {
+            min-width: 100%;
+            min-height: calc(100vh - 55px);
           }
         }
       }
