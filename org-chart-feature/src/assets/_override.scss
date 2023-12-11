@@ -33,6 +33,9 @@
         background-color: var(--primary-color);
         color: var(--primary-color--contrast);
         font-size: $typo-fs--title;
+        height: unset !important;
+        min-height: 20px !important;
+        white-space: pre-wrap;
       }
 
       .content {

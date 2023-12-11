@@ -874,7 +874,7 @@
           <div class="cso-org-chart-container">
             <div style="display: flex; flex-flow: column; gap: 10px;">
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
-                <span><strong>Chart 1</strong></span>
+                <span><strong>Fully collapsed chart</strong></span>
               </div>
 
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
@@ -1051,7 +1051,7 @@
           <div class="cso-org-chart-container">
             <div style="display: flex; flex-flow: column; gap: 10px;">
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
-                <span><strong>Chart 2</strong></span>
+                <span><strong>Expanded level 1 with horizontally stacked level 2 nodes</strong></span>
               </div>
 
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
@@ -1227,7 +1227,7 @@ OFFICER" data-name="Adrienne Harrington" data-bio="" data-imagesrc="" id="cso-or
           <div class="cso-org-chart-container">
             <div style="display: flex; flex-flow: column; gap: 10px;">
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
-                <span><strong>Chart 3</strong></span>
+                <span><strong>Expanded level 1 with vertically stacked level 2 nodes (suitable for mobile view)</strong></span>
               </div>
 
               <div style="display: flex; flex-flow: row nowrap; gap: 10px">
@@ -1395,6 +1395,90 @@ OFFICER" data-name="Adrienne Harrington" data-bio="" data-imagesrc="" id="cso-or
             </ul>
           </div>
             <!-- ORG CHART DATA 3 START -->
+
+        <!-- BREAK LINE -->
+        <div style="width: 100vw; position: relative; height: 1px; background: black; margin: 10px 0;"></div>
+
+          <!-- ORG CHART DATA VARIANTS START -->
+          <div class="cso-org-chart-container">
+            <div style="display: flex; flex-flow: column; gap: 10px;">
+              <div style="display: flex; flex-flow: row nowrap; gap: 10px">
+                <span><strong>Different node stylings for </strong></span>
+              </div>
+
+            </div>
+
+            <ul style="display: none;" class="cso-org-chart-data">
+              <li 
+                data-depth="2"
+                data-title="Director General" data-name="VARIANT 1"
+                data-variant="1"
+                data-imagesrc="https://thumbs.dreamstime.com/b/photo-unshaved-successful-man-s-wearing-office-suit-bla-black-tie-smiling-camera-holding-hands-together-over-gray-115311162.jpg"
+                id="cso-org-chart-container__1__node__1">
+                <ul id="cso-org-chart-container__1__node__2">
+                  <li data-title="Assistant Director General" data-variant="2" data-name="VARIANT 2" 
+                  data-department="Some Department"
+                    data-imagesrc="https://images.pexels.com/photos/3727469/pexels-photo-3727469.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    id="cso-org-chart-container__1__node__3">
+                  </li>
+                  <li data-title="Principal Officer" data-variant="3" data-name="VARIANT 3" data-bio="" data-imagesrc=""
+                    id="cso-org-chart-container__1__node__9"></li>
+                  <li data-title="Senior statician" data-variant="3" data-name="SAME AS PRINCIPAL OFFICER" data-bio="" data-imagesrc=""
+                    id="cso-org-chart-container__1__node__20">
+                  </li>
+
+                  <li data-title="FALLBACK NODE STYLE" data-name="DEFAULT FALLBACK">
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            </div>
+            <!-- ORG CHART DATA VARIANTS END -->
+
+        <!-- BREAK LINE -->
+        <div style="width: 100vw; position: relative; height: 1px; background: black; margin: 10px 0;"></div>
+
+          <!-- SIMPLE EXAMPLE -->
+          <div class="cso-org-chart-container">
+            <div style="display: flex; flex-flow: column; gap: 10px;">
+              <div style="display: flex; flex-flow: row nowrap; gap: 10px">
+                <span><strong>Simple example</strong></span>
+              </div>
+            </div>
+
+            <ul style="display: none;" class="cso-org-chart-data">
+              <li 
+               data-depth="4"
+                data-title="Only one top node per chart"
+                data-department="ID #1"
+                data-name="MAIN CONTAINER NODE">
+                <ul>
+                  <li data-title="Can't have children nested" data-name="LEAF ITEM" data-department="ID#2">
+                  </li>
+
+                  <li data-title="Has child nested" data-department="ID#3"  data-name="ITEM WITH CHILDREN" 
+                    >
+                    <ul>
+                      <li data-title="Child node with children" data-department="ID#6"  data-name="ITEM WITH CHILDREN" 
+                        >
+                        <ul>
+                          <li data-title="Child item." data-department="ID#7"  data-name="ITEM NO CHILDREN" 
+                        ></li>
+
+                          <li data-title="Child leaf item (can't have children)" data-department="ID#8"  data-name="LEAF ITEM NO CHILDREN"></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li data-title="Can have children nodes, isn't required" data-department="ID#4"  data-name="ITEM NO CHILDREN" 
+                    ></li>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            </div>
+            <!-- ORG CHART DATA VARIANTS END -->
 
         </div><!--/copy-->
 
