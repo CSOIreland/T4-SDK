@@ -18,9 +18,11 @@ import terser from '@rollup/plugin-terser';
 
 
 const OUTPUT_FN_DEV = `${CLASS_PREFIX}.js`;
-const OUTPUT_FN_PROD = `${CLASS_PREFIX}-[hash].js`;
+// const OUTPUT_FN_PROD = `${CLASS_PREFIX}-[hash].js`;
+const OUTPUT_FN_PROD = `${CLASS_PREFIX}.js`;
 const OUTPUT_FN_ASSETS_DEV = `${CLASS_PREFIX}[extname]`;
-const OUTPUT_FN_ASSETS_PROD = `${CLASS_PREFIX}-[hash][extname]`;
+// const OUTPUT_FN_ASSETS_PROD = `${CLASS_PREFIX}-[hash][extname]`;
+const OUTPUT_FN_ASSETS_PROD = `${CLASS_PREFIX}[extname]`;
 
 /**
  * Helper function to clear all files in a directory.
