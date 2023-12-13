@@ -10,7 +10,7 @@ import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 import { createPopper } from "@popperjs/core";
 import { looseParseOnlyElements } from "./utils/dom";
-import { isMobile, isUrl } from "./utils/helpers";
+import { isMobile, isTablet, isUrl } from "./utils/helpers";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
@@ -23,6 +23,7 @@ const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
 ];
 const PARENT_ATTRS: CSOOrgChartParentAttributes[] = [
   ...CHILD_ATTRS,
+  "responsive",
   "direction",
   "verticalDepth",
   "depth",
@@ -47,15 +48,18 @@ export class OrgChartContainer {
   containerId!: string;
   container!: HTMLElement;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  orgChartInstance!: OrgChart;
+  orgChartInstance!: OrgChart | null;
 
   data!: OrgChartData;
+  dataSerialized!: string;
   /**
    * This id is used to reference the data from the node.
    * The id is located on the data node element.
    * When we create a node (initialise OrgChart lib) then the id is assigned to the node element as '[data-dataRefId]={dataRefId}'
    */
   dataByNodeId: Record<string, OrgChartData | OrgChartDataChild> = {};
+
+  isMobileOrTablet = isTablet();
 
   constructor(node: HTMLElement) {
     // assign unique ids to container and nodes
@@ -91,9 +95,10 @@ export class OrgChartContainer {
    * @param node The node element created by OrgChart.js
    * @param data Node data
    */
-  createNode(node: HTMLElement, data: OrgChartDataChild) {
+  createNode(node: HTMLElement, data?: OrgChartDataChild) {
+    console.log("Create node", node, data);
     // add image element if imageSrc is provided
-    if (data.imageSrc) {
+    if (data?.imageSrc) {
       const imgContainer = globalThis.document.createElement("div");
       imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
       const imgSubContainer = globalThis.document.createElement("div");
@@ -108,9 +113,7 @@ export class OrgChartContainer {
       node.classList.add(`${CLASS_PREFIX}__node--with-image`);
     }
 
-
-
-    if (data.dataRefId) {
+    if (data?.dataRefId) {
       const mainData = this.dataByNodeId[data.dataRefId] as OrgChartData;
       // link node with data
       node.setAttribute("data-dataRefId", data.dataRefId);
@@ -120,7 +123,7 @@ export class OrgChartContainer {
     }
 
     // add acting text
-    if (data.acting === "true") {
+    if (data?.acting === "true") {
       const content = node.querySelector(".content") as HTMLElement | null;
 
       if(content && content.innerText) {
@@ -141,7 +144,7 @@ export class OrgChartContainer {
       }
     }
 
-    node.classList.add(`variant-${data.variant ?? 1}`);
+    node.classList.add(`variant-${data?.variant ?? 1}`);
   }
 
   /**
@@ -157,34 +160,22 @@ export class OrgChartContainer {
     }
 
     this.data = this.extractDataFromContainer(this.container) as OrgChartData;
+    this.dataSerialized = JSON.stringify(this.data);
 
-    if (this.data) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const opts: any = {
-        chartContainer: `#${this.containerId}`,
-        data: this.data,
-        nodeContent: "title",
-        createNode: this.createNode.bind(this),
-        toggleSiblingsResp: false,
-        parentNodeSymbol: "fa-sitemap",
-      };
+    const createNodeFn = this.createNode.bind(this);
 
-      if (this.data.depth) {
-        opts.depth = this.data.depth;
-      }
+    this.buildChart(createNodeFn);
 
-      if (this.data.verticalDepth) {
-        opts.verticalDepth = this.data.verticalDepth;
-      }
-
-      this.orgChartInstance = new OrgChartOverride(opts);
-
-      /**
-      * This isn't needed anymore because we use fancybox dialogs instead of popper.js.
-      * The reason why it isn't removed is because we might need it in the future and
-      * there is already a popper implementation built-in.
-      */
-      // this.addEventListeners();
+    if (this.data.responsive === 'true') {
+      globalThis.addEventListener("resize", () => {
+        console.log('resize', this);
+        const _isMobileOrTablet = isTablet();
+        if (this.isMobileOrTablet !== _isMobileOrTablet) {
+          this.isMobileOrTablet = _isMobileOrTablet;
+          this.destroyChart();
+          this.buildChart(createNodeFn);
+        }
+      })
     }
   }
 
@@ -193,6 +184,48 @@ export class OrgChartContainer {
   //     this.closeAllBioDialogs();
   //   });
   // }
+
+  buildChart(createNodeFn: (node: HTMLElement, data: OrgChartDataChild) => void) {
+    if (this.data) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const opts: any = {
+        chartContainer: `#${this.containerId}`,
+        data: this.data,
+        nodeContent: "title",
+        createNode: createNodeFn,
+        toggleSiblingsResp: false,
+        parentNodeSymbol: "fa-sitemap",
+      };
+
+      if (this.data.depth) {
+        opts.depth = this.data.depth;
+      }
+
+
+      if (this.data.verticalDepth) {
+        opts.verticalDepth = this.data.verticalDepth;
+      }
+
+      /**
+       * Vertical depth is set to 2 if responsive is true and the viewport is mobile.
+       */
+      if (this.data.responsive === 'true') {
+        if (this.isMobileOrTablet) {
+          opts.verticalDepth = 2;
+        } 
+      }
+
+
+      this.orgChartInstance = new OrgChartOverride(opts);
+    }
+  }
+
+  destroyChart() {
+    this.container?.querySelector('.orgchart')?.remove?.();
+    this.orgChartInstance = null;
+    this.dataByNodeId = {};
+    this.data = JSON.parse(this.dataSerialized);
+  }
 
   closeAllBioDialogs() {
     this.container
@@ -213,7 +246,7 @@ export class OrgChartContainer {
   }
 
   addFancyBoxDialog(node: HTMLElement, data: OrgChartData | OrgChartDataChild) {
-    if (data.bio) {
+    if (data?.bio) {
       node.classList.add(`with-bio`, "fancybox-dialog");
 
       const fn = ((bio) =>
@@ -415,15 +448,15 @@ export class OrgChartContainer {
     }
   }
 
-  addAriaLabels(node: HTMLElement, data: OrgChartDataChild) {
-    if (data.name) {
+  addAriaLabels(node: HTMLElement, data?: OrgChartDataChild) {
+    if (data?.name) {
       node?.setAttribute(
         "aria-labelledby",
         `[data-dataRefId="${data.dataRefId}"] .title`
       );
     }
 
-    if (data.title) {
+    if (data?.title) {
       node?.setAttribute(
         "aria-describedby",
         `[data-dataRefId="${data.dataRefId}"] .content`

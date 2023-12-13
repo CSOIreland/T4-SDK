@@ -13,7 +13,13 @@ export interface OrgChartData extends OrgChartDataChild {
      */
     popperDialog?: boolean
     /**
+     * If true the chart will try to be responsive (detect if the view is mobile) and automatically set the vertical depth.
+     * @default undefined
+     */
+    responsive?: 'true' | 'false' | null;
+    /**
      * Indicates at what depth the nodes start to stack vertically.
+     * Note: This is only used if responsive is false.
      */
     verticalDepth?: number;
     /**
@@ -94,4 +100,4 @@ export interface OrgChartDataChild {
 }
 
 export type CSOOrgChartChildAttributes = 'name' | 'title' | 'imageSrc' | 'bio' | 'variant' | 'acting' | 'department';
-export type CSOOrgChartParentAttributes = CSOOrgChartChildAttributes | 'direction' | 'verticalDepth' | 'depth' | 'popperDialog';
+export type CSOOrgChartParentAttributes = CSOOrgChartChildAttributes | 'direction' | 'verticalDepth' | 'depth' | 'popperDialog' | 'responsive';

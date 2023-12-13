@@ -3644,6 +3644,9 @@ const isUrl = (path) => {
 const isMobile = () => {
     return window.innerWidth <= 450;
 };
+const isTablet = () => {
+    return window.innerWidth <= 768;
+};
 
 const CHILD_ATTRS = [
     "name",
@@ -3656,6 +3659,7 @@ const CHILD_ATTRS = [
 ];
 const PARENT_ATTRS = [
     ...CHILD_ATTRS,
+    "responsive",
     "direction",
     "verticalDepth",
     "depth",
@@ -3666,6 +3670,7 @@ class OrgChartContainer {
         var _a;
         this.nodeIdNum = 0;
         this.dataByNodeId = {};
+        this.isMobileOrTablet = isTablet();
         this.containerId = `${MAIN_CONTAINER}__${OrgChartContainer.idNum++}`;
         node.id = this.containerId;
         if (!node) {
@@ -3683,7 +3688,8 @@ class OrgChartContainer {
     }
     createNode(node, data) {
         var _a;
-        if (data.imageSrc) {
+        console.log("Create node", node, data);
+        if (data === null || data === void 0 ? void 0 : data.imageSrc) {
             const imgContainer = globalThis.document.createElement("div");
             imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
             const imgSubContainer = globalThis.document.createElement("div");
@@ -3695,13 +3701,13 @@ class OrgChartContainer {
             node.prepend(imgContainer);
             node.classList.add(`${CLASS_PREFIX}__node--with-image`);
         }
-        if (data.dataRefId) {
+        if (data === null || data === void 0 ? void 0 : data.dataRefId) {
             const mainData = this.dataByNodeId[data.dataRefId];
             node.setAttribute("data-dataRefId", data.dataRefId);
             this.addFancyBoxDialog(node, mainData);
             this.addAriaLabels(node, mainData);
         }
-        if (data.acting === "true") {
+        if ((data === null || data === void 0 ? void 0 : data.acting) === "true") {
             const content = node.querySelector(".content");
             if (content && content.innerText) {
                 content.innerText = `Acting ${content.innerText}`;
@@ -3717,19 +3723,35 @@ class OrgChartContainer {
                 node.classList.add("with-department");
             }
         }
-        node.classList.add(`variant-${(_a = data.variant) !== null && _a !== void 0 ? _a : 1}`);
+        node.classList.add(`variant-${(_a = data === null || data === void 0 ? void 0 : data.variant) !== null && _a !== void 0 ? _a : 1}`);
     }
     init() {
         if (!this.container && !this.data) {
             return console.error("OrgChart -> Container or data not found", "Container id: ", this.containerId);
         }
         this.data = this.extractDataFromContainer(this.container);
+        this.dataSerialized = JSON.stringify(this.data);
+        const createNodeFn = this.createNode.bind(this);
+        this.buildChart(createNodeFn);
+        if (this.data.responsive === 'true') {
+            globalThis.addEventListener("resize", () => {
+                console.log('resize', this);
+                const _isMobileOrTablet = isTablet();
+                if (this.isMobileOrTablet !== _isMobileOrTablet) {
+                    this.isMobileOrTablet = _isMobileOrTablet;
+                    this.destroyChart();
+                    this.buildChart(createNodeFn);
+                }
+            });
+        }
+    }
+    buildChart(createNodeFn) {
         if (this.data) {
             const opts = {
                 chartContainer: `#${this.containerId}`,
                 data: this.data,
                 nodeContent: "title",
-                createNode: this.createNode.bind(this),
+                createNode: createNodeFn,
                 toggleSiblingsResp: false,
                 parentNodeSymbol: "fa-sitemap",
             };
@@ -3739,8 +3761,20 @@ class OrgChartContainer {
             if (this.data.verticalDepth) {
                 opts.verticalDepth = this.data.verticalDepth;
             }
+            if (this.data.responsive === 'true') {
+                if (this.isMobileOrTablet) {
+                    opts.verticalDepth = 2;
+                }
+            }
             this.orgChartInstance = new OrgChartOverride(opts);
         }
+    }
+    destroyChart() {
+        var _a, _b, _c;
+        (_c = (_b = (_a = this.container) === null || _a === void 0 ? void 0 : _a.querySelector('.orgchart')) === null || _b === void 0 ? void 0 : _b.remove) === null || _c === void 0 ? void 0 : _c.call(_b);
+        this.orgChartInstance = null;
+        this.dataByNodeId = {};
+        this.data = JSON.parse(this.dataSerialized);
     }
     closeAllBioDialogs() {
         this.container
@@ -3759,7 +3793,7 @@ class OrgChartContainer {
         return `${onlyName ? "" : "."}${MAIN_CONTAINER}__show-bio`;
     }
     addFancyBoxDialog(node, data) {
-        if (data.bio) {
+        if (data === null || data === void 0 ? void 0 : data.bio) {
             node.classList.add(`with-bio`, "fancybox-dialog");
             const fn = ((bio) => function (e) {
                 var _a, _b, _c, _d, _e, _f;
@@ -3885,10 +3919,10 @@ class OrgChartContainer {
         }
     }
     addAriaLabels(node, data) {
-        if (data.name) {
+        if (data === null || data === void 0 ? void 0 : data.name) {
             node === null || node === void 0 ? void 0 : node.setAttribute("aria-labelledby", `[data-dataRefId="${data.dataRefId}"] .title`);
         }
-        if (data.title) {
+        if (data === null || data === void 0 ? void 0 : data.title) {
             node === null || node === void 0 ? void 0 : node.setAttribute("aria-describedby", `[data-dataRefId="${data.dataRefId}"] .content`);
         }
     }

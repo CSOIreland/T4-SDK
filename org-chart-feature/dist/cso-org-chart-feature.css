@@ -799,6 +799,9 @@
   background-color: var(--primary-color);
   color: var(--primary-color--contrast);
   font-size: 0.75rem;
+  height: unset !important;
+  min-height: 20px !important;
+  white-space: pre-wrap;
 }
 .cso-org-chart-container .orgchart .node .content {
   height: unset;
