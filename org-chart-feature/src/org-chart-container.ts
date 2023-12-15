@@ -257,11 +257,11 @@ export class OrgChartContainer {
 
           if (_isUrl) {
             html = $.parseHTML(
-              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'><iframe src="${bio}"</div></div>`
+              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${bio}"</div></div>`
             );
           } else {
             html = $.parseHTML(
-              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'>${bio}</div></div>`
+              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`
             );
           }
 

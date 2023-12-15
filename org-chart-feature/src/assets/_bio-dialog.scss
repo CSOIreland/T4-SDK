@@ -256,6 +256,15 @@
       }
 
       &--content {
+        // Revert default stylings.
+        // There are a bunch of bad stylings in the T4 CMS and we have to
+        // manually revert them so content can be displayed properly.
+        ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, img {
+          margin: revert;
+          padding: revert;
+          border: revert;
+        }
+
         &:not(.has-iframe) {
           padding: 15px;
         }

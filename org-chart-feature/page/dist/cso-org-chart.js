@@ -3800,10 +3800,10 @@ class OrgChartContainer {
                 let html = [];
                 const _isUrl = isUrl(bio);
                 if (_isUrl) {
-                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'><iframe src="${bio}"</div></div>`);
+                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${bio}"</div></div>`);
                 }
                 else {
-                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'>${bio}</div></div>`);
+                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`);
                 }
                 e.stopPropagation();
                 if (((_c = (_b = (_a = e.target) === null || _a === void 0 ? void 0 : _a.classList) === null || _b === void 0 ? void 0 : _b.contains) === null || _c === void 0 ? void 0 : _c.call(_b, "edge")) ||
