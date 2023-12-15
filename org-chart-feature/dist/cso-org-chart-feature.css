@@ -733,6 +733,11 @@
 .cso-org-chart-container__fancybox--backdrop .fancybox-outer {
   padding-top: 20px;
 }
+.cso-org-chart-container__fancybox--content ul, .cso-org-chart-container__fancybox--content ol, .cso-org-chart-container__fancybox--content li, .cso-org-chart-container__fancybox--content h1, .cso-org-chart-container__fancybox--content h2, .cso-org-chart-container__fancybox--content h3, .cso-org-chart-container__fancybox--content h4, .cso-org-chart-container__fancybox--content h5, .cso-org-chart-container__fancybox--content h6, .cso-org-chart-container__fancybox--content pre, .cso-org-chart-container__fancybox--content form, .cso-org-chart-container__fancybox--content body, .cso-org-chart-container__fancybox--content html, .cso-org-chart-container__fancybox--content p, .cso-org-chart-container__fancybox--content blockquote, .cso-org-chart-container__fancybox--content fieldset, .cso-org-chart-container__fancybox--content img {
+  margin: revert;
+  padding: revert;
+  border: revert;
+}
 .cso-org-chart-container__fancybox--content:not(.has-iframe) {
   padding: 15px;
 }
