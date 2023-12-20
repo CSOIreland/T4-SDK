@@ -96,7 +96,6 @@ export class OrgChartContainer {
    * @param data Node data
    */
   createNode(node: HTMLElement, data?: OrgChartDataChild) {
-    console.log("Create node", node, data);
     // add image element if imageSrc is provided
     if (data?.imageSrc) {
       const imgContainer = globalThis.document.createElement("div");
@@ -168,7 +167,6 @@ export class OrgChartContainer {
 
     if (this.data.responsive === 'true') {
       globalThis.addEventListener("resize", () => {
-        console.log('resize', this);
         const _isMobileOrTablet = isTablet();
         if (this.isMobileOrTablet !== _isMobileOrTablet) {
           this.isMobileOrTablet = _isMobileOrTablet;

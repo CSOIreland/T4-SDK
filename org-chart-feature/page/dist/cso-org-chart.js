@@ -3688,7 +3688,6 @@ class OrgChartContainer {
     }
     createNode(node, data) {
         var _a;
-        console.log("Create node", node, data);
         if (data === null || data === void 0 ? void 0 : data.imageSrc) {
             const imgContainer = globalThis.document.createElement("div");
             imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
@@ -3735,7 +3734,6 @@ class OrgChartContainer {
         this.buildChart(createNodeFn);
         if (this.data.responsive === 'true') {
             globalThis.addEventListener("resize", () => {
-                console.log('resize', this);
                 const _isMobileOrTablet = isTablet();
                 if (this.isMobileOrTablet !== _isMobileOrTablet) {
                     this.isMobileOrTablet = _isMobileOrTablet;
