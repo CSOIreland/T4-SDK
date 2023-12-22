@@ -199,6 +199,7 @@
     margin: 1em;
     background-color: #f0f0f0;
 }
+
 .article-gallery-item.infographic-gallery-item {
     background-color: #F2F7FA;
 }
@@ -232,6 +233,7 @@
 
 .infographic-gallery-item .btn {
     margin: 1rem 0 1.5rem 0;
+    float:none;
 }
 
 .article-gallery-item .gallery-download-link {
