@@ -218,6 +218,7 @@ a:active {
 }
 
 /*buttons*/
+/* see colours.css for variations */
 
 .btn, 
 .btn:visited {
@@ -1383,7 +1384,7 @@ form.general input[type="submit"] {
 }
 
 
-/*COPY
+/*COPY - Main content area of releases
 *****************************************************/
 
 .copy h2 {
@@ -1549,7 +1550,7 @@ form.general input[type="submit"] {
 
 
 
-/*Local Nav
+/*Local Nav - plain text old style horizontal page navigation
 *****************************************************/
 #localNav
 {
@@ -1786,7 +1787,9 @@ margin-left: 0px !important;
 }
 /*End A-Z calendar*/
 
-/*students corner home page*/
+/*students corner home page
+Pre-cursor to interactive zone
+*/
 
 /*You tube videos students corner home page*/
  .videowrapper {
@@ -2126,12 +2129,7 @@ a.cc_more_info {
 display: none;
 }
 
-.rebecca {
-  display: block;
-  margin: 0.5em;
-  padding: 0.5em;
-  background: red;
-}
+
 /*New statistics pages */
 
 .er_headline h2 {
@@ -2314,7 +2312,7 @@ margin-bottom: 20px;
 
 /* end top banner */
 
-/* transcript show/hide section */
+/* infographic transcript show/hide section */
 .transcriptCollapse {
   border: 2px solid #adbecc;
   border-radius: 2px;
@@ -2539,6 +2537,8 @@ margin-bottom: 20px;
 }
 
 /* -- end advisory notification styles -- */
+
+/* Related Visualisation Cards for statistics landing pages */
 
 .related-viz-card {
     background: #F2F7Fa;
