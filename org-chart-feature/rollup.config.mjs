@@ -12,7 +12,7 @@ import 'dotenv/config'
 import nodeResolve from "@rollup/plugin-node-resolve";
 import fg from 'fast-glob';
 import dev from 'rollup-plugin-dev'
-import ALL_CONSTS, { CLASS_PREFIX } from './src/constants.mjs';
+import ALL_CONSTS, { CLASS_PREFIX, DEV_SERVER_PORT } from './src/constants.mjs';
 import livereload from 'rollup-plugin-livereload'
 import terser from '@rollup/plugin-terser';
 
@@ -181,7 +181,7 @@ export default async (cliArgs) => {
           // start a dev server to avoid CORS issues
           dev({
             dirs: ["page"],
-            port: 3000,
+            port: DEV_SERVER_PORT,
             spa: false,
             host: "localhost",
           }),
