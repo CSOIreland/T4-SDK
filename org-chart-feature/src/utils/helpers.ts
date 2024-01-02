@@ -1,15 +1,20 @@
 /**
- * Check if the given string is a url.
+ * Used to check if there is a link defined in the bio prop.
+ * Get url from a string.
+ * Because T4 is using built in WYSIWYG editor, it will wrap the url with <p> tag.
  * @param path string to check if it is a url
  */
-export const isUrl = (path: string): boolean => {
+export const getUrl = (path: string): string | null => {
     if (typeof path !== 'string' && !path) {
-        return false;
+        return null;
     }
 
-    const pattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/;
+    // updated regex so it doesn't match the html tags (handles even url encoded characters)
+    const pattern = /(?:^<p>|^&lt;p&gt;)\s*((?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s<]*)?)(?=\s*<\/p>|&gt;)/;
 
-    return pattern.test(path);
+    const match = path.match(pattern);
+
+    return match?.[1] ?? null;
 }
 
 /**

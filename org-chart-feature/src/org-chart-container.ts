@@ -10,7 +10,7 @@ import { nodeAttributes } from "./utils/data";
 import { OrgChartOverride } from "./org-chart-override";
 import { createPopper } from "@popperjs/core";
 import { looseParseOnlyElements } from "./utils/dom";
-import { isMobile, isTablet, isUrl } from "./utils/helpers";
+import { isMobile, isTablet, getUrl } from "./utils/helpers";
 
 const CHILD_ATTRS: CSOOrgChartChildAttributes[] = [
   "name",
@@ -96,7 +96,6 @@ export class OrgChartContainer {
    * @param data Node data
    */
   createNode(node: HTMLElement, data?: OrgChartDataChild) {
-    console.log("Create node", node, data);
     // add image element if imageSrc is provided
     if (data?.imageSrc) {
       const imgContainer = globalThis.document.createElement("div");
@@ -168,7 +167,6 @@ export class OrgChartContainer {
 
     if (this.data.responsive === 'true') {
       globalThis.addEventListener("resize", () => {
-        console.log('resize', this);
         const _isMobileOrTablet = isTablet();
         if (this.isMobileOrTablet !== _isMobileOrTablet) {
           this.isMobileOrTablet = _isMobileOrTablet;
@@ -253,11 +251,11 @@ export class OrgChartContainer {
         function (e: MouseEvent) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           let html: any[] = [];
-          const _isUrl = isUrl(bio);
+          const url = getUrl(bio);
 
-          if (_isUrl) {
+          if (url) {
             html = $.parseHTML(
-              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${bio}"</div></div>`
+              `<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${url}"</div></div>`
             );
           } else {
             html = $.parseHTML(

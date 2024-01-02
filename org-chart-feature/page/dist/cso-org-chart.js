@@ -3634,12 +3634,14 @@ var createPopper = /*#__PURE__*/popperGenerator({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-const isUrl = (path) => {
+const getUrl = (path) => {
+    var _a;
     if (typeof path !== 'string' && !path) {
-        return false;
+        return null;
     }
-    const pattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/;
-    return pattern.test(path);
+    const pattern = /(?:^<p>|^&lt;p&gt;)\s*((?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s<]*)?)(?=\s*<\/p>|&gt;)/;
+    const match = path.match(pattern);
+    return (_a = match === null || match === void 0 ? void 0 : match[1]) !== null && _a !== void 0 ? _a : null;
 };
 const isMobile = () => {
     return window.innerWidth <= 450;
@@ -3688,7 +3690,6 @@ class OrgChartContainer {
     }
     createNode(node, data) {
         var _a;
-        console.log("Create node", node, data);
         if (data === null || data === void 0 ? void 0 : data.imageSrc) {
             const imgContainer = globalThis.document.createElement("div");
             imgContainer.classList.add(`${CLASS_PREFIX}-avatar--container`);
@@ -3735,7 +3736,6 @@ class OrgChartContainer {
         this.buildChart(createNodeFn);
         if (this.data.responsive === 'true') {
             globalThis.addEventListener("resize", () => {
-                console.log('resize', this);
                 const _isMobileOrTablet = isTablet();
                 if (this.isMobileOrTablet !== _isMobileOrTablet) {
                     this.isMobileOrTablet = _isMobileOrTablet;
@@ -3798,9 +3798,9 @@ class OrgChartContainer {
             const fn = ((bio) => function (e) {
                 var _a, _b, _c, _d, _e, _f;
                 let html = [];
-                const _isUrl = isUrl(bio);
-                if (_isUrl) {
-                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${bio}"</div></div>`);
+                const url = getUrl(bio);
+                if (url) {
+                    html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content has-iframe'><iframe src="${url}"</div></div>`);
                 }
                 else {
                     html = $.parseHTML(`<div style="display: contents"><div class='${MAIN_CONTAINER}__fancybox--content'>${bio}</div></div>`);
