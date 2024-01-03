@@ -10,7 +10,7 @@ export const getUrl = (path: string): string | null => {
     }
 
     // updated regex so it doesn't match the html tags (handles even url encoded characters)
-    const pattern = /(?:^<p>|^&lt;p&gt;)\s*((?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s<]*)?)(?=\s*<\/p>|&gt;)/;
+    const pattern = /(?:^<p>|^&lt;p&gt;)\s*((?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[^\s<]*)?)(?=\s*<\/p>|&gt;)/;
 
     const match = path.match(pattern);
 
