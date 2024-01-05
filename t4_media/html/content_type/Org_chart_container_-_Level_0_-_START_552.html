@@ -1,9 +1,15 @@
-<li data-title='<t4 type="content" name="Title" output="normal" />'
-    data-name='<t4 type="content" name="Employee name" output="normal" />'
-    data-bio='<t4 type="content" name="Bio " output="normal" modifiers="medialibrary,htmlentities" />'
-    data-imageSrc='<t4 type="content" name="Image" output="normal" formatter="image/path" />" />'
-    data-department='<t4 type="content" name="Department" output="normal" />'
-    data-depth='<t4 type="content" name="Depth" output="normal" />'
-    data-verticalDepth='<t4 type="content" name="Vertical depth " output="normal" />' <t4 type="content" name="Acting"
-    output="selective-output" format="data-acting=&quot;true&quot;" />
-<t4 type="content" name="Role" output="selective-output" format="data-variant=&quot;$value&quot;" /> >
+<div class="cso-org-chart-container">
+    <ul style="display: none;" class="cso-org-chart-data">
+        <li data-title='<t4 type="content" name="Title" output="normal" />'
+            data-name='<t4 type="content" name="Employee name" output="normal" />'
+            data-bio='<t4 type="content" name="Bio" output="normal" modifiers="medialibrary,nav_sections,htmlentities" />'
+            <t4 type="content" name="Image" output="selective-output" process-format="true"
+            format="data-imageSrc=&quot;<t4 type=&quot;content&quot; name=&quot;Image&quot; output=&quot;normal&quot; formatter=&quot;path/*&quot; />&quot;"
+            formatter="path/*" /> data-department='
+        <t4 type="content" name="Department" output="normal" />' data-depth='
+        <t4 type="content" name="Depth" output="normal" />' data-verticalDepth='
+        <t4 type="content" name="Vertical depth" output="normal" />'
+        <t4 type="content" name="Acting" output="selective-output" format="data-acting=&quot;true&quot;" />
+        <t4 type="content" name="Role" output="selective-output" format="data-variant=&quot;$value&quot;" />
+        <t4 type="content" name="Responsive" output="selective-output" format="data-responsive=&quot;true&quot;" /> >
+        <ul>
