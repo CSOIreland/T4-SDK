@@ -36,24 +36,6 @@ Closing tag for the Organisation Chart Container.
 </details>
 
 <details>
-<summary><strong>Organisation Chart Child List - Start</strong></summary>
-<br>
-
-**Description:**  
-Wrapper for child items in the organisation chart. Each new level must be wrapped in this content type.
-
-</details>
-
-<details>
-<summary><strong>Organisation Chart Child List - End</strong></summary>
-<br>
-
-**Description:**  
-Closing tag for the Organisation Chart Child List. The immediate parent must be either a child list item or an organisation chart container.
-
-</details>
-
-<details>
 <summary><strong>Organisation Chart List Item - Start</strong></summary>
 <br>
 
@@ -92,8 +74,6 @@ Same as the Organisation Chart List Item.
 |--------------------------------------------|-------------------------------------|---------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | **Organisation Chart Container - Start**   | `Level 0 start`                     | Wrapper for the entire organisation chart structure, including the top parent node.               | - Defines top parent node<br>- Contains chart data structure<br>- Essential for chart instantiation    |
 | **Organisation Chart Container - End**     | `Level 0 end`                       | Closing tag for the Organisation Chart Container.                                                 | - Marks the end of the chart container                                         |
-| **Organisation Chart Child List - Start**  | `Lx-y list start ID`                | Wrapper for child items in the organisation chart, used for creating new levels.                  | - Encapsulates child nodes<br>- Essential for hierarchical structure            |
-| **Organisation Chart Child List - End**    | `Lx-y list end ID`                  | Closing tag for the Organisation Chart Child List.                                                | - Marks the end of a child list                                                |
 | **Organisation Chart List Item - Start**   | `Lx-y start ID`                     | Defines a child node in the organisation chart, allowing for nesting of additional child lists.   | - Creates a child node<br>- Allows nesting of other child lists                |
 | **Organisation Chart List Item - End**     | `Lx-y end ID`                       | Closing tag for the Organisation Chart List Item.                                                 | - Marks the end of a list item                                                 |
 | **Organisation Chart List Item - Leaf**    | `LLx-y ID`                          | Similar to the Organisation Chart List Item Start, but does not allow further nesting.            | - Defines a leaf node<br>- Includes an integrated closing tag                  |
