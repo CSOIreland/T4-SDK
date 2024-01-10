@@ -1,0 +1,355 @@
+/*
+ * jQuery FlexSlider v2.2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+
+ */
+
+
+/* Browser Resets
+*********************************/
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
+
+/* FlexSlider Necessary Styles
+*********************************/
+/*.flexslider {margin: 0; padding: 0;}*/
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; height: auto; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "\0020"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+.flexslider2 img, .flexsliderIZ img
+{
+  vertical-align: top;
+
+}
+
+
+/*FLEXSLIDER NAVIGATION
+********************************************************************/
+
+/*control nav*/
+
+.flex-control-nav {
+	
+}
+
+.flex-control-nav li {
+	float: left;
+	margin: 0 0 0 5px;
+}
+
+.flex-control-nav a {
+	display: block;
+	text-indent: -5000px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 1px solid #d7d2cb;
+	cursor: pointer;
+}
+
+.flex-control-nav a.flex-active {
+	background-color: #d7d2cb;
+}
+
+/*direction nav*/
+
+.flex-direction-nav a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	text-indent: -5000px;
+	position: absolute;
+	z-index: 30;
+	top: 40%;
+	opacity: 0.5;
+}
+
+.flex-direction-nav a:hover {
+	opacity: 1;
+}
+
+.flex-direction-nav a.flex-prev {
+	left: -30px;
+}
+
+.flex-direction-nav a.flex-next {
+	right: -30px;
+}
+
+.flex-direction-nav a:before {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	/*--adjust as necessary--*/
+	color: #ffffff;
+	font-size: 60px;
+	line-height: 60px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-indent: 0;
+	text-decoration: none;
+}
+
+.flex-direction-nav a.flex-prev:before {
+	content: "\f104";
+}
+
+.flex-direction-nav a.flex-next:before {
+	content: "\f105";
+	left: auto;
+	right: 0;
+}
+
+.flex-direction-nav a.flex-disabled:before {
+	opacity: 0.3;
+}
+
+
+/*CAROUSEL - used for quick stats and logos
+***********************************************************/
+.carousel .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+
+.carousel .slides li {
+	text-align: center;
+	padding-bottom: 20px;
+      margin-right: 0px !important;
+  background: #579599;
+}
+
+.carousel i {
+	font-size: 64px;
+	/*line-height: 70px;*/
+	color: #006168;
+}
+.carousel .slides li a {
+	text-decoration: none;
+}
+
+.carousel .slides li h3 {
+	color: #ffffff;
+	font-size: 26px;
+	line-height: 28px;
+	font-weight: 300;
+	padding: 5px 0 5px 0;
+  font-weight: bold;
+}
+
+.carousel .slides li p {
+	color: #ffffff;
+	font-size: 15px;
+	line-height: 17px;
+	font-weight: 300;
+	
+	padding: 0 0 8px 0;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.censusCarousel .slides li p {
+  margin: 0px 5px 0px 5px;
+}
+
+.carousel .slides li span {
+	display: block;
+	color: #ffffff;
+	font-size: 13px;
+	line-height: 16px;
+	font-weight: 300;
+}
+
+.carousel .slides li img {
+	max-width: 120px;
+}
+
+.carousel li.tooltip {
+    padding-top: 25px;
+}
+
+/*IMAGE SLIDER - used for featured news on home page
+**********************************************************/
+/*use icons instead of font awesome*/
+
+.carousel i.icon {
+		 display: block;
+		 margin-left: auto;
+		 margin-right: auto;
+		 width: 70px;
+		 height: 70px;
+		 background: #ffffff center center no-repeat;
+		 background-size: cover;
+      padding: 15px;
+    border-radius: 100%;
+}
+
+.censusLogos i.icon, .censusLogos i {
+    
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.carousel i.icon-bag {
+		 background: url('/en/media/styleassets/images/granite/quickStats_bag.png');
+}
+
+.carousel i.icon-house {
+		 background: url('/en/media/styleassets/images/granite/quickStats_house.png');
+}
+
+.carousel i.icon-census {
+		 background: url('/en/media/styleassets/images/granite/census2016results.png');
+  width: 100px;
+  background-repeat: no-repeat;
+}
+
+.carousel i.icon-ManWomanChild {
+		 background: url('/en/media/styleassets/images/granite/Man_woman_and_child_icon.png');
+  width: 115px;
+  background-repeat: no-repeat;
+}
+
+
+.carousel i.icon-profile8 {
+		 background: url('/en/media/styleassets/images/granite/profile_8_icon.png');
+  width: 115px;
+  background-repeat: no-repeat;
+}
+
+.carousel i.icon-census_ga {
+		 background: url('/en/media/styleassets/images/granite/census2016_ga.png');
+  width: 100px;
+  background-repeat: no-repeat;
+}
+
+.imageSlider img {
+	position: relative;
+}
+
+.imageSlider a, .imageSlider a:hover, .imageSlider a:visited  {
+	color: #fff;
+	text-decoration: none;
+}
+
+.imageSlider .caption {
+	position: absolute;
+	z-index: 10;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.9);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 15px 40px;
+}
+
+.imageSliderSC h2
+{
+  color: #ffffff;
+
+}
+
+.imageSlider h2 {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 24px;
+	min-height: 50px;
+}
+
+.imageSlider h2 span {
+	font-size: 16px;
+}
+
+.imageSlider .flex-direction-nav a {
+	top: auto;
+	bottom: 30px;
+}
+
+.imageSlider .flex-direction-nav a.flex-prev {
+	left: 10px;
+}
+
+.imageSlider .flex-direction-nav a.flex-next {
+	right: 10px;
+}
+
+.imageSlider .flex-direction-nav a:before {
+	color: #fff;
+	font-size: 40px;
+}
+
+/* students corner home page logos at bottom */
+
+.flexsliderSC .slides li img {
+    max-width: 120px;
+}
+
+.flexsliderSC .slides li h3 {
+    color: #07101a;
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: 300;
+    padding: 5px 0 5px 0;
+}
+
+.flexsliderSC .slides li a {
+    text-decoration: none;
+}
+
+.flexsliderSC .slides li p {
+    color: #5b6774;
+    font-size: 15px;
+    line-height: 17px;
+    font-weight: 300;
+    text-transform: uppercase;
+    padding: 0 0 8px 0;
+}
+
+.flexsliderSC .slides li {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.flexsliderSC .slides img {
+    
+    display: inline;
+border-radius: 10px;
+}
+
+/* end students corner home page logos at bottom */
+
+.flex-caption {
+  width: 96%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 14px;
+  line-height: 18px;
+}
+

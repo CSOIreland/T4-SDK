@@ -1,0 +1,185 @@
+@mixin override-org-chart-colors {
+  $node-width: 160px;
+  $typo-fs--department: 0.8rem;
+  $typo-fs--content: 0.6875rem;
+  $typo-fs--title: 0.75rem;
+
+  .orgchart {
+    .node {
+      .bottomEdge {
+        &.fa-chevron-down {
+          bottom: -15px;
+        }
+      }
+
+      &.with-bio {
+        cursor: pointer;
+      }
+
+      width: $node-width;
+      .title, .content, .department {
+        padding: 0 5px;
+      }
+
+      &.with-department {
+        .content {
+          border-bottom-left-radius: unset;
+          border-bottom-right-radius: unset;
+        }
+      }
+
+      // DEFAULT START
+      .title {
+        background-color: var(--primary-color);
+        color: var(--primary-color--contrast);
+        font-size: $typo-fs--title;
+        height: unset !important;
+        min-height: 20px !important;
+        white-space: pre-wrap;
+      }
+
+      .content {
+        height: unset;
+        text-overflow: unset;
+        text-wrap: wrap;
+        border: 1px solid var(--primary-color);
+        font-size: $typo-fs--content;
+        border-bottom: none;
+      }
+
+      .department {
+        background-color: var(--primary-color--contrast);
+        color: var(--primary-color);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: $typo-fs--department;
+        font-weight: bold;
+        border-left: 1px solid var(--primary-color);
+        border-right: 1px solid var(--primary-color);
+        border-bottom: 1px solid var(--primary-color);
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      // DEFAULT END
+      &.variant {
+        @for $i from 1 through 3 {
+          &-#{$i} {
+            .title {
+              background-color: var(--primary-color__variant-#{$i});
+              color: var(--primary-color--contrast__variant-#{$i});
+            }
+
+            .department {
+              background-color: var(--primary-color--contrast__variant-#{$i});
+              color: var(--primary-color__variant-#{$i});
+              border-left: 1px solid var(--primary-color__variant-#{$i});
+              border-right: 1px solid var(--primary-color__variant-#{$i});
+              border-bottom: 1px solid var(--primary-color__variant-#{$i});
+              border-bottom-left-radius: 4px;
+              border-bottom-right-radius: 4px;
+            }
+
+            .content {
+              border: 1px solid var(--primary-color__variant-#{$i});
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .orgchart tr.lines .topLine {
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .orgchart tr.lines .rightLine {
+    border-right: 1px solid var(--primary-color);
+  }
+
+  .orgchart tr.lines .leftLine {
+    border-left: 1px solid var(--primary-color);
+  }
+
+  .orgchart tr.lines .downLine {
+    background-color: var(--primary-color);
+  }
+
+  .orgchart .verticalNodes ul>li::before,
+  .orgchart .verticalNodes ul>li::after {
+    border-color: var(--primary-color);
+  }
+
+  .orgchart .verticalNodes>td::before {
+    border: 1px solid var(--primary-color);
+  }
+
+  .orgchart .node {
+    border-radius: 4px;
+  }
+
+  .orgchart .node:hover {
+    background-color: var(--select-border-color);
+  }
+
+  .orgchart .node.focused {
+    background-color: var(--select-border-color);
+  }
+
+  .orgchart {
+    background-image: none;
+  }
+
+  .orgchart>.spinner {
+    color: rgba(68, 157, 68, 0.8);
+  }
+
+  .orgchart .node>.spinner {
+    color: rgba(68, 157, 68, 0.8);
+  }
+
+  .orgchart .ghost-node rect {
+    fill: #ffffff;
+    stroke: var(--select-border-color);
+  }
+
+  .orgchart .node.allowedDrop {
+    border-color: rgba(68, 157, 68, 0.9);
+  }
+
+  .orgchart .node .edge {
+    color: rgba(68, 157, 68, 0.5);
+  }
+
+  .orgchart .edge:hover {
+    color: #449d44;
+  }
+
+  .orgchart .node .toggleBtn {
+    color: rgba(68, 157, 68, 0.6);
+  }
+
+  .orgchart .node .toggleBtn:hover {
+    color: rgba(68, 157, 68, 0.8);
+  }
+
+  .oc-export-btn {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+
+  .oc-export-btn:hover,
+  .oc-export-btn:focus,
+  .oc-export-btn:active {
+    background-color: #449d44;
+    border-color: #347a34;
+  }
+
+  .orgchart~.mask .spinner {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}

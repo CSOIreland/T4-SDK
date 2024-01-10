@@ -1,0 +1,291 @@
+@use 'theme.scss'as theme;
+
+@mixin popper-dialog-style($prefix: '') {
+  $max-width: 400px;
+  $min-width: 250px;
+  $max-height: 150px;
+  $padd-top: 15px;
+  $padd-bottom: 10px;
+  $padd-side: 20px;
+  $arrow-size: 12px;
+
+  .#{$prefix}__show-bio {
+    .#{$prefix}__bio-dialog {
+      pointer-events: all;
+      display: block;
+      opacity: 100%;
+    }
+  }
+
+  .#{$prefix}__bio-dialog {
+    .bio-dialog--text {
+      display: block;
+    }
+  }
+
+
+  .#{$prefix}__bio-dialog {
+
+    .bio-dialog--text {
+      max-height: $max-height - $padd-bottom - $padd-top;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .#{$prefix}__bio-dialog {
+      transform: translateY(0);
+      max-height: $max-height;
+    }
+
+    overflow: visible !important;
+
+    &[data-popper-placement^='top']>.popper--arrow {
+      bottom: -4px;
+      left: -6px !important;
+      transform: rotate(45deg) translateX(calc(-#{$arrow-size} / 2));
+    }
+
+    &[data-popper-placement^='bottom']>.popper--arrow {
+      left: -6px !important;
+      top: -4px;
+      transform: rotate(45deg) translateX(calc(-#{$arrow-size} / 2));
+    }
+
+    &[data-popper-placement^='left']>.popper--arrow {
+      right: -11px;
+    }
+
+    &[data-popper-placement^='right']>.popper--arrow {
+      left: -11px;
+    }
+
+    box-shadow: 1.9px 3.8px 3.8px hsl(0deg 0% 0% / 0.44);
+    transition: opacity 0.2s ease-in-out;
+    border: 1px solid var(--accent-color);
+    transform: translateY(-15px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track,
+    &>::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px var(--custom-scrollbar-shadow-color);
+      border-radius: 10px;
+      background-color: var(--custom-scrollbar-background-color);
+    }
+
+    &::-webkit-scrollbar,
+    &>::-webkit-scrollbar {
+      margin-left: 10px;
+      width: 4px;
+      background-color: var(--custom-scrollbar-background-color);
+    }
+
+    &::-webkit-scrollbar-thumb,
+    &>::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px var(--custom-scrollbar-shadow-color);
+      background-color: var(custom-scrollbar-thumb-color);
+    }
+
+    z-index: 21;
+
+    i {
+      color: var(--primary-color--contrast);
+      font-size: 14px;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    min-width: $min-width;
+    max-width: $max-width;
+    overflow: hidden;
+    padding: #{$padd-top} #{$padd-side} #{$padd-bottom} #{$padd-side};
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: var(--primary-color--contrast);
+  }
+
+  .popper--arrow,
+  .popper--arrow::before {
+    position: absolute;
+    width: $arrow-size;
+    height: $arrow-size;
+    background: var(--primary-color);
+  }
+
+  .popper--arrow {
+    visibility: hidden;
+  }
+
+  .popper--arrow::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+  }
+}
+
+@mixin fancybox-dialog-style($prefix: '') {
+  .#{$prefix} {
+    &__fancybox {
+      &--backdrop {
+        // namespaced css variables
+        @include theme.init-colors();
+
+        &.isMobile {
+          border-radius: unset !important;
+          .#{$prefix} {
+            &__fancybox {
+              &--content {
+                padding:  5px;
+              }
+            }
+          }
+
+          .fancybox-wrap  {
+            // no other way to make it work beacuse this is set internally by fancybox via javascript
+            width: 100% !important;
+            inset: 0 !important;
+
+            .fancybox-skin {
+              padding-bottom: 0 !important;
+            }
+
+            .fancybox-inner {
+              width: 100% !important;
+              height: calc(100vh - 45px) !important;
+
+            }
+
+            .bio-dialog-header {
+              border-top-left-radius: 0px;
+              border-top-right-radius: 0px;
+            }
+
+            button.close-bio {
+              top: 5px;
+              right: 5px;
+
+              i {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+
+        // fancybox built-in close button
+        // we don't display it, but we need to trigger the close action
+        .fancybox-close {
+          display: none;
+        }
+
+        .bio-dialog-header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 40px;
+          background: var(--primary-color__variant-1);
+          color: var(--primary-color--contrast__variant-1);
+          width: 100%;
+          display: flex;
+          align-items: center;
+
+          $rad: 4px;
+          border-top-left-radius: $rad;
+          border-top-right-radius: $rad;
+
+          span {
+            font-size: 1.2rem;
+            margin-left: 20px;
+            font-weight: bold;
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        animation: fadeIn 0.3s ease-in-out;
+
+        // close icon
+        .close-bio {
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+
+          i {
+            pointer-events: none;
+            color: var(--primary-color--contrast__variant-1);
+          }
+
+          position: absolute;
+          top: 10px;
+          right: 15px;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+        .fancybox-outer {
+          padding-top: 20px;
+        }
+      }
+
+      &--content {
+        // Revert default stylings.
+        // There are a bunch of bad stylings in the T4 CMS and we have to
+        // manually revert them so content can be displayed properly.
+        ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, img {
+          margin: revert;
+          padding: revert;
+          border: revert;
+        }
+
+        &:not(.has-iframe) {
+          padding: 15px;
+        }
+
+        iframe {
+          @media screen and (min-width: 1025px) {
+            min-width: 80vw;
+            min-height: 800px;
+          }
+
+          @media screen and (max-width: 1024px) {
+            min-width: 95vw;
+            min-height: 98vh;
+          }
+
+          @media screen and (max-width: 480px) {
+            min-width: 100%;
+            min-height: calc(100vh - 55px);
+          }
+        }
+      }
+    }
+  }
+}

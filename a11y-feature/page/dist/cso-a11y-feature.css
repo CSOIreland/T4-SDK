@@ -1,0 +1,177 @@
+/**
+  We can reference the constants defined in the 'constants.mjs' file:
+  .__{CONSTANT_NAME}__ {
+    [attribute]: value;
+  }
+
+  e.g.
+
+  .cso-a11y-container {
+    background-color: red;
+  }
+*/
+.cso-a11y-container {
+  --primary-color: rgb(1,111,116);
+  --primary-color--contrast: #fff;
+  --accent-color: rgb(88, 149, 153);
+  --accent-color--contrast: #fff;
+  --not-active-bar-color: rgba(128, 128, 128, 0.25);
+  --select-border-color: rgb(130, 14, 14);
+  --border-color: var(--not-active-bar-color);
+  --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
+  --custom-scrollbar-background-color: #F5F5F5;
+  --custom-scrollbar-thumb-color: #555555 ;
+  display: flex;
+  position: fixed;
+  top: 50px;
+  right: 0;
+  max-width: 800px;
+}
+.cso-a11y-container button.__TOGGLE_BUTTON {
+  visibility: hidden;
+}
+.cso-a11y-container .cso-a11y-menu-container {
+  max-width: 300px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: white;
+  box-shadow: 1px 1.9px 1.9px hsla(0, 0%, 0%, 0.47);
+}
+.cso-a11y-container .cso-a11y-menu-container .__menu-title {
+  height: 40px;
+  background: var(--primary-color);
+  color: var(--primary-color--contrast);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px 10px;
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 4px 14px;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 8px;
+  cursor: pointer;
+  width: 140px;
+  height: 120px;
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button > * {
+  pointer-events: none;
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(1) {
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(3) {
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(5) {
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(7) {
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(2) {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(4) {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(6) {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:nth-child(8) {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button:hover i {
+  transform: scale(1.1);
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button i {
+  transition: all 0.2s ease-in-out;
+  font-size: 28px;
+}
+.cso-a11y-container .cso-a11y-menu-container .__btn-wrapper button.cso-a11y-menu-button[data-btn-type=cso-a11y-menu-button--reset] {
+  width: 280px;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+.cso-a11y-container .cso-a11y-menu-container .__bar--wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 5px;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.cso-a11y-container .cso-a11y-menu-container .__bar--wrapper .__bar {
+  border-radius: 4px;
+  background: grey;
+}
+.cso-a11y-container .cso-a11y-menu-container .__bar--wrapper--size-1 .__bar {
+  background: var(--not-active-bar-color);
+  width: 100%;
+}
+.cso-a11y-container .cso-a11y-menu-container .__bar--wrapper--size-4 .__bar {
+  display: flex;
+  background: var(--not-active-bar-color);
+  width: calc(25% - 6px);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="1"] .__bar--wrapper .__bar:nth-child(1) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="2"] .__bar--wrapper .__bar:nth-child(1) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="2"] .__bar--wrapper .__bar:nth-child(2) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="3"] .__bar--wrapper .__bar:nth-child(1) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="3"] .__bar--wrapper .__bar:nth-child(2) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="3"] .__bar--wrapper .__bar:nth-child(3) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="4"] .__bar--wrapper .__bar:nth-child(1) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="4"] .__bar--wrapper .__bar:nth-child(2) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="4"] .__bar--wrapper .__bar:nth-child(3) {
+  background: var(--accent-color);
+}
+.cso-a11y-container .cso-a11y-menu-container button[data-level="4"] .__bar--wrapper .__bar:nth-child(4) {
+  background: var(--accent-color);
+}
+
+/*# sourceMappingURL=cso-a11y-feature.css.map */

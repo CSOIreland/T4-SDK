@@ -1,0 +1,28 @@
+@mixin init-colors {
+    --primary-color: #016e74;
+    --primary-color--contrast: #fff;
+    --accent-color: rgb(88, 149, 153);
+    --accent-color--contrast: #fff;
+
+    --select-border-color: #EBB94B;
+
+    --custom-scrollbar-shadow-color: rgba(0,0,0,.3);
+    --custom-scrollbar-background-color: #F5F5F5;
+    --custom-scrollbar-thumb-color: #555555;
+
+    --primary-color__variant-1: #006168;
+    --primary-color--contrast__variant-1: #fff;
+    --accent-color__variant-1: #9BBDBF;
+    --accent-color--contrast__variant-1: #fff;
+
+    --primary-color__variant-2: #35456B;
+    --primary-color--contrast__variant-2: #fff;
+    --accent-color__variant-2: #A3AFCC;
+    --accent-color--contrast__variant-2: #fff;
+
+    --primary-color__variant-3: #00A881;
+    --primary-color--contrast__variant-3: #fff;
+
+    --accent-color__variant-3: #C3D9D1;
+    --accent-color--contrast__variant-3: #fff;
+}

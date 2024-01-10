@@ -1,0 +1,180 @@
+@use 'theme.scss'as theme;
+@use 'override.scss'as override;
+@use 'bio-dialog.scss'as bioDialog;
+@use 'popper.scss'as popper;
+@import 'node_modules/orgchart.js/src/orgchart';
+
+/**
+  We can reference the constants defined in the 'constants.mjs' file:
+  .__{CONSTANT_NAME}__ {
+    [attribute]: value;
+  }
+
+  e.g.
+
+  .__MAIN_CONTAINER__ {
+    background-color: red;
+  }
+*/
+
+@include popper.popper-styles(__MAIN_CONTAINER__);
+@include bioDialog.popper-dialog-style(__MAIN_CONTAINER__);
+@include bioDialog.fancybox-dialog-style(__MAIN_CONTAINER__);
+
+// namespace all styles
+.__MAIN_CONTAINER__ {
+  max-width: 100%;
+  overflow: auto;
+
+  // initialize css variabled
+  @include theme.init-colors();
+  // override default chart colors
+  @include override.override-org-chart-colors();
+
+  // disable node collapsing
+  .edge.verticalEdge.fa {
+
+    &.topEdge.fa-chevron-down,
+    &.bottomEdge.fa-chevron-up {
+      display: none;
+    }
+  }
+
+//   &__fancybox {
+//     &--backdrop {
+//     width: 100%;
+//     height: 100%;
+//     background: rgba(0, 0, 0, 0.5);
+
+//     .bio-dialog-title {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       height: 40px;
+//       background: var(--primary-color__variant-1);
+//       color: var(--primary-color--contrast__variant-1);
+//       width: 100%;
+//     }
+
+//     @keyframes fadeIn {
+//       from {
+//         opacity: 0;
+//       }
+
+//       to {
+//         opacity: 1;
+//       }
+//     }
+
+//     animation: fadeIn 0.3s ease-in-out;
+
+//     // close icon
+//     .close-bio {
+//       position: absolute;
+//       top: 10px;
+//       right: 10px;
+//       cursor: pointer;
+
+//       &:hover {
+//         opacity: 0.7;
+//       }
+//     }
+//   }
+
+//   &--content {
+//     padding: 20px;
+//   }
+// }
+
+  // if node has image
+  .__CLASS_PREFIX____node--with-image {
+    &.variant {
+      @for $i from 1 through 3 {
+        &-#{$i} {
+          .__CLASS_PREFIX__-avatar {
+            &--container {
+              background-color: var(--accent-color__variant-#{$i});
+            }
+
+            &--sub-container {
+              border: 1px solid var(--primary-color__variant-#{$i})
+            }
+          }
+        }
+      }
+    }
+
+    .__CLASS_PREFIX__-avatar {
+      &--container {
+        $radius: 3px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: var(--accent-color);
+        height: 120px;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        overflow: hidden;
+      }
+
+      &--sub-container {
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
+        }
+
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        $size: 100%;
+        width: $size;
+        height: $size;
+        border: 1px solid var(--primary-color);
+
+        img {
+          transition: transform 0.3s ease-in-out;
+          // CAUTION!
+          // we have to use !important here because "earthworm.css" has an overly generic selector that has an 'important' flag
+          // and messes with all the img tags
+          // there is no happy way to override this without refactoring the troublesome stylesheets
+          height: 100% !important;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &.node .title {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  .orgchart .node .title {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .orgchart .node .title .symbol {
+    float: unset;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+
+  .orgchart .node {
+    padding: 1px;
+  }
+
+  // remove side icons for collapsing nodes
+  table {
+    tr:not(:first-of-type) {
+      i.edge.horizontalEdge {
+        display: none;
+      }
+    }
+  }
+}
