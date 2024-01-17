@@ -646,7 +646,8 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
     var returnValue = {
         "time": null,
         "unit": null,
-        "value": null
+        "value": null,
+        "updated": null
     };
     jsonStat = JSONstat(response);
     if (!jsonStat.length) {
@@ -664,6 +665,7 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
     returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
     var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
     returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
+    returnValue.updated = jsonStat.updated
     return returnValue;
 };
 
