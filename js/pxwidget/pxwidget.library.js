@@ -574,8 +574,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
 
                 var time = data.Dimension(timeDimensionCode).id;
                 var timeLabel = data.Dimension(timeDimensionCode).Category(time[config.fluidTime[0]]).label;
-
-                debugger
+                $(element).text(", " + timeLabel);
             }
             else {
                 console.log("Error getting metadata")
