@@ -569,6 +569,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
         default:
             break;
     }
+    debugger
     if (fluidTime.length == 1) {
 
         var matrix = null;
@@ -584,7 +585,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
                 break;
         }
 
-
+        debugger
         //get time from metadata
         t4Sdk.pxWidget.utility.getJsonStatMetadata(matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
             var data = JSONstat(response.result);
