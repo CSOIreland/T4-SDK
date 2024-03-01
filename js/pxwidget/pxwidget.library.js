@@ -569,7 +569,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
         default:
             break;
     }
-
+    debugger
     if (fluidTime.length == 1) {
         //get time from metadata
         t4Sdk.pxWidget.utility.getJsonStatMetadata(config.data.api.query.data.params.extension.matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
@@ -583,9 +583,9 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
                     }
                 });
 
-                var time = data.Dimension(timeDimensionCode).id;
                 var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
                 $(element).text(", " + timeLabel);
+                debugger
             }
             else {
                 console.log("Error getting metadata")
