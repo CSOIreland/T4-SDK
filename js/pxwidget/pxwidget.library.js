@@ -558,6 +558,47 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet) {
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    if (config.fluidTime.length == 1) {
+        //get time from metadata
+        t4Sdk.pxWidget.utility.getJsonStatMetadata(config.data.api.query.data.params.extension.release, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
+            var data = JSONstat(response.result);
+            if (data.length) {
+                var timeDimensionCode = null;
+                $.each(data.Dimension(), function (index, value) {
+                    if (value.role == "time") {
+                        timeDimensionCode = data.id[index];
+                        return;
+                    }
+                });
+
+                var time = data.Dimension(timeDimensionCode).id;
+                debugger
+                //  var test = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
+
+            }
+            else {
+                console.log("Error getting metadata")
+            }
+        }).fail(function (error) {
+            console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
     debugger
 };
 
