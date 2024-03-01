@@ -589,7 +589,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
         }
 
         //get time from metadata
-        t4Sdk.pxWidget.utility.getJsonStatMetadata(matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
+        t4Sdk.pxWidget.utility.getJsonStatMetadata(matrix, true, language).done(function (response) {
             var data = JSONstat(response.result);
             if (data.length) {
                 var timeDimensionCode = null;
