@@ -547,7 +547,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     )
 };
 
-t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, isLive) {
+t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
@@ -558,7 +558,19 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, isLive) {
 
     //get config object from snippet
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
-    if (config.fluidTime.length == 1) {
+    var fluidTime = [];
+    switch (type) {
+        case "table":
+            fluidTime = config.fluidTime;
+            break;
+        case "map":
+            fluidTime = config.data.datasets[0].fluidTime;
+            break;
+        default:
+            break;
+    }
+
+    if (fluidTime.length == 1) {
         //get time from metadata
         t4Sdk.pxWidget.utility.getJsonStatMetadata(config.data.api.query.data.params.extension.matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
             var data = JSONstat(response.result);
@@ -572,8 +584,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, isLive) {
                 });
 
                 var time = data.Dimension(timeDimensionCode).id;
-                var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[config.fluidTime[0]].label
-                debugger
+                var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
                 $(element).text(", " + timeLabel);
             }
             else {
