@@ -560,7 +560,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet) {
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
     if (config.fluidTime.length == 1) {
         //get time from metadata
-        t4Sdk.pxWidget.utility.getJsonStatMetadata(config.data.api.query.data.params.extension.release, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
+        t4Sdk.pxWidget.utility.getJsonStatMetadata(config.data.api.query.data.params.extension.matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
             var data = JSONstat(response.result);
             if (data.length) {
                 var timeDimensionCode = null;
