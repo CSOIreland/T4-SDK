@@ -547,8 +547,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     )
 };
 
-t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
-    debugger
+t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, isLive) {
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
@@ -574,6 +573,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
 
                 var time = data.Dimension(timeDimensionCode).id;
                 var timeLabel = data.Dimension(timeDimensionCode).Category(time[config.fluidTime[0]]).label;
+                debugger
                 $(element).text(", " + timeLabel);
             }
             else {
