@@ -548,6 +548,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
 };
 
 t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
+    debugger
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
@@ -572,9 +573,8 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
                 });
 
                 var time = data.Dimension(timeDimensionCode).id;
+                var test = data.Dimension(timeDimensionCode).Category(time[config.fluidTime]).label;
                 debugger
-                //  var test = data.Dimension(timeDimensionCode).Category(time.slice(-1)[0]).label;
-
             }
             else {
                 console.log("Error getting metadata")
@@ -582,24 +582,8 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element) {
         }).fail(function (error) {
             console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-    debugger
+
 };
 
 //#endregion create a chart with toggle variables
