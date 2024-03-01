@@ -547,6 +547,20 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     )
 };
 
+t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet) {
+    //get isogram url
+    var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
+
+    isogramUrl = isogramScript.substring(
+        isogramScript.indexOf('"') + 1,
+        isogramScript.lastIndexOf('"')
+    );
+
+    //get config object from snippet
+    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    debugger
+};
+
 //#endregion create a chart with toggle variables
 
 //#region retreive the latest value for a query from PxStat 
