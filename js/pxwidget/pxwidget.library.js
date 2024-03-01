@@ -572,7 +572,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, isLive) {
                 });
 
                 var time = data.Dimension(timeDimensionCode).id;
-                var timeLabel = data.Dimension(timeDimensionCode).Category(time[config.fluidTime[0]]).label;
+                var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[config.fluidTime[0]].label
                 debugger
                 $(element).text(", " + timeLabel);
             }
