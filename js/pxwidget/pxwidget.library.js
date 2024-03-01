@@ -569,23 +569,25 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
         default:
             break;
     }
-    debugger
+
     if (fluidTime.length == 1) {
 
         var matrix = null;
+        var language = null;
 
         switch (type) {
             case "table":
                 matrix = config.data.api.query.data.params.extension.matrix;
+                language = config.data.api.query.data.params.extension.language.code;
                 break;
             case "map":
                 matrix = config.data.datasets[0].api.query.data.params.extension.matrix;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
             default:
                 break;
         }
 
-        debugger
         //get time from metadata
         t4Sdk.pxWidget.utility.getJsonStatMetadata(matrix, true, config.data.api.query.data.params.extension.language.code).done(function (response) {
             var data = JSONstat(response.result);
