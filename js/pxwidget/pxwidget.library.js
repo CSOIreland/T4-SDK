@@ -547,7 +547,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     )
 };
 
-t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
+t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggleDimension) {
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
@@ -600,9 +600,12 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type) {
                     }
                 });
 
-                var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
-                $(element).text(", " + timeLabel);
-                debugger
+                //only get lable if toggle dimension is not the time dimension 
+                if (timeDimensionCode != toggleDimension.trim()) {
+                    var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
+                    $(element).text(", " + timeLabel);
+                };
+
             }
             else {
                 console.log("Error getting metadata")
