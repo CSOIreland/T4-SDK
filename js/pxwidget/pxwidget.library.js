@@ -599,13 +599,17 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
                         return;
                     }
                 });
-
-                //only get lable if toggle dimension is not the time dimension 
-                if (timeDimensionCode != toggleDimension.trim()) {
+                if (toggleDimension) {
+                    //only get label if toggle dimension is not the time dimension 
+                    if (timeDimensionCode != toggleDimension.trim()) {
+                        var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
+                        $(element).text(", " + timeLabel);
+                    };
+                }
+                else {
                     var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
                     $(element).text(", " + timeLabel);
-                };
-
+                }
             }
             else {
                 console.log("Error getting metadata")
