@@ -22,20 +22,29 @@ t4Sdk.dataConnector = {};
  * @param {*} defaultVariable 
  * @returns 
  */
-t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable) {
+t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, toggleDimension, toggleVariables, defaultVariable, select2Options) {
+    select2Options = select2Options || {};
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
-    //get isogram url
-    var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
+    var config = null;
+    var isogramUrl = null;
 
-    var isogramUrl = isogramScript.substring(
-        isogramScript.indexOf('"') + 1,
-        isogramScript.lastIndexOf('"')
-    );
+    if (typeof snippet === 'object') {
+        config = snippet;
+    }
+    else {
+        //get isogram url
+        var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
-    //get config object from snippet
-    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+        isogramUrl = isogramScript.substring(
+            isogramScript.indexOf('"') + 1,
+            isogramScript.lastIndexOf('"')
+        );
+
+        //get config object from snippet
+        config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    }
 
     //check that config doesn't contain a response, must be query
     var queryIsInvalid = false;
@@ -155,7 +164,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "id": elementId + "-toggle-select"
                 }).get(0).outerHTML
             );
-            $("#" + elementId + " .widget-toggle-input-group [name=toggle-select]").select2();
+            $("#" + elementId + " .widget-toggle-input-group [name=toggle-select]").select2(select2Options);
         case "buttons":
             $("#" + elementId + " .widget-toggle-input-group").append(
                 $("<div>", {
@@ -286,9 +295,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 default:
                     break;
             }
+            if (isogramUrl) {
+                $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(addListener);
+            }
+            else {
+                addListener()
+            }
 
-            $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
-
+            function addListener() {
                 //listener events to draw chart
                 switch (toggleType) {
                     case "dropdown":
@@ -352,8 +366,9 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     default:
                         break;
                 }
+            }
 
-            });
+
         } else {
             console.log("Error getting metadata")
         }
@@ -532,6 +547,80 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     )
 };
 
+t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggleDimension) {
+    //get isogram url
+    var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
+
+    isogramUrl = isogramScript.substring(
+        isogramScript.indexOf('"') + 1,
+        isogramScript.lastIndexOf('"')
+    );
+
+    //get config object from snippet
+    var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+    var fluidTime = [];
+    switch (type) {
+        case "table":
+            fluidTime = config.fluidTime;
+            break;
+        case "map":
+            fluidTime = config.data.datasets[0].fluidTime;
+            break;
+        default:
+            break;
+    }
+
+    if (fluidTime.length == 1) {
+
+        var matrix = null;
+        var language = null;
+
+        switch (type) {
+            case "table":
+                matrix = config.data.api.query.data.params.extension.matrix;
+                language = config.data.api.query.data.params.extension.language.code;
+                break;
+            case "map":
+                matrix = config.data.datasets[0].api.query.data.params.extension.matrix;
+                language = config.data.datasets[0].api.query.data.params.extension.language.code;
+                break;
+            default:
+                break;
+        }
+
+        //get time from metadata
+        t4Sdk.pxWidget.utility.getJsonStatMetadata(matrix, true, language).done(function (response) {
+            var data = JSONstat(response.result);
+            if (data.length) {
+                var timeDimensionCode = null;
+                $.each(data.Dimension(), function (index, value) {
+                    if (value.role == "time") {
+                        timeDimensionCode = data.id[index];
+                        return;
+                    }
+                });
+                if (toggleDimension) {
+                    //only get label if toggle dimension is not the time dimension 
+                    if (timeDimensionCode != toggleDimension.trim()) {
+                        var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
+                        $(element).text(", " + timeLabel);
+                    };
+                }
+                else {
+                    var timeLabel = data.Dimension(timeDimensionCode).Category().reverse()[fluidTime[0]].label
+                    $(element).text(", " + timeLabel);
+                }
+            }
+            else {
+                console.log("Error getting metadata")
+            }
+        }).fail(function (error) {
+            console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
+        });
+    }
+
+};
+
 //#endregion create a chart with toggle variables
 
 //#region retreive the latest value for a query from PxStat 
@@ -631,7 +720,8 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
     var returnValue = {
         "time": null,
         "unit": null,
-        "value": null
+        "value": null,
+        "updated": null
     };
     jsonStat = JSONstat(response);
     if (!jsonStat.length) {
@@ -649,6 +739,7 @@ t4Sdk.dataConnector.parseSingleValue = function (response) {
     returnValue.time = jsonStat.Dimension(jsonStat.role.time[0]).Category(timeCode).label;
     var statisticDecimal = jsonStat.Dimension({ role: "metric" })[0].Category(statisticCode).unit.decimals;
     returnValue.value = t4Sdk.pxWidget.utility.formatNumber(jsonStat.value[0], statisticDecimal);
+    returnValue.updated = jsonStat.updated
     return returnValue;
 };
 
@@ -818,9 +909,16 @@ t4Sdk.pxWidget.utility.isSnippetPrivate = function (type, snippet) {
  * @param {*} consoleMessage 
  */
 t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessage) {
-    $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+    if (isogramUrl) {
+        $.when(t4Sdk.pxWidget.utility.loadIsogram(isogramUrl)).then(function () {
+            pxWidget.draw.error(elementId, 'Invalid widget');
+            console.log(consoleMessage);
+        });
+    }
+    else {
         pxWidget.draw.error(elementId, 'Invalid widget');
         console.log(consoleMessage);
-    });
+    }
+
 };
 //#endregion utilities
