@@ -733,9 +733,9 @@
     font-size: 24px;
 }
 
-.prices-item-change.same .price-item-text {
+/*.prices-item-change.same .price-item-text {
     font-size: 20px;
-}
+}*/
 
 /* ==================
 
@@ -930,19 +930,27 @@ Add a grid around other elements
         padding: 1rem 1rem 1rem;
         grid-template-columns: 1fr;
     }
+    
+    .solo-grid .shaded-bg {
+    /* if the child div has a shaded-bg, add a bg colour and padding */
+        background-color: #f5f6fa;
+        padding: 1rem;
+    }
 
-    .solo-grid.purple {
+    .solo-grid.purple, .solo-grid .shaded-bg.purple {
         background-color: #e6e9f2;
     }
     .solo-grid.grey {
         background-color: #f5f6fa;
     }
-    .solo-grid.mint {
+    .solo-grid.mint, .solo-grid .shaded-bg.mint {
         background-color: #e6f2f2;
     }
-    .solo-grid.blue {
+    .solo-grid.blue, .solo-grid .shaded-bg.blue {
         background-color: #f2f7fa;
     }
+
+
   
 /* .solo-grid-2up = 2 cols at desktop */
 

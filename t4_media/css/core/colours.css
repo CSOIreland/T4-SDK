@@ -1,37 +1,43 @@
-/*OLD blue*/
-
-
-/*
-.carousel .blue i.fa,
-.blue .moduleBody li a:before,
-.blue .accordion h3 a,
-.blue .accordion > div li a:before,
-.footer .contact.blue i,
-.blue.multiList .moduleBody li a {
-	color: #006bb6;
-}
-.blue .moduleHeader,
-.homepage .blue .moduleFooter,
-.blue .btn,
-.blue .label,
-.sideitem.blue {
-	background-color: #006bb6;
-}*/
-
+/* ======
+/* Index of Colours
+/* Green | white 7.2
+/* Green40 (pale) | white 2.0
+/* SoftGreen (mid) | white 3.4
+/* Mint | white 2.18 / 3.04
+/* Teal | white 2.18 / 3.11
+/* Purple (dark) | white 9.48
+/* Census2022Purple
+/* Under Reservation
+/* Violet | white 6.1
+/* Cobalt | white 5.82
+/* Magenta | 5.05
+/* CSO Red90 | white 3.67
+/* Yellow | white 1.93 / 3.01
+/* Pink | white 5.08
+/* CSOGrey | white 5.87
+/* RedDarkTone | white 6.54
+/* CSOBlue | white 3.38
+/* Covid19 | black 17.48
+/* SurveyBlue (same as CSO Blue) | white 3.38
+/* DarkGreen | white 12.07
+ ============== */
 
 /*green*/
+/* contrast with white: 7.2 */
 
 .carousel .green i.fa,
 .green .moduleBody li a:before,
 .green .moduleBody li p:before,
 .green .accordion h3 a,
-.green .accordion>div li a:before,
+.green .accordion > div li a:before,
 .green .accordionMethods h3,
-.green .accordionMethods>div li a:before,
+.green .accordionMethods > div li a:before,
 .footer .contact.green i,
 .green.multiList .moduleBody li a,
 .text-lead.green,
-.text-highlight.green {
+.text-highlight.green,
+.text-large.green,
+.text-green {
     color: #006168;
 }
 
@@ -50,18 +56,17 @@
 
 
 /*green 40%*/
+/* contrast with white: 2.0 */
 
 .carousel .green40 i.fa,
 .green40 .moduleBody li a:before,
 .green40 .moduleBody li p:before,
 .green40 .accordion h3 a,
-.green40 .accordion>div li a:before,
+.green40 .accordion > div li a:before,
 .green40 .accordionMethods h3,
-.green40 .accordionMethods>div li a:before,
+.green40 .accordionMethods > div li a:before,
 .footer .contact.green40 i,
-.green40.multiList .moduleBody li a,
-.text-lead.green40,
-.text-highlight.green40 {
+.green40.multiList .moduleBody li a {
     color: #9BBDBF;
 }
 
@@ -80,18 +85,21 @@
 
 
 /*soft green (darker than green 40%*/
+/* contrast with white: 3.4 */
 
 .carousel .softgreen i.fa,
 .softgreen .moduleBody li a:before,
 .softgreen .moduleBody li p:before,
 .softgreen .accordion h3 a,
-.softgreen .accordion>div li a:before,
+.softgreen .accordion > div li a:before,
 .softgreen .accordionMethods h3,
-.softgreen .accordionMethods>div li a:before,
+.softgreen .accordionMethods > div li a:before,
 .footer .contact.softgreen i,
 .softgreen.multiList .moduleBody li a,
 .text-lead.softgreen,
-.text-highlight.softgreen {
+.text-highlight.softgreen,
+.text-large.softgreen,
+.text-softgreen {
     color: #579599;
 }
 
@@ -110,17 +118,26 @@
 
 
 /*mint*/
+/* #5BC1A5 contrast with white: 2.18 */
+/* #00A881 contrast with white: 3.04 */
 
 .carousel .mint i.fa,
 .mint .moduleBody li a:before,
 .mint .moduleBody li p:before,
 .mint .accordion h3 a,
-.mint .accordion>div li a:before,
+.mint .accordion > div li a:before,
 .mint .accordionMethods h3,
-.greminten .accordionMethods>div li a:before,
+.greminten .accordionMethods > div li a:before,
 .footer .contact.mint i,
 .mint.multiList .moduleBody li a {
     color: #5BC1A5;
+}
+
+.text-lead.mint,
+.text-highlight.mint,
+.text-large.mint,
+.text-mint {
+    color: #00A881;  
 }
 
 .mint .moduleHeader,
@@ -149,40 +166,19 @@
 }
 
 
-/*OLD pink
-.carousel .pink i.fa,
-.pink .moduleBody li a:before,
-.pink .accordion h3 a,
-.pink .accordion > div li a:before,
-.pink .accordionMethods h3,
-.pink .accordionMethods > div li a:before,
-.footer .contact.pink i,
-.pink.multiList .moduleBody li a {
-	color: #b51c84;
-}
-.pink .moduleHeader,
-.homepage .violet .moduleFooter,
-.violet .btn,
-.violet .label,
-.sideitem.pink {
-	background-color: #b51c84;
-}
-*/
-
-
 /*teal*/
+/* #45C1C0 contrast with white: 2.18 */
+/* #00A3A0 contrast with white: 3.11 */
 
 .carousel .teal i.fa,
 .teal .moduleBody li a:before,
 .teal .moduleBody li p:before,
 .teal .accordion h3 a,
-.teal .accordion>div li a:before,
+.teal .accordion > div li a:before,
 .teal .accordionMethods h3,
-.teal .accordionMethods>div li a:before,
+.teal .accordionMethods > div li a:before,
 .footer .contact.teal i,
-.teal.multiList .moduleBody li a,
-.text-lead.teal,
-.text-highlight.teal {
+.teal.multiList .moduleBody li a {
     color: #45C1C0;
 }
 
@@ -193,29 +189,40 @@
     background-color: #45C1C0;
 }
 
+.text-lead.teal,
+.text-highlight.teal,
+.text-large.teal,
+.text-teal {
+    color: #00A3A0;  
+}
+
+
 .sideitem.teal,
 .sideitem.teal .btn {
     background-color: #00A3A0;
 }
 
 .wellbeing-hub-indicator .sideitem i.teal {
-    color: #00A3A0
+    color: #00A3A0;
 }
 
 
 /*purple*/
+/* contrast with white: 9.48 */
 
 .carousel .purple i.fa,
 .purple .moduleBody li a:before,
 .purple .moduleBody li p:before,
 .purple .accordion h3 a,
-.purple .accordion>div li a:before,
+.purple .accordion > div li a:before,
 .purple .accordionMethods h3,
-.purple .accordionMethods>div li a:before,
+.purple .accordionMethods > div li a:before,
 .footer .contact.purple i,
 .purple.multiList .moduleBody li a,
 .text-lead.purple,
-.text-highlight.purple {
+.text-highlight.purple,
+.text-large.purple,
+.text-purple  {
     color: #35456B;
 }
 
@@ -229,23 +236,40 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.purple {
-    color: #35456B
+    color: #35456B;
 }
 
+/*census2022purple*/
+.census2022 .moduleHeader,
+.homepage .census2022 .moduleFooter,
+.census2022 .btn,
+.census2022 .label,
+.sideitem.census2022 {
+	background-color: #283F73;
+    color: #fff;
+}
+
+/*under reservation*/
+.underReservation .moduleHeader {
+    background-color: #e25939;
+}
 
 /*violet*/
+/* contrast with white: 6.1 */
 
 .carousel .violet i.fa,
 .violet .moduleBody li a:before,
 .violet .moduleBody li p:before,
 .violet .accordion h3 a,
-.violet .accordion>div li a:before,
+.violet .accordion > div li a:before,
 .violet .accordionMethods h3,
-.violet .accordionMethods>div li a:before,
+.violet .accordionMethods > div li a:before,
 .footer .contact.violet i,
 .violet.multiList .moduleBody li a,
 .text-lead.violet,
-.text-highlight.violet {
+.text-highlight.violet,
+.text-large.violet,
+.text-violet {
     color: #725499;
 }
 
@@ -259,23 +283,26 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.violet {
-    color: #725499
+    color: #725499;
 }
 
 
 /*cobalt*/
+/* contrast with white: 5.82 */
 
 .carousel .cobalt i.fa,
 .cobalt .moduleBody li a:before,
 .cobalt .moduleBody li p:before,
 .cobalt .accordion h3 a,
-.cobalt .accordion>div li a:before,
+.cobalt .accordion > div li a:before,
 .cobalt .accordionMethods h3,
-.cobalt .accordionMethods>div li a:before,
+.cobalt .accordionMethods > div li a:before,
 .footer .contact.cobalt i,
 .cobalt.multiList .moduleBody li a,
 .text-lead.cobalt,
-.text-highlight.cobalt {
+.text-highlight.cobalt,
+.text-large.cobalt,
+.text-cobalt {
     color: #4463aa;
 }
 
@@ -289,23 +316,26 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.cobalt {
-    color: #4463aa
+    color: #4463aa;
 }
 
 
 /*magenta*/
+/* contrast with white: 5.05 */
 
 .carousel .magenta i.fa,
 .magenta .moduleBody li a:before,
 .magenta .moduleBody li p:before,
 .magenta .accordion h3 a,
-.magenta .accordion>div li a:before,
+.magenta .accordion > div li a:before,
 .magenta .accordionMethods h3,
-.magenta .accordionMethods>div li a:before,
+.magenta .accordionMethods > div li a:before,
 .footer .contact.magenta i,
 .magenta.multiList .moduleBody li a,
 .text-lead.magenta,
-.text-highlight.magenta {
+.text-highlight.magenta,
+.text-large.magenta,
+.text-magenta {
     color: #ab4d88;
 }
 
@@ -319,17 +349,18 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.magenta {
-    color: #ab4d88
+    color: #ab4d88;
 }
 
 
 /*CSO red90*/
+/* contrast with white: 3.67 */
 
 .carousel .orange i.fa,
 .csored90 .moduleBody li a:before,
 .csored90 .moduleBody li p:before,
 .csored90 .accordion h3 a,
-.csored90 .accordion>div li a:before,
+.csored90 .accordion > div li a:before,
 .footer .contact.csored90 i,
 .csored90.multiList .moduleBody li a {
     color: #e25939;
@@ -344,24 +375,33 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.csored90 {
-    color: #e25939
+    color: #e25939;
 }
 
 
 /*yellow*/
+/* #FBAA34 contrast with white: 1.93 */
+/* #E2791D contrast with white: 3.01 */
 
 .carousel .yellow i.fa,
 .yellow .moduleBody li a:before,
 .yellow .moduleBody li p:before,
 .yellow .accordion h3 a,
 .yellow .accordion h4 a,
-.yellow .accordion>div li a:before,
+.yellow .accordion > div li a:before,
 .yellow .accordionMethods h3,
 .yellow .accordionMethods h4 a,
-.yellow .accordionMethods>div li a:before,
+.yellow .accordionMethods > div li a:before,
 .footer .contact.yellow i,
 .yellow.multiList .moduleBody li a {
     color: #FBAA34;
+}
+
+.text-lead.yellow,
+.text-highlight.yellow,
+.text-large.yellow,
+.text-yellow {
+    color: #E2791D;  
 }
 
 .yellow .moduleHeader,
@@ -381,18 +421,23 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.yellow {
-    color: #E2791D
+    color: #E2791D;
 }
 
 
 /*pink*/
+/* contrast with white: 5.08 */
 
 .carousel .pink i.fa,
 .pink .moduleBody li a:before,
 .pink .accordion h3 a,
-.pink .accordion>div li a:before,
+.pink .accordion > div li a:before,
 .footer .contact.pink i,
-.pink.multiList .moduleBody li a {
+.pink.multiList .moduleBody li a,
+.text-lead.pink,
+.text-highlight.pink,
+.text-large.pink,
+.text-pink {
     color: #d3205c;
 }
 
@@ -405,20 +450,28 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.pink {
-    color: #d3205c
+    color: #d3205c;
 }
 
 
 /*CSO grey*/
+/* contrast with white: 5.87 */
 
 .carousel .csogrey i.fa,
 .csogrey .moduleBody li a:before,
 .csogrey .moduleBody li p:before,
 .csogrey .accordion h3 a,
-.csogrey .accordion>div li a:before,
+.csogrey .accordion > div li a:before,
 .footer .contact.csogrey i,
 .csogrey.multiList .moduleBody li a {
     color: #5b6670;
+}
+
+.text-lead.csogrey,
+.text-highlight.csogrey,
+.text-large.csogrey,
+.text-csogrey {
+    color: #5b6670; 
 }
 
 .csogrey .moduleHeader,
@@ -430,17 +483,18 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.csogrey {
-    color: #5b6670
+    color: #5b6670;
 }
 
 
 /*RedDarkTone*/
+/* contrast with white: 6.54 */
 
 .carousel .RedDarkTone i.fa,
 .RedDarkTone .moduleBody li a:before,
 .RedDarkTone .moduleBody li p:before,
 .RedDarkTone .accordion h3 a,
-.RedDarkTone .accordion>div li a:before,
+.RedDarkTone .accordion > div li a:before,
 .footer .contact.RedDarkTone i,
 .RedDarkTone.multiList .moduleBody li a {
     color: #a93335;
@@ -455,21 +509,24 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.RedDarkTone {
-    color: #a93335
+    color: #a93335;
 }
 
 
 /*CSO blue*/
+/* contrast with white: 3.38 */
 
 .carousel .csoblue i.fa,
 .csoblue .moduleBody li a:before,
 .csoblue .moduleBody li p:before,
 .csoblue .accordion h3 a,
-.csoblue .accordion>div li a:before,
+.csoblue .accordion > div li a:before,
 .footer .contact.csoblue i,
 .csoblue.multiList .moduleBody li a,
 .text-lead.csoblue,
-.text-highlight.csoblue {
+.text-highlight.csoblue,
+.text-large.csoblue,
+.text-csoblue {
     color: #0099b4;
 }
 
@@ -486,17 +543,18 @@
 }
 
 .wellbeing-hub-indicator .sideitem i.csoblue {
-    color: #0099b4
+    color: #0099b4;
 }
 
 
 /*CSO covid19*/
+/* contrast with black: 17.48 */
 
 .carousel .covid19 i.fa,
 .covid19 .moduleBody li a:before,
 .covid19 .moduleBody li p:before,
 .covid19 .accordion h3 a,
-.covid19 .accordion>div li a:before,
+.covid19 .accordion > div li a:before,
 .footer .contact.covid19 i,
 .covid19.multiList .moduleBody li a {
     color: #008FAA;
@@ -524,14 +582,20 @@
 
 
 /*CSO Surveys blue*/
+/* same as csblue */
+/* contrast with white: 3.38 */
 
 .carousel .surveyblue i.fa,
 .surveyblue .moduleBody li a:before,
 .surveyblue .moduleBody li p:before,
 .surveyblue .accordion h3 a,
-.surveyblue .accordion>div li a:before,
+.surveyblue .accordion > div li a:before,
 .footer .contact.surveyblue i,
-.surveyblue.multiList .moduleBody li a {
+.surveyblue.multiList .moduleBody li a,
+.text-lead.surveyblue,
+.text-highlight.surveyblue,
+.text-large.surveyblue,
+.text-surveyblue {
     color: #0099b4;
 }
 
@@ -550,6 +614,7 @@
 
 /* MISC */
 
+/* contrast with white: 12.07 */
 .sideitem.darkGreen {
     background-color: #003D3F;
 }

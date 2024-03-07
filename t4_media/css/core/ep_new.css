@@ -100,21 +100,21 @@
         width: 80%;
     }
     
-    span.currentbranch0 a {
+    .publicationMenu span.currentbranch0 a {
         font-weight: 600;
         color: #30436a;
         background-color: #9BBDBF;
         border-right: 0.4rem solid #30436a;
     }
 
-    span.currentbranch0 a:hover {
+    .publicationMenu span.currentbranch0 a:hover {
         font-weight: 600;
         color: #30436a;
         background-color: #E6F2F2;
         border-right: 0.4rem solid #30436a;
     }
 
-    span.currentbranch1 a {
+    .publicationMenu span.currentbranch1 a {
         font-weight: 600;
         color: #30436a;
         background-color: #C3D7D9;

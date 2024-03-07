@@ -131,6 +131,38 @@ padding-top: 20px;
 
 
 
+/* -- lead text and text highlights -- */
+.text-lead, p.text-lead {
+	font-size: 1.3rem; /* effectively 19.5px */
+}
+
+.text-highlight, p.text-highlight {
+ 	font-size: 1.2rem; /* effectively 18px */
+}
+
+.text-large, p.text-large {
+  font-size: 1.5rem; /* effectively 22.5px for 15px body text */
+}
+
+.text-slab, p.text-slab {
+	font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+}
+/* -- end text styles --*/
+
+/* -- margins for text -- */
+.text-margin-top-2x {
+  margin-top: 2rem;
+}
+.text-margin-bottom-2x {
+  margin-bottom: 2rem;
+}
+.text-padding-top-2x {
+  padding-top: 2rem;
+}
+.text-padding-bottom-2x {
+  padding-bottom: 2rem;
+}
+
 
 
 /*.columnLeftinner-rightcol, .columnLeftinner-split
@@ -244,11 +276,21 @@ a:active {
 	color: inherit;
 }
 /* all variations meet WCAG AA */
-.btn.pink { background-color: #d3205c; }
-.btn.purple { background-color: #35456B; }
-.btn.blue-grey { background-color: #6a7884; }
-.btn.teal-blue  { background-color: #007a90; } 
-.btn.mid-purple { background-color: #4f6497; }
+.btn.pink, a.btn.pink, .pink a.btn { background-color: #d3205c; }
+.btn.purple, a.btn.purple, .purple a.btn { background-color: #35456B; }
+.btn.blue-grey, a.btn.blue-grey, .blue-grey a.btn { background-color: #6a7884; }
+.btn.teal-blue, a.btn.teal-blue, .teal-blue a.btn  { background-color: #007a90; } 
+.btn.mid-purple, a.btn.mid-purple, .mid-purple a.btn { background-color: #4f6497; }
+.btn.large-slab, a.btn.large-slab, .large-slab a.btn {
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+}
+.btn.mid-slab, a.btn.mid-slab, .mid-slab a.btn {
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+}
 
 /* style a standalone button */
 .section-button {
@@ -676,9 +718,7 @@ cursor: pointer;
 }
 
 .gaeilge .ddBox > ul > li {
-  
   width: 20%;
-  
 }
 
 .mainNavList .ddBox > ul > li > a {
@@ -943,7 +983,7 @@ padding-bottom: 0px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-	float: right;
+	  float: right;
     font-size: 40px;
     color: #ffffff;
     background: rgba(255,255,255,0.2);
@@ -979,7 +1019,7 @@ padding-bottom: 0px !important;
 	display: block;
 	font-size: 16px;
 	/*text-transform: uppercase;*/
-      border-top: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
   text-transform: lowercase;
   
 }
@@ -1212,16 +1252,13 @@ padding-bottom: 0px !important;
 }
 
 .footerNavList {
-	
   list-style: none;
 }
 
 
 
 .footerNavList li {
-  
   line-height: 25px;
-	
 }
 
 .footerNavList a {
@@ -1388,43 +1425,43 @@ form.general input[type="submit"] {
 *****************************************************/
 
 .copy h2 {
-	font-size: 28px;
+	font-size: 1.867rem; /* 28px */
 	font-weight: 300;
 	margin: 10px 0 10px;
-	color: #07101a;
+	color: #07101a; 
 }
 
 .copy h3 {
-	font-size: 22px;
+	font-size: 1.467rem; /* 22px */
 	font-weight: 700;
 	margin: 10px 0 10px;
-	color: #07101a;
+	color: #07101a; 
 }
 
 .copy h4 {
-	font-size: 18px;
+	font-size: 1.2rem; /* 18px */
 	font-weight: 700;
 	margin: 10px 0 10px;
 	color: #07101a;
 }
 
 .copy h5 {
-	font-size: 16px;
+	font-size: 1.067rem; /* 16px */
 	font-weight: 700;
 	margin: 10px 0 10px;
 	color: #07101a;
 }
 
 .copy h6 {
-	font-size: 16px;
+	font-size: 1.067rem; /* 16px */
 	font-weight: 300;
 	margin: 10px 0 10px;
 	color: #07101a;
 }
 
 .copy p {
-	font-size: 15px;
-	line-height: 22px;
+/*	font-size: 15px;  */ 
+	line-height: 1.47;
 	margin: 10px 0 15px;
 }
 .copy p.lead-in {
@@ -1492,6 +1529,7 @@ form.general input[type="submit"] {
 */
 
 /*navigation-section*/
+/* == OLD local nav? == */
 
 .navigation-section {
 	margin-top: 15px;
@@ -1532,7 +1570,6 @@ form.general input[type="submit"] {
 }
 
 .navigation-section a:hover,
-
 .navigation-section a:active,
 .navigation-section .active a {
 	color:  #384350;
@@ -1583,7 +1620,7 @@ form.general input[type="submit"] {
 	
 	position: relative;
  /* background: transparent url('/en/media/styleassets/images/granite/greenArrow.JPG') 0px 11px no-repeat;*/
-margin-left: 0px !important;
+  margin-left: 0px !important;
 }
 
 
@@ -1715,9 +1752,7 @@ margin-left: 0px !important;
     padding: 10px 20px;
     font-size: 18px;
     font-weight: 200;
-    
-    text-decoration: none;
-    
+    text-decoration: none; 
     border-top: 1px solid #fff;
   margin: 0px;
   
@@ -2360,6 +2395,11 @@ margin-bottom: 20px;
     h3.pub-findings-header.heading--purple10  {
     	background-color: #F5F6FA;
     }
+    h3.pub-findings-header.heading--large {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
 	.release-key-findings > h3.pub-findings-header,
     .press-key-findings > .pub-findings-header-block {
           margin: -1rem -1rem 0;
@@ -2476,20 +2516,6 @@ margin-bottom: 20px;
 /*-- end key findings -- */
 
 
-/* -- lead text and text highlights -- */
-.text-lead, p.text-lead {
-	font-size: 1.3rem;
-}
-
-.text-highlight, p.text-highlight {
- 	font-size: 1.2rem; 
-}
-
-.text-slab, p.text-slab {
-	font-family: "Roboto Slab", Times New Roman, Georgia, serif;
-}
-
-/* -- end text styles --*/
 
 /* -- advisory notification styles -- */
 .advisory-notification {
@@ -2777,11 +2803,30 @@ margin-bottom: 20px;
 
 .pub-header-census-results-2022 .pub-header-note { 
     border-color: #59c1a6;
+}
+
+@media screen and (min-width: 768px) {
+  .pub-header-census-results-2022 .pub-header-note { 
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
+  }
 }
+
+.pub-header-census-results-2022 .pub-header-note > div:nth-child(2) {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .pub-header-census-results-2022 .pub-header-note > div:nth-child(2) {
+    flex: 1;
+    margin-left:1.5rem;
+    margin-top: 0;
+  }   
+}
+
 
 .pub-header-note h1, .pub-header-note h2,
 .pub-header-note h3, .pub-header-note h4, 
