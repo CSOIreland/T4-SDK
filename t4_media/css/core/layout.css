@@ -140,12 +140,24 @@ padding-top: 20px;
  	font-size: 1.2rem; /* effectively 18px */
 }
 
+.text-natural, p.text-natural {
+  font-size: 1rem;
+}
+
 .text-large, p.text-large {
   font-size: 1.5rem; /* effectively 22.5px for 15px body text */
 }
 
 .text-slab, p.text-slab {
 	font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+}
+
+.text-light, p.text-light {
+  font-weight: 300;
+}
+
+.text-normal, p.text-normal {
+  font-weight: 400;
 }
 /* -- end text styles --*/
 
@@ -162,7 +174,12 @@ padding-top: 20px;
 .text-padding-bottom-2x {
   padding-bottom: 2rem;
 }
-
+.block-margin-top-2x { margin-top: 2rem; }
+.block-margin-top-4x { margin-top: 4rem; }
+.block-margin-top-6x { margin-top: 6rem; }
+.block-margin-bottom-2x { margin-bottom: 2rem; }
+.block-margin-bottom-4x { margin-bottom: 4rem; }
+.block-margin-bottom-6x { margin-bottom: 6rem; }
 
 
 /*.columnLeftinner-rightcol, .columnLeftinner-split
@@ -288,6 +305,11 @@ a:active {
 }
 .btn.mid-slab, a.btn.mid-slab, .mid-slab a.btn {
   font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+}
+.btn.sm-slab, a.btn.sm-slab, .sm-slab a.btn {
+  font-size: 1.1rem;
   font-weight: 400;
   font-family: "Roboto Slab", Times New Roman, Georgia, serif;
 }
@@ -817,7 +839,10 @@ cursor: pointer;
 }
 
 
-.moduleBody li {
+.moduleBody > ul > li,
+.newsBox .moduleBody ul li,
+.moduleBody > ul ul.links li,
+.publicationMenu .moduleBody ul li {
 	font-size: 16px;
 	font-weight: 300;
 	color: #5b6774;
@@ -835,7 +860,10 @@ cursor: pointer;
 
 }
 
-.moduleBody li a {
+.module:not(.indicator) .moduleBody > ul > li a,
+.newsBox .moduleBody ul li a,
+.moduleBody > ul ul.links li a,
+.publicationMenu .moduleBody ul li a {
 	display: block;
 	text-decoration: none;
 	color: #07101a;
@@ -843,42 +871,58 @@ cursor: pointer;
 	position: relative;
 }
 
-.moduleBody li a:before {
+.module:not(.indicator) .moduleBody > ul > li a:before,
+.newsBox .moduleBody ul li a:before,
+.moduleBody > ul ul.links li a:before,
+.publicationMenu .moduleBody ul li a:before {
 	content: "\f105";
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
 	text-decoration: inherit;
-	/*color: #006bb6;*/
-	font-size: 18px;
+	font-size: 1.2rem;
 	padding-right: 10px;
 	position: absolute;
 	left: 20px;
 	top: 12px;
 }
 
-.moduleBody li a:hover {
+.module:not(.indicator) .moduleBody > ul > li a:hover,
+.newsBox .moduleBody ul li a:hover,
+.moduleBody > ul ul.links li a:hover,
+.publicationMenu .moduleBody ul li a:hover {
 	background: #f0f4f7;
 }
 .moduleBody h2
 {
-
   padding: 15px 20px
-
-
 }
+
 .moduleBody h3 {
 	font-weight: 300;
 	color: #56667A;
-	font-size: 18px;
+	font-size: 1.2;
 }
 
 .moduleBody p {
 	color: #5b6774;
-	font-size: 14px;
-	line-height: 17px;
-	/*padding: 2px 0;*/
+	font-size: 0.93rem;
+	line-height: 1.2;
   padding: 5px 20px 5px 20px;
+}
+
+/*re-introducing standard list styles within ModuleBody and excluding conflicts */
+.moduleBody > ul > li  ul:not(.links):not([class^="multilevel"]) {
+  margin: 0.5rem 1.5rem;
+  padding: 0 0 0 1rem;
+  list-style: square;
+}
+
+.moduleBody li ul:not(.links):not([class^="multilevel"]) li {
+	color: #5b6774;
+	font-size: 0.93rem;
+  line-height: inherit;
+  margin-bottom: 0.5rem;
 }
 
 
@@ -1015,13 +1059,11 @@ padding-bottom: 0px !important;
 }
 
 .sideitem a.btn {
-	/*background: rgba(0,0,0,0.2);*/
 	display: block;
 	font-size: 16px;
-	/*text-transform: uppercase;*/
   border-top: 1px solid #ffffff;
   text-transform: lowercase;
-  
+  float: none;
 }
 
 .sideitem i.icon {
@@ -2140,6 +2182,30 @@ margin: 0px
 .sideNavMenu ul, .sideNavMenu ul li, .sideNavMenu h2 {
 margin: 0px;
 }
+
+
+.sideNavMenu span.currentbranch0 a {
+  font-weight: 600;
+  color: #30436a;
+  background-color: #9BBDBF;
+  border-right: 0.4rem solid #30436a;
+}
+
+.sideNavMenu span.currentbranch0 a:hover {
+  font-weight: 600;
+  color: #30436a;
+  background-color: #E6F2F2;
+  border-right: 0.4rem solid #30436a;
+}
+
+.sideNavMenu span.currentbranch1 a {
+  font-weight: 600;
+  color: #30436a;
+  background-color: #C3D7D9;
+  border-right: 0.4rem solid #30436a;
+}
+
+
 
 
 

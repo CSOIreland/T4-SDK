@@ -1,6 +1,12 @@
 /* Styles for Corporate Theme layouts - surveys, careers, about areas */
 /* Last updated Feb 24 -- RFS */ 
 
+
+.lead-text-block {
+   margin: 2rem 0;
+}
+
+
 .featuredIntro {
     padding-bottom: 1.33rem; 
     border-bottom: 10px solid #00b3c7;
@@ -22,6 +28,7 @@
  }
  .featuredIntro.no-border {
    border-bottom: none;
+   padding-bottom: 0;
  }
  @media all and (min-width: 768px) {
  .featuredIntro {
@@ -99,6 +106,16 @@ hr.page__divider {
     height: 0;
     border: 0;
  }
+
+ hr.page__divider.space-above {
+   margin-top: 2rem;
+ }
+ hr.page__divider.space-below {
+   margin-bottom: 2rem;
+ }
+ hr.page__divider.space-around {
+   margin: 2rem 0;
+ }
  
  hr.page__divider.pink {
     border-bottom: 10px solid #C74673;
@@ -147,12 +164,27 @@ h4.surveyPage__surveyHeading {
    color: #5B6771;
 }
 
+h2.corporatePageHeading {
+   font-size: 2rem;
+   font-weight: 500;
+   margin: 0 0 0.5rem;
+}
+h2.corporatePageHeading.xl { font-size: 2.5rem; }
+h2.corporatePageHeading.green { color: #006168; }
+h2.corporatePageHeading.mint { color: #00A881; }
+h2.corporatePageHeading.teal { color: #00A3A0; }
+h2.corporatePageHeading.purple { color: #35456B; }
+h2.corporatePageHeading.magenta { color: #ab4d88; }
+h2.corporatePageHeading.grey { color: #5b6670; }
+h2.corporatePageHeading.csoblue { color: #0099b4; }
+
 h3.corporatePageHeading {
    font-weight: bold;
    color: #4463aa;   /*cobalt */
    font-size: 1.7rem;
    margin: 0.75rem 0;
 }
+h3.corporatePageHeading.xl { font-size: 2.2rem; }
 h3.corporatePageHeading.green { color: #006168; }
 h3.corporatePageHeading.mint { color: #00A881; }
 h3.corporatePageHeading.teal { color: #00A3A0; }
@@ -160,6 +192,21 @@ h3.corporatePageHeading.purple { color: #35456B; }
 h3.corporatePageHeading.magenta { color: #ab4d88; }
 h3.corporatePageHeading.grey { color: #5b6670; }
 h3.corporatePageHeading.csoblue { color: #0099b4; }
+
+h4.corporatePageHeading {
+   font-weight: bold;
+   color: #4463aa;   /*cobalt */
+   font-size: 1.5rem;
+   margin: 0.75rem 0;
+}
+h4.corporatePageHeading.xl { font-size: 1.7rem; }
+h4.corporatePageHeading.green { color: #006168; }
+h4.corporatePageHeading.mint { color: #00A881; }
+h4.corporatePageHeading.teal { color: #00A3A0; }
+h4.corporatePageHeading.purple { color: #35456B; }
+h4.corporatePageHeading.magenta { color: #ab4d88; }
+h4.corporatePageHeading.grey { color: #5b6670; }
+h4.corporatePageHeading.csoblue { color: #0099b4; }
 
 .pageLeadBlock {
    padding-bottom: 2rem;
@@ -278,7 +325,80 @@ h3.corporatePageHeading.csoblue { color: #0099b4; }
    margin-top: 0.25rem;
 }
 
-.lead-text-block {
-   margin: 2rem 0;
+/* .block-link-gallery +.block-link-grid || .block-link-list
+   > .block-link-item > div > img
+   + > .block-link-item > .block-link-content > h3 + div [ > p ] + div [ > btn ]
+*/
+
+.block-link-item {
+   background-color: #F5F6FA;
+   padding: 1rem 1.5rem;
+   border-bottom: none;
+   margin: 1rem 0;
+   display:flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+}
+@media screen and (min-width: 960px) {
+   .block-link-item {
+      flex-direction: row;
+   }
+   /* .block-link-item:nth-child(even) {
+      flex-direction: row-reverse;
+   } */
 }
 
+.block-link-item > div:not(:first-child) {
+   margin-left: 1.5rem;
+}
+
+.block-link-content {
+   display:flex;
+   flex-direction: column;
+   align-content: flex-start;
+   flex:1;
+}
+
+.block-link-content h3 {
+   font-size: 1.45rem;
+   font-weight: 700;
+   color: #5b6670;
+}
+
+.block-link-content.green h2 { color: #006168; }
+.block-link-content.softgreen h2 { color: #579599; }
+.block-link-content.mint h2 { color: #00A881; }
+.block-link-content.teal h2 { color: #00A3A0; }
+.block-link-content.purple h2 { color: #35456B; }
+.block-link-content.violet h2 { color: #725499; }
+.block-link-content.cobalt h2 { color: #4463aa; }
+.block-link-content.magenta h2 { color: #ab4d88; }
+.block-link-content.pink h2 { color: #d3205c; }
+.block-link-content.csogrey h2 { color: #5b6670; }
+.block-link-content.csoblue h2 { color: #0099b4; }
+
+.block-link-content p {
+   color: #5b6670;
+   font-family: "Roboto Slab", Times New Roman, Georgia, serif;
+   font-size: 1.1rem;
+}
+
+.block-link-content > div {
+   flex: 1;
+}
+ .block-link-content > div:last-child {
+   display:grid;
+   grid-auto-flow: column;
+   grid-gap: 1rem;
+   justify-content: flex-start;
+   align-items: flex-end;
+   margin-bottom: 0.5rem;
+} 
+
+.block-link-item.margin-top-4x {
+   margin-top: 4rem;
+}
+
+.block-link-item.margin-top-6x {
+   margin-top: 6rem;
+}
