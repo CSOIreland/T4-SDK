@@ -1,184 +1,226 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<!--scale the layout to work correctly on moble decives-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--define the character encoding for the page-->
+		<meta charset="UTF-8">
+		<title><t4 type="title" /> - CSO - An Phríomh-Oifig Staidrimh</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          
+          <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<head>
-	<!--scale the layout to work correctly on moble decives-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<!--define the character encoding for the page-->
-	<meta charset="UTF-8">
-	<title>
-		<t4 type="title" /> - CSO - Central Statistics Office
-	</title>
-	<!-- navigation object :  Key words -->
-	<t4 type="navigation" id="625">
-		<!-- navigation object :  Last modified -->
-		<t4 type="navigation" id="74">
+          
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+        <!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+        <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
+        <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
+        <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
+        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
+        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
+        <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
+		
+        <!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+		
+        
+        <!--include Flexslider - used for carousels and image slders-->
+		<!--jquery.flexslider-min.js--><t4 type="media" id="86226" formatter="javascript/*"/>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
+          
 
-			<!-- IE compatibility mode fix-->
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+          
+          
+          
+          <script>
+//js to set current tab to active on main nav DR
 
-
-			<meta name="DC.Publisher" content="CSO"> <!-- modified -->
-			<!--main.css-->
-			<!--earthworm.css-->
-			<!--layout.css-->
-			<!--colours.css-->
-			<!--flexslider.css-->
-			<!--jquery.fancybox.css-->
-			<!--mediaQueries.css-->
-
-			<!--include jQuery-->
-			<!--jquery-1.11.1.min.js-->
-
-
-			<!--include Flexslider - used for carousels and image slders-->
-			<!--jquery.flexslider-min.js-->
-
-			<!--include Fancyboc - used for modal windows-->
-			<!--jquery.fancybox.js-->
-
-
-			<!--include sitewide JavaScript for cso.ie-->
-			<!--site.js-->
-
-
-
+$(document).ready(function() {
 
 
+var theme = '<t4 type="navigation" id="70"/>';
+
+//alert(theme);
+
+if(theme.length == '0') {
+	$( "#homeTab" ).addClass( "currentbranch0" );
+   // alert('I am here');
+} 
+
+else if(theme == 'Statistics' || theme == 'Releases and Publications') {
+
+$( "#statisticsTab" ).addClass( "currentbranch0" );
+
+}
+
+else if(theme == 'Databases') {
+
+$( "#databasesTab" ).addClass( "currentbranch0" );
+
+}
 
 
-			<!-- ********** HEADER ********** -->
-			<!-- navigation object : Header code -->
-			<t4 type="navigation" id="574">
-				<!--/mainNav-->
+else if(theme == 'Surveys and Methodology') {
 
-				<!-- ********** CONTENT ********** -->
-				<div class="container content">
+$( "#methodsTab" ).addClass( "currentbranch0" );
+
+}
+
+else if(theme == 'About Us') {
+
+$( "#aboutUsTab" ).addClass( "currentbranch0" );
+
+}
 
 
+else {
+	//do nothing
+}
 
 
+});
 
-					<div class="row quickStats">
-						<div class="col span12">
-							<div class="carousel ">
-								<ul class="slides">
-									<!-- navigation object : Home: QuickStats -->
-									<t4 type="navigation" id="694">
-								</ul>
+//end main nav JS DR
+
+</script>
+          
+          
+	
+		<!-- ********** HEADER ********** -->
+		<!-- navigation object : Header code --><t4 type="navigation" id="574"/>	
+      <!--/mainNav-->
+            
+            <!-- ********** CONTENT ********** -->
+		<div class="container content">
+			         
+                           
+		
+          
+                   
+			<div class="row quickStats">
+				<div class="col span12">
+					<div class="carousel ">
+						<ul class="slides">
+          <!-- navigation object : Home: QuickStats --><t4 type="navigation" id="694"/>
+          </ul></div>
+					<!--/carousel-->
+					<a href="javascript:" class="toggleQuickStatsGa">Taispeáin a thuilleadh <i class="fa fa-angle-down"></i></a>
+				</div><!--/col-->
+			</div><!--/row-->
+          
+          
+          
+          
+       
+         <div class="row modules">
+				
+           <div class="col span6"> 
+             						
+					
+                  <div class="module green open">
+						<div class="moduleHeader">
+							<h2><a href="#">Nuacht is Déanaí</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+								<!-- navigation object : News Corner Box --><t4 type="navigation" id="202"/>
+							</ul>
+						</div>
+						<div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="1446"/>">Preasr&aacute;itis <i class="fa fa-angle-right"></i></a>
+						</div>
+					  <div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="1447"/>">Eisiúintí<i class="fa fa-angle-right"></i></a>
+						</div>
+					</div><!--/module-->
+             
+             <div class="module open teal">
+						<div class="moduleHeader">
+							<h2><a href="#">Staitisticí</a></h2>
+						</div>
+						<div class="moduleBody">
+							<div class="accordion">
+								<h3><a href="">Daoine agus an tSochaí</a></h3>
+								<div>
+									<!-- navigation object : People and society box --><t4 type="navigation" id="576"/>
+								</div>
+								<h3><a href="">Margadh Saothair agus Tuilleamh</a></h3>
+								<div>
+									<!-- navigation object : Labour Market & Earnings --><t4 type="navigation" id="577"/>
+								</div>
+								<h3><a href="">Comhshaol agus Aeráid</a></h3>
+								<div>
+									<!-- navigation object : Business Sectors --><t4 type="navigation" id="560"/>
+								</div>
+								<h3><a href="">Geilleagar</a></h3>
+								<div>
+									<!-- navigation object : Economy --><t4 type="navigation" id="579"/>
+								</div>
+								<h3><a href="">Earnálacha Gnó</a></h3>
+								<div>
+									<!-- navigation object : Environment and Climate --><t4 type="navigation" id="578"/>
+								</div>
+                             
+                                                            
 							</div>
-							<!--/carousel-->
-							<a href="javascript:" class="toggleQuickStatsGa">Taispe?in a thuilleadh <i
-									class="fa fa-angle-down"></i></a>
-						</div><!--/col-->
-					</div><!--/row-->
-
-
-
-
-
-					<div class="row modules">
-
-						<div class="col span6">
-
-
-							<div class="module open">
-								<div class="moduleHeader">
-									<h2><a href="#">Nuacht is D?ana?</a></h2>
-								</div>
-								<div class="moduleBody">
-									<ul>
-										<!-- navigation object : News Corner Box -->
-										<t4 type="navigation" id="202">
-									</ul>
-								</div>
-
-
-							</div><!--/module-->
-
-							<div class="module open teal">
-								<div class="moduleHeader">
-									<h2><a href="#">Staitistic?</a></h2>
-								</div>
-								<div class="moduleBody">
-									<div class="accordion">
-										<h3><a href="">Daoine agus an tSocha?</a></h3>
-										<div>
-											<!-- navigation object : People and society box -->
-											<t4 type="navigation" id="576">
-										</div>
-										<h3><a href="">Margadh Saothair agus Tuilleamh</a></h3>
-										<div>
-											<!-- navigation object : Labour Market & Earnings -->
-											<t4 type="navigation" id="577">
-										</div>
-										<h3><a href="">Comhshaol agus Aer?id</a></h3>
-										<div>
-											<!-- navigation object : Business Sectors -->
-											<t4 type="navigation" id="560">
-										</div>
-										<h3><a href="">Geilleagar</a></h3>
-										<div>
-											<!-- navigation object : Economy -->
-											<t4 type="navigation" id="579">
-										</div>
-										<h3><a href="">Earn?lacha Gn?</a></h3>
-										<div>
-											<!-- navigation object : Environment and Climate -->
-											<t4 type="navigation" id="578">
-										</div>
-
-
-									</div>
-								</div>
-
-
-							</div><!--/module-->
-
-
-
-
-						</div><!--/col-->
-						<div class="col span6">
-
-
-							<div class="module yellow open">
-								<div class="moduleHeader">
-									<h2><a href="#">Daon?ireamh</a></h2>
-								</div>
-								<div class="moduleBody">
-									<ul>
-										<!-- navigation object : Census: News -->
-										<t4 type="navigation" id="207">
-									</ul>
-								</div>
-
-
-							</div><!--/module-->
-
-
-
-							<div class="module mint open">
-								<div class="moduleHeader">
-									<h2><a href="#">Foilseach?in &amp; Oideachas?il</a></h2>
-								</div>
-								<div class="moduleBody">
-
-									<ul>
-										<!-- navigation object :?bhair Speisialta Box -->
-										<t4 type="navigation" id="204">
-									</ul>
-
-								</div>
-
-							</div><!--/module-->
-
-
-
-
-
-
-
-						</div><!--/row-->_hdr.html
-					</div>
-				</div>
+						</div>
+						
+                    
+					</div><!--/module-->
+             
+                        
+                 
+           
+           </div><!--/col-->
+           	<div class="col span6">
+                  
+              
+              <div class="module yellow open">
+						<div class="moduleHeader">
+							<h2><a href="#">Daonáireamh</a></h2>
+						</div>
+						<div class="moduleBody">
+							<ul>
+								<!-- navigation object : Census: News --><t4 type="navigation" id="207"/>
+							</ul>
+						</div>
+						
+                    
+					</div><!--/module-->
+              
+              
+					<div class="sideitem cobalt">
+						<h3><a href="<t4 type="navigation" id="1439"/>">Oideachas agus L&eacute;irshamhl&uacute; <i class="fa fa-lightbulb-o fa-lg"></i></a></h3>
+						<p>T&aacute; l&eacute;irshamhlaithe, grafaic&iacute; faisn&eacute;ise, acmhainn&iacute; scoile, com&oacute;rtais agus n&iacute;os m&oacute; in&aacute;r z&oacute;n idirghn&iacute;omha&iacute;ochta...</p>
+                      <div class="sideitemFooter">
+						<a class="btn" href="<t4 type="navigation" id="1439"/>">T&eacute;igh chuig oideachas agus l&eacute;irshamhl&uacute; <i class="fa fa-angle-right"></i></a>
+                      </div>
+					</div><!--/sideitem-->
+                 
+              
+                  <div class="module mint open">
+						<div class="moduleHeader">
+							<h2><a href="#">Foilseacháin &amp; Oideachasúil</a></h2>
+						</div>
+						<div class="moduleBody">
+							
+								<ul>
+								<!-- navigation object :Ábhair Speisialta Box --><t4 type="navigation" id="204"/>
+							</ul>
+							
+						</div>
+						
+					</div><!--/module-->
+              
+              
+            
+              
+              
+              
+              
+                  </div><!--/row-->

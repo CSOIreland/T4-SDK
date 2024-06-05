@@ -957,6 +957,9 @@ Add a grid around other elements
         padding: 0;
     }
 
+    .solo-grid iframe {
+        max-width: 100%;
+    }
   
 /* .solo-grid-2up = 2 cols at desktop */
 
@@ -1107,4 +1110,8 @@ Add a grid around other elements
     .media-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+.media-grid iframe {
+    max-width: 100%;
 }

@@ -110,7 +110,7 @@ list-style:none;
 
 body {
 	background-color: #fff;
-	font-family: 'Roboto Sans', sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	color: #384350;
 	font-size: 15px;
 	padding: 0 0 0 0;
@@ -132,20 +132,32 @@ padding-top: 20px;
 
 
 /* -- lead text and text highlights -- */
-.text-lead, p.text-lead {
-	font-size: 1.3rem; /* effectively 19.5px */
-}
-
-.text-highlight, p.text-highlight {
- 	font-size: 1.2rem; /* effectively 18px */
-}
-
 .text-natural, p.text-natural {
   font-size: 1rem;
+} /* 16px body text */
+
+.text-focus, p.text-focus {
+  font-size: 1.1rem;
+} /* effectively 18px */
+
+.text-highlight, p.text-highlight {
+  font-size: 1.2rem; /* effectively 19px */
+}
+
+.text-lead, p.text-lead {
+	font-size: 1.3rem; /* effectively 21px */
 }
 
 .text-large, p.text-large {
-  font-size: 1.5rem; /* effectively 22.5px for 15px body text */
+  font-size: 1.5rem; /* effectively 24px */
+}
+
+.text-spacing-comfortable {
+  line-height: 1.5;
+}
+
+.text-spacing-wide {
+  line-height: 1.8;
 }
 
 .text-slab, p.text-slab {
@@ -880,11 +892,10 @@ cursor: pointer;
 	font-style: normal;
 	font-weight: normal;
 	text-decoration: inherit;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	padding-right: 10px;
 	position: absolute;
 	left: 20px;
-	top: 12px;
 }
 
 .module:not(.indicator) .moduleBody > ul > li a:hover,
@@ -1020,7 +1031,7 @@ padding-bottom: 0px !important;
 .sideitem h3 {
 	font-weight: 300;
 	font-size: 26px;
-	padding: 20px 20px 10px;
+	padding: 20px 20px;
 }
 
 .sideitem h3 i, .sideitem h3 img {
@@ -1035,6 +1046,7 @@ padding-bottom: 0px !important;
     border-radius: 50%;
     min-width: 45px;
     max-width: 45px;
+    min-height: 45px;
     text-align: center;
 }
 
@@ -1044,6 +1056,9 @@ padding-bottom: 0px !important;
   	border-radius: 0;
   	max-width: none;
 }
+.sideitem h3.imgblock.no-bg img {
+  background: none;
+}
 
 
 .sideitem a {
@@ -1052,8 +1067,8 @@ padding-bottom: 0px !important;
 }
 
 .sideitem p {
-	font-size: 14px;
-	line-height: 19px;
+	font-size: 15px;
+	line-height: 20px;
 	font-weight: 300;
 	padding: 0 20px 10px 20px;
 }
@@ -1856,11 +1871,14 @@ form.general input[type="submit"] {
 .alphaindexbookmarks {
     font-size: 20px;
     font-family: Verdana, Arial, sans-serif;
-    color: #999999;
+    color: #333;
     letter-spacing: 2px;
     line-height: 1.5em;
     text-decoration: none;
     margin-bottom: 20px;
+}
+.alphaindexbookmarks .keyphrase {
+  letter-spacing: normal;
 }
 /*End A-Z calendar*/
 
@@ -2062,12 +2080,10 @@ a.back-to-top {
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
-    color: #d64615;
-    font-size: 18px;
     padding-right: 10px;
     position: absolute;
     left: 20px;
-    top: 12px;
+    top: 10px;
 }
 .epContactDetails .moduleBody p {
     display: block;
@@ -3010,7 +3026,7 @@ div.pdfLinks {
     background: #e6edf2;
     padding:20px;
     border: none;
-    font-family: 'Roboto Sans', Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.4;
     border-radius: 0;
     margin-bottom: 2rem;
@@ -3802,3 +3818,59 @@ left: 0;
   background-color: #fff;
   color: #00A881;
 }
+
+/* ========
+    Flexslider2 overrides
+    ======= */
+
+    .flexslider2 .flex-caption {
+      background: #5F6A73;
+  }
+  .flexslider2 li p {
+      padding: 10px;
+      color: #ffffff;
+  }
+  .flexslider2 a {
+     text-decoration: none
+  }
+  
+/* replace the FA icons */
+.flex-direction-nav a.flex-prev:before {
+  content: "\f137" !important;
+}
+.flex-direction-nav a.flex-next:before {
+  content: "\f138" !important;
+}
+
+      /* Custom CSS for repositioning the arrows */
+      .flexslider2 .flex-direction-nav a {
+        top: 50%; /* Position the arrows vertically centered */
+        transform: translateY(-50%);
+        mix-blend-mode: plus-lighter; /* make the navigation arrows more visible */
+      }
+  
+      /* Adjust positioning as needed */
+      .flexslider2 .flex-direction-nav .flex-prev {
+        left: 10px; /* Position the left arrow */
+      }
+  
+      .flexslider2 .flex-direction-nav .flex-next {
+        right: 10px; /* Position the right arrow */
+      }
+  .flexslider2 a.flex-prev, .flexslider2 a.flex-next {
+      background: none !important;
+  }
+  .flexslider2 a.flex-prev:hover, .flexslider2 a.flex-next:hover {
+      background: none !important;
+  }
+  
+  .flexslider2 .flex-direction-nav a.flex-prev:before, .flexslider2 .flex-direction-nav a.flex-next:before {
+  color: #fff !important;
+  }
+
+  /* update the slide background colour for colour accessibility */
+  .carousel .slides li {
+    background: #268287 !important;
+}
+  
+  

@@ -1,25 +1,32 @@
-<div class="container header">
+
+<!-- SITE MASTHEAD -->        
+<header class="container masthead">
     <div class="row">
-        <div class="col span6">
-            <h1><a href="<t4 type=" navigation" id="93" />"><img src=" <t4 type="media" formatter="path/*" id="288571" />" alt="Central Statistics Office" ></a></h1>
-
-        </div>
-        <div class="col span6">
-            <a href="<t4 type=" navigation" id="93" />"><img src="<t4 type="media" id="365248"
-                    formatter="path/*" />" alt="75 years of the CSO"></a>
-            <a href="https://data.cso.ie/" class="btn">Statistics Database</a>
-            <a href="/en/baile" class="btn">cso.ie as Gaeilge</a>
-            <div class="headerSearch">
-                <!-- Form's action must be the results page's URL -->
-                <form method="get" action="https://www.cso.ie/en/search/">
-                    <!-- Search field's name must be addsearch -->
-                    <input type="text" name="addsearch" placeholder="Search our site" autocomplete="off" aria-label="Search our site" />
-                </form>
-            </div>
-
-            <!--/col-->
-        </div>
-        <!--/row-->
-    </div>
-    <!--/header-->
-</div>
+        <div class="masthead-logo">
+            <a href="<t4 type="navigation" id="93" />">
+              <picture>
+                  <source media="(min-width: 960px)" srcset="<t4 type="media" formatter="path/*" id="288571" />" width="444" height="108" />
+                  <img src="<t4 type="media" formatter="path/*" id="365253" />" alt="Central Statistics Office" width="70" height="83">
+              </picture> 
+          	</a>
+        </div> <!-- /logo -->
+        <div class="masthead-75">
+            <a href="<t4 type="navigation" id="93" />">
+                <img src="<t4 type="media" id="365248" formatter="path/*" />" alt="75 years of the CSO" width="94" height="83" />
+            </a>
+        </div> <!-- /75 -->
+        <div class="masthead-buttons masthead-button-1">
+            <a href="https://data.cso.ie/" class="btn"><i class="fa fa-database" aria-hidden></i> Statistics Database</a>
+        </div> <!-- /masthead-buttons -->
+        <div class="masthead-buttons masthead-button-2">
+            <a href="/en/baile" class="btn"><i class="fa fa-globe" aria-hidden></i> cso.ie as Gaeilge</a>
+        </div> <!-- /masthead-buttons -->
+        <div class="masthead-search">
+            <!-- Form's action must be the results page's URL -->
+            <form method="get" action="https://www.cso.ie/en/search/">
+                <!-- Search field's name must be addsearch -->
+                <input type="text" name="addsearch" placeholder="&#xF002; Search our site" autocomplete="off" aria-label="Search our site" />
+            </form>          
+        </div> <!-- /masthead search -->
+    </div> <!-- /row -->
+</header> <!-- container masthead --><!-- END MASTHEAD -->

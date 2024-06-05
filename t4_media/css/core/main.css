@@ -2,5 +2,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");/*used to create icons - first for IE8*/
 
 
-@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,300italic,400italic,700,700italic);/*main font used throughout website*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,300italic,400italic,700,700italic);/*main Roboto Slab font used for headings throughout website*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); /* Roboto Typeface */
 
