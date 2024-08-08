@@ -230,6 +230,38 @@ a:active {
 	display: none;
 }
 
+
+@media screen and (min-width: 768px) {
+  figure.responsiveImage {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  }
+  figure.responsiveImage figcaption {
+    margin: 0;
+    padding: .5rem;
+    font-size: 2rem;
+  font-family: "Roboto Slab", Georgia, Times, serif;
+    background-color: rgba(242,247,250,.82);
+    color: #4463AA;
+  }
+  @media screen and (min-width: 768px) {
+      figure.responsiveImage figcaption {
+        position: absolute;
+        max-width: 63%;
+        word-break: break-word;
+        text-align: left;
+         align-self: flex-end;
+         margin: 0 0 1rem 1rem;
+         font-size: calc(1.5em + 1.8vw);
+       }
+  }
+
+  
+
 /*tooltips*/
 
 .tooltip {
@@ -939,14 +971,18 @@ cursor: pointer;
 
 .moduleBody .label {
 	display: inline-block;
-	padding: 2px 7px;
-	color: #fff;
-	background: #006168;
-	font-size: 12px;
+	padding: 0.35rem 0.25rem 0.25rem;
+	color: #006168;
+	background: none;
+  border: 2px solid #006168;
+  border-radius: 5px;
+	font-size: 11px;
+  font-weight: bold;
 	text-transform: uppercase;
+  line-height: 1;
 	position: relative;
-	top: -2px;
-	left: 3px;
+	top: 0;
+	left: 0.5rem;
 }
 
 /*module footer*/
@@ -976,6 +1012,29 @@ cursor: pointer;
   font-family: 'Roboto Slab', sans-serif;
     font-size: 18px !important;
 }
+
+/* module header colours / styles transferred in from Module Box Start content type  */
+
+.conferencePapers .moduleHeader h2 {
+  font-size: 24px;
+  margin: 0px;
+}
+
+.conferencePapers .moduleBody ul, .conferencePapers .moduleBody li {
+  margin: 0px;
+}
+
+.conferencePapers .moduleHeader {
+  margin: 0px;
+  border: 0px;
+  border-radius: 0px;
+}
+
+.conferencePapers .module {
+margin-bottom: 20px;
+}
+
+
 
 /*multi list modules*/
 
@@ -2389,8 +2448,8 @@ margin-bottom: 20px;
 /*top of page site wide banner styles (Topline Bannner content)*/
 
 .tiptopBanner {
-    background-color: #fbaa34;
-    color: #000;
+    background-color: #c3d7d9;
+    color: #002b5b;
     font-size: 15px;
     font-weight: normal;
     text-align: center;
@@ -2404,7 +2463,7 @@ margin-bottom: 20px;
     margin: 0 0.75rem 0 0;
 }
 .tiptopBanner a {
-    color: #000;
+    color: #006f74;
     text-decoration: underline;
 }
 .tiptopBanner a:hover {
@@ -2471,8 +2530,14 @@ margin-bottom: 20px;
     h3.pub-findings-header.heading--mint {
     	background-color: #E6F2F2;
     }
+    h3.pub-findings-header.heading--mint20 {
+    	background-color: #DAEFE7;
+    }
     h3.pub-findings-header.heading--purple  {
     	background-color: #dae0f2;
+    }
+    h3.pub-findings-header.heading--blue  {
+    	background-color: #CDE2E9;
     }
     h3.pub-findings-header.heading--purple10  {
     	background-color: #F5F6FA;
@@ -2836,15 +2901,27 @@ margin-bottom: 20px;
     grid-column: 1 / 3;
     grid-row: 2 / 3;
 }
+.pub-header-tags {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3; 
+  color:#5F6A73;
+}
      @media screen and (min-width:1024px) {
-        .pub-header-issn {
-            grid-column: 2 / 3;
-            grid-row: 1 / 3;
-            justify-self: end;
-            align-self: start;
-            text-align: right;
-        }
-     }
+      .pub-header-issn {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+        justify-self: end;
+        align-self: start;
+        text-align: right;
+    }
+    .pub-header-tags {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      justify-self: end;
+      align-self: start;
+      text-align: right;
+  }
+}
 .pub-header-date {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -2939,6 +3016,52 @@ margin-bottom: 20px;
 
 /* -- end new format headline banner styles -- */
 
+/* Data chapter styles - Dataset lists */
+
+.module-release-datasets ul {
+margin: 0px
+}
+
+.module-release-datasets .moduleHeader {
+    padding: 10px 10px;
+}
+.module-release-datasets .moduleHeader h2 {
+    font-size: 20px;
+}
+
+.module-release-datasets .moduleSubHeader h3 {
+    background-color: #CAD6E0;
+    padding: 0.75rem 1rem;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 1.5rem;
+}
+
+.module-release-datasets.teal .moduleFooter {
+    background-color: #45C1C0;
+}
+.module-release-datasets ul li {
+    margin: 0px
+}
+
+.module-release-datasets .moduleBody ul, .moduleBody ol {
+    max-width: none;
+}
+
+/* 
+.module-release-datasets ul li a .last-updated {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right; 
+    color: #5b6774
+} 
+*/
+
+
+.module-release-datasets ul li a .table-title {
+      color: #5b6774
+}
 
 
 

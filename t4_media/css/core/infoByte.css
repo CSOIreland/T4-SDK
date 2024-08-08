@@ -931,7 +931,7 @@ Add a grid around other elements
         grid-template-columns: 1fr;
     }
     
-    .solo-grid .shaded-bg {
+    .solo-grid .shaded-bg, .solo-grid .shaded-bg.cobalt {
     /* if the child div has a shaded-bg, add a bg colour and padding */
         background-color: #f5f6fa;
         padding: 1rem;
@@ -944,10 +944,10 @@ Add a grid around other elements
         background-color: #f5f6fa;
     }
     .solo-grid.mint, .solo-grid .shaded-bg.mint {
-        background-color: #e6f2f2;
+        background-color: #F3FAF7;
     }
     .solo-grid.blue, .solo-grid .shaded-bg.blue {
-        background-color: #f2f7fa;
+        background-color: #F1F7F9;
     }
     .solo-grid.grid-centred {
         justify-items: center;

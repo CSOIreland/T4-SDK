@@ -19,6 +19,7 @@
 /* CSOBlue | white 3.38
 /* Covid19 | black 17.48
 /* SurveyBlue (same as CSO Blue) | white 3.38
+/* Light Purple | #35456B 8.77
 /* DarkGreen | white 12.07
  ============== */
 
@@ -44,7 +45,6 @@
 .green .moduleHeader,
 .homepage .green .moduleFooter,
 .green .btn,
-.green .label,
 .green a.btn,
 .sideitem.green {
     background-color: #006168;
@@ -73,7 +73,6 @@
 .green40 .moduleHeader,
 .green40 .green40 .moduleFooter,
 .green .btn,
-.green40 .label,
 .green40 a.btn,
 .sideitem.green40 {
     background-color: #9BBDBF;
@@ -106,7 +105,6 @@
 .softgreen .moduleHeader,
 .softgreen .softgreen .moduleFooter,
 .green .btn,
-.softgreen .label,
 .softgreen a.btn,
 .sideitem.softgreen {
     background-color: #579599;
@@ -143,7 +141,6 @@
 .mint .moduleHeader,
 .homepage .mint .moduleFooter,
 .mint .btn,
-.mint .label,
 .moduleFooter.mint {
     background-color: #008667;
 }
@@ -184,8 +181,7 @@
 
 .teal .moduleHeader,
 .homepage .teal .moduleFooter,
-.teal .btn,
-.teal .label {
+.teal .btn {
     background-color: #268287;
 }
 
@@ -229,7 +225,6 @@
 .purple .moduleHeader,
 .homepage .purple .moduleFooter,
 .purple .btn,
-.purple .label,
 .sideitem.purple {
     background-color: #35456B;
     color: #fff;
@@ -243,7 +238,6 @@
 .census2022 .moduleHeader,
 .homepage .census2022 .moduleFooter,
 .census2022 .btn,
-.census2022 .label,
 .sideitem.census2022 {
 	background-color: #283F73;
     color: #fff;
@@ -276,7 +270,6 @@
 .violet .moduleHeader,
 .homepage .violet .moduleFooter,
 .violet .btn,
-.violet .label,
 .sideitem.violet {
     background-color: #725499;
     color: #fff;
@@ -309,7 +302,6 @@
 .cobalt .moduleHeader,
 .homepage .cobalt .moduleFooter,
 .cobalt .btn,
-.cobalt .label,
 .sideitem.cobalt {
     background-color: #4463aa;
     color: #fff;
@@ -342,7 +334,6 @@
 .magenta .moduleHeader,
 .homepage .magenta .moduleFooter,
 .magenta .btn,
-.magenta .label,
 .sideitem.magenta {
     background-color: #ab4d88;
     color: #fff;
@@ -369,7 +360,6 @@
 .csored90 .moduleHeader,
 .homepage .csored90 .moduleFooter,
 .csored90 .btn,
-.orange .label,
 .sideitem.csored90 {
     background-color: #e25939;
 }
@@ -410,10 +400,6 @@
     background-color: #d68000;
 }
 
-.yellow .label {
-    background-color: #ac6600;
-}
-
 .sideitem.yellow,
 .sideitem.yellow .btn {
     background-color: #d68000;
@@ -447,7 +433,6 @@
 .pink .moduleHeader,
 .homepage .pink .moduleFooter,
 .pink .btn,
-.pink .label,
 .sideitem.pink {
     background-color: #d3205c;
 }
@@ -480,7 +465,6 @@
 .csogrey .moduleHeader,
 .homepage .csogrey .moduleFooter,
 .csogrey .btn,
-.csogrey .label,
 .sideitem.csogrey {
     background-color: #5b6670;
 }
@@ -506,7 +490,6 @@
 .RedDarkTone .moduleHeader,
 .homepage .RedDarkTone .moduleFooter,
 .RedDarkTone .btn,
-.RedDarkTone .label,
 .sideitem.RedDarkTone {
     background-color: #a93335;
 }
@@ -535,8 +518,7 @@
 
 .csoblue .moduleHeader,
 .homepage .csoblue .moduleFooter,
-.csoblue .btn,
-.csoblue .label {
+.csoblue .btn {
     background-color: #007a90;
 }
 
@@ -565,8 +547,7 @@
 
 .covid19 .moduleHeader,
 .homepage .covid19 .moduleFooter,
-.covid19 .btn,
-.covid19 .label {
+.covid19 .btn {
     background-color: #FFEE00;
     color: #07101a;
 }
@@ -605,13 +586,27 @@
 .surveyblue .moduleHeader,
 .homepage .surveyblue .moduleFooter,
 .surveyblue .btn,
-.surveyblue .label,
 .sideitem.surveyblue {
     background-color: #007a90;
 }
 
 .wellbeing-hub-indicator .sideitem i.surveyblue {
     color: #007a90
+}
+
+
+/* Light Purple */
+
+.sideitem.light-purple {
+    background-color: #F5F6FA;
+    color: #35456B;
+}
+.sideitem.light-purple h3 a {
+    color: #35456B;
+}
+.sideitem.light-purple .btn {
+    background-color: #E6E9F2;
+    color: #35456b;
 }
 
 
@@ -626,3 +621,9 @@
     color: #ffffff !important;
     font-size: 18px;
 }
+
+/*
+.sideitem a:hover i.fa-angle-right::before {
+    content: '\f138';
+}
+*/
