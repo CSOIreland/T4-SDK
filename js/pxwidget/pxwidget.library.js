@@ -106,9 +106,13 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
             var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
             if (
-                //(data.RlsVersion != 0 && data.RlsRevision == 0) &&
                 (dateFrom == dateTo)) {
-                debugger
+                //cancelled release
+                $("#" + elementId + "").append(
+                    $("<p>", {
+                        "text": "Cancelled Release"
+                    })
+                );
             }
         }).fail(function (error) {
             console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
