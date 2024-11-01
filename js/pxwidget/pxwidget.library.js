@@ -102,7 +102,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
         t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode).done(function (response) {
-            var data = response.data;
+            var data = response.result;
             var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
             var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
             if (
