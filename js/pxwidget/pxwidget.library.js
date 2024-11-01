@@ -108,7 +108,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             if (
                 (dateFrom == dateTo)) {
                 //cancelled release
-                $("#" + elementId + " .widget-toggle-panel").append(
+                $("#" + elementId + " .widget-toggle-panel").after(
                     $("<h2>", {
                         "text": "CANCELLED RELEASE",
                         "style": "color: red; text-align: center"
