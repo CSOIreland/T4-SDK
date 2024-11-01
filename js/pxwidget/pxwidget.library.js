@@ -101,9 +101,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             default:
                 break;
         }
-        debugger
-        var releaseDetails = t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode);
-        debugger
+        t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode).done(function (response) {
+            debugger
+        }).fail(function (error) {
+            console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
+        });;
     }
 
     //check if type is table and that toggle dimension is not the same as pivot dimension
