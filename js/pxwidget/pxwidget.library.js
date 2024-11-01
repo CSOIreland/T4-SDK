@@ -102,7 +102,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
         t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode).done(function (response) {
-            debugger
+            var data = response.data;
+            var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
+            var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
+            if (
+                //(data.RlsVersion != 0 && data.RlsRevision == 0) &&
+                (dateFrom == dateTo)) {
+                debugger
+            }
         }).fail(function (error) {
             console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
         });;
