@@ -1,6 +1,7 @@
 //#region Add Namespace
 t4Sdk = t4Sdk || {};
 t4Sdk.pxWidget = {};
+t4Sdk.pxWidget.type = null;
 t4Sdk.pxWidget.chart = {};
 t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.map = {};
@@ -33,6 +34,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     select2Options = select2Options || {};
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
+
+    t4Sdk.pxWidget.type = type;
 
     var config = null;
     var isogramUrl = null;
@@ -171,6 +174,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 language = config.metadata.api.query.data.params.language;
                 break;
             case typeTable:
+            case typeTable_v2:
                 matrixRelease = config.data.api.query.data.params.extension.matrix || config.matrix;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
@@ -364,6 +368,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                                     break;
 
                                 case typeTable:
+                                case typeTable_v2:
                                     t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                     break;
                                 case typeMap:
@@ -385,6 +390,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                                     t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
                                 case typeTable:
+                                case typeTable_v2:
                                     t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
                                 case typeMap:
@@ -539,7 +545,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
     }
 
     pxWidget.draw.init(
-        'table',
+        t4Sdk.pxWidget.type,
         "pxwidget" + elementId,
         localConfig
     )
@@ -612,6 +618,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
     var fluidTime = [];
     switch (type) {
         case typeTable:
+        case typeTable_v2:
             fluidTime = config.fluidTime;
             break;
         case typeMap:
@@ -628,6 +635,7 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
 
         switch (type) {
             case typeTable:
+            case typeTable_v2:
                 matrix = config.data.api.query.data.params.extension.matrix;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
@@ -937,6 +945,7 @@ t4Sdk.pxWidget.utility.isSnippetPrivate = function (type, snippet) {
             }
             break;
         case typeTable:
+        case typeTable_v2:
             if (!$.isEmptyObject(config.data.api.query) && config.data.api.query.data.params.extension.release) {
                 result = true
             }
