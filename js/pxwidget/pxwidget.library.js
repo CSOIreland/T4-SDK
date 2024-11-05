@@ -137,7 +137,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //toggle dimension cannot be in columnFields
     //toggle dimension must contain a single variable in query
     if (type == typeTable_v2) {
-        pxWidget.draw.error(elementId, 'Invalid widget');
+        t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Toggle widget must contain a query, not a response.");
         return
     }
 
