@@ -543,7 +543,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
         //can't have fluid time on time toggle
         localConfig.fluidTime = [];
     }
-
+    debugger
     pxWidget.draw.init(
         t4Sdk.pxWidget.type,
         "pxwidget" + elementId,
