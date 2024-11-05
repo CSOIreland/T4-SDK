@@ -137,7 +137,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //toggle dimension cannot be in columnFields
     //toggle dimension must contain a single variable in query
     if (type == typeTable_v2) {
-
+        pxWidget.draw.error(elementId, 'Invalid widget');
+        return
     }
 
     //check config to see if it's from a live snippet code
