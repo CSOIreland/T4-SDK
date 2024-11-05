@@ -54,7 +54,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
         //get config object from snippet
         config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
-        debugger
     }
 
     //check that config doesn't contain a response, must be query
@@ -157,6 +156,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 language = config.metadata.api.query.data.params.language;
                 break;
             case typeTable:
+            case typeTable_v2:
                 matrixRelease = config.data.api.query.data.params.extension.release;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
@@ -544,7 +544,6 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
         //can't have fluid time on time toggle
         localConfig.fluidTime = [];
     }
-    debugger
     pxWidget.draw.init(
         t4Sdk.pxWidget.type,
         "pxwidget" + elementId,
@@ -1001,10 +1000,5 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
             "id": Math.floor(Math.random() * 999999999) + 1
         })
     });
-}
-
-
-t4Sdk.pxWidget.utility.getObjectFromSnippet = function (snippet) {
-
 }
 //#endregion utilities
