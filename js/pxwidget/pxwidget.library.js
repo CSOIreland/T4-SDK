@@ -457,7 +457,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
     if (isLive) {
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-            localConfig.metadata.api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             localConfig.metadata.api.query.data.params.matrix = matrix;
             delete localConfig.metadata.api.query.data.params.release
         }
@@ -466,7 +466,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
         $.each(localConfig.data.datasets, function (index, value) {
             value.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
             value.api.query.data.params.extension.matrix = matrix;
-            value.api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+            value.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             delete value.api.query.data.params.extension.release
         });
     };
@@ -513,15 +513,15 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
     var matrix = localConfig.matrix || localConfig.data.api.query.data.params.extension.matrix;
 
     if (isLive) {
-        localConfig.data.api.query.data.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+        localConfig.data.api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         localConfig.data.api.query.data.params.extension.matrix = matrix;
         localConfig.data.api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
-        localConfig.data.api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+        localConfig.data.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-            localConfig.metadata.api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             localConfig.metadata.api.query.data.params.matrix = matrix;
             delete localConfig.metadata.api.query.data.params.release;
         }
@@ -567,15 +567,15 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     localConfig.tooltipTitle = varriableLabel;
 
     if (isLive) {
-        localConfig.data.datasets[0].api.query.data.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+        localConfig.data.datasets[0].api.query.data.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         localConfig.data.datasets[0].api.query.data.params.extension.matrix = matrix;
         localConfig.data.datasets[0].api.query.data.method = T4SDK_PXWIDGET_READ_DATASET;
-        localConfig.data.datasets[0].api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+        localConfig.data.datasets[0].api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
 
         if (!$.isEmptyObject(localConfig.metadata.api.query)) {
             localConfig.metadata.api.query.data.method = T4SDK_PXWIDGET_READ_METADATA;
-            localConfig.metadata.api.query.url = "https://test-ws.cso.ie/public/api.jsonrpc";
+            localConfig.metadata.api.query.url = T4SDK_PXWIDGET_URL_API_PUBLIC;
             localConfig.metadata.api.query.data.params.matrix = matrix;
             delete localConfig.metadata.api.query.data.params.release;
         }
@@ -876,7 +876,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
     };
 
     return $.ajax({
-        "url": isLive ? "https://test-ws.cso.ie/public/api.jsonrpc" : "https://test-ws.cso.ie/private/api.jsonrpc",
+        "url": isLive ? T4SDK_PXWIDGET_URL_API_PUBLIC : T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
@@ -894,7 +894,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
  */
 t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
     return $.ajax({
-        "url": "https://test-ws.cso.ie/public/api.jsonrpc",
+        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
         "xhrFields": {
             "withCredentials": true
         },
@@ -983,7 +983,7 @@ t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessa
 
 t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
     return $.ajax({
-        "url": "https://test-ws.cso.ie/private/api.jsonrpc",
+        "url": T4SDK_PXWIDGET_URL_API_PRIVATE,
         "xhrFields": {
             "withCredentials": true
         },
