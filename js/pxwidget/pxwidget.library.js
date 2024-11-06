@@ -113,14 +113,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 //cancelled release
                 $("#" + elementId + " .widget-toggle-panel").after(
                     $("<h2>", {
-                        "text": "CANCELLED RELEASE",
+                        "text": "CANCELLED PxStat Table - Contact Digital Communications",
                         "style": "color: red; text-align: center"
                     })
                 );
             }
         }).fail(function (error) {
             console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
-        });;
+        });
     }
 
     //check if type is table and that toggle dimension is not the same as pivot dimension
