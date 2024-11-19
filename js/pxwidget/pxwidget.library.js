@@ -34,8 +34,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
-    type = type;
-
     var config = null;
     var isogramUrl = null;
 
