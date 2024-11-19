@@ -108,6 +108,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             var data = response.result;
             var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
             var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
+
+            if (data.RlsLiveDatetimeFrom == null && data.RlsLiveDatetimeTo == null) {
+                return false;
+            }
+
             if (
                 (dateFrom == dateTo)) {
                 //cancelled release
