@@ -1,7 +1,6 @@
 //#region Add Namespace
 t4Sdk = t4Sdk || {};
 t4Sdk.pxWidget = {};
-t4Sdk.pxWidget.type = null;
 t4Sdk.pxWidget.chart = {};
 t4Sdk.pxWidget.table = {};
 t4Sdk.pxWidget.map = {};
@@ -35,7 +34,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     toggleVariables = toggleVariables || null;
     defaultVariable = defaultVariable || null;
 
-    t4Sdk.pxWidget.type = type;
+    type = type;
 
     var config = null;
     var isogramUrl = null;
@@ -58,7 +57,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //check that config doesn't contain a response, must be query
     var queryIsInvalid = false;
-    switch (t4Sdk.pxWidget.type) {
+    switch (type) {
         case typeChart:
             if (!$.isEmptyObject(config.metadata.api.response)) {
                 queryIsInvalid = true;
@@ -90,7 +89,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //check for cancelled release used
     if (!isLive) {
         var rlsCode = null;
-        switch (t4Sdk.pxWidget.type) {
+        switch (type) {
             case typeChart:
                 rlsCode = config.metadata.api.query.data.params.release;
                 break;
@@ -129,7 +128,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     //check if type is table and that toggle dimension is not the same as pivot dimension
-    if (t4Sdk.pxWidget.type == typeTable) {
+    if (type == typeTable) {
         if (config.pivot == toggleDimension) {
             t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Pivot dimesnion and toggle dimensoin cannot be the same");
 
@@ -140,7 +139,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //Rules for table_v2 
     //toggle dimension cannot be in columnFields
-    if (t4Sdk.pxWidget.type == typeTable_v2) {
+    if (type == typeTable_v2) {
         if (config.columnFields.includes(toggleDimension.trim())) {
             t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Toggle dimension cannot be selected as a columns field.");
             return
@@ -157,7 +156,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     var language = null;
 
     if (!isLive) {
-        switch (t4Sdk.pxWidget.type) {
+        switch (type) {
             case typeChart:
                 matrixRelease = config.metadata.api.query.data.params.release;
                 language = config.metadata.api.query.data.params.language;
@@ -176,7 +175,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }
     }
     else {
-        switch (t4Sdk.pxWidget.type) {
+        switch (type) {
             case typeChart:
                 matrixRelease = config.metadata.api.query.data.params.matrix || config.matrix;
                 language = config.metadata.api.query.data.params.language;
@@ -370,14 +369,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 switch (toggleType) {
                     case "dropdown":
                         $("#" + elementId + "-toggle-select").change(function () {
-                            switch (t4Sdk.pxWidget.type) {
+                            switch (type) {
                                 case typeChart:
                                     t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                     break;
 
                                 case typeTable:
                                 case typeTable_v2:
-                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime, type);
                                     break;
                                 case typeMap:
                                     t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
@@ -393,7 +392,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                             $("#" + elementId + "-button-wrapper").find("[name=toggle-button]").removeClass("active");
                             $(this).addClass("active");
 
-                            switch (t4Sdk.pxWidget.type) {
+                            switch (type) {
                                 case typeChart:
                                     t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
@@ -513,7 +512,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime, type) {
     $("#" + elementId).find("[name=table-title]").text(varriableLabel);
     $("#" + elementId).find("[name=table-title-wrapper]").show();
     var localConfig = $.extend(true, {}, config);
@@ -552,7 +551,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
         localConfig.fluidTime = [];
     }
     pxWidget.draw.init(
-        t4Sdk.pxWidget.type,
+        type,
         "pxwidget" + elementId,
         localConfig
     )
