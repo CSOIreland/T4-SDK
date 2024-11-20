@@ -369,15 +369,15 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         $("#" + elementId + "-toggle-select").change(function () {
                             switch (type) {
                                 case typeChart:
-                                    t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    t4Sdk.pxWidget.chart.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                     break;
 
                                 case typeTable:
                                 case typeTable_v2:
-                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime, type);
+                                    t4Sdk.pxWidget.table.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                     break;
                                 case typeMap:
-                                    t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
+                                    t4Sdk.pxWidget.map.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                     break;
 
                                 default:
@@ -392,14 +392,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
                             switch (type) {
                                 case typeChart:
-                                    t4Sdk.pxWidget.chart.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                    t4Sdk.pxWidget.chart.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
                                 case typeTable:
                                 case typeTable_v2:
-                                    t4Sdk.pxWidget.table.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime, type);
+                                    t4Sdk.pxWidget.table.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
                                 case typeMap:
-                                    t4Sdk.pxWidget.map.draw(elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
+                                    t4Sdk.pxWidget.map.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                     break;
                                 default:
                                     break;
@@ -453,7 +453,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.chart.draw = function (type, elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
 
     var matrix = localConfig.matrix || localConfig.metadata.api.query.data.params.matrix;
@@ -494,7 +494,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
     }
 
     pxWidget.draw.init(
-        'chart',
+        type,
         "pxwidget" + elementId,
         localConfig
     )
@@ -510,7 +510,7 @@ t4Sdk.pxWidget.chart.draw = function (elementId, isLive, config, toggleDimension
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime, type) {
+t4Sdk.pxWidget.table.draw = function (type, elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     $("#" + elementId).find("[name=table-title]").text(varriableLabel);
     $("#" + elementId).find("[name=table-title-wrapper]").show();
     var localConfig = $.extend(true, {}, config);
@@ -565,7 +565,7 @@ t4Sdk.pxWidget.table.draw = function (elementId, isLive, config, toggleDimension
  * @param {*} varriableLabel 
  * @param {*} toggleIsTime 
  */
-t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
+t4Sdk.pxWidget.map.draw = function (type, elementId, isLive, config, toggleDimension, toggleVariable, varriableLabel, toggleIsTime) {
     var localConfig = $.extend(true, {}, config);
     var matrix = localConfig.matrix || localConfig.data.datasets[0].api.query.data.params.extension.matrix;
     localConfig.tooltipTitle = varriableLabel;
@@ -602,7 +602,7 @@ t4Sdk.pxWidget.map.draw = function (elementId, isLive, config, toggleDimension, 
     }
 
     pxWidget.draw.init(
-        'map',
+        type,
         "pxwidget" + elementId,
         localConfig
     )
