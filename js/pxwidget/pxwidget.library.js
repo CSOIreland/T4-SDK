@@ -609,6 +609,7 @@ t4Sdk.pxWidget.map.draw = function (type, elementId, isLive, config, toggleDimen
 };
 
 t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggleDimension) {
+    debugger
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
