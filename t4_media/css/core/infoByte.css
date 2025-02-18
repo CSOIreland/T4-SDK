@@ -181,7 +181,7 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         align-content: space-between;
-        align-items: flex-start;
+        align-items: stretch;
     }
 }
 
@@ -737,6 +737,74 @@
     font-size: 20px;
 }*/
 
+/* ===============
+=== RSI Mini Viz ===
+================== */
+.prices-mini-viz.solo-indicator {
+    padding: 1rem;
+}
+.prices-mini-viz.sidebar-indicator {
+    margin-top: 1.5rem;
+}
+.prices-mini-viz.sidebar-indicator header h3 {
+    padding-left: 0;
+    margin-top: 0;
+}
+.prices-mini-viz.sidebar-indicator header h4 {
+    padding-left: 0;
+}
+.prices-mini-viz.sidebar-indicator img {
+    display:none;
+}
+@media screen and (min-width: 1024px) {
+    .prices-mini-viz.sidebar-indicator img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.prices-mini-viz .change-indicator {
+    background-color: #fff;
+    padding:0.5rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+}
+.prices-mini-viz.sidebar-indicator .change-indicator h3 {
+    padding: 0 0 0.45rem 0.5rem;
+    margin-top:0;
+    font-size: 18px;
+}
+.prices-mini-viz .change-indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 1rem;
+}
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+    .prices-mini-viz .change-indicator-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 0.1rem;
+    }
+}
+.prices-mini-viz .change-indicator-grid .prices-item-change {
+    grid-area: auto;
+}
+
+.prices-mini-viz .change-indicator .price-change-indicator {
+    text-align: left;
+    padding: 0.25rem 0.5rem;
+}
+
+.prices-mini-viz .change-indicator .price-item-text {
+    font-size: 18px;
+    text-align: left;
+    justify-self: start;
+    padding: 0.25rem 0.5rem;
+}
+
+
 /* ==================
 
 ==== Dashboard Indicators ====
@@ -949,12 +1017,25 @@ Add a grid around other elements
     .solo-grid.blue, .solo-grid .shaded-bg.blue {
         background-color: #F1F7F9;
     }
+    .solo-grid.teal, .solo-grid .shaded-bg.teal {
+        background-color: #F3FAFA;
+    }
     .solo-grid.grid-centred {
         justify-items: center;
         align-items: center;
     }
     .solo-grid.no-padding {
         padding: 0;
+    }
+
+    .solo-grid .self-centred {
+        
+    }
+    .solo-grid .self-right {
+
+    }
+    .solo-grid .self-left {
+
     }
 
     .solo-grid iframe {
@@ -1026,6 +1107,14 @@ Add a grid around other elements
             grid-template-columns: repeat(4, 1fr);
         }
     }
+
+    .solo-grid .sub-grid {
+        display: grid;
+    }
+    .solo-grid .sub-grid.sub-rows-2x {
+        grid-template-rows: subgrid;
+        grid-row: span 2;
+    }
  
 
     /* PRESENTATION TABLE STYLES */
@@ -1040,6 +1129,10 @@ Add a grid around other elements
         table-layout: auto;
         width: auto;
     }
+    .presentation-table.full-width table,
+    table.presentation-table.full-width {
+        width: 100%;
+    } 
     .presentation-table table caption,
     table.presentation-table caption {
         font-family: "Roboto Slab", Georgia, 'Times New Roman', Times, serif;
@@ -1063,15 +1156,32 @@ Add a grid around other elements
         padding: 0.5rem;
         vertical-align: middle;
     }
+    .presentation-table.wide-spacing table thead th,
+    .presentation-table.wide-spacing table thead td,
+    table.presentation-table.wide-spacing thead th,
+    table.presentation-table.wide-spacing thead td {
+        padding: 1rem;
+        color: #5f6a73;
+    }
     .presentation-table table tbody td,
-    table.presentation-table tbody td {
+    table.presentation-table tbody td,
+    .presentation-table table tbody th,
+    table.presentation-table tbody th {
         font-feature-settings: "tnum";
         padding: 0.5rem;
         vertical-align: middle;
     }
-    .presentation-table.zebra-stripe table tbody tr:nth-child(even) td,
-    table.presentation-table.zebra-stripe tbody tr:nth-child(even) td {
-        background-color: rgba(230, 233, 242, 0.8);
+    .presentation-table.wide-spacing table tbody td,
+    table.presentation-table.wide-spacing tbody td,
+    .presentation-table table.wide-spacing tbody th,
+    table.presentation-table.wide-spacing tbody th {
+        padding: 1rem;
+    }
+    .presentation-table.zebra-stripe table tbody tr:nth-child(odd) td,
+    table.presentation-table.zebra-stripe tbody tr:nth-child(odd) td,
+    .presentation-table.zebra-stripe table tbody tr:nth-child(odd) th,
+    table.presentation-table.zebra-stripe tbody tr:nth-child(odd) th {
+        background-color: rgba(230, 233, 242, 0.7);
     }
     .presentation-table table tbody tr:last-child,
     table.presentation-table tbody tr:last-child {

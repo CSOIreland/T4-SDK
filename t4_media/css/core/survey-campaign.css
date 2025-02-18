@@ -2,11 +2,6 @@
 /* Last updated Feb 24 -- RFS */ 
 
 
-.lead-text-block {
-   margin: 2rem 0;
-}
-
-
 .featuredIntro {
     padding-bottom: 1.33rem; 
     border-bottom: 10px solid #00b3c7;
@@ -132,6 +127,9 @@ hr.page__divider {
  hr.page__divider.purple20 {
    border-bottom: 10px solid #DAE0F2;
  }
+ hr.page__divider.csoblue {
+   border-bottom: 10px solid #00b3c7;
+ }
  
  .surveyPage__highlight {
    background-color: #daf0f2;
@@ -208,6 +206,15 @@ h4.corporatePageHeading.magenta { color: #ab4d88; }
 h4.corporatePageHeading.grey { color: #5b6670; }
 h4.corporatePageHeading.csoblue { color: #0099b4; }
 
+
+.lead-text-block {
+   margin: 2rem 0;
+}
+.lead-text-block.shaded-bg {
+   background-color: #F5F6FA;
+   padding: 2rem;
+}
+
 .pageLeadBlock {
    padding-bottom: 2rem;
    margin-bottom: 0.75rem;
@@ -226,13 +233,24 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
 }
 .pageLeadBlock.shaded-bg {
    background-color: #F5F6FA;
-   padding: 2rem;
+   padding: 1rem;
    border-bottom: none;
    margin: 2rem 0;
 }
+@media screen and (min-width: 960px) {
+   .pageLeadBlock.shaded-bg {
+      padding:2rem;
+   }
+}
 
-.pageLeadBlock > div:not(:first-child) {
-   margin-left: 1.5rem;
+.pageLeadBlock.centred {
+   justify-content: center;
+}
+
+@media screen and (min-width: 960px) {
+   .pageLeadBlock > div:not(:first-child) {
+      margin-left: 1.5rem;
+   }
 }
 .pageLeadBlock.green { border-color: #006168; }
 .pageLeadBlock.green40 { border-color: #9BBDBF; }
@@ -256,7 +274,7 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
 }
 
 .pageLeadBlock h2 {
-   font-size: 2rem;
+   font-size: 1.867rem;
    line-height: 1.4;
    font-weight: 400;
    color: #5b6670;
@@ -311,8 +329,8 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
 }
 
 .highlightCardQuote {
-   font-size: 1.6rem;
-   font-weight: bold;
+   font-size: 1.4rem;
+   font-weight: normal;
    font-family: "Roboto Slab", Times New Roman, Georgia, serif;
    flex:1;
    display: flex;
@@ -321,8 +339,9 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
 }
 .highlightCardQuote .quote-attribution {
    font-weight: normal;
-   font-size: 1.4rem;
-   margin-top: 0.25rem;
+   font-style: italic;
+   font-size: 1.3rem;
+   margin-top: 0.45rem;
 }
 
 /* .block-link-gallery +.block-link-grid || .block-link-list

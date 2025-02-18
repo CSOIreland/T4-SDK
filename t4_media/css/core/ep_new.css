@@ -45,8 +45,8 @@
         max-width: 800px;
     }
     
-    .moduleBody ul,
-    .moduleBody ol {
+    .moduleBody:not(.normalised) ul,
+    .moduleBody:not(.normalised) ol {
         max-width: 800px;
     }
     /*

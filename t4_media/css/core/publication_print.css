@@ -9,9 +9,14 @@
 @media print {
     
     /* don't display the header or footer on each chapter */
+
+    body {
+        font-size:small;
+        line-height: 1.35;
+    }
     
     .col {
-        padding: 0 20px;
+        padding: 0;
     }
     .header {
         float:left;
@@ -20,16 +25,31 @@
         padding:0;
         margin: 0;
     }
-    .header h1 {
+    .header h1,
+    .masthead-logo {
         margin:0 !important;
         padding:0;
     }
-    .header h1 img {
+    .header h1 img,
+    .masthead-logo picture,
+    .masthead-logo img {
         height: 40px;
       	max-height: 40px;
         width: auto;
       	max-width: 164px;
         /*filter: grayscale(100%);*/
+    }
+
+    .masthead-75 img {
+        height: 40px;
+        max-height: 40px;
+        width: auto;
+        max-width: 94px;
+    }
+
+    .masthead-buttons,
+    .masthead-search {
+        display:none;
     }
 
     /* co-brand logo positioning */
@@ -49,6 +69,10 @@
         display:none;
     }
     
+    .tiptopBanner {
+        display: none;
+    }
+
     .transcriptCollapse {
         display: none;
     }
@@ -68,7 +92,7 @@
     .pageHeader.row {
         margin: 0;
         padding: 0;
-        border-bottom: 4px solid #006168;
+        border-bottom: 3px solid #006168;
     }
     .pageHeader .col {
         margin: 0;
@@ -80,6 +104,7 @@
         padding: 0;   
     }
     #chapterTitle {
+/*        font-size:28px;   */
         font-size:28px;
         font-weight: 400;
         color: #006168;
@@ -111,7 +136,7 @@
         background: none;
         padding: 0 0 0.75rem;
         margin: 0;
-        font-size: 20px;
+        font-size: large;
         font-weight: 700;     
         border-bottom: none;
         position: relative;
@@ -123,8 +148,8 @@
         left    : 0;
         bottom  : 0;
         height  : 1px;
-        width   : 60px;  
-        border-bottom: 5px solid #006168;
+        width   : 30%;  
+        border-bottom: 2px solid #006168;
     }
     .copy .moduleHeader h2 a {
         color: #006168;
@@ -151,7 +176,7 @@
 
 
     .int-pub-header h2 {
-        font-size: 24px;
+        font-size: x-large;
         font-weight: 700;
         color: #000;
         padding: 0 0 0.25rem;
@@ -159,7 +184,7 @@
         border: 0;
     }
     .copy .int-pub-header h3 {
-        font-size: 18px;
+        font-size: large;
         font-weight: 400;
         padding: 0;
         margin: 0;
@@ -178,11 +203,26 @@
         margin-top: 1rem;
     }
 
+    .pub-header-note,
+    .pub-header-caveat {
+        font-size: small;
+    }
+
+    .pub-header-note h1,
+    .pub-header-note h2,
+    .pub-header-note h3,
+    .pub-header-note h4,
+    .pub-header-note h5,
+    .pub-header-note h6,
+    .pub-header-caveat h5 {
+        font-size:medium;
+    }
+
     .int-pub-body-block {
-        font-size: 14px;
+        font-size: small;
         padding: 0 0 1rem;
         margin: 1rem 0 0;
-        border-bottom: 1px solid #006168;
+        border-bottom: none;
     }  
     .pub-header-census-results-2022 .int-pub-body-block {
         border-bottom: none;
@@ -190,6 +230,7 @@
 
     .pub-header-data {
         display:block;
+        font-size: x-small;
     }
 
     .release-key-findings {
@@ -198,9 +239,37 @@
         margin:  0.75em 0 1rem;
     }
     
+    .press-key-findings > h3.pub-findings-header,
+    .press-key-findings .pub-findings-header-block {
+        background: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .press-key-findings .pub-findings-header-block h3 {
+        background: none;
+        color:#283F73;
+        padding: 0 0 0.75rem;
+        margin: 0;
+        font-size: 16pt;
+        font-weight: 700;     
+        border-bottom: none;
+        position: relative;
+    }
+    .release-key-findings h3.pub-findings-header::after,
+    .release-key-findings .pub-findings-header-block h3::after {
+        content : "";
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        height  : 1px;
+        width   : 30%;  
+        border-bottom: 2px solid #283F73;
+    }
+
     .pub-comment {
         background: none;
-        padding: 0 0 0.5rem 2rem;
+        padding: 0 0 0.5rem 1rem;
         margin:  2rem 0;
         border-left: 0.5rem solid #579599;
     }
@@ -214,7 +283,7 @@
         background: none;
         padding: 0 0 0.75rem;
         margin: 0;
-        font-size: 20px;
+        font-size: large;
         font-weight: 700;     
         border-bottom: none;
         position: relative;
@@ -226,13 +295,13 @@
         left    : 0;
         bottom  : 0;
         height  : 1px;
-        width   : 60px;  
-        border-bottom: 5px solid #006168;
+        width   : 30%;  
+        border-bottom: 2px solid #006168;
     }
 
     .copy h3,
     h3.pub-findings-header {
-        font-size: 20px;
+        font-size: large;
         font-weight: 700;
         position:relative;
         padding: 1rem 0 0.75rem;
@@ -244,24 +313,43 @@
         left    : 0;
         bottom  : 0;
         height  : 1px;
-        width   : 60px;  
-        border-bottom: 3px solid #006168;
+        width   : 30%;  
+        border-bottom: 2px solid #006168;
     }
     
     .press-key-findings h3.pub-findings-header {
         color:#283F73;
-        font-size:22px;
+        font-size: large;
     }
 
     .advisory-notification {
         border-left: 10px solid #579599;
         margin-left: 0;
         background-color: #fdfdfd !important;
+        font-size: small;
     }
     h3.pub-findings-header + .advisory-notification {
         margin-left: 0;
     }
     
+    .pub-findings-list li,
+    .pub-findings-list li p {
+        font-size: small;
+        font-weight: normal;
+        line-height: 1.35;
+    }
+    .copy ul.pub-findings-list li p:only-child {
+        margin: 0;
+    }
+
+    #columnLeft .copy ul li,
+    .copy ol li {
+        font-size: small;
+        font-weight: normal;
+        line-height: 1.35;
+    }
+
+
   /* hide audio player */
     audio { display: none; }
 
@@ -269,6 +357,8 @@
     /* Removes border from open/close tables */
     .pubOpenCloseTable {
         border: none;
+        padding: 0;
+        margin: 1rem 0 0.5rem;
     }
         
     /* Hides the 'show table' title of an open/close table */
@@ -278,6 +368,14 @@
     
     .indicatorHeadlineTable {
         display:block !important;
+        margin: 0;
+    }
+    
+    .indicatorHeadlineTable table td {
+        font-size: 9pt;
+    }
+    .indicatorHeadlineTable .OpenInExcel {
+        display:none;
     }
     
     /* Hides the next chapter button */
@@ -315,7 +413,7 @@
         position: relative;
     }
     .module-release-datasets .moduleHeader h2 {
-        font-size: 20px;
+        font-size: large;
         font-weight: 700;    
         color: #006168;
     }
@@ -337,7 +435,7 @@
     }
     
     .px-stat-widget .moduleHeader {
-        font-size: 20px;
+        font-size: large;
         font-weight: 700;
         font-family: 'Roboto Slab', Georgia, Times New Roman, serif;
         padding: 0 0 0.75rem;
@@ -354,7 +452,7 @@
     
     .px-stat-widget-chart .px-stat-widget-heading {
         font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
-        font-size: 14px;
+        font-size: small;
     }
     
     .px-stat-widget .moduleHeader {

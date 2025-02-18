@@ -2,10 +2,10 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
 	<head>
 		<!--scale the layout to work correctly on moble decives-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!--define the character encoding for the page-->
 		<meta charset="UTF-8">
-		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+		<title><t4 type="navigation" id="1450"/>  <t4 type="navigation" id="778"/> - Central Statistics Office</title>
           <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
           <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
           <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
@@ -22,13 +22,13 @@
           
           
           <t4 type="media" id="55464" /><!-- publications -->
-    <t4 type="media" id="64740" />   <!--yearbook -->
+    			<t4 type="media" id="64740" />   <!--yearbook -->
           <t4 type="media" id="123445" />   <!--ep_new.css -->
           <t4 type="media" id="177582" />   <!--illustrated-chapter.css -->
           <t4 type="media" id="177970"/> <!--infobyte-chapter.css -->
           <t4 type="content" name="color" output="normal" modifiers=""  /> <!--colours.css-->
-       
-          
+        
+    			<t4 type="media" formatter="css/*" id="400048" /> <!-- publication print styles -->
 		
         <!--include jQuery-->
 		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
@@ -64,8 +64,7 @@
         <t4 type="media" id="53959" /><!-- google analytics -->
         <t4 type="media" id="55490" /><!-- jquery.corner.js -->        
         <t4 type="media" id="55491" /><!-- rounded_corner.js -->
-          
-     
+               
     
           <!--START HIGHSLIDES-->  
                      
@@ -99,20 +98,19 @@
 
           
           
-          
-          
-          
-          
-          
          <!-- end css --> 
           
-          
-		          
-          
+                   
           
            <style type="text/css">
 <t4 type="exceltohtml" name="Insert Excel Table" default-font="font-family:arial;font-size:10pt;" />
 </style>
+    
+    
+		<t4 type="navigation" name="WidgetToggles Include code" id="1405" />   
+
+    <!-- navigation object : ImagePdfFixes Include code --><t4 type="navigation" id="1403"/>	
+    
            
 <script> 
 //js to set current tab to active on main nav DR
@@ -164,10 +162,9 @@
 
     //end main nav JS DR
 </script>
-          
+    
+    <!--start js for widget toggles-->
         
-          
-          
 
       <!-- start header --> 
 
@@ -175,7 +172,10 @@
 		<!-- navigation object : Header code --><t4 type="navigation" id="496"/>	
       <!--/mainNav-->
          <!-- end header -->   
-            <!-- ********** CONTENT ********** -->
+
+		<t4 type="navigation" name="Top Right Print Page Position" id="1404" />
+    
+    <!-- ********** CONTENT ********** -->
 		<div class="container content">
 			<div class="row pageHeader">
 				<div class="col span12">
@@ -227,4 +227,4 @@
               
 				<div id="columnLeft" class="col columnLeftinner-rightcol">
 					<div class="copy">
-                      _hdr.html
+                      

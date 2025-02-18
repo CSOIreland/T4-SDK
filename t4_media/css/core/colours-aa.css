@@ -118,6 +118,8 @@
 /*mint*/
 /* #5BC1A5 contrast with white: 2.18 */
 /* #00A881 contrast with white: 3.04 */
+/* #3ba389 contrast with white: 3.09 **large text only 19px+ bold or 24px+ */
+/* #0a846b contrast with white: 4.63 */
 
 .carousel .mint i.fa,
 .mint .moduleBody li a:before,
@@ -128,21 +130,21 @@
 .greminten .accordionMethods > div li a:before,
 .footer .contact.mint i,
 .mint.multiList .moduleBody li a {
-    color: #008667;
+    color: #0a846b;
 }
 
 .text-lead.mint,
 .text-highlight.mint,
 .text-large.mint,
 .text-mint {
-    color: #008667;  
+    color: #0a846b;  
 }
 
 .mint .moduleHeader,
 .homepage .mint .moduleFooter,
 .mint .btn,
 .moduleFooter.mint {
-    background-color: #008667;
+    background-color: #0a846b;
 }
 
 
@@ -150,16 +152,16 @@
 
 .homepage .teal .moduleFooter.mint,
 .teal .mint .btn {
-    background-color: #008667;
+    background-color: #0a846b;
 }
 
 .sideitem.mint,
 .sideitem.mint .btn {
-    background-color: #008667;
+    background-color: #0a846b;
 }
 
 .wellbeing-hub-indicator .sideitem i.mint {
-    color: #008667
+    color: #0a846b;
 }
 
 
@@ -603,6 +605,10 @@
 }
 .sideitem.light-purple h3 a {
     color: #35456B;
+}
+.sideitem.light-purple p a {
+    color: #4463AA;
+    text-decoration: underline;
 }
 .sideitem.light-purple .btn {
     background-color: #E6E9F2;

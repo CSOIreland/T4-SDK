@@ -129,12 +129,22 @@ padding-top: 20px;
 
 }
 
-
+.force-unfloat {
+  float:none !important;
+}
 
 /* -- lead text and text highlights -- */
 .text-natural, p.text-natural {
   font-size: 1rem;
 } /* 16px body text */
+
+.text-small, p.text-small {
+  font-size: 0.85rem;
+}
+
+.text-smaller, p.text-small {
+  font-size: 0.78rem;
+}
 
 .text-focus, p.text-focus {
   font-size: 1.1rem;
@@ -186,13 +196,18 @@ padding-top: 20px;
 .text-padding-bottom-2x {
   padding-bottom: 2rem;
 }
+.block-margin-top-0 { margin-top: 0; }
 .block-margin-top-2x { margin-top: 2rem; }
+.block-margin-top-3x { margin-top: 3rem; }
 .block-margin-top-4x { margin-top: 4rem; }
 .block-margin-top-6x { margin-top: 6rem; }
+.block-margin-bottom-0 { margin-bottom: 0; }
 .block-margin-bottom-2x { margin-bottom: 2rem; }
+.block-margin-bottom-3x { margin-bottom: 3rem; }
 .block-margin-bottom-4x { margin-bottom: 4rem; }
 .block-margin-bottom-6x { margin-bottom: 6rem; }
 
+.block-padding-1x { padding: 1rem; } 
 
 /*.columnLeftinner-rightcol, .columnLeftinner-split
 {
@@ -230,6 +245,21 @@ a:active {
 	display: none;
 }
 
+.copy ul.download-selection-list,
+ul.download-selection-list {
+  margin: 1rem;
+  padding: 0.25rem;
+}
+
+.copy ul.download-selection-list li,
+ul.download-selection-list li {
+  padding: 0.25rem;
+  border-bottom: 1px solid #efefef;
+}
+.copy ul.download-selection-list li:nth-last-child(2),
+ul.download-selection-list li:nth-last-child(2) {
+  border: none;
+}
 
 @media screen and (min-width: 768px) {
   figure.responsiveImage {
@@ -357,6 +387,23 @@ a:active {
   font-weight: 400;
   font-family: "Roboto Slab", Times New Roman, Georgia, serif;
 }
+.btn.small {
+  font-size: 85%;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0 0;
+}
+.btn.small i,
+.btn-link i {
+  padding: 0 0.5em 0 0;
+}
+.btn-link {
+  padding: 0.5rem 0;
+  margin: 0.5rem 0 0;
+}
+.btn-link.smaller {
+  font-size: 78%;
+}
+
 
 /* style a standalone button */
 .section-button {
@@ -916,6 +963,7 @@ cursor: pointer;
 }
 
 .module:not(.indicator) .moduleBody > ul > li a:before,
+.module:not(.indicator) .moduleBody > ul > li.arrow:before,
 .newsBox .moduleBody ul li a:before,
 .moduleBody > ul ul.links li a:before,
 .publicationMenu .moduleBody ul li a:before {
@@ -936,8 +984,8 @@ cursor: pointer;
 .publicationMenu .moduleBody ul li a:hover {
 	background: #f0f4f7;
 }
-.moduleBody h2
-{
+
+.moduleBody h2 {
   padding: 15px 20px
 }
 
@@ -952,6 +1000,39 @@ cursor: pointer;
 	font-size: 0.93rem;
 	line-height: 1.2;
   padding: 5px 20px 5px 20px;
+}
+
+/*some non-conflicting normalised styles for ModuleBody */
+.moduleBody.normalised div {
+   padding: 10px 20px;
+}
+.moduleBody.normalised div p {
+  padding: 0;
+  color: #07101a;
+  line-height: 1.35;
+}
+
+.moduleBody.normalised ul li p {
+  color: #07101a;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.moduleBody.normalised ul li.matchedText {
+  padding: 10px 20px 10px 35px;
+  color: #07101a;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.copy .moduleBody.normalised ul {
+  margin: 0;
+}
+.copy .moduleBody.normalised p {
+  margin: 0.75rem 0;
+}
+.copy .moduleBody.normalised p:last-child {
+  margin: 0;
 }
 
 /*re-introducing standard list styles within ModuleBody and excluding conflicts */
@@ -2448,23 +2529,27 @@ margin-bottom: 20px;
 /*top of page site wide banner styles (Topline Bannner content)*/
 
 .tiptopBanner {
-    background-color: #c3d7d9;
-    color: #002b5b;
-    font-size: 15px;
+    /* background-color: #c3d7d9;
+    color: #002b5b; */
+    background-color: #4F6497;
+    color: #fff;
+    font-size: 16px;
     font-weight: normal;
     text-align: center;
     padding: 0.65rem;
+    margin-bottom: 1rem;
 }
 .tiptopBanner strong {
     font-family: Roboto Slab, Georgia, Times New Roman, serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     display: inline-block;
     margin: 0 0.75rem 0 0;
 }
 .tiptopBanner a {
-    color: #006f74;
-    text-decoration: underline;
+  /*color: #006f74; */
+  color: #c9ecdf;
+  text-decoration: underline;
 }
 .tiptopBanner a:hover {
 	text-decoration: none;
@@ -2490,16 +2575,20 @@ margin-bottom: 20px;
 
 /* infographic transcript show/hide section */
 .transcriptCollapse {
-  border: 2px solid #adbecc;
+  border: 1px solid #adbecc;
   border-radius: 2px;
   padding: 0;
   margin-top: 20px;
 }
 .transcriptCollapse .transcriptTitleBar {
   background: #E6EDF2;
-  font: 17px 'Roboto Slab', Arial, Sans-serif;
+  color: #35456B;
+  font: 15px Roboto, Arial, Sans-serif;
   padding: 5px 10px;
   border-radius: 2px 0;
+}
+.transcriptCollapse .transcriptTitleBar i.fa {
+  margin-right: 10px;
 }
 .transcriptCollapse .transcriptBody {
   margin: 10px 0;
@@ -2514,11 +2603,19 @@ margin-bottom: 20px;
         padding: 1rem;
         margin: 2rem 0;
     }
+    
     .release-key-findings ul {
         margin: 0 0 0 1rem;
     }
     .release-key-findings p {
          font-size: 16px;
+    }
+    .release-key-findings.attributable-findings p:last-child {
+      margin-bottom: 0;
+    }
+    .release-key-findings p.attribution {
+      font-size: 15px;
+      margin: 1.45rem 1rem 0;
     }
     h3.pub-findings-header  {
         background-color: #CAD6E0;
@@ -2541,6 +2638,9 @@ margin-bottom: 20px;
     }
     h3.pub-findings-header.heading--purple10  {
     	background-color: #F5F6FA;
+    }
+    h3.pub-findings-header.heading--teal  {
+    	background-color: #D6EFF0;
     }
     h3.pub-findings-header.heading--large {
       font-size: 1.4rem;
@@ -2897,6 +2997,13 @@ margin-bottom: 20px;
             grid-template-columns: 2fr 1fr;
         }
     }
+.pub-header-data.solo-header-data {
+  background: #F2F7FA;
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  margin: 0 0 0.25rem;
+}
+
 .pub-header-issn {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
