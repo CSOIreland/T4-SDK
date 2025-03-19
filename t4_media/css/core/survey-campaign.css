@@ -206,15 +206,6 @@ h4.corporatePageHeading.magenta { color: #ab4d88; }
 h4.corporatePageHeading.grey { color: #5b6670; }
 h4.corporatePageHeading.csoblue { color: #0099b4; }
 
-
-.lead-text-block {
-   margin: 2rem 0;
-}
-.lead-text-block.shaded-bg {
-   background-color: #F5F6FA;
-   padding: 2rem;
-}
-
 .pageLeadBlock {
    padding-bottom: 2rem;
    margin-bottom: 0.75rem;
@@ -344,80 +335,4 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
    margin-top: 0.45rem;
 }
 
-/* .block-link-gallery +.block-link-grid || .block-link-list
-   > .block-link-item > div > img
-   + > .block-link-item > .block-link-content > h3 + div [ > p ] + div [ > btn ]
-*/
-
-.block-link-item {
-   background-color: #F5F6FA;
-   padding: 1rem 1.5rem;
-   border-bottom: none;
-   margin: 1rem 0;
-   display:flex;
-   flex-direction: column;
-   flex-wrap: wrap;
-}
-@media screen and (min-width: 960px) {
-   .block-link-item {
-      flex-direction: row;
-   }
-   /* .block-link-item:nth-child(even) {
-      flex-direction: row-reverse;
-   } */
-}
-
-.block-link-item > div:not(:first-child) {
-   margin-left: 1.5rem;
-}
-
-.block-link-content {
-   display:flex;
-   flex-direction: column;
-   align-content: flex-start;
-   flex:1;
-}
-
-.block-link-content h3 {
-   font-size: 1.45rem;
-   font-weight: 700;
-   color: #5b6670;
-}
-
-.block-link-content.green h2 { color: #006168; }
-.block-link-content.softgreen h2 { color: #579599; }
-.block-link-content.mint h2 { color: #00A881; }
-.block-link-content.teal h2 { color: #00A3A0; }
-.block-link-content.purple h2 { color: #35456B; }
-.block-link-content.violet h2 { color: #725499; }
-.block-link-content.cobalt h2 { color: #4463aa; }
-.block-link-content.magenta h2 { color: #ab4d88; }
-.block-link-content.pink h2 { color: #d3205c; }
-.block-link-content.csogrey h2 { color: #5b6670; }
-.block-link-content.csoblue h2 { color: #0099b4; }
-
-.block-link-content p {
-   color: #5b6670;
-   font-family: "Roboto Slab", Times New Roman, Georgia, serif;
-   font-size: 1.1rem;
-}
-
-.block-link-content > div {
-   flex: 1;
-}
- .block-link-content > div:last-child {
-   display:grid;
-   grid-auto-flow: column;
-   grid-gap: 1rem;
-   justify-content: flex-start;
-   align-items: flex-end;
-   margin-bottom: 0.5rem;
-} 
-
-.block-link-item.margin-top-4x {
-   margin-top: 4rem;
-}
-
-.block-link-item.margin-top-6x {
-   margin-top: 6rem;
-}
+/* BLOCK LINK ITEM STYLES MOVED TO INFOBYTE.CSS */

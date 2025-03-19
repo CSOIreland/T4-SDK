@@ -209,6 +209,16 @@ padding-top: 20px;
 
 .block-padding-1x { padding: 1rem; } 
 
+
+.lead-text-block {
+  margin: 2rem 0;
+}
+.lead-text-block.shaded-bg {
+  background-color: #F5F6FA;
+  padding: 2rem;
+}
+
+
 /*.columnLeftinner-rightcol, .columnLeftinner-split
 {
 
@@ -1032,7 +1042,7 @@ cursor: pointer;
   margin: 0.75rem 0;
 }
 .copy .moduleBody.normalised p:last-child {
-  margin: 0;
+  margin: 0.75rem 0 0;
 }
 
 /*re-introducing standard list styles within ModuleBody and excluding conflicts */
@@ -2617,6 +2627,24 @@ margin-bottom: 20px;
       font-size: 15px;
       margin: 1.45rem 1rem 0;
     }
+    .pub-findings-header {
+      /* to allow for h3 and h4 in one block */
+      background-color: #CAD6E0;
+      padding: 0.75rem 1rem;
+      margin-top: 1.5rem;
+    }
+    .pub-findings-header h3 {
+      font-size: 20px;
+      font-weight: 400;
+      padding: 0;
+      margin: 0 0 0.5rem;
+    }
+    .pub-findings-header h4 {
+      font-size: 18px;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+    }
     h3.pub-findings-header  {
         background-color: #CAD6E0;
         padding: 0.75rem 1rem;
@@ -2624,25 +2652,32 @@ margin-bottom: 20px;
         font-weight: 400;
       	margin-top: 1.5rem;
     }
-    h3.pub-findings-header.heading--mint {
+    h3.pub-findings-header.heading--mint,
+    .pub-findings-header.heading--mint {
     	background-color: #E6F2F2;
     }
-    h3.pub-findings-header.heading--mint20 {
+    h3.pub-findings-header.heading--mint20,
+    .pub-findings-header.heading--mint20 {
     	background-color: #DAEFE7;
     }
-    h3.pub-findings-header.heading--purple  {
+    h3.pub-findings-header.heading--purple,
+    .pub-findings-header.heading--purple  {
     	background-color: #dae0f2;
     }
-    h3.pub-findings-header.heading--blue  {
+    h3.pub-findings-header.heading--blue,
+    .pub-findings-header.heading--blue  {
     	background-color: #CDE2E9;
     }
-    h3.pub-findings-header.heading--purple10  {
+    h3.pub-findings-header.heading--purple10,
+    .pub-findings-header.heading--purple10  {
     	background-color: #F5F6FA;
     }
-    h3.pub-findings-header.heading--teal  {
+    h3.pub-findings-header.heading--teal,
+    .pub-findings-header.heading--teal  {
     	background-color: #D6EFF0;
     }
-    h3.pub-findings-header.heading--large {
+    h3.pub-findings-header.heading--large,
+    .pub-findings-header.heading--large {
       font-size: 1.4rem;
       margin-bottom: 1.5rem;
     }

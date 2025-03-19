@@ -603,7 +603,8 @@
     background-color: #F5F6FA;
     color: #35456B;
 }
-.sideitem.light-purple h3 a {
+.sideitem.light-purple h3 a,
+.sideitem.light-purple h3  {
     color: #35456B;
 }
 .sideitem.light-purple p a {

@@ -82,7 +82,8 @@
     }
     
     .module.pink.publicationMenu,
-    .module.purple.publicationMenu {
+    .module.purple.publicationMenu,
+    .module.teal.publicationMenu {
         margin-bottom: 10px;
     }
     
