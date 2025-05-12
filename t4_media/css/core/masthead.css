@@ -1,5 +1,6 @@
 /* ========
     New website header styles June 2024 RFS
+    Updated May 2025 ( remove 75  )
    ======== */
 
    .masthead .row {
@@ -8,38 +9,38 @@
        display:grid;
        gap: 0.2rem 0.5rem;
        align-items: center;
-       grid-template-columns: 70px auto 94px;
+       grid-template-columns: 70px auto;
        grid-template-rows: repeat(3, max-content);
        grid-template-areas:
-           "mh-logo mh-button-2 mh-75"
-           "mh-logo mh-button-1 mh-75"
-           "mh-search mh-search mh-search";
+           "mh-logo mh-button-2"
+           "mh-logo mh-button-1"
+           "mh-search mh-search";
    }
    @media screen and (min-width: 576px) {
     .masthead .row {
-        grid-template-columns: 70px auto max-content 94px;
+        grid-template-columns: 70px auto max-content;
         grid-template-rows: repeat(2, max-content);
         grid-template-areas:
-            "mh-logo mh-button-1 mh-button-2 mh-75"
-            "mh-search mh-search mh-search mh-search";
+            "mh-logo mh-button-1 mh-button-2"
+            "mh-search mh-search mh-search";
     }
 }
 @media screen and (min-width: 768px) {
     .masthead .row {
-        grid-template-columns: 70px auto 94px max-content max-content;
+        grid-template-columns: 70px auto max-content max-content;
         grid-template-rows: max-content 1fr;
         grid-template-areas:
-            "mh-logo . mh-75 mh-button-1 mh-button-2"
-            "mh-logo . mh-75 mh-search mh-search";
+            "mh-logo . mh-button-1 mh-button-2"
+            "mh-logo . mh-search mh-search";
     }
 }
     @media screen and (min-width: 960px) {
     .masthead .row {
-        grid-template-columns: 444px auto 94px max-content max-content;
+        grid-template-columns: 444px auto max-content max-content;
         grid-template-rows: max-content 1fr;
         grid-template-areas:
-            "mh-logo . mh-75 mh-button-1 mh-button-2"
-            "mh-logo . mh-75 mh-search mh-search";
+            "mh-logo . mh-button-1 mh-button-2"
+            "mh-logo . mh-search mh-search";
     }
 }
 .masthead img, .masthead picture {
@@ -53,7 +54,7 @@
     grid-area: mh-75;
 }
 .masthead-buttons {
-    justify-self: center;
+    justify-self: end;
     align-self: start;
 }
 .masthead-buttons .btn, 

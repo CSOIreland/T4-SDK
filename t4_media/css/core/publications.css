@@ -282,7 +282,10 @@ width:70%;
 {
 /*color: #02395F !important;
   white-space: nowrap;*/
-
+}
+.indicatorHeadlineTable table td b
+{
+  font-weight: 700;
 }
 
 .ERtable table tr:hover, .indicatorHeadlineTable table tr:hover
