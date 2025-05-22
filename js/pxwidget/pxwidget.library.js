@@ -51,6 +51,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
         //get config object from snippet
         config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
+        debugger
     }
 
     //check that config doesn't contain a response, must be query
