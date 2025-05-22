@@ -9,10 +9,10 @@ t4Sdk.pxWidget.utility = {};
 t4Sdk.dataConnector = {};
 //#endregion Add Namespace
 
-const typeTable = "table";
+/* const typeTable = "table";
 const typeChart = "chart";
 const typeMap = "map";
-const typeTable_v2 = "table_v2";
+const typeTable_v2 = "table_v2"; */
 
 
 
