@@ -993,6 +993,8 @@ t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessa
 };
 
 t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
+    var test = t4Sdk.pxWidget.utility.getMsalCookie();
+    debugger
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         /*  "xhrFields": {
@@ -1011,5 +1013,18 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
             "id": Math.floor(Math.random() * 999999999) + 1
         })
     });
+};
+
+t4Sdk.pxWidget.utility.getMsalCookie = function () {
+    const nameEQ = "msalToken" + "="; // Create the cookie name string
+    const cookies = document.cookie.split(';'); // Split all cookies into an array
+
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim(); // Trim whitespace
+        if (cookie.indexOf(nameEQ) === 0) {
+            return cookie.substring(nameEQ.length, cookie.length); // Return the cookie value
+        }
+    }
+    return null; // Return null if the cookie is not found
 }
 //#endregion utilities
