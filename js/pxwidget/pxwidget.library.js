@@ -103,6 +103,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
         t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode).done(function (response) {
+            debugger
             var data = response.result;
             var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
             var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
@@ -993,14 +994,17 @@ t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessa
 };
 
 t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
-    var test = t4Sdk.pxWidget.utility.getMsalCookie();
-    debugger
+    var msalToken = t4Sdk.pxWidget.utility.getMsalToken();
+
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         /*  "xhrFields": {
              "withCredentials": true
          }, */
         "dataType": "json",
+        "headers": {
+            "MSAL": `Bearer ${msalToken}`,
+        },
         "method": "POST",
         "jsonp": false,
         "data": JSON.stringify({
@@ -1015,7 +1019,7 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
     });
 };
 
-t4Sdk.pxWidget.utility.getMsalCookie = function () {
+t4Sdk.pxWidget.utility.getMsalToken = function () {
     const nameEQ = "msalToken" + "="; // Create the cookie name string
     const cookies = document.cookie.split(';'); // Split all cookies into an array
 
