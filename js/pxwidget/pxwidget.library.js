@@ -439,7 +439,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             };
         }
         else if (response.error) {
-            if (response.error.code = -32099) {
+            if (response.error.code == -32099) {
                 $("#" + elementId + "-widget-wrapper").text("Authentication Error: Authenticate in PxStat and try again.");
             }
 
