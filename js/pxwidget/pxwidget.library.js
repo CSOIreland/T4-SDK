@@ -13,9 +13,7 @@ t4Sdk.dataConnector = {};
 const typeChart = "chart";
 const typeMap = "map";
 const typeTable_v2 = "table_v2"; */
-
-
-
+const T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN = "msalToken";
 //#region create a chart with toggle variables
 /**
  * Entry method to initialise the widget
@@ -51,7 +49,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
         //get config object from snippet
         config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
-        debugger
     }
 
     //check that config doesn't contain a response, must be query
@@ -122,7 +119,6 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 );
             }
         }).fail(function (error) {
-            debugger
             console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
         });
     }
@@ -856,6 +852,7 @@ t4Sdk.pxWidget.utility.formatNumber = function (number, precision, decimalSepara
  * @param {*} callback 
  */
 t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, language) {
+    var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     var paramsMatrix = {
         "jsonrpc": "2.0",
         "method": T4SDK_PXWIDGET_READ_METADATA,
@@ -885,7 +882,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
         "version": "2.0",
         "id": Math.floor(Math.random() * 999999999) + 1
     };
-    var msalToken = t4Sdk.pxWidget.utility.getMsalToken();
+
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         "headers": {
@@ -907,7 +904,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
  * @returns 
  */
 t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
-    var msalToken = t4Sdk.pxWidget.utility.getMsalToken();
+    var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         "headers": {
@@ -1000,8 +997,7 @@ t4Sdk.pxWidget.utility.drawError = function (isogramUrl, elementId, consoleMessa
 };
 
 t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
-    var msalToken = t4Sdk.pxWidget.utility.getMsalToken();
-
+    var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         /*  "xhrFields": {
@@ -1024,17 +1020,4 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
         })
     });
 };
-
-t4Sdk.pxWidget.utility.getMsalToken = function () {
-    const nameEQ = "msalToken" + "="; // Create the cookie name string
-    const cookies = document.cookie.split(';'); // Split all cookies into an array
-
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim(); // Trim whitespace
-        if (cookie.indexOf(nameEQ) === 0) {
-            return cookie.substring(nameEQ.length, cookie.length); // Return the cookie value
-        }
-    }
-    return null; // Return null if the cookie is not found
-}
 //#endregion utilities
