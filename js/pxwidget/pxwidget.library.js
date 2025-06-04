@@ -14,6 +14,7 @@ const typeChart = "chart";
 const typeMap = "map";
 const typeTable_v2 = "table_v2"; */
 const T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN = "msalToken";
+const T4SDK_PXWIDGET_URL_PXSTAT = "https://data.cso.ie/";
 //#region create a chart with toggle variables
 /**
  * Entry method to initialise the widget
@@ -439,10 +440,13 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             };
         }
         else if (response.error) {
+            debugger
             if (response.error.code == -32099) {
-                $("#" + elementId).text("Authentication Error: Authenticate in PxStat and try again.");
+                $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a>`);
             }
-
+            else {
+                $("#" + elementId).text("");
+            }
         }
     }).fail(function (error) {
         console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting metadata")
@@ -708,6 +712,7 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
 
     //get latest time variable first from metadata
     t4Sdk.pxWidget.utility.getJsonStatMetadata(query.params.extension.matrix, true).done(function (response) {
+
         var data = JSONstat(response.result);
         if (data.length) {
             var latestTimeVariable = {
@@ -733,13 +738,13 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
             //check that the query is for one value
             query.params.dimension[latestTimeVariable.dimension].category.index = [latestTimeVariable.code];
 
-            t4Sdk.pxWidget.utility.getJsonStatData(query).done(function (responseValue) {
+            t4Sdk.pxWidget.utility.getJsonStatData(query).done(function (response) {
 
                 var valueDetails = {
                     "value": null,
                     "unit": null
                 };
-                var data = JSONstat(responseValue.result);
+                var data = JSONstat(response.result);
                 if (data.length) {
                     if (data.value.length == 1) {
                         var statisticCode = data.Dimension({ role: "metric" })[0].id[0];
@@ -767,13 +772,13 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
                     console.log("Error getting data")
                 }
             }).fail(function (error) {
-                debugger
                 console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting data")
             });
         }
         else {
             console.log("Error getting metadata")
         }
+
     }).fail(function (error) {
         debugger
         console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
@@ -893,7 +898,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         "headers": {
-            // "MSAL": `Bearer ${msalToken}`,
+            "MSAL": `Bearer ${msalToken}`,
         },
         /* "xhrFields": {
             "withCredentials": true
