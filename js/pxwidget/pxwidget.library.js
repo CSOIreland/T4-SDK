@@ -101,24 +101,39 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 break;
         }
         t4Sdk.pxWidget.utility.getReleaseDetails(rlsCode).done(function (response) {
-            var data = response.result;
-            var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
-            var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
+            if (response.result) {
+                var data = response.result;
+                var dateFrom = (data.RlsLiveDatetimeFrom == null) ? null : Date.parse(data.RlsLiveDatetimeFrom);
+                var dateTo = (data.RlsLiveDatetimeTo == null) ? null : Date.parse(data.RlsLiveDatetimeTo);
 
-            if (data.RlsLiveDatetimeFrom == null && data.RlsLiveDatetimeTo == null) {
-                return false;
+                if (data.RlsLiveDatetimeFrom == null && data.RlsLiveDatetimeTo == null) {
+                    return false;
+                }
+
+                if (
+                    (dateFrom == dateTo)) {
+                    //cancelled release
+                    $("#" + elementId + " .widget-toggle-panel").after(
+                        $("<h2>", {
+                            "text": "CANCELLED PxStat Table - Contact Digital Communications",
+                            "style": "color: red; text-align: center"
+                        })
+                    );
+                }
+            }
+            else if (response.error) {
+                if (response.error.code == -32099) {
+                    $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                        "padding": "5px",
+                        "color": "red",
+                        "font-weight": "bold"
+                    });
+                }
+                else {
+                    $("#" + elementId).text(`${response.error.message}: ${response.error.data}`);
+                }
             }
 
-            if (
-                (dateFrom == dateTo)) {
-                //cancelled release
-                $("#" + elementId + " .widget-toggle-panel").after(
-                    $("<h2>", {
-                        "text": "CANCELLED PxStat Table - Contact Digital Communications",
-                        "style": "color: red; text-align: center"
-                    })
-                );
-            }
         }).fail(function (error) {
             console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting release information")
         });
