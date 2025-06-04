@@ -261,6 +261,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //get metadata to build toggles
     t4Sdk.pxWidget.utility.getJsonStatMetadata(matrixRelease, isLive, language).done(function (response) {
+        debugger
         var toggleIsTime = false;
         var data = JSONstat(response.result);
         if (data.length) {
@@ -886,7 +887,7 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
     return $.ajax({
         "url": "https://dev-ws.cso.ie/public/api.jsonrpc",
         "headers": {
-            "MSAL": `Bearer ${msalToken}`,
+            //    "MSAL": `Bearer ${msalToken}`,
         },
         /* "xhrFields": {
             "withCredentials": true
