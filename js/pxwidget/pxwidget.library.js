@@ -440,12 +440,15 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             };
         }
         else if (response.error) {
-            debugger
             if (response.error.code == -32099) {
-                $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a>`);
+                $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                    "padding": "5px",
+                    "color": "red",
+                    "font-weight": "bold"
+                });
             }
             else {
-                $("#" + elementId).text("");
+                $("#" + elementId).text(`${response.error.message}: ${response.error.data}`);
             }
         }
     }).fail(function (error) {
