@@ -440,12 +440,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }
         else if (response.error) {
             if (response.error.code = -32099) {
-                pxWidget.draw.error(elementId, 'Authentication error. Please authenticate in PxStat and try again.');
+                $("#" + elementId + "-widget-wrapper").text("Authentication Error: Authenticate in PxStat and try again.");
             }
 
         }
     }).fail(function (error) {
-        debugger
         console.log(error.statusText + ": t4Sdk.pxWidget.create, error getting metadata")
     });
 };
