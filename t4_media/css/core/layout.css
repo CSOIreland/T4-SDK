@@ -271,6 +271,16 @@ ul.download-selection-list li:nth-last-child(2) {
   border: none;
 }
 
+figure.publicationBranding {
+  padding: 0.5rem 1rem 0;
+  border-bottom: 4px solid #99bcbd;
+  background-color: #f7ffff;
+}
+figure.publicationBranding img {
+  width: auto;
+  height: auto; 
+}
+
 @media screen and (min-width: 768px) {
   figure.responsiveImage {
     position: relative;
@@ -284,7 +294,7 @@ ul.download-selection-list li:nth-last-child(2) {
     margin: 0;
     padding: .5rem;
     font-size: 2rem;
-  font-family: "Roboto Slab", Georgia, Times, serif;
+    font-family: "Roboto Slab", Georgia, Times, serif;
     background-color: rgba(242,247,250,.82);
     color: #4463AA;
   }
@@ -1223,6 +1233,12 @@ padding-bottom: 0px !important;
 	padding: 0 20px 10px 20px;
 }
 
+@media screen and (max-width: 767px) {
+  .sideitem.minimised p {
+    display:none;
+  }
+}
+
 .sideitem a.btn {
 	display: block;
 	font-size: 16px;
@@ -1242,8 +1258,6 @@ padding-bottom: 0px !important;
 }
 .sideitemFooter i {
   font-weight: 600;
-  
-
 }
 
 .sideitem i.icon-19162016 {
@@ -2549,6 +2563,12 @@ margin-bottom: 20px;
     padding: 0.65rem;
     margin-bottom: 1rem;
 }
+.tiptopBanner h4 {
+  font-size: 16px;
+  color: #fff;
+  margin: auto;
+  font-weight: 700;
+}
 .tiptopBanner strong {
     font-family: Roboto Slab, Georgia, Times New Roman, serif;
     font-weight: 700;
@@ -2959,6 +2979,9 @@ margin-bottom: 20px;
 .int-pub-header {
     background: #f2f7fa;
     margin: 0 0 1rem;
+}
+.int-pub-header:has(+ figure.publicationBranding) {
+  margin: 0;
 }
 .int-pub-headline-block {
     background-color: #268287;
