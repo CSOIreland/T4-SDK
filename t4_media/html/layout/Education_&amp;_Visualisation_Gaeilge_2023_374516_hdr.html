@@ -2,29 +2,42 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en">
 	<head>
 		<!--scale the layout to work correctly on moble decives-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!--define the character encoding for the page-->
 		<meta charset="UTF-8">
 		<title><t4 type="title" /> - CSO - Central Statistics Office</title>
+          <!-- navigation object :  Key words --><t4 type="navigation" id="625"/>
+          <!-- navigation object :  Last modified --><t4 type="navigation" id="74"/>
+          <meta name="DC.Publisher" content="CSO" /> <!-- modified -->
+
+          <!-- start css -->  
           <!-- IE compatibility mode fix--><meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
+          
+           <!--include jQuery-->
+		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
+          <!--include sitewide JavaScript for cso.ie-->
+		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+           <!--include Flexslider - used for carousels and image slders-->
+		<!--jquery.flexslider-min.js--><t4 type="media" id="86226" formatter="javascript/*"/>
+         <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/> 
+          
+          
+		<!--include main stylesheet - all other stylesheets are embeded within this-->
+          
+		<!--main.css--><t4 type="media" id="86004" formatter="css/*"/>
         <!--earthworm.css--><t4 type="media" id="86000" formatter="css/*"/>
         <!--layout.css--><t4 type="media" id="86002" formatter="css/*"/>
         <!--colours.css--><t4 type="media" id="85996" formatter="css/*"/>
-        <!--flexslider.css--><t4 type="media" id="86001" formatter="css/*"/>
-        <!--jquery.fancybox.css--><link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.css" rel="stylesheet">
+        
+        <!--jquery.fancybox.css--><t4 type="media" id="86018" formatter="css/*"/>
         <!--mediaQueries.css--><t4 type="media" id="86005" formatter="css/*"/>
 		
-        <!--include jQuery-->
-		<!--jquery-1.11.1.min.js--><t4 type="media" id="86225" formatter="javascript/*"/>
-		
-        
-        <!--include Flexslider - used for carousels and image slders-->
-		<!--jquery.flexslider-min.js--><t4 type="media" id="86226" formatter="javascript/*"/>
           
-		<!--include Fancybox - used for modal windows-->
-		<!--jquery.fancybox.js--><!--jquery.fancybox.js--><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+          
+		<!--include Fancyboc - used for modal windows-->
+		<!--jquery.fancybox.js--><t4 type="media" id="86223" formatter="javascript/*"/>
+        
           
           <!--include High Charts-->
 		<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
@@ -33,61 +46,62 @@
         <script type="text/javascript" src="https://code.highcharts.com/modules/data.js"></script>
         <script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
         <script type="text/javascript" src="https://code.highcharts.com/maps/modules/exporting.js"></script> 
-
-		<!--include sitewide JavaScript for cso.ie-->
-		<!--site.js--><t4 type="media" id="86227" formatter="javascript/*"/>
+         
+          
+          
+          <!-- end css -->
       
-		  <script> 
-			//js to set current tab to active on main nav DR
-			
-				$(document).ready(function () {
-			
-			
-					var theme = '<t4 type="navigation" id="70"/>';
-			
-			  //alert(theme);
-			
-					if (theme.length == '0') {
-						$("#homeTab").addClass("currentbranch0");
-						// alert('I am here');
-					}
-			
-					else if (theme == 'Statistics' || theme == 'Releases and Publications') {
-			
-						$("#statisticsTab").addClass("currentbranch0");
-			
-					}
-			
-					else if (theme == 'Databases') {
-			
-						$("#databasesTab").addClass("currentbranch0");
-			
-					}
-			
-			
-					else if (theme == 'Surveys and Methodology') {
-			
-						$("#methodsTab").addClass("currentbranch0");
-			
-					}
-			
-					else if (theme == 'About Us') {
-			
-						$("#aboutUsTab").addClass("currentbranch0");
-			
-					}
-			
-			
-					else {
-						//do nothing
-					}
-			
-			
-				});
-			
-				//end main nav JS DR
-			</script>
-				 
+<script> 
+//js to set current tab to active on main nav DR
+
+    $(document).ready(function () {
+
+
+        var theme = '<t4 type="navigation" id="70"/>';
+
+        //alert(theme);
+
+        if (theme.length == '0') {
+            $("#homeTab").addClass("currentbranch0");
+            // alert('I am here');
+        }
+
+        else if (theme == 'Statistics' || theme == 'Releases and Publications') {
+
+            $("#statisticsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'Databases') {
+
+            $("#databasesTab").addClass("currentbranch0");
+
+        }
+
+
+        else if (theme == 'Surveys and Methodology') {
+
+            $("#methodsTab").addClass("currentbranch0");
+
+        }
+
+        else if (theme == 'About Us') {
+
+            $("#aboutUsTab").addClass("currentbranch0");
+
+        }
+
+
+        else {
+            //do nothing
+        }
+
+
+    });
+
+    //end main nav JS DR
+</script>
+     
 
  
        
@@ -105,12 +119,12 @@
 			<div class="row pageHeader">
 				<div class="col span12">
 					<div id="breadcrumbs">
-						<span class="youarehere">Tá tú anseo: </span> &gt;
+						<span class="youarehere">You are here: </span> &gt;
 						<!-- navigation object : Breadcrumb --><t4 type="navigation" id="69"/>
 					</div><!--/breadcrumb-->
 				</div><!--/col-->
 				<div class="col span12">
-					<h1>Oideachas agus L&eacute;irshamhl&uacute;</h1>
+					<h1>Education &amp; Visualisation</h1>
 				</div><!--/col-->				
 		
 	  		</div><!--/row-->          
@@ -120,15 +134,15 @@
 
 					<div class="module magenta">
 						<div class="moduleHeader">
-							<h2><a href="#">Comórtais agus Duaiseanna</a></h2>
+							<h2><a href="#">Competitions &amp; Awards</a></h2>
 						</div>
 						<div class="moduleBody">
 							<ul>
-								<!-- navigation object : Competitions &amp; Awards --><t4 type="navigation" id="1388"/>
+								<!-- navigation object : Competitions &amp; Awards --><t4 type="navigation" id="1385"/>
 							</ul>
 						</div>		
 						<div class="moduleFooter">
-							<a class="btn" href="<t4 type="navigation" id="1392"/>" >com&oacute;rtais agus duaiseanna ar fad <i class="fa fa-angle-right"></i></a>							
+							<a class="btn" href="<t4 type="navigation" id="1319"/>" >all competitions &amp; awards <i class="fa fa-angle-right"></i></a>							
 						</div>				
 					</div><!--/module-->
 				  
@@ -142,39 +156,39 @@
 
 					<div class="module csoblue">
 						<div class="moduleHeader">
-							<h2><a href="#">Acmhainn&iacute; Teagaisc</a></h2>
+							<h2><a href="#">Teaching Resources</a></h2>
 						</div>
 						<div class="moduleBody">
 							<ul>
-								<!-- navigation object : Teaching Resources --><t4 type="navigation" id="1389"/>
+								<!-- navigation object : Teaching Resources --><t4 type="navigation" id="1384"/>
 							</ul>
 						</div>						
 					</div><!--/module-->
 				  
 					<div class="module mint">
 						<div class="moduleHeader">
-							<h2><a href="#">Acmhainn&iacute; Foghlama</a></h2>
+							<h2><a href="#">Learning Resources</a></h2>
 						</div>
 						<div class="moduleBody">
 							<ul>
-								<!-- navigation object : Learning Resources --><t4 type="navigation" id="1390"/>
+								<!-- navigation object : Learning Resources --><t4 type="navigation" id="643"/>
 							</ul>
 						</div>						
 					</div><!--/module-->
 				  
                     <div class="sideitem violet">
-						<h3><a href="https://www.census.ie/ga/census-2022/census-in-schools/" target="_blank">Acmhainn&iacute; ar Dhaon&aacute;ireamh na h&Eacute;ireann<i class="fa fa-info"></i></a></h3>
-                      	<p>Ceachtanna ranga agus tuilleadh acmhainn&iacute; foghlama faoi Dhaon&aacute;ireamh na h&Eacute;ireann</p>
+						<h3><a href="<t4 type="navigation" id="1526"/>">Census in School materials <i class="fa fa-info"></i></a></h3>
+                      	<p>Discover lesson plans and more resources to learn about the census in school</p>
 						<div class="sideitemFooter">
-							<a class="btn" href="https://www.census.ie/ga/census-2022/census-in-schools/" target="_blank">t&eacute;igh go hacmhainn&iacute; scoile an Daon&aacute;irimh</a>
+							<a class="btn" href="<t4 type="navigation" id="1526"/>">go to census school materials</a>
 						</div>
 					</div>
 
 					<div class="sideitem teal">
-						<h3><a  href="https://visual.cso.ie/?body=entity/ima/cop/2022" target="_blank">L&eacute;argas ar do cheantar <i class="fa fa-map-marker"></i></a></h3>
-                     	<p>F&eacute;ach staitistic&iacute; faoi do cheantar c&oacute;naithe leis an aip map&aacute;la daon&aacute;irimh</p>
+						<h3><a  href="https://visual.cso.ie/?body=entity/ima/cop/2022" target="_blank">Your area statistics<i class="fa fa-map-marker"></i></a></h3>
+                     	<p>Explore statistics about your local area with our interactive census mapping app</p>
 						 <div class="sideitemFooter">
-							<a class="btn" href="https://visual.cso.ie/?body=entity/ima/cop/2022" target="_blank">t&eacute;igh chuig an aip map&aacute;la daon&aacute;irimh <i class="fa fa-angle-right"></i></a>
+							<a class="btn" href="https://visual.cso.ie/?body=entity/ima/cop/2022" target="_blank">Go to census mapping app <i class="fa fa-angle-right"></i></a>
 						</div>
 					</div><!--/sideitem-->	
 					
@@ -183,10 +197,10 @@
 				<div class="col span4">
 
 					<div class="sideitem blue">
-						<h3><a href="<t4 type="navigation" id="768"/>">Grafaic&iacute; Faisn&eacute;ise <i class="fa fa-picture-o"></i></a></h3>
-						<p>F&eacute;ach ar ghrafaic&iacute; faisn&eacute;ise CSO de r&eacute;ir t&eacute;ama</p>
+						<h3><a href="<t4 type="navigation" id="768"/>">Infographics <i class="fa fa-picture-o"></i></a></h3>
+						<p>Explore all CSO Infographics by theme</p>
 						<div class="sideitemFooter">
-							<a class="btn" href="<t4 type="navigation" id="768"/>">t&eacute;igh go grafaic&iacute; faisn&eacute;ise <i class="fa fa-angle-right"></i></a>
+							<a class="btn" href="<t4 type="navigation" id="768"/>">Go to infographics <i class="fa fa-angle-right"></i></a>
 						</div>
 					</div><!--/sideitem-->
 
@@ -194,21 +208,21 @@
                   
                   	<div class="module pink">
 						<div class="moduleHeader">
-							<h2><a href="#">L&eacute;irshamhl&uacute; Idirghn&iacute;omhach</a></h2>
+							<h2><a href="#">Interactive Visualisations</a></h2>
 							<!-- <p>Discover our interactive data visualisations for baby names, birthdays, property prices, popular vehicles and more. Or explore statistics on your local area with our interactive maps.</p> -->
 						</div><!-- /moduleHeader-->
 						<div class="moduleBody">
-							<img src="<t4 type="media" formatter="path/*" id="371320" />" />
+							<img src="<t4 type="media" formatter="path/*" id="371320" />" alt="A set of images representing visualisation topics: children's toys, birthday cake, car, house with a price tag, a map with a marker, a chart with a flag" />
 						</div>
                       <div class="moduleFooter">							
-                        <a class="btn" href="<t4 type="navigation" id="656"/>" >t&eacute;igh go uirlis&iacute; l&eacute;irshamlaithe <i class="fa fa-angle-right"></i></a>
+                        <a class="btn" href="<t4 type="navigation" id="656"/>" >explore interactive visualisations <i class="fa fa-angle-right"></i></a>
 						</div>	
 					</div><!--/module-->
                    
 					<div class="module">                    
-						<div class="flexsliderIZ">
+						<div class="flexslider2">
 							<ul class="slides">								   
-								<t4 type="navigation" id="1401"/> 
+								<t4 type="navigation" id="639"/> 
 							</ul>
 	  					</div>
 					</div>
@@ -219,11 +233,11 @@
 
 					<div class="module softgreen">
 						<div class="moduleHeader">
-							<h2><a href="#">F&iacute;se&aacute;in CSO</a></h2>
+							<h2><a href="#">CSO Videos</a></h2>
 						</div>
 						<div class="moduleBody">
                           	<div class="videowrapper">                                                    
-                          		<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/whuk0cPt96c?rel=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>                     
+                          		<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/whuk0cPt96c?rel=0" title="CSO @ BTSYE" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                     
                           	</div>					
 						</div>
 					</div><!--/module-->
@@ -242,27 +256,24 @@
 
 					<div class="module yellow">
 						<div class="moduleHeader">
-							<h2><a href="#">Daon&aacute;ireamhArScoil</a></h2>
+							<h2><a href="#">Census at School</a></h2>
 						</div>
 						<div class="moduleBody">
 							<ul>
-								<!-- navigation object : Census at School --><t4 type="navigation" id="1391"/>
+								<!-- navigation object : Census at School --><t4 type="navigation" id="1386"/>
 							</ul>
 						</div>						
 					</div><!--/module-->
-
-          <!-- Highchart disabled --
-           <div class="module teal">
-               	<t4 type="navigation" id="1402"/><!--Highchart-->					
-					<!--	<div class="moduleFooter">
-										<a class="btn" href="<t4 type="navigation" id="646"/>">t&eacute;igh go dt&iacute; an eisi&uacute;int <i class="fa fa-angle-right"></i></a>
-								</div>	
-           </div><!--/module-->
+                  
+                  	<div class="module teal">
+                      	<t4 type="navigation" id="645"/><!--Highchart-->					
+						<div class="moduleFooter">
+							<a class="btn" href="<t4 type="navigation" id="646"/>">go to release <i class="fa fa-angle-right"></i></a>
+						</div>	
+                  </div><!--/module-->
                   
 
 
 				</div><!--/col-->
 			</div><!--/row-->
 		</div><!--/content-->
-
-_hdr.html
