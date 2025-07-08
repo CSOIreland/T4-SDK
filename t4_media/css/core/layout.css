@@ -273,6 +273,7 @@ ul.download-selection-list li:nth-last-child(2) {
 
 figure.publicationBranding {
   padding: 0.5rem 1rem 0;
+  margin: 0 0 2rem;
   border-bottom: 4px solid #99bcbd;
   background-color: #f7ffff;
 }
@@ -2264,8 +2265,9 @@ a.back-to-top {
     width: 50%;
 }
 
-.publicationMenuFrontier .moduleHeader h2 a {
-color: #384350;
+.publicationMenuFrontier .moduleHeader {
+  border-left: 8px solid #FBAA34;
+  padding-left: 12px;
 }
 
 /*sapmap page style*/
@@ -2625,6 +2627,24 @@ margin-bottom: 20px;
   padding: 10px;
 }
  /* end transcript */
+
+ /* Open close Accordion Collapse - just header (h5) and content */
+.collapseSection {
+border: 1px solid #adbecc;
+border-radius: 2px;
+margin: 2rem 0;
+}
+.collapseSection .collapseHeader {
+background: #F2F7FA;
+padding: 0.5rem 1rem;
+border-radius: 2px 0;
+}
+.collapseSection .collapseHeader h5 {
+font-weight: normal;
+}
+.collapseSection .collapseContent {
+padding: 1rem;
+}
 
 /* key findings */
 

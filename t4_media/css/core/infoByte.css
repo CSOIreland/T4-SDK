@@ -1122,6 +1122,13 @@ Add a grid around other elements
 
     /* PRESENTATION TABLE STYLES */
 
+/* this allows tables to scroll horizontally on mobile. Wrap around the table. */
+.mobile-table-wrapper {
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+    /* resize: horizontal; */
+}
 
     .presentation-table table,
     table.presentation-table {
@@ -1130,7 +1137,11 @@ Add a grid around other elements
         border-spacing: 0;
         margin: 0 0 1rem;
         table-layout: auto;
-        width: auto;
+        width: fit-content;
+    }
+    .presentation-table.pub-info-table table,
+    table.presentation-table.pub-info-table {
+        margin-bottom: 2rem;
     }
     .presentation-table.full-width table,
     table.presentation-table.full-width {
@@ -1142,6 +1153,15 @@ Add a grid around other elements
         font-size: 1.3rem;
         margin-bottom: 1rem;
         text-align: left;
+    }
+    .presentation-table.pub-info-table table caption,
+    table.presentation-table.pub-info-table caption {
+        background-color: rgba(230, 233, 242, 0.7);
+        padding: 1rem 0.5rem;
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+        border-bottom: 2px solid #000;
+        font-family: inherit;
     }
     .presentation-table table thead tr,
     table.presentation-table thead tr {
@@ -1186,7 +1206,40 @@ Add a grid around other elements
     table.presentation-table.zebra-stripe tbody tr:nth-child(odd) th {
         background-color: rgba(230, 233, 242, 0.7);
     }
-    .presentation-table table tbody tr:last-child,
+    .presentation-table.lined-table table tbody td,
+    table.presentation-table.lined-table tbody td {
+        border-bottom: 2px solid #ADBECC;
+        padding: 0.75rem;
+    }
+    .presentation-table table.lined-table tbody th,
+    table.presentation-table.lined-table tbody th {
+        border-bottom: 2px solid #ADBECC;
+        padding: 0.75rem;
+        background-color: #F2F7FA;
+    }
+    .presentation-table.schedule-table table tbody td,
+    table.presentation-table.schedule-table tbody td {
+        border: 2px solid #ADBECC;
+        border-width: 0 2px 2px;
+        padding: 0.75rem;
+    }
+    .presentation-table.schedule-table table tbody tr:nth-child(4n-3) td.event,
+    table.presentation-table.schedule-table tbody tr:nth-child(4n-3) td.event {
+        background-color: #daf0f2;
+    }
+    .presentation-table.schedule-table table tbody tr:nth-child(4n-2) td.event,
+    table.presentation-table.schedule-table tbody tr:nth-child(4n-2) td.event {
+        background-color: #fff8e5;
+    }
+    .presentation-table.schedule-table table tbody tr:nth-child(4n-1) td.event,
+    table.presentation-table.schedule-table tbody tr:nth-child(4n-1) td.event {
+        background-color: #daf2e9;
+    }
+    .presentation-table.schedule-table table tbody tr:nth-child(4n) td.event,
+    table.presentation-table.schedule-table tbody tr:nth-child(4n) td.event {
+        background-color: #E6E9F2;
+    }
+.presentation-table table tbody tr:last-child,
     table.presentation-table tbody tr:last-child {
         border-bottom: 2px solid #000;
     }
