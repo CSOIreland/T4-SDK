@@ -751,4 +751,13 @@ a.togglelogos {
     .pxwidget .chartjs-size-monitor {
         position: fixed;
     }
+
+    .tiptopBanner {
+        display:none;
+    }
+
+    .collapseSection  .collapseContent {
+        display:block !important;
+    }
+    .collapseSection .collapseHeader span { display: none; }
 }
