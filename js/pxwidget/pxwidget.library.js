@@ -9,12 +9,7 @@ t4Sdk.pxWidget.utility = {};
 t4Sdk.dataConnector = {};
 //#endregion Add Namespace
 
-/* const typeTable = "table";
-const typeChart = "chart";
-const typeMap = "map";
-const typeTable_v2 = "table_v2"; */
-const T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN = "msalToken";
-const T4SDK_PXWIDGET_URL_PXSTAT = "https://data.cso.ie/";
+
 //#region create a chart with toggle variables
 /**
  * Entry method to initialise the widget
@@ -55,18 +50,18 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     //check that config doesn't contain a response, must be query
     var queryIsInvalid = false;
     switch (type) {
-        case typeChart:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
             if (!$.isEmptyObject(config.metadata.api.response)) {
                 queryIsInvalid = true;
             }
             break;
-        case typeTable:
-        case typeTable_v2:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
             if (!$.isEmptyObject(config.data.api.response)) {
                 queryIsInvalid = true;
             }
             break;
-        case typeMap:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
             if (!$.isEmptyObject(config.data.datasets[0].api.response)) {
                 queryIsInvalid = true;
             }
@@ -87,14 +82,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     if (!isLive) {
         var rlsCode = null;
         switch (type) {
-            case typeChart:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
                 rlsCode = config.metadata.api.query.data.params.release;
                 break;
-            case typeTable:
-            case typeTable_v2:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                 rlsCode = config.data.api.query.data.params.extension.release;
                 break;
-            case typeMap:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                 rlsCode = config.data.datasets[0].api.query.data.params.extension.release;
                 break;
             default:
@@ -123,7 +118,18 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             }
             else if (response.error) {
                 if (response.error.code == -32099) {
-                    $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                    var authenticationLink = $("<a>", {
+                        'href': '#',
+                        'text': 'PxStat',
+                    }).on('click', function (e) {
+                        e.preventDefault();
+                        t4Sdk.pxWidget.utility.authenticatePxStatUser();
+                    }).get(0).outerHTML;
+
+
+
+                    // $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                    $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
                         "padding": "5px",
                         "color": "red",
                         "font-weight": "bold"
@@ -140,7 +146,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
 
     //check if type is table and that toggle dimension is not the same as pivot dimension
-    if (type == typeTable) {
+    if (type == T4SDK_PXWIDGET_WIDGET_TYPE_TABLE) {
         if (config.pivot == toggleDimension) {
             t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Pivot dimesnion and toggle dimensoin cannot be the same");
 
@@ -151,7 +157,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     //Rules for table_v2 
     //toggle dimension cannot be in columnFields
-    if (type == typeTable_v2) {
+    if (type == T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2) {
         if (config.columnFields.includes(toggleDimension.trim())) {
             t4Sdk.pxWidget.utility.drawError(isogramUrl, elementId, "Toggle dimension cannot be selected as a columns field.");
             return
@@ -169,16 +175,16 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
 
     if (!isLive) {
         switch (type) {
-            case typeChart:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
                 matrixRelease = config.metadata.api.query.data.params.release;
                 language = config.metadata.api.query.data.params.language;
                 break;
-            case typeTable:
-            case typeTable_v2:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                 matrixRelease = config.data.api.query.data.params.extension.release;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
-            case typeMap:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.release;
                 language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
@@ -188,16 +194,16 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
     }
     else {
         switch (type) {
-            case typeChart:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
                 matrixRelease = config.metadata.api.query.data.params.matrix || config.matrix;
                 language = config.metadata.api.query.data.params.language;
                 break;
-            case typeTable:
-            case typeTable_v2:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                 matrixRelease = config.data.api.query.data.params.extension.matrix || config.matrix;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
-            case typeMap:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                 matrixRelease = config.data.datasets[0].api.query.data.params.extension.matrix || config.matrix;
                 language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
@@ -245,7 +251,8 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "class": "toggle-buttons",
                     "name": "toggle-button-wrapper",
                     "id": elementId + "-button-wrapper",
-                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%"
+                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%",
+                    "dropdownParent": $("#" + elementId)
                 })
             );
             break;
@@ -383,15 +390,15 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         case "dropdown":
                             $("#" + elementId + "-toggle-select").change(function () {
                                 switch (type) {
-                                    case typeChart:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
                                         t4Sdk.pxWidget.chart.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                         break;
 
-                                    case typeTable:
-                                    case typeTable_v2:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                                         t4Sdk.pxWidget.table.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                         break;
-                                    case typeMap:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                                         t4Sdk.pxWidget.map.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).find("option:selected").text(), toggleIsTime);
                                         break;
 
@@ -406,14 +413,14 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                                 $(this).addClass("active");
 
                                 switch (type) {
-                                    case typeChart:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
                                         t4Sdk.pxWidget.chart.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                         break;
-                                    case typeTable:
-                                    case typeTable_v2:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                                         t4Sdk.pxWidget.table.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                         break;
-                                    case typeMap:
+                                    case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                                         t4Sdk.pxWidget.map.draw(type, elementId, isLive, config, $(this).attr("dimension"), $(this).val(), $(this).text(), toggleIsTime);
                                         break;
                                     default:
@@ -456,7 +463,16 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         }
         else if (response.error) {
             if (response.error.code == -32099) {
-                $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                var authenticationLink = $("<a>", {
+                    'href': '#',
+                    'text': 'PxStat',
+                }).on('click', function (e) {
+                    e.preventDefault();
+                    t4Sdk.pxWidget.utility.authenticatePxStatUser();
+                }).get(0).outerHTML;
+
+                //  $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
+                $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
                     "padding": "5px",
                     "color": "red",
                     "font-weight": "bold"
@@ -650,11 +666,11 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
     var config = JSON.parse(snippet.substring(snippet.indexOf('{'), snippet.lastIndexOf('}') + 1));
     var fluidTime = [];
     switch (type) {
-        case typeTable:
-        case typeTable_v2:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
             fluidTime = config.fluidTime;
             break;
-        case typeMap:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
             fluidTime = config.data.datasets[0].fluidTime;
             break;
         default:
@@ -667,12 +683,12 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
         var language = null;
 
         switch (type) {
-            case typeTable:
-            case typeTable_v2:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
                 matrix = config.data.api.query.data.params.extension.matrix;
                 language = config.data.api.query.data.params.extension.language.code;
                 break;
-            case typeMap:
+            case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
                 matrix = config.data.datasets[0].api.query.data.params.extension.matrix;
                 language = config.data.datasets[0].api.query.data.params.extension.language.code;
                 break;
@@ -984,18 +1000,18 @@ t4Sdk.pxWidget.utility.isSnippetPrivate = function (type, snippet) {
     var result = false;
     //if snippet contains a release code instead of a matrix in it's query, it must be from a private query
     switch (type) {
-        case typeChart:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_CHART:
             if (!$.isEmptyObject(config.metadata.api.query) && config.metadata.api.query.data.params.release) {
                 result = true
             }
             break;
-        case typeTable:
-        case typeTable_v2:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2:
             if (!$.isEmptyObject(config.data.api.query) && config.data.api.query.data.params.extension.release) {
                 result = true
             }
             break;
-        case typeMap:
+        case T4SDK_PXWIDGET_WIDGET_TYPE_MAP:
             if (!$.isEmptyObject(config.data.datasets[0].api.query) && config.data.datasets[0].api.query.data.params.extension.release) {
                 result = true
             }
@@ -1049,5 +1065,44 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
             "id": Math.floor(Math.random() * 999999999) + 1
         })
     });
+};
+
+/**
+ * Authenticate user in PxStat
+ * Opens a pop-up window to PxStat 
+ * When the pop-up window or success modal is closed, the current page is reloaded
+ */
+t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
+    var windowWidth = 600;
+    var windowHeight = 400;
+
+    // Get the dimensions of the current screen
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+
+    // Get the position of the current browser window
+    var windowLeft = window.screenLeft || window.screenX; // screenLeft for IE/Edge, screenX for others
+    var windowTop = window.screenTop || window.screenY; // screenTop for IE/Edge, screenY for others
+
+    // Calculate the left and top positions based on the current screen's coordinates
+    var left = windowLeft + (screenWidth - windowWidth) / 2;
+    var top = windowTop + (screenHeight - windowHeight) / 2;
+
+    // Build the features string
+    var features = `width=${windowWidth},height=${windowHeight},left=${left},top=${top},resizable=yes,scrollbars=yes`;
+
+    // Now, open the pop-up window using the features string
+    var authenticationWindow = window.open('test2.html?authenticate_t4=', 'Authentication', features);
+
+    // Start checking for closure after the window is opened
+    var checkClosed = setInterval(() => {
+        if (authenticationWindow.closed) {
+            clearInterval(checkClosed); // Stop the timer
+            // The child window is now closed. Perform your actions here.
+            // Reload this page
+            window.location.reload();
+        }
+    }, 500); // Checks every 500 milliseconds
+
 };
 //#endregion utilities

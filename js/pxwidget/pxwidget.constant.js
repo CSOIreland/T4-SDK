@@ -3,4 +3,14 @@ const T4SDK_PXWIDGET_READ_PRE_METADATA = "PxStat.Data.Cube_API.ReadPreMetadata";
 const T4SDK_PXWIDGET_READ_DATASET = "PxStat.Data.Cube_API.ReadDataset";
 const T4SDK_PXWIDGET_URL_API_PRIVATE = "https://ws.cso.ie/private/api.jsonrpc";
 const T4SDK_PXWIDGET_URL_API_PUBLIC = "https://ws.cso.ie/public/api.jsonrpc";
+const T4SDK_PXWIDGET_URL_PXSTAT = "https://data.cso.ie/";
 const T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN = "msalToken";
+const typeTable = "table";
+const typeChart = "chart";
+const typeMap = "map";
+const typeTable_v2 = "table_v2";
+
+const T4SDK_PXWIDGET_WIDGET_TYPE_TABLE = "table";
+const T4SDK_PXWIDGET_WIDGET_TYPE_TABLE_V2 = "table_v2";
+const T4SDK_PXWIDGET_WIDGET_TYPE_CHART = "chart";
+const T4SDK_PXWIDGET_WIDGET_TYPE_MAP = "map";
