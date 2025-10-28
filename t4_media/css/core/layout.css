@@ -64,7 +64,7 @@ text-decoration: none !important;
 .mainNavList .ddBox ul  li  a
 {
 
-  color: #00ada8 !important;
+  color: #4463aa !important;
 
 
 }
@@ -72,7 +72,7 @@ text-decoration: none !important;
 .mainNavList .ddBox a.pageLink
 {
 
-  color: #028b87 !important;
+  color: #007b85 !important;
 
 
 }
@@ -828,7 +828,7 @@ cursor: pointer;
 }
 
 .mainNavList .ddBox a.close {
-	background: #00ada8;
+	background: #007B85;
 	color: #fff;
 	font-size: 14px;
 	display: block;
