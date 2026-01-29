@@ -136,6 +136,10 @@ hr.page__divider {
    padding: 0.25rem 1rem;
 }
 
+.enterprise-surveys {
+	border-bottom-color: #fabd52;
+}
+
 .contentPage__highlight, .contentPage__highlight.purple {
    background-color: #e6e9f2;
    padding: 0.25rem 1rem;   
@@ -168,6 +172,8 @@ h2.corporatePageHeading {
    margin: 0 0 0.5rem;
 }
 h2.corporatePageHeading.xl { font-size: 2.5rem; }
+h2.corporatePageHeading.text-light { font-weight: 400; }
+h2.corporatePageHeading.text-md { font-size: 1.8rem; }
 h2.corporatePageHeading.green { color: #006168; }
 h2.corporatePageHeading.mint { color: #00A881; }
 h2.corporatePageHeading.teal { color: #00A3A0; }
@@ -183,6 +189,8 @@ h3.corporatePageHeading {
    margin: 0.75rem 0;
 }
 h3.corporatePageHeading.xl { font-size: 2.2rem; }
+h3.corporatePageHeading.text-light { font-weight: 400; }
+h3.corporatePageHeading.text-md { font-size: 1.6rem; }
 h3.corporatePageHeading.green { color: #006168; }
 h3.corporatePageHeading.mint { color: #00A881; }
 h3.corporatePageHeading.teal { color: #00A3A0; }
@@ -198,6 +206,8 @@ h4.corporatePageHeading {
    margin: 0.75rem 0;
 }
 h4.corporatePageHeading.xl { font-size: 1.7rem; }
+h4.corporatePageHeading.text-light { font-weight: 400; }
+h4.corporatePageHeading.text-md { font-size: 1.4rem; }
 h4.corporatePageHeading.green { color: #006168; }
 h4.corporatePageHeading.mint { color: #00A881; }
 h4.corporatePageHeading.teal { color: #00A3A0; }
@@ -336,3 +346,4 @@ h4.corporatePageHeading.csoblue { color: #0099b4; }
 }
 
 /* BLOCK LINK ITEM STYLES MOVED TO INFOBYTE.CSS */
+
