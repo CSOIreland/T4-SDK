@@ -3082,6 +3082,14 @@ padding: 1rem;
   margin: 0 0 0.25rem;
 }
 
+.pub-header-data.solo-header-update {
+  background: #F2F7FA;
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  margin: -1rem 0 1rem;
+  border-bottom: 2px solid #99bcbd;
+}
+
 .pub-header-issn {
     grid-column: 1 / 3;
     grid-row: 2 / 3;

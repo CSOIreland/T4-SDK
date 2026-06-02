@@ -25,6 +25,10 @@
    border-bottom: none;
    padding-bottom: 0;
  }
+ .featuredIntro.enterprise-surveys {
+    border-bottom-color: #FB8E03;
+ }
+
  @media all and (min-width: 768px) {
  .featuredIntro {
      display: flex;
