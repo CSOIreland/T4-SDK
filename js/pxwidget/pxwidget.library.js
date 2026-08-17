@@ -251,8 +251,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "class": "toggle-buttons",
                     "name": "toggle-button-wrapper",
                     "id": elementId + "-button-wrapper",
-                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%",
-                    "dropdownParent": $("#" + elementId)
+                    "style": "display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%"
                 })
             );
             break;
@@ -653,7 +652,6 @@ t4Sdk.pxWidget.map.draw = function (type, elementId, isLive, config, toggleDimen
 };
 
 t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggleDimension) {
-    debugger
     //get isogram url
     var isogramScript = /<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gm.exec(snippet)[0];
 
@@ -723,7 +721,6 @@ t4Sdk.pxWidget.getSingleFluidTimeLabel = function (snippet, element, type, toggl
                 console.log("Error getting metadata")
             }
         }).fail(function (error) {
-            debugger
             console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
         });
     }
@@ -814,7 +811,6 @@ t4Sdk.pxWidget.latestValue.draw = function (query, valueElement, unitElement, ti
         }
 
     }).fail(function (error) {
-        debugger
         console.log(error.statusText + ": t4Sdk.pxWidget.latestValue.draw, error getting metadata")
     });
 
@@ -934,9 +930,9 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
         "headers": {
             "MSAL": `Bearer ${msalToken}`,
         },
-        /* "xhrFields": {
+        "xhrFields": {
             "withCredentials": true
-        }, */
+        },
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
@@ -956,9 +952,9 @@ t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
         "headers": {
             "MSAL": `Bearer ${msalToken}`,
         },
-        /* "xhrFields": {
+        "xhrFields": {
             "withCredentials": true
-        }, */
+        },
         "dataType": "json",
         "method": "POST",
         "jsonp": false,
@@ -1046,9 +1042,9 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
     var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     return $.ajax({
         "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
-        /*  "xhrFields": {
-             "withCredentials": true
-         }, */
+        "xhrFields": {
+            "withCredentials": true
+        },
         "dataType": "json",
         "headers": {
             "MSAL": `Bearer ${msalToken}`,
