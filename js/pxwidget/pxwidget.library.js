@@ -119,12 +119,13 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             else if (response.error) {
                 if (response.error.code == -32099) {
                     var authenticationLink = $("<a>", {
+                        'name': 'authentication-link',
                         'href': '#',
                         'text': 'PxStat',
-                    }).on('click', function (e) {
+                    })/* .on('click', function (e) {
                         e.preventDefault();
                         t4Sdk.pxWidget.utility.authenticatePxStatUser();
-                    }).get(0).outerHTML;
+                    }).get(0).outerHTML; */
 
 
 
@@ -133,6 +134,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         "padding": "5px",
                         "color": "red",
                         "font-weight": "bold"
+                    });
+
+                    $("#" + elementId).find("[name=authentication-link]").on('click', function (e) {
+                        e.preventDefault();
+                        debugger
                     });
                 }
                 else {
@@ -463,6 +469,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         else if (response.error) {
             if (response.error.code == -32099) {
                 var authenticationLink = $("<a>", {
+                    'name': 'authentication-link',
                     'href': '#',
                     'text': 'PxStat',
                 }).on('click', function (e) {
@@ -475,6 +482,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     "padding": "5px",
                     "color": "red",
                     "font-weight": "bold"
+                });
+
+                $("#" + elementId).find("[name=authentication-link]").on('click', function (e) {
+                    e.preventDefault();
+                    debugger
                 });
             }
             else {
