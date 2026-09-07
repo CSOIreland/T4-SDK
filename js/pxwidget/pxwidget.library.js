@@ -1074,6 +1074,7 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
  * When the pop-up window or success modal is closed, the current page is reloaded
  */
 t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
+    //delete any bad cookie that may have been set from a previous failed authentication attempt
     Cookies.remove(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN, {
         domain: '.cso.ie',
         secure: true,
@@ -1105,7 +1106,7 @@ t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
         var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
         if (msalToken) {
             clearInterval(checkCookie); // Stop the timer
-            // The cookie is now set. Perform your actions here.
+            // The cookie is now set.
             // Reload this page
             window.location.reload();
             //close the authentication window if it is still open
@@ -1114,16 +1115,5 @@ t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
             }
         }
     }, 500);
-
-    // Start checking for closure after the window is opened
-    /*  var checkClosed = setInterval(() => {
-         if (authenticationWindow.closed) {
-             clearInterval(checkClosed); // Stop the timer
-             // The child window is now closed. Perform your actions here.
-             // Reload this page
-             window.location.reload();
-         }
-     }, 500); // Checks every 500 milliseconds */
-
 };
 //#endregion utilities
