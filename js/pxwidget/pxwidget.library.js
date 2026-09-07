@@ -1074,6 +1074,7 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
  * When the pop-up window or success modal is closed, the current page is reloaded
  */
 t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
+    Cookies.remove(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     var windowWidth = 600;
     var windowHeight = 400;
 
@@ -1093,17 +1094,32 @@ t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
     var features = `width=${windowWidth},height=${windowHeight},left=${left},top=${top},resizable=yes,scrollbars=yes`;
 
     // Now, open the pop-up window using the features string
-    var authenticationWindow = window.open('' + T4SDK_PXWIDGET_URL_PXSTAT + '?authenticate_t4=', 'Authentication', features);
+    var authenticationWindow = window.open('' + T4SDK_PXWIDGET_URL_PXSTAT + '?auth_complete=', 'Authentication', features);
 
-    // Start checking for closure after the window is opened
-    var checkClosed = setInterval(() => {
-        if (authenticationWindow.closed) {
-            clearInterval(checkClosed); // Stop the timer
-            // The child window is now closed. Perform your actions here.
+    //check for the new cookie every 500 milliseconds
+    var checkCookie = setInterval(() => {
+        var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
+        if (msalToken) {
+            clearInterval(checkCookie); // Stop the timer
+            // The cookie is now set. Perform your actions here.
             // Reload this page
             window.location.reload();
+            //close the authentication window if it is still open
+            if (!authenticationWindow.closed) {
+                authenticationWindow.close();
+            }
         }
-    }, 500); // Checks every 500 milliseconds
+    }, 500);
+
+    // Start checking for closure after the window is opened
+    /*  var checkClosed = setInterval(() => {
+         if (authenticationWindow.closed) {
+             clearInterval(checkClosed); // Stop the timer
+             // The child window is now closed. Perform your actions here.
+             // Reload this page
+             window.location.reload();
+         }
+     }, 500); // Checks every 500 milliseconds */
 
 };
 //#endregion utilities
