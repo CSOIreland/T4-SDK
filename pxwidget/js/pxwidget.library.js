@@ -119,20 +119,20 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
             else if (response.error) {
                 if (response.error.code == -32099) {
                     var authenticationLink = $("<a>", {
+                        'name': 'authentication-link',
                         'href': '#',
-                        'text': 'PxStat',
-                    }).on('click', function (e) {
-                        e.preventDefault();
-                        t4Sdk.pxWidget.utility.authenticatePxStatUser();
+                        'text': T4SDK_PXWIDGET_URL_PXSTAT,
                     }).get(0).outerHTML;
 
-
-
-                    // $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
-                    $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
+                    $("#" + elementId).html('Access denied for pre-release data. Please click on the following link to authenticate: ' + authenticationLink).css({
                         "padding": "5px",
                         "color": "red",
                         "font-weight": "bold"
+                    });
+
+                    $("#" + elementId).find("[name=authentication-link]").on('click', function (e) {
+                        e.preventDefault();
+                        t4Sdk.pxWidget.utility.authenticatePxStatUser();
                     });
                 }
                 else {
@@ -463,18 +463,20 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
         else if (response.error) {
             if (response.error.code == -32099) {
                 var authenticationLink = $("<a>", {
+                    'name': 'authentication-link',
                     'href': '#',
-                    'text': 'PxStat',
-                }).on('click', function (e) {
-                    e.preventDefault();
-                    t4Sdk.pxWidget.utility.authenticatePxStatUser();
+                    'text': T4SDK_PXWIDGET_URL_PXSTAT,
                 }).get(0).outerHTML;
 
-                //  $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
-                $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
+                $("#" + elementId).html('Access denied for pre-release data. Please click on the following link to authenticate: ' + authenticationLink).css({
                     "padding": "5px",
                     "color": "red",
                     "font-weight": "bold"
+                });
+
+                $("#" + elementId).find("[name=authentication-link]").on('click', function (e) {
+                    e.preventDefault();
+                    t4Sdk.pxWidget.utility.authenticatePxStatUser();
                 });
             }
             else {
@@ -1069,6 +1071,12 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
  * When the pop-up window or success modal is closed, the current page is reloaded
  */
 t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
+    //delete any bad cookie that may have been set from a previous failed authentication attempt
+    Cookies.remove(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN, {
+        domain: '.cso.ie',
+        secure: true,
+        path: '/'
+    });
     var windowWidth = 600;
     var windowHeight = 400;
 
@@ -1088,17 +1096,21 @@ t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
     var features = `width=${windowWidth},height=${windowHeight},left=${left},top=${top},resizable=yes,scrollbars=yes`;
 
     // Now, open the pop-up window using the features string
-    var authenticationWindow = window.open('test2.html?authenticate_t4=', 'Authentication', features);
+    var authenticationWindow = window.open('' + T4SDK_PXWIDGET_URL_PXSTAT + '?auth_complete=', 'Authentication', features);
 
-    // Start checking for closure after the window is opened
-    var checkClosed = setInterval(() => {
-        if (authenticationWindow.closed) {
-            clearInterval(checkClosed); // Stop the timer
-            // The child window is now closed. Perform your actions here.
+    //check for the new cookie every 500 milliseconds
+    var checkCookie = setInterval(() => {
+        var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
+        if (msalToken) {
+            clearInterval(checkCookie); // Stop the timer
+            // The cookie is now set.
             // Reload this page
             window.location.reload();
+            //close the authentication window if it is still open
+            if (!authenticationWindow.closed) {
+                authenticationWindow.close();
+            }
         }
-    }, 500); // Checks every 500 milliseconds
-
+    }, 500);
 };
 //#endregion utilities
