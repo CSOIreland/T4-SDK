@@ -1093,7 +1093,7 @@ t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
     var features = `width=${windowWidth},height=${windowHeight},left=${left},top=${top},resizable=yes,scrollbars=yes`;
 
     // Now, open the pop-up window using the features string
-    var authenticationWindow = window.open('test2.html?authenticate_t4=', 'Authentication', features);
+    var authenticationWindow = window.open('' + T4SDK_PXWIDGET_URL_PXSTAT + '?authenticate_t4=', 'Authentication', features);
 
     // Start checking for closure after the window is opened
     var checkClosed = setInterval(() => {
