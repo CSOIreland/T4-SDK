@@ -1074,7 +1074,11 @@ t4Sdk.pxWidget.utility.getReleaseDetails = function (rlsCode) {
  * When the pop-up window or success modal is closed, the current page is reloaded
  */
 t4Sdk.pxWidget.utility.authenticatePxStatUser = function () {
-    Cookies.remove(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
+    Cookies.remove(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN, {
+        domain: '.cso.ie',
+        secure: true,
+        path: '/'
+    });
     var windowWidth = 600;
     var windowHeight = 400;
 
