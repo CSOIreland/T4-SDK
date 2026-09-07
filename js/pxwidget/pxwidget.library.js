@@ -121,13 +121,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     var authenticationLink = $("<a>", {
                         'name': 'authentication-link',
                         'href': '#',
-                        'text': 'PxStat',
+                        'text': T4SDK_PXWIDGET_URL_PXSTAT,
                     }).get(0).outerHTML;
 
-
-
-                    // $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
-                    $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
+                    $("#" + elementId).html('Access denied for pre-release data. Please click on the following link to authenticate: ' + authenticationLink).css({
                         "padding": "5px",
                         "color": "red",
                         "font-weight": "bold"
@@ -468,10 +465,10 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                 var authenticationLink = $("<a>", {
                     'name': 'authentication-link',
                     'href': '#',
-                    'text': 'PxStat',
+                    'text': T4SDK_PXWIDGET_URL_PXSTAT,
                 }).get(0).outerHTML;
 
-                $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
+                $("#" + elementId).html('Access denied for pre-release data. Please click on the following link to authenticate: ' + authenticationLink).css({
                     "padding": "5px",
                     "color": "red",
                     "font-weight": "bold"
