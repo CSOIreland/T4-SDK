@@ -122,8 +122,11 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                         'name': 'authentication-link',
                         'href': '#',
                         'text': 'PxStat',
-                    });
+                    }).get(0).outerHTML;
 
+
+
+                    // $("#" + elementId).html(`Access denied for pre-release data. Please authenticate in <a name="authentication-link" href="${T4SDK_PXWIDGET_URL_PXSTAT}" target="_blank">${T4SDK_PXWIDGET_URL_PXSTAT}</a> and try again.`).css({
                     $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
                         "padding": "5px",
                         "color": "red",
@@ -466,7 +469,7 @@ t4Sdk.pxWidget.create = function (type, elementId, isLive, snippet, toggleType, 
                     'name': 'authentication-link',
                     'href': '#',
                     'text': 'PxStat',
-                });
+                }).get(0).outerHTML;
 
                 $("#" + elementId).html('Access denied for pre-release data. Please authenticate in ' + authenticationLink + ' and try again.').css({
                     "padding": "5px",
