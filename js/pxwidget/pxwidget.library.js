@@ -926,20 +926,34 @@ t4Sdk.pxWidget.utility.getJsonStatMetadata = function (matrixRelease, isLive, la
         "version": "2.0",
         "id": Math.floor(Math.random() * 999999999) + 1
     };
+    if (isLive) {
+        return $.ajax({
+            "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "dataType": "json",
+            "method": "POST",
+            "jsonp": false,
+            "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease)
+        });
+    }
+    else {
+        return $.ajax({
+            "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
+            "headers": {
+                "MSAL": `Bearer ${msalToken}`,
+            },
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "dataType": "json",
+            "method": "POST",
+            "jsonp": false,
+            "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease)
+        });
+    }
 
-    return $.ajax({
-        "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
-        "headers": {
-            "MSAL": `Bearer ${msalToken}`,
-        },
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "dataType": "json",
-        "method": "POST",
-        "jsonp": false,
-        "data": isLive ? JSON.stringify(paramsMatrix) : JSON.stringify(paramsRelease)
-    });
 };
 
 /**
@@ -951,9 +965,6 @@ t4Sdk.pxWidget.utility.getJsonStatData = function (query) {
     var msalToken = Cookies.get(T4SDK_PXWIDGET_COOKIE_MSAL_ACCESS_TOKEN);
     return $.ajax({
         "url": T4SDK_PXWIDGET_URL_API_PUBLIC,
-        "headers": {
-            "MSAL": `Bearer ${msalToken}`,
-        },
         "xhrFields": {
             "withCredentials": true
         },
